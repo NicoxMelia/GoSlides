@@ -1,0 +1,58 @@
+{
+  "id": "que-es-sast",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "fade",
+  "eyebrow": "03 · DEFINICIÓN",
+  "title": "SAST = análisis de seguridad sin ejecutar la aplicación.",
+  "subtitle": "Puede trabajar sobre sintaxis, patrones, flujo de datos, AST o modelos semánticos, según la herramienta. El alcance exacto depende de cada motor.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.6,
+      "items": [
+        {
+          "title": "Qué intenta encontrar",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Uso peligroso de APIs",
+                "Inyección de comandos o SQL cuando el patrón se infiere estáticamente",
+                "Secretos embebidos en código o historial Git",
+                "Criptografía débil",
+                "Configuraciones inseguras en infraestructura como código",
+                "Validaciones insuficientes o CWE conocidas",
+                "Dependencias vulnerables, si la suite integra SCA"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Qué NO demuestra",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "No es una prueba de seguridad total",
+              "text": "No demuestra que el sistema sea seguro. No ejecuta ataques reales, no observa la configuración efectiva en producción y puede no comprender reflexión, datos externos o cadenas de llamada complejas."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Sigue haciendo falta interpretación",
+              "text": "SAST genera evidencia sobre posibles riesgos. La decisión de seguridad sigue requiriendo contexto y otros controles: testing, revisión, SCA, secret scanning, DAST."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

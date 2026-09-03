@@ -1,0 +1,65 @@
+{
+  "id": "v9-hybrid-reliability",
+  "layout": "default",
+  "eyebrow": "V9 · CORRECCIONES DE EDICIÓN",
+  "title": "Agregar un objeto ya no borra lo que estaba",
+  "subtitle": "Las slides estructuradas ahora aceptan una capa de canvas encima sin convertirse destructivamente a Free.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Thumbnail fiable",
+          "text": "El preview usa una slide 960×540 real escalada, sin recortes extraños."
+        },
+        {
+          "title": "Canvas híbrido",
+          "text": "Texto, bloques y componentes libres pueden convivir en la misma slide."
+        },
+        {
+          "title": "Estado seguro",
+          "text": "Las inserciones agregan sobre el estado actual y no reemplazan arrays anteriores."
+        }
+      ]
+    }
+  ],
+  "canvas": [
+    {
+      "id": "hybrid-arrow",
+      "type": "arrow",
+      "layerName": "Flecha overlay",
+      "x": 76,
+      "y": 75,
+      "w": 13,
+      "h": 7,
+      "zIndex": 8,
+      "direction": "right",
+      "arrowStyle": "rounded",
+      "thickness": 4,
+      "style": {
+        "color": "#8b6cff"
+      }
+    },
+    {
+      "id": "hybrid-icon",
+      "type": "icon",
+      "layerName": "Check overlay",
+      "x": 89,
+      "y": 69,
+      "w": 6,
+      "h": 15,
+      "zIndex": 9,
+      "name": "check",
+      "library": "phosphor",
+      "style": {
+        "color": "#58d6b0"
+      }
+    }
+  ],
+  "notes": [
+    "Esta slide es intencionalmente híbrida: mantiene bloques estructurados y suma elementos libres encima."
+  ],
+  "sectionId": "section-v9"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "v5-charts",
+  "layout": "default",
+  "eyebrow": "V5 · DATOS",
+  "title": "Charts más útiles sin depender de screenshots",
+  "subtitle": "La misma estructura editable ahora puede renderizar barras, línea, área o donut.",
+  "transition": "zoom",
+  "blocks": [
+    {
+      "type": "chart",
+      "chart": "donut",
+      "title": "Distribución del tiempo de una clase",
+      "labels": ["Teoría", "Demo", "Ejercicios", "Preguntas"],
+      "values": [30, 20, 35, 15],
+      "suffix": "%",
+      "showValues": true,
+      "animation": "zoom",
+      "fragment": 0
+    },
+    {
+      "type": "callout",
+      "title": "También disponible",
+      "text": "Cambiá el selector a area para obtener una serie con relleno, o mantené bar/line para los formatos anteriores.",
+      "tone": "info",
+      "animation": "slide-up",
+      "fragment": 1
+    }
+  ],
+  "notes": ["Avanzar un fragment para mostrar el callout después del gráfico."]
+}

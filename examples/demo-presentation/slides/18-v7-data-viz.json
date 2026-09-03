@@ -1,0 +1,34 @@
+{
+  "id": "v7-data-viz",
+  "layout": "default",
+  "eyebrow": "V7 · DATA VIZ",
+  "title": "Gauge + Funnel",
+  "subtitle": "Dos visualizaciones nuevas para KPIs y embudos sin depender de capturas estáticas.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "chart",
+      "chart": "gauge",
+      "title": "Objetivo del curso",
+      "labels": ["Progreso"],
+      "values": [82],
+      "suffix": "%",
+      "showValues": true,
+      "fragment": 0,
+      "animation": "zoom",
+      "animationDuration": 0.5
+    },
+    {
+      "type": "chart",
+      "chart": "funnel",
+      "title": "Embudo de aprendizaje",
+      "labels": ["Inscritos", "Comenzaron", "Practicaron", "Completaron"],
+      "values": [100, 82, 64, 48],
+      "suffix": "%",
+      "showValues": true,
+      "fragment": 1,
+      "animation": "slide-up",
+      "animationDuration": 0.5
+    }
+  ]
+}

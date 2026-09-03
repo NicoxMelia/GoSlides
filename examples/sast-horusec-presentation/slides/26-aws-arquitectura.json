@@ -1,0 +1,86 @@
+{
+  "id": "aws-arquitectura",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "slide",
+  "eyebrow": "14 · ¿SE PUEDE DESPLEGAR EN AWS?",
+  "title": "Sí: mapear la arquitectura, no reinventarla.",
+  "subtitle": "Horusec no necesita \"ser un servicio AWS\": es software desplegable, como cualquier otro.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "fragment": 0,
+      "animation": "fade",
+      "nodes": [
+        {
+          "id": "runner",
+          "label": "GitHub Actions / runner",
+          "x": 9,
+          "y": 24,
+          "kind": "client"
+        },
+        {
+          "id": "alb",
+          "label": "ALB / Ingress",
+          "x": 32,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "eks",
+          "label": "Amazon EKS",
+          "caption": "Horusec services",
+          "x": 56,
+          "y": 50,
+          "kind": "cloud"
+        },
+        {
+          "id": "rds",
+          "label": "Amazon RDS",
+          "caption": "PostgreSQL",
+          "x": 80,
+          "y": 26,
+          "kind": "data"
+        },
+        {
+          "id": "mq",
+          "label": "Amazon MQ",
+          "caption": "RabbitMQ",
+          "x": 80,
+          "y": 74,
+          "kind": "data"
+        },
+        {
+          "id": "secrets",
+          "label": "Secrets Manager + IAM",
+          "x": 32,
+          "y": 82,
+          "kind": "cloud"
+        }
+      ],
+      "edges": [
+        {
+          "from": "runner",
+          "to": "alb"
+        },
+        {
+          "from": "alb",
+          "to": "eks"
+        },
+        {
+          "from": "eks",
+          "to": "rds"
+        },
+        {
+          "from": "eks",
+          "to": "mq"
+        },
+        {
+          "from": "secrets",
+          "to": "eks"
+        }
+      ]
+    }
+  ]
+}

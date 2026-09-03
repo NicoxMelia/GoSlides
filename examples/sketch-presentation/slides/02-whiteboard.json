@@ -1,0 +1,193 @@
+{
+  "id": "sketch-whiteboard",
+  "layout": "free",
+  "transition": "slide",
+  "canvas": [
+    {
+      "id": "heading",
+      "type": "text",
+      "layerName": "Título",
+      "x": 7,
+      "y": 6,
+      "w": 72,
+      "h": 12,
+      "zIndex": 5,
+      "text": "Arquitectura dibujada",
+      "style": {
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", Caveat, cursive",
+        "fontSize": 42,
+        "fontWeight": 700,
+        "color": "#252832",
+        "sketch": true
+      }
+    },
+    {
+      "id": "front",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Frontend",
+      "x": 8,
+      "y": 32,
+      "w": 22,
+      "h": 22,
+      "zIndex": 3,
+      "text": "**Frontend**\nReact",
+      "style": {
+        "background": "#fffaf0",
+        "borderColor": "#252832",
+        "borderWidth": 2,
+        "borderRadius": 12,
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive",
+        "fontSize": 24,
+        "color": "#252832",
+        "textAlign": "center",
+        "sketch": true
+      }
+    },
+    {
+      "id": "api",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "API",
+      "x": 39,
+      "y": 32,
+      "w": 22,
+      "h": 22,
+      "zIndex": 3,
+      "text": "**API**\nCloud Run",
+      "style": {
+        "background": "#fffaf0",
+        "borderColor": "#6d5bd0",
+        "borderWidth": 2,
+        "borderRadius": 12,
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive",
+        "fontSize": 24,
+        "color": "#252832",
+        "textAlign": "center",
+        "sketch": true
+      }
+    },
+    {
+      "id": "db",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Database",
+      "x": 70,
+      "y": 32,
+      "w": 22,
+      "h": 22,
+      "zIndex": 3,
+      "text": "**Database**\nPostgreSQL",
+      "style": {
+        "background": "#fffaf0",
+        "borderColor": "#252832",
+        "borderWidth": 2,
+        "borderRadius": 12,
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive",
+        "fontSize": 23,
+        "color": "#252832",
+        "textAlign": "center",
+        "sketch": true
+      }
+    },
+    {
+      "id": "c1",
+      "type": "connector",
+      "layerName": "HTTP",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 1,
+      "from": "front",
+      "to": "api",
+      "label": "HTTP",
+      "thickness": 4,
+      "style": {
+        "color": "#6d5bd0",
+        "sketch": true
+      }
+    },
+    {
+      "id": "c2",
+      "type": "connector",
+      "layerName": "SQL",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 1,
+      "from": "api",
+      "to": "db",
+      "label": "SQL",
+      "thickness": 4,
+      "style": {
+        "color": "#6d5bd0",
+        "sketch": true
+      }
+    },
+    {
+      "id": "note",
+      "type": "freehand",
+      "layerName": "Anotación",
+      "x": 18,
+      "y": 66,
+      "w": 62,
+      "h": 10,
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 0,
+          "y": 60
+        },
+        {
+          "x": 12,
+          "y": 30
+        },
+        {
+          "x": 27,
+          "y": 48
+        },
+        {
+          "x": 42,
+          "y": 22
+        },
+        {
+          "x": 58,
+          "y": 42
+        },
+        {
+          "x": 73,
+          "y": 18
+        },
+        {
+          "x": 100,
+          "y": 32
+        }
+      ],
+      "stroke": "#e07a5f",
+      "strokeWidth": 3,
+      "style": {
+        "sketch": true
+      }
+    },
+    {
+      "id": "label",
+      "type": "text",
+      "layerName": "Nota",
+      "x": 24,
+      "y": 76,
+      "w": 52,
+      "h": 12,
+      "zIndex": 5,
+      "text": "¡Los conectores paran en el borde del nodo!",
+      "style": {
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive",
+        "fontSize": 23,
+        "color": "#e07a5f",
+        "textAlign": "center",
+        "sketch": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "interaccion",
+  "eyebrow": "MICROINTERACCIONES",
+  "title": "El expositor controla qué se revela.",
+  "blocks": [
+    { "type": "tabs", "tabs": [
+      { "label": "Contenido", "title": "ZIP declarativo", "text": "La presentación viaja con manifest, slides y assets. No ejecuta JavaScript arbitrario." },
+      { "label": "Diseño", "title": "Renderer central", "text": "Los mismos JSON pueden verse distintos cuando cambia el theme o el componente React." },
+      { "label": "Deploy", "title": "GitHub Pages", "text": "La app final es estática. El catálogo puede listar ZIPs publicados junto con el build." }
+    ]},
+    { "type": "steps", "title": "Flujo recomendado", "items": [
+      { "title": "Crear", "text": "Generás o editás una carpeta de presentación." },
+      { "title": "Empaquetar", "text": "La convertís en ZIP y la agregás a public/presentations/." },
+      { "title": "Registrar", "text": "Sumás una entrada a presentations/index.json." },
+      { "title": "Publicar", "text": "Push a main y GitHub Actions despliega Pages." }
+    ]}
+  ]
+}

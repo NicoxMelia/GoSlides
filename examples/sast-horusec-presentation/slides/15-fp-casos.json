@@ -1,0 +1,66 @@
+{
+  "id": "fp-casos",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "casos",
+  "transition": "slide",
+  "eyebrow": "08 · CASOS · FALSO POSITIVO",
+  "title": "Cuando el hallazgo no representa un defecto real.",
+  "subtitle": "Los falsos positivos son inevitables en mayor o menor medida: el punto de calidad no es ocultarlos, es gestionarlos con trazabilidad.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.4,
+      "items": [
+        {
+          "title": "Credencial ficticia en un test",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "TEST_API_KEY = \"AKIAFAKEONLYFORUNITTEST123\"",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "test_client.py"
+            },
+            {
+              "type": "callout",
+              "tone": "warning",
+              "title": "Requiere triage",
+              "text": "Un detector de secretos puede marcar una cadena por su forma, aunque no otorgue acceso a ningún sistema real."
+            }
+          ]
+        },
+        {
+          "title": "MD5 como checksum, no como cripto",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "def cache_key(payload: bytes) -> str:\n    return hashlib.md5(payload).hexdigest()",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "cache.py"
+            },
+            {
+              "type": "callout",
+              "tone": "warning",
+              "title": "Requiere triage",
+              "text": "Si la regla sólo detecta `md5`, puede reportar \"criptografía débil\" aunque el hash sólo deduplique caché."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

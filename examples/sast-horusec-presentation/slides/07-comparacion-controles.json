@@ -1,0 +1,25 @@
+{
+  "id": "comparacion-controles",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "slide",
+  "eyebrow": "03 · NO SON LO MISMO",
+  "title": "SAST, linter, SCA, secret scanning y DAST no son lo mismo.",
+  "subtitle": "Cada control responde una pregunta distinta.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "fragment": 0,
+      "animation": "fade",
+      "appearance": "modern",
+      "markdown": "| Control | Pregunta principal | Ejemplo de hallazgo |\n| --- | --- | --- |\n| **Linter** | ¿El código respeta reglas de correctitud/estilo? | variable no usada, complejidad |\n| **SAST** | ¿Hay patrones de vulnerabilidad en código? | command injection, XSS, crypto débil |\n| **Secret scanning** | ¿Hay credenciales o claves expuestas? | AWS key, token, private key |\n| **SCA** | ¿Las dependencias tienen vulnerabilidades conocidas? | CVE en librería |\n| **DAST** | ¿La app en ejecución es explotable desde afuera? | endpoint vulnerable a inyección |"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Horusec es una suite, no una única regla",
+      "text": "Horusec se presenta como SAST, pero orquesta múltiples analizadores y también incluye leaks/secrets y análisis de dependencias."
+    }
+  ]
+}

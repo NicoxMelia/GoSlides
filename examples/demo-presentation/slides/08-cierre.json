@@ -1,0 +1,11 @@
+{
+  "id": "cierre",
+  "layout": "center",
+  "eyebrow": "SIGUIENTE PASO",
+  "title": "Una presentación deja de ser un archivo. Pasa a ser contenido reutilizable.",
+  "subtitle": "Usá este demo como contrato inicial y extendé el formato sólo cuando aparezca una necesidad real.",
+  "blocks": [
+    { "type": "callout", "tone": "success", "title": "Incluido en este proyecto", "text": "Importador ZIP, biblioteca, modo claro/oscuro, fullscreen, overview, notas del presentador, navegación por teclado y componentes interactivos." }
+  ],
+  "footer": "GoSlides · Format v1"
+}

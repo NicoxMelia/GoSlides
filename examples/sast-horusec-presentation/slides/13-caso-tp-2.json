@@ -1,0 +1,65 @@
+{
+  "id": "caso-tp-2",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "casos",
+  "transition": "slide",
+  "eyebrow": "06 · CASOS · VERDADERO POSITIVO (II)",
+  "title": "Ejecución dinámica e infraestructura demasiado permisiva.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.4,
+      "items": [
+        {
+          "title": "JavaScript con eval",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "javascript",
+              "code": "function calculate(expressionFromUser) {\n  return eval(expressionFromUser);\n}",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "calc.js"
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Por qué es positivo",
+              "text": "SAST puede marcar una API peligrosa aunque no conozca todos los valores que llegarán en runtime — es intencional: busca el patrón para que después se interprete."
+            }
+          ]
+        },
+        {
+          "title": "Security group demasiado abierto",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "hcl",
+              "code": "resource \"aws_security_group_rule\" \"ssh_world\" {\n  type        = \"ingress\"\n  from_port   = 22\n  to_port     = 22\n  protocol    = \"tcp\"\n  cidr_blocks = [\"0.0.0.0/0\"]\n}",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "main.tf"
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Por qué es positivo",
+              "text": "Expone un puerto administrativo (SSH) a todo Internet — patrón típico que las reglas de IaC advierten."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

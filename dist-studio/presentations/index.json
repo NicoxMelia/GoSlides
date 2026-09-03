@@ -1,0 +1,32 @@
+[
+  {
+    "id": "demo-goslides",
+    "publicId": "jwiL_O4kFLdlBsEXs6yMZQ",
+    "title": "GoSlides — Demo interactiva",
+    "subtitle": "Editor visual v12 + Viewer estable",
+    "description": "Demo de GoSlides v12: estabilización integral del renderer, animaciones de canvas corregidas, arquitectura y conectores renovados, código Carbon reparado, controles legibles y Markdown/exportación.",
+    "tags": [
+      "Demo",
+      "React",
+      "GitHub Pages"
+    ],
+    "zip": "jwiL_O4kFLdlBsEXs6yMZQ.zip",
+    "slideCount": 25
+  },
+  {
+    "id": "sast-horusec",
+    "publicId": "sastHorusec2026",
+    "title": "SAST y Horusec",
+    "subtitle": "Seguridad estática en el flujo DevSecOps",
+    "description": "Fundamentos de SAST, clasificación de resultados (TP/FP/FN/TN), Horusec como caso real, CI/CD con GitHub Actions, arquitectura local/AWS y checklist de adopción.",
+    "tags": [
+      "Seguridad",
+      "SAST",
+      "Horusec",
+      "DevSecOps",
+      "Gestión de la Calidad de Software"
+    ],
+    "zip": "sastHorusec2026.zip",
+    "slideCount": 34
+  }
+]

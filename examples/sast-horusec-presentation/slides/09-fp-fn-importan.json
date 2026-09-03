@@ -1,0 +1,39 @@
+{
+  "id": "fp-fn-importan",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "clasificacion",
+  "transition": "slide",
+  "eyebrow": "04 · POR QUÉ IMPORTAN",
+  "title": "Los dos errores tienen costo, no sólo el ruido.",
+  "subtitle": "Un falso positivo cuesta confianza. Un falso negativo cuesta seguridad real.",
+  "blocks": [
+    {
+      "type": "compare",
+      "fragment": 0,
+      "animation": "fade",
+      "left": {
+        "label": "FALSOS POSITIVOS",
+        "title": "Erosionan la confianza en el control",
+        "highlight": false,
+        "items": [
+          "El equipo ignora resultados",
+          "Se agregan excepciones indiscriminadas",
+          "Se deshabilitan reglas enteras",
+          "Se pierde tiempo en triage de baja señal"
+        ]
+      },
+      "right": {
+        "label": "FALSOS NEGATIVOS",
+        "title": "Dan una falsa sensación de seguridad",
+        "highlight": true,
+        "items": [
+          "Un análisis \"verde\" no prueba nada",
+          "La cobertura depende de reglas, lenguajes y motores",
+          "Hay lógica de negocio que el motor no modela",
+          "Sólo se descubren con otros controles complementarios"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "v8-production",
+  "layout": "default",
+  "eyebrow": "V8 · PRODUCCIÓN",
+  "title": "Del editor a cualquier formato",
+  "subtitle": "Asset Manager, estilos globales, charts editables y exportación sin depender del Viewer online.",
+  "transition": "wipe",
+  "sectionId": "section-v8",
+  "blocks": [
+    {"type":"cards","columns":3,"items":[
+      {"title":"Asset Manager","text":"Buscá assets del ZIP y reutilizalos desde un panel central.","badge":"MEDIA"},
+      {"title":"Component Styles","text":"Vinculá objetos a un estilo y actualizalos globalmente.","badge":"DESIGN"},
+      {"title":"Export","text":"ZIP editable, PDF, PNG de slide y paquete web offline.","badge":"OUTPUT"}
+    ],"fragment":0,"animation":"fade"},
+    {"type":"chart","chart":"bar","title":"Cobertura de salida","labels":["ZIP","PDF","PNG","Offline"],"values":[100,92,90,88],"suffix":"%","showValues":true,"showLegend":true,"xLabel":"Formato","yLabel":"Cobertura","fragment":1,"animation":"slide-up"}
+  ]
+}

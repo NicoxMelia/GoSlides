@@ -1,0 +1,44 @@
+{
+  "id": "horusec-lenguajes",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "horusec",
+  "transition": "fade",
+  "eyebrow": "05 · COBERTURA",
+  "title": "Dieciocho tecnologías documentadas, agrupadas por capa.",
+  "subtitle": "La documentación del repositorio enumera soporte para código de aplicación e infraestructura como código.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 4,
+      "fragment": 0,
+      "animation": "slide-up",
+      "items": [
+        {
+          "icon": "server",
+          "badge": "BACKEND",
+          "title": "Lenguajes de servidor",
+          "text": "C#, Java, Kotlin, Python, Ruby, Go, PHP, C"
+        },
+        {
+          "icon": "braces",
+          "badge": "FRONTEND",
+          "title": "Web y datos",
+          "text": "JavaScript, TypeScript, HTML, JSON"
+        },
+        {
+          "icon": "cloud",
+          "badge": "INFRAESTRUCTURA",
+          "title": "IaC y orquestación",
+          "text": "Terraform, Kubernetes, Nginx"
+        },
+        {
+          "icon": "boxes",
+          "badge": "OTROS",
+          "title": "Runtimes adicionales",
+          "text": "Dart, Elixir, Shell"
+        }
+      ]
+    }
+  ]
+}

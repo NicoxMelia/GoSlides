@@ -1,0 +1,128 @@
+{
+  "id": "v8-smart-layout-a",
+  "layout": "free",
+  "background": "linear-gradient(135deg,#0b1020,#10182c)",
+  "transition": "fade",
+  "notes": [
+    "Mostrar Smart Layout y explicar que los mismos morphId continúan en la siguiente slide."
+  ],
+  "canvas": [
+    {
+      "id": "v8-title-a",
+      "type": "text",
+      "layerName": "Título",
+      "morphId": "v8-title",
+      "x": 7,
+      "y": 4,
+      "w": 80,
+      "h": 21,
+      "zIndex": 3,
+      "text": "V8 · Smart Layout + Morph",
+      "style": {
+        "fontSize": 45,
+        "fontWeight": 800,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "id": "v8-card-a1",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Smart Layout",
+      "morphId": "v8-card-1",
+      "styleRef": "style-glass",
+      "x": 8,
+      "y": 35,
+      "w": 25,
+      "h": 25,
+      "zIndex": 2,
+      "text": "Smart Layout\nFila · Columna · Grid",
+      "style": {
+        "background": "rgba(255,255,255,.08)",
+        "borderColor": "#8b6cff",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "color": "#ffffff",
+        "fontSize": 26,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-card-a2",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Morph",
+      "morphId": "v8-card-2",
+      "styleRef": "style-glass",
+      "x": 38,
+      "y": 35,
+      "w": 25,
+      "h": 25,
+      "zIndex": 2,
+      "text": "Morph ID\ntransición fluida",
+      "style": {
+        "background": "rgba(255,255,255,.08)",
+        "borderColor": "#8b6cff",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "color": "#ffffff",
+        "fontSize": 26,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-card-a3",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Triggers",
+      "morphId": "v8-card-3",
+      "styleRef": "style-glass",
+      "x": 68,
+      "y": 35,
+      "w": 24,
+      "h": 25,
+      "zIndex": 2,
+      "text": "Triggers\nclick para revelar",
+      "style": {
+        "background": "rgba(255,255,255,.08)",
+        "borderColor": "#8b6cff",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "color": "#ffffff",
+        "fontSize": 26,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-trigger-detail",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Detalle por trigger",
+      "triggerId": "v8-card-a3",
+      "x": 68,
+      "y": 66,
+      "w": 24,
+      "h": 13,
+      "zIndex": 4,
+      "text": "✓ Revelado por click",
+      "animation": "zoom",
+      "animationDuration": 0.35,
+      "style": {
+        "background": "#ffb454",
+        "color": "#16120b",
+        "borderRadius": 14,
+        "fontSize": 19,
+        "fontWeight": 800,
+        "textAlign": "center"
+      }
+    }
+  ],
+  "smartLayout": {
+    "mode": "row",
+    "gap": 5,
+    "padding": 8
+  }
+}

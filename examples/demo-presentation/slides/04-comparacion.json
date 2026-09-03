@@ -1,0 +1,11 @@
+{
+  "id": "comparacion",
+  "eyebrow": "DOS FORMAS DE TRABAJAR",
+  "title": "PPT estático vs GoSlides",
+  "blocks": [
+    { "type": "compare",
+      "left": { "label": "TRADICIONAL", "title": "Archivo PPT", "subtitle": "Buen formato cuando todo vive dentro de una slide.", "items": ["Edición manual", "Diseño mezclado con contenido", "Interacción limitada", "Difícil de versionar"] },
+      "right": { "label": "GOSLIDES", "title": "Presentación declarativa", "subtitle": "Ideal para presentaciones técnicas y repetibles.", "highlight": true, "items": ["Contenido en JSON", "Componentes reutilizables", "Interacción web", "Versionable en Git"] }
+    }
+  ]
+}

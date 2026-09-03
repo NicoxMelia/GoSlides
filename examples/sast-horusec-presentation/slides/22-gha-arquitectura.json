@@ -1,0 +1,73 @@
+{
+  "id": "gha-arquitectura",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "slide",
+  "eyebrow": "12 · GITHUB ACTIONS",
+  "title": "Una integración sólida no depende de una Action de terceros.",
+  "subtitle": "Instala la CLI oficial de Horusec y ejecuta el mismo comando que corre en el puesto del desarrollador.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "fragment": 0,
+      "animation": "fade",
+      "nodes": [
+        {
+          "id": "push",
+          "label": "Push / Pull Request",
+          "x": 8,
+          "y": 50,
+          "kind": "client"
+        },
+        {
+          "id": "runner",
+          "label": "GitHub-hosted Runner",
+          "x": 29,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "cli",
+          "label": "Horusec CLI + Docker",
+          "x": 50,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "sarif",
+          "label": "horusec.sarif",
+          "x": 71,
+          "y": 50,
+          "kind": "data"
+        },
+        {
+          "id": "scanning",
+          "label": "GitHub Code Scanning",
+          "caption": "Gate de merge",
+          "x": 90,
+          "y": 50,
+          "kind": "cloud"
+        }
+      ],
+      "edges": [
+        {
+          "from": "push",
+          "to": "runner"
+        },
+        {
+          "from": "runner",
+          "to": "cli"
+        },
+        {
+          "from": "cli",
+          "to": "sarif"
+        },
+        {
+          "from": "sarif",
+          "to": "scanning"
+        }
+      ]
+    }
+  ]
+}

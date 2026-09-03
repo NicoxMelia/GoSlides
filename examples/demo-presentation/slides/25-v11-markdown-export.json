@@ -1,0 +1,18 @@
+{
+  "id": "v11-markdown-export",
+  "layout": "default",
+  "eyebrow": "V11 · MARKDOWN + EXPORT",
+  "title": "Un bloque entero escrito en Markdown",
+  "subtitle": "Markdown seguro dentro de la slide, con código Carbon y exportación 16:9 fiel a lo que ve el alumno.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "markdown",
+      "appearance": "modern",
+      "markdown": "## Roadmap de despliegue\n\nPodés mezclar **texto**, *énfasis*, `comandos` y [enlaces](https://example.com) dentro del mismo bloque.\n\n- [x] Construir imagen\n- [x] Ejecutar tests\n- [ ] Desplegar producción\n\n| Etapa | Estado |\n| --- | --- |\n| Build | ✅ |\n| Tests | ✅ |\n| Deploy | ⏳ |\n\n```bash\nnpm run build\nnpm run deploy\n```"
+    }
+  ],
+  "notes": [
+    "V11 incorpora Insertar bloque → Markdown. PDF y PNG se generan desde un renderer 1600×900 off-screen, no desde el canvas del editor ni el diálogo de impresión."
+  ]
+}

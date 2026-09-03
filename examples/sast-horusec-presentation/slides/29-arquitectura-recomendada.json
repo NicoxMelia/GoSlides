@@ -1,0 +1,18 @@
+{
+  "id": "arquitectura-recomendada",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "slide",
+  "eyebrow": "15 · SÍNTESIS",
+  "title": "No hay una arquitectura única: depende del objetivo.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "fragment": 0,
+      "animation": "fade",
+      "appearance": "modern",
+      "markdown": "| Escenario | Arquitectura | Recomendación |\n| --- | --- | --- |\n| Clase / laboratorio | CLI local + Docker | ✓ preferida |\n| Repositorio individual | GitHub Actions + CLI | ✓ muy buena |\n| Equipo con reporting | CI + SARIF / GitHub | ✓ preferida hoy |\n| Laboratorio de plataforma | Horusec Platform + Compose | útil, con advertencia de archivo |\n| Producción nueva | Plataforma archivada en AWS | ✗ evaluar alternativas mantenidas |"
+    }
+  ]
+}

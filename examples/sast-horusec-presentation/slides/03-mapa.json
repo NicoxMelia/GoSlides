@@ -1,0 +1,81 @@
+{
+  "id": "mapa-calidad",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "slide",
+  "eyebrow": "01 · CALIDAD Y SEGURIDAD",
+  "title": "La seguridad es un atributo de calidad.",
+  "subtitle": "SAST convierte ese control en una verificación repetible y automatizada.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "fragment": 0,
+      "animation": "fade",
+      "nodes": [
+        {
+          "id": "riesgo",
+          "label": "Riesgo de seguridad",
+          "x": 9,
+          "y": 50,
+          "kind": "data"
+        },
+        {
+          "id": "sast",
+          "label": "SAST",
+          "caption": "regla / análisis estático",
+          "x": 28,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "triage",
+          "label": "Triage humano",
+          "caption": "interpretación + contexto",
+          "x": 50,
+          "y": 50,
+          "kind": "client"
+        },
+        {
+          "id": "gate",
+          "label": "Quality Gate",
+          "caption": "bloquea o informa",
+          "x": 72,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "evidencia",
+          "label": "Evidencia y métricas",
+          "x": 92,
+          "y": 50,
+          "kind": "data"
+        }
+      ],
+      "edges": [
+        {
+          "from": "riesgo",
+          "to": "sast"
+        },
+        {
+          "from": "sast",
+          "to": "triage"
+        },
+        {
+          "from": "triage",
+          "to": "gate"
+        },
+        {
+          "from": "gate",
+          "to": "evidencia"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "Nota de vigencia",
+      "text": "**Horusec Platform fue archivada en marzo de 2025** (solo lectura); el CLI sigue público. La usamos como caso pedagógico real de SAST/DevSecOps, no como receta productiva sin revisar."
+    }
+  ]
+}

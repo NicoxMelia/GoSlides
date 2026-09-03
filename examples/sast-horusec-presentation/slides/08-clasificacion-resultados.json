@@ -1,0 +1,50 @@
+{
+  "id": "clasificacion-resultados",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "clasificacion",
+  "transition": "zoom",
+  "eyebrow": "04 · POSITIVOS Y NEGATIVOS",
+  "title": "Lo que se reporta no siempre es lo que existe.",
+  "subtitle": "El objetivo no es \"cero warnings\" a cualquier costo: es alta señal — hallazgos relevantes y reproducibles en los que el equipo confíe.",
+  "blocks": [
+    {
+      "type": "quadrant",
+      "fragment": 0,
+      "animation": "zoom",
+      "title": "Herramienta vs. riesgo real",
+      "rowAxis": "HERRAMIENTA",
+      "colAxis": "RIESGO REAL",
+      "colLabels": [
+        "Existe",
+        "No existe"
+      ],
+      "rowLabels": [
+        "Reporta",
+        "No reporta"
+      ],
+      "cells": [
+        {
+          "title": "Verdadero positivo",
+          "text": "Hallazgo real: hay que corregirlo.",
+          "tone": "success"
+        },
+        {
+          "title": "Falso positivo",
+          "text": "Alerta sin defecto real: erosiona la confianza en el Gate.",
+          "tone": "danger"
+        },
+        {
+          "title": "Falso negativo",
+          "text": "El defecto existe, pero no fue visto: falsa sensación de seguridad.",
+          "tone": "danger"
+        },
+        {
+          "title": "Verdadero negativo",
+          "text": "No hay riesgo y no se reportó nada.",
+          "tone": "success"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "historica-instalacion",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "fade",
+  "eyebrow": "13 · LABORATORIO CONTROLADO",
+  "title": "Instalación histórica: laboratorio, no receta vigente.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "git clone https://github.com/zup-archive/horusec-platform.git\ncd horusec-platform\n\nmake install\n\ndocker compose \\\n  -f deployments/compose/compose.yaml \\\n  up -d",
+      "frameStyle": "terminal",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "title": "terminal · Horusec Platform",
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "title": "No usar credenciales de ejemplo",
+      "text": "Una plataforma SAST almacena información sensible sobre vulnerabilidades del software: su autenticación, base de datos, broker y exposición de red deben tratarse como activos críticos."
+    }
+  ]
+}

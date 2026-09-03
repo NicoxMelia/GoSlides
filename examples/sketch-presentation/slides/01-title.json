@@ -1,0 +1,101 @@
+{
+  "id": "sketch-title",
+  "layout": "free",
+  "transition": "fade",
+  "canvas": [
+    {
+      "id": "title",
+      "type": "text",
+      "layerName": "Título",
+      "x": 10,
+      "y": 11,
+      "w": 80,
+      "h": 31,
+      "zIndex": 3,
+      "text": "Una presentación entera\n**estilo whiteboard**",
+      "style": {
+        "fontFamily": "Caveat, cursive",
+        "fontSize": 50,
+        "fontWeight": 700,
+        "color": "#252832",
+        "textAlign": "center",
+        "sketch": true
+      }
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "layerName": "Subtítulo",
+      "x": 20,
+      "y": 43,
+      "w": 60,
+      "h": 14,
+      "zIndex": 3,
+      "text": "Texto + figuras + iconos + dibujo libre",
+      "style": {
+        "fontFamily": "\"Patrick Hand\", cursive",
+        "fontSize": 27,
+        "color": "#656875",
+        "textAlign": "center",
+        "sketch": true
+      }
+    },
+    {
+      "id": "underline",
+      "type": "freehand",
+      "layerName": "Subrayado",
+      "x": 28,
+      "y": 60,
+      "w": 44,
+      "h": 6,
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 0,
+          "y": 58
+        },
+        {
+          "x": 15,
+          "y": 38
+        },
+        {
+          "x": 32,
+          "y": 52
+        },
+        {
+          "x": 51,
+          "y": 32
+        },
+        {
+          "x": 72,
+          "y": 45
+        },
+        {
+          "x": 100,
+          "y": 28
+        }
+      ],
+      "stroke": "#6d5bd0",
+      "strokeWidth": 4,
+      "style": {
+        "sketch": true
+      }
+    },
+    {
+      "id": "spark",
+      "type": "icon",
+      "layerName": "Idea",
+      "x": 45,
+      "y": 71,
+      "w": 10,
+      "h": 12,
+      "zIndex": 2,
+      "name": "sparkles",
+      "library": "phosphor",
+      "style": {
+        "color": "#6d5bd0",
+        "sketch": true
+      }
+    }
+  ]
+}

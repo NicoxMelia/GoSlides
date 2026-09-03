@@ -1,0 +1,173 @@
+{
+  "id": "v5-editor",
+  "layout": "free",
+  "transition": "fade",
+  "background": "linear-gradient(135deg,#0b1020,#15172b)",
+  "canvas": [
+    {
+      "id": "v5-title",
+      "layerName": "Título v5",
+      "type": "text",
+      "x": 6,
+      "y": 4,
+      "w": 89,
+      "h": 21,
+      "zIndex": 8,
+      "text": "V5: __capas__, ^^historial^^, ==plantillas== y {#4ecdc4|comentarios privados}",
+      "style": {
+        "color": "#f7f8fc",
+        "fontSize": 36,
+        "fontWeight": 800,
+        "textAlign": "left",
+        "letterSpacing": -0.2
+      },
+      "comments": [
+        {
+          "id": "comment-demo",
+          "text": "Este comentario existe sólo en Studio y debe desaparecer del ZIP público.",
+          "createdAt": "2026-08-28T16:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "layers-card",
+      "layerName": "Card Capas",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 6,
+      "y": 29,
+      "w": 20,
+      "h": 41,
+      "zIndex": 4,
+      "text": "**CAPAS**\n\nRenombrar\nOcultar\nBloquear\nOrdenar",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#171d30",
+        "borderColor": "#323b58",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "fontSize": 19,
+        "fontWeight": 600,
+        "textAlign": "center",
+        "shadow": true
+      }
+    },
+    {
+      "id": "history-card",
+      "layerName": "Card Historial",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 29,
+      "y": 29,
+      "w": 20,
+      "h": 41,
+      "zIndex": 4,
+      "text": "**HISTORIAL**\n\nHasta 100 estados\nHora + acción\nRestauración directa",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#171d30",
+        "borderColor": "#323b58",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center",
+        "shadow": true
+      }
+    },
+    {
+      "id": "templates-card",
+      "layerName": "Card Plantillas",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 52,
+      "y": 29,
+      "w": 20,
+      "h": 41,
+      "zIndex": 4,
+      "text": "**PLANTILLAS**\n\nGuardá una slide\nReutilizala\nDashboard\nArquitectura\nFoto",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#171d30",
+        "borderColor": "#323b58",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center",
+        "shadow": true
+      }
+    },
+    {
+      "id": "comments-card",
+      "layerName": "Card Comentarios",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 75,
+      "y": 29,
+      "w": 20,
+      "h": 41,
+      "zIndex": 4,
+      "text": "**COMENTARIOS**\n\nPor elemento\nResolver / reabrir\nNo llegan al alumno",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#171d30",
+        "borderColor": "#4ecdc4",
+        "borderWidth": 2,
+        "borderRadius": 22,
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center",
+        "shadow": true
+      }
+    },
+    {
+      "id": "v5-footer",
+      "layerName": "Ayuda v5",
+      "type": "text",
+      "x": 6,
+      "y": 78,
+      "w": 88,
+      "h": 10,
+      "zIndex": 5,
+      "text": "Rich text: **bold** · *italic* · __underline__ · ~~strike~~ · ^^highlight^^ · {#ffb454|color}",
+      "style": {
+        "color": "#b7bfd3",
+        "fontSize": 19,
+        "fontWeight": 500,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "private-hidden-layer",
+      "layerName": "Borrador oculto",
+      "type": "text",
+      "hidden": true,
+      "x": 10,
+      "y": 90,
+      "w": 50,
+      "h": 8,
+      "zIndex": 99,
+      "text": "BORRADOR DOCENTE: esta capa no debe viajar al ZIP público.",
+      "style": {
+        "color": "#ff5c8a",
+        "fontSize": 18,
+        "fontWeight": 800,
+        "textAlign": "left"
+      },
+      "comments": [
+        {
+          "id": "private-comment",
+          "text": "También debe sanitizarse.",
+          "createdAt": "2026-08-28T16:00:00.000Z"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Abrir el panel Capas y mostrar búsqueda, ocultar, bloquear y reordenar.",
+    "Mostrar Historial y restaurar un estado anterior.",
+    "Guardar esta slide como plantilla personal.",
+    "Los comentarios y las capas ocultas no se publican para alumnos."
+  ]
+}

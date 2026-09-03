@@ -1,0 +1,61 @@
+{
+  "id": "errores-adopcion",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "cierre",
+  "transition": "slide",
+  "eyebrow": "17 · ANTIPATRONES",
+  "title": "Cinco errores frecuentes de adopción.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.2,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Bloquear todo desde el día uno",
+              "text": "Genera rechazo si el repositorio tiene deuda histórica."
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Ignorar todo lo que molesta",
+              "text": "Convierte la configuración en un mecanismo para silenciar el control."
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Tratar cada finding como confirmado",
+              "text": "Un SAST reporta posibles problemas; siempre necesita triage."
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Creer que \"verde\" significa seguro",
+              "text": "Sólo significa que los controles configurados no bloquearon ese commit."
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Operar un scanner desactualizado",
+              "text": "El scanner también es software: acumula dependencias vulnerables e imágenes antiguas."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

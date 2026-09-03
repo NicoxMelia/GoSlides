@@ -1,0 +1,81 @@
+{
+  "id": "v6-charts",
+  "layout": "default",
+  "masterId": "master-tech",
+  "transition": "slide",
+  "eyebrow": "V6 · DATA VIZ",
+  "title": "Más formas de contar datos",
+  "subtitle": "Pie, radar y progress se suman a bar, line, area y donut.",
+  "blocks": [
+    {
+      "type": "chart",
+      "chart": "pie",
+      "title": "Distribución",
+      "labels": [
+        "Teoría",
+        "Demo",
+        "Práctica"
+      ],
+      "values": [
+        35,
+        25,
+        40
+      ],
+      "suffix": "%",
+      "showValues": true,
+      "fragment": 0,
+      "animation": "zoom",
+      "animationDuration": 0.6,
+      "animationEasing": "ease-out"
+    },
+    {
+      "type": "chart",
+      "chart": "radar",
+      "title": "Madurez del editor",
+      "labels": [
+        "Diseño",
+        "Interacción",
+        "Datos",
+        "Publicación",
+        "Presentación"
+      ],
+      "values": [
+        92,
+        88,
+        86,
+        96,
+        94
+      ],
+      "suffix": "%",
+      "showValues": true,
+      "fragment": 1,
+      "animation": "slide-up",
+      "animationDuration": 0.7,
+      "animationEasing": "ease-out"
+    },
+    {
+      "type": "chart",
+      "chart": "progress",
+      "title": "Preparación para clase",
+      "labels": [
+        "Contenido",
+        "Diseño",
+        "Notas"
+      ],
+      "values": [
+        95,
+        88,
+        100
+      ],
+      "suffix": "%",
+      "showValues": true,
+      "fragment": 2,
+      "animation": "fade",
+      "animationDuration": 0.5,
+      "animationEasing": "ease-in-out"
+    }
+  ],
+  "notes": [
+    "Usar los fragments para comparar cómo cambia la visualización sin screenshots."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "horusec-que-es",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "horusec",
+  "transition": "zoom",
+  "eyebrow": "05 · LA HERRAMIENTA",
+  "title": "Horusec: un comando, varios motores.",
+  "subtitle": "CLI open source: analiza un proyecto local y, según la configuración, lanza distintos motores, muchos vía Docker.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "fragment": 0,
+      "animation": "fade",
+      "nodes": [
+        {
+          "id": "repo",
+          "label": "Repositorio fuente",
+          "x": 8,
+          "y": 55,
+          "kind": "data"
+        },
+        {
+          "id": "cli",
+          "label": "Horusec CLI",
+          "caption": "orquestador",
+          "x": 29,
+          "y": 55,
+          "kind": "client"
+        },
+        {
+          "id": "engines",
+          "label": "Motores / herramientas",
+          "caption": "ejecución en paralelo",
+          "x": 53,
+          "y": 55,
+          "kind": "service"
+        },
+        {
+          "id": "output",
+          "label": "Texto · JSON · SARIF · SonarQube",
+          "x": 80,
+          "y": 30,
+          "kind": "data"
+        },
+        {
+          "id": "platform",
+          "label": "API / Platform",
+          "caption": "opcional",
+          "x": 80,
+          "y": 80,
+          "kind": "cloud"
+        }
+      ],
+      "edges": [
+        {
+          "from": "repo",
+          "to": "cli"
+        },
+        {
+          "from": "cli",
+          "to": "engines"
+        },
+        {
+          "from": "engines",
+          "to": "output"
+        },
+        {
+          "from": "engines",
+          "to": "platform"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "La plataforma web no es necesaria",
+      "text": "Modelo mínimo: repositorio + CLI + Docker + salida local."
+    }
+  ]
+}

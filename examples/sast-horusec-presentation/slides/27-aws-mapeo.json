@@ -1,0 +1,24 @@
+{
+  "id": "aws-mapeo",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "wipe",
+  "eyebrow": "14 · CORRESPONDENCIA",
+  "title": "Cada pieza local tiene un equivalente gestionado.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "fragment": 0,
+      "animation": "fade",
+      "appearance": "modern",
+      "markdown": "| Necesidad | Local | AWS posible |\n| --- | --- | --- |\n| Servicios Horusec | Docker Compose / Kubernetes | Amazon EKS |\n| Base de datos | PostgreSQL local | Amazon RDS for PostgreSQL |\n| Broker | RabbitMQ local | Amazon MQ for RabbitMQ |\n| Entrada HTTP(S) | Reverse proxy local | ALB / Ingress Controller |\n| Secretos | `.env` / secret store local | Secrets Manager / SSM + IAM |\n| Observabilidad | Logs locales | CloudWatch / stack propio |"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "Mapeo razonable, no receta oficial",
+      "text": "La plataforma histórica publicaba Helm y Operator para Kubernetes. Al estar archivada, un despliegue real exige mantener imágenes, charts y dependencias por cuenta propia."
+    }
+  ]
+}

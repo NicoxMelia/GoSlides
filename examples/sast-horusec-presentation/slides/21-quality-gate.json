@@ -1,0 +1,69 @@
+{
+  "id": "quality-gate",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "zoom",
+  "eyebrow": "11 · GOBIERNO DEL GATE",
+  "title": "Un Gate es una decisión de gestión, no de la herramienta.",
+  "subtitle": "Activar -e desde el día uno puede bloquear una base heredada con cientos de hallazgos. La adopción madura suele ser incremental.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.6,
+      "items": [
+        {
+          "title": "Adopción incremental",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Baseline",
+                  "text": "Correr sin Gate y clasificar la deuda existente."
+                },
+                {
+                  "title": "Triage",
+                  "text": "Confirmar vulnerabilidad, falso positivo o riesgo aceptado."
+                },
+                {
+                  "title": "Ajustar reglas",
+                  "text": "Excluir rutas y afinar severidades relevantes."
+                },
+                {
+                  "title": "Bloquear deuda nueva",
+                  "text": "El Gate exige sólo hallazgos nuevos de alto riesgo."
+                },
+                {
+                  "title": "Gate más fuerte",
+                  "text": "Ampliar severidades bloqueantes con el equipo ya adaptado."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Política práctica",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "**HIGH** confirmado: bloquea merge",
+                "**MEDIUM** nuevo: requiere triage o aprobación",
+                "**LOW** — visible, no bloqueante al comienzo",
+                "Falso positivo → excepción versionada y justificada",
+                "Riesgo aceptado → responsable, motivo y fecha de revisión"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

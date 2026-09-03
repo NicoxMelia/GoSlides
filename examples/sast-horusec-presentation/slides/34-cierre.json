@@ -1,0 +1,21 @@
+{
+  "id": "cierre",
+  "layout": "center",
+  "masterId": "master-security",
+  "sectionId": "cierre",
+  "transition": "zoom",
+  "eyebrow": "TAKEAWAY",
+  "title": "Escanear es el inicio. Aprender y corregir es el control.",
+  "subtitle": "Horusec simplifica la entrada; el resultado depende de la política, el triaje y la disciplina del equipo.",
+  "blocks": [
+    {
+      "type": "callout",
+      "tone": "success",
+      "title": "Próximo paso concreto",
+      "text": "Elegí un repositorio piloto, ejecutá `horusec start -p .`, clasificá el baseline y acordá qué hallazgos nuevos van a bloquear el merge.",
+      "fragment": 0,
+      "animation": "zoom"
+    }
+  ],
+  "footer": "Gestión de la Calidad de Software · UNC · FCEFyN · 2026"
+}

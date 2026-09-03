@@ -1,0 +1,50 @@
+{
+  "id": "datos-simulacion",
+  "eyebrow": "INTERACTIVO",
+  "title": "Datos y simulaciones viven dentro de la slide.",
+  "subtitle": "No necesitás pegar capturas estáticas para explicar una métrica.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "chart",
+      "chart": "bar",
+      "title": "Uso relativo",
+      "labels": [
+        "HPA",
+        "KEDA",
+        "Manual"
+      ],
+      "values": [
+        48,
+        82,
+        28
+      ],
+      "suffix": "%",
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "simulation",
+      "title": "Probá mover la carga",
+      "min": 0,
+      "max": 100,
+      "initial": 45,
+      "unit": "%",
+      "metricLabel": "Carga",
+      "podsBase": 1,
+      "podsStep": 18,
+      "fragment": 1,
+      "animation": "slide-up"
+    },
+    {
+      "type": "tooltip",
+      "label": "Pasá el mouse: ¿por qué sirve?",
+      "text": "Permite agregar contexto sin llenar la slide de texto.",
+      "fragment": 2,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "Mostrar el slider y remarcar que todo ocurre en el navegador."
+  ]
+}

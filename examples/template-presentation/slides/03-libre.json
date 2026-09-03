@@ -1,0 +1,42 @@
+{
+  "id": "libre",
+  "layout": "free",
+  "transition": "fade",
+  "canvas": [
+    {
+      "id": "t1",
+      "type": "text",
+      "x": 8,
+      "y": 12,
+      "w": 75,
+      "h": 16,
+      "text": "Slide libre",
+      "style": {
+        "color": "#f7f8fc",
+        "fontSize": 52,
+        "fontWeight": 800,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "s1",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 8,
+      "y": 42,
+      "w": 28,
+      "h": 20,
+      "text": "Arrastrame en Studio",
+      "style": {
+        "color": "#fff",
+        "background": "#202334",
+        "borderColor": "#8b6cff",
+        "borderWidth": 2,
+        "borderRadius": 16,
+        "fontSize": 24,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    }
+  ]
+}

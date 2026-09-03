@@ -1,0 +1,27 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "sketch-template",
+  "publicId": "sketchV9DemoQ4mP7sN2",
+  "title": "Sketch Presentation",
+  "subtitle": "Plantilla whiteboard / Excalidraw-style",
+  "description": "Presentación de ejemplo completamente dibujada con el estilo Sketch de GoSlides v9.",
+  "theme": {
+    "mode": "light",
+    "visualStyle": "sketch",
+    "iconLibrary": "phosphor",
+    "accent": "#6d5bd0",
+    "fontFamily": "\"Patrick Hand\", cursive",
+    "headingFontFamily": "Caveat, cursive",
+    "slideBackground": "#fffdf7",
+    "surfaceColor": "#fffaf0",
+    "textColor": "#252832",
+    "mutedColor": "#656875",
+    "radius": 10
+  },
+  "slides": [
+    "slides/01-title.json",
+    "slides/02-whiteboard.json",
+    "slides/03-closing.json"
+  ]
+}

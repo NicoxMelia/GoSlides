@@ -1,0 +1,21 @@
+{
+  "id": "arquitectura",
+  "eyebrow": "COMPONENTE INTERACTIVO",
+  "title": "La arquitectura se puede explorar, no sólo mirar.",
+  "subtitle": "Hacé click sobre un nodo para resaltarlo y ver cómo participa en el flujo.",
+  "blocks": [
+    { "type": "architecture",
+      "nodes": [
+        { "id": "git", "label": "GitHub", "caption": "ZIPs versionados", "x": 12, "y": 50, "kind": "cloud" },
+        { "id": "pages", "label": "GitHub Pages", "caption": "hosting estático", "x": 38, "y": 50, "kind": "cloud" },
+        { "id": "renderer", "label": "React Renderer", "caption": "interpreta JSON", "x": 65, "y": 50, "kind": "service" },
+        { "id": "browser", "label": "Browser", "caption": "presenta e interactúa", "x": 88, "y": 50, "kind": "client" }
+      ],
+      "edges": [
+        { "from": "git", "to": "pages", "label": "deploy" },
+        { "from": "pages", "to": "renderer", "label": "fetch ZIP" },
+        { "from": "renderer", "to": "browser", "label": "render" }
+      ]
+    }
+  ]
+}

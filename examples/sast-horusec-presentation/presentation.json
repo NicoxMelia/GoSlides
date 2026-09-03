@@ -1,0 +1,130 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "sast-horusec",
+  "publicId": "sastHorusec2026",
+  "title": "SAST y Horusec",
+  "subtitle": "Seguridad estática en el flujo DevSecOps",
+  "description": "Fundamentos de SAST, clasificación de resultados (TP/FP/FN/TN), Horusec como caso real, CI/CD con GitHub Actions, arquitectura local/AWS y checklist de adopción.",
+  "author": "GoSlides",
+  "tags": [
+    "Seguridad",
+    "SAST",
+    "Horusec",
+    "DevSecOps",
+    "Gestión de la Calidad de Software"
+  ],
+  "theme": {
+    "mode": "dark",
+    "accent": "#3ee6a1",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "headingFontFamily": "Space Grotesk, Inter, ui-sans-serif, system-ui, sans-serif",
+    "slideBackground": "#07110f",
+    "surfaceColor": "#10201c",
+    "textColor": "#effff8",
+    "mutedColor": "#9bb8ad",
+    "radius": 18,
+    "tokens": {
+      "spacing": 16,
+      "cardRadius": 16,
+      "shadowStrength": 30,
+      "borderColor": "#234239"
+    },
+    "visualStyle": "modern",
+    "iconLibrary": "lucide"
+  },
+  "masters": [
+    {
+      "id": "master-security",
+      "name": "Security Grid",
+      "background": "radial-gradient(circle at 88% 12%,rgba(62,230,161,.13),transparent 26%),linear-gradient(135deg,#07110f,#0a1714 58%,#07110f)",
+      "footer": "SAST · HORUSEC · DEVSECOPS",
+      "canvas": [
+        {
+          "id": "master-rail",
+          "layerName": "Barra de acento",
+          "type": "shape",
+          "shape": "rounded",
+          "x": 4.4,
+          "y": 5.2,
+          "w": 0.7,
+          "h": 8.5,
+          "zIndex": 1,
+          "locked": true,
+          "text": "",
+          "style": {
+            "background": "#3ee6a1",
+            "borderRadius": 12,
+            "opacity": 0.9
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "fundamentos",
+      "name": "Fundamentos"
+    },
+    {
+      "id": "clasificacion",
+      "name": "Clasificación"
+    },
+    {
+      "id": "horusec",
+      "name": "Horusec"
+    },
+    {
+      "id": "casos",
+      "name": "Casos de código"
+    },
+    {
+      "id": "operacion",
+      "name": "CI/CD y operación"
+    },
+    {
+      "id": "arquitectura",
+      "name": "Arquitectura y despliegue"
+    },
+    {
+      "id": "cierre",
+      "name": "Cierre"
+    }
+  ],
+  "slides": [
+    "slides/01-portada.json",
+    "slides/02-agenda.json",
+    "slides/03-mapa.json",
+    "slides/04-donde-encaja.json",
+    "slides/05-dos-momentos.json",
+    "slides/06-que-es-sast.json",
+    "slides/07-comparacion-controles.json",
+    "slides/08-clasificacion-resultados.json",
+    "slides/09-fp-fn-importan.json",
+    "slides/10-horusec-que-es.json",
+    "slides/11-horusec-lenguajes.json",
+    "slides/12-caso-tp-1.json",
+    "slides/13-caso-tp-2.json",
+    "slides/14-caso-tn.json",
+    "slides/15-fp-casos.json",
+    "slides/16-fp-vs-riesgo.json",
+    "slides/17-falsos-negativos.json",
+    "slides/18-instalacion-local.json",
+    "slides/19-docker.json",
+    "slides/20-configuracion-resultados.json",
+    "slides/21-quality-gate.json",
+    "slides/22-gha-arquitectura.json",
+    "slides/23-gha-workflow.json",
+    "slides/24-arquitectura-local.json",
+    "slides/25-historica-instalacion.json",
+    "slides/26-aws-arquitectura.json",
+    "slides/27-aws-mapeo.json",
+    "slides/28-runner.json",
+    "slides/29-arquitectura-recomendada.json",
+    "slides/30-flujo-completo.json",
+    "slides/31-errores-adopcion.json",
+    "slides/32-checklist.json",
+    "slides/33-fuentes.json",
+    "slides/34-cierre.json"
+  ]
+}

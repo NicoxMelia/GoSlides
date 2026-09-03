@@ -1,0 +1,106 @@
+{
+  "id": "canvas-libre",
+  "layout": "free",
+  "transition": "zoom",
+  "background": "linear-gradient(135deg,#0e1424,#151d31)",
+  "canvas": [
+    {
+      "id": "free-title",
+      "type": "text",
+      "x": 7,
+      "y": 9,
+      "w": 68,
+      "h": 14,
+      "zIndex": 2,
+      "fragment": 0,
+      "animation": "fade",
+      "text": "Canvas libre 16:9",
+      "style": {
+        "color": "#f7f8fc",
+        "fontSize": 55,
+        "fontWeight": 800,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "free-sub",
+      "type": "text",
+      "x": 7,
+      "y": 24,
+      "w": 57,
+      "h": 12,
+      "zIndex": 2,
+      "fragment": 1,
+      "animation": "slide-up",
+      "text": "Texto, formas, flechas, imágenes y código pueden moverse y redimensionarse.",
+      "style": {
+        "color": "#aeb6cb",
+        "fontSize": 23,
+        "fontWeight": 400,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "shape-a",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 10,
+      "y": 50,
+      "w": 22,
+      "h": 17,
+      "zIndex": 2,
+      "fragment": 2,
+      "animation": "zoom",
+      "text": "Frontend",
+      "style": {
+        "color": "#ffffff",
+        "background": "#20283b",
+        "borderColor": "#7c5cff",
+        "borderWidth": 2,
+        "borderRadius": 18,
+        "fontSize": 25,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "arrow-a",
+      "type": "arrow",
+      "direction": "right",
+      "x": 34,
+      "y": 54,
+      "w": 16,
+      "h": 8,
+      "zIndex": 2,
+      "fragment": 3,
+      "animation": "fade",
+      "thickness": 5,
+      "style": {
+        "color": "#7c5cff"
+      }
+    },
+    {
+      "id": "shape-b",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 52,
+      "y": 50,
+      "w": 22,
+      "h": 17,
+      "zIndex": 2,
+      "fragment": 3,
+      "animation": "zoom",
+      "text": "Backend",
+      "style": {
+        "color": "#ffffff",
+        "background": "#20283b",
+        "borderColor": "#7c5cff",
+        "borderWidth": 2,
+        "borderRadius": 18,
+        "fontSize": 25,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    }
+  ]
+}

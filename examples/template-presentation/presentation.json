@@ -1,0 +1,29 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "mi-presentacion",
+  "title": "Mi presentación",
+  "subtitle": "Plantilla inicial",
+  "description": "Plantilla inicial compatible con GoSlides Studio v9.",
+  "author": "Tu nombre",
+  "tags": [
+    "Template"
+  ],
+  "theme": {
+    "mode": "dark",
+    "accent": "#8b6cff",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "headingFontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "slideBackground": "#0b1020",
+    "surfaceColor": "#171d30",
+    "textColor": "#f7f8fc",
+    "mutedColor": "#aeb6cb",
+    "radius": 22
+  },
+  "slides": [
+    "slides/01-portada.json",
+    "slides/02-contenido.json",
+    "slides/03-libre.json"
+  ],
+  "masters": []
+}

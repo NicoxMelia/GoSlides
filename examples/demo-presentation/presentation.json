@@ -1,0 +1,143 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "demo-goslides",
+  "title": "GoSlides — Demo interactiva",
+  "subtitle": "Editor visual v12 + Viewer estable",
+  "description": "Demo de GoSlides v12: estabilización integral del renderer, animaciones de canvas corregidas, arquitectura y conectores renovados, código Carbon reparado, controles legibles y Markdown/exportación.",
+  "author": "GoSlides",
+  "tags": [
+    "Demo",
+    "React",
+    "GitHub Pages"
+  ],
+  "theme": {
+    "mode": "dark",
+    "accent": "#8b6cff",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "headingFontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "slideBackground": "#0b1020",
+    "surfaceColor": "#171d30",
+    "textColor": "#f7f8fc",
+    "mutedColor": "#aeb6cb",
+    "radius": 22,
+    "tokens": {
+      "spacing": 16,
+      "cardRadius": 18,
+      "shadowStrength": 28,
+      "borderColor": "#343a50"
+    },
+    "visualStyle": "modern",
+    "iconLibrary": "lucide"
+  },
+  "slides": [
+    "slides/01-portada.json",
+    "slides/02-idea.json",
+    "slides/03-componentes.json",
+    "slides/04-comparacion.json",
+    "slides/05-arquitectura.json",
+    "slides/06-codigo.json",
+    "slides/07-interaccion.json",
+    "slides/08-cierre.json",
+    "slides/09-canvas-libre.json",
+    "slides/10-datos-simulacion.json",
+    "slides/11-v4-editor.json",
+    "slides/12-v5-editor.json",
+    "slides/13-v5-charts.json",
+    "slides/14-v6-master-theme.json",
+    "slides/15-v6-vector-animation.json",
+    "slides/16-v6-charts.json",
+    "slides/17-v7-motion-timeline.json",
+    "slides/18-v7-data-viz.json",
+    "slides/19-v8-smart-layout-morph-a.json",
+    "slides/20-v8-smart-layout-morph-b.json",
+    "slides/21-v8-production.json",
+    "slides/22-v9-sketch-libraries.json",
+    "slides/23-v9-hybrid-reliability.json",
+    "slides/24-v10-code-emoji.json",
+    "slides/25-v11-markdown-export.json"
+  ],
+  "publicId": "jwiL_O4kFLdlBsEXs6yMZQ",
+  "masters": [
+    {
+      "id": "master-tech",
+      "name": "Tech Header",
+      "background": "linear-gradient(135deg,#0a1020,#101936 55%,#17152f)",
+      "footer": "GoSlides v12 · Master Slide",
+      "canvas": [
+        {
+          "id": "master-accent",
+          "layerName": "Master accent",
+          "type": "shape",
+          "shape": "rounded",
+          "x": 5,
+          "y": 5,
+          "w": 2,
+          "h": 8,
+          "zIndex": 1,
+          "locked": true,
+          "text": "",
+          "style": {
+            "background": "#8b6cff",
+            "borderRadius": 14,
+            "opacity": 1
+          }
+        },
+        {
+          "id": "master-star",
+          "layerName": "Master vector",
+          "type": "vector",
+          "shape": "star",
+          "x": 88,
+          "y": 5,
+          "w": 6,
+          "h": 10,
+          "zIndex": 1,
+          "locked": true,
+          "fill": "#8b6cff",
+          "stroke": "#b8a6ff",
+          "strokeWidth": 1,
+          "style": {
+            "opacity": 0.85
+          }
+        }
+      ]
+    }
+  ],
+  "componentStyles": [
+    {
+      "id": "style-glass",
+      "name": "Glass Card",
+      "style": {
+        "background": "rgba(255,255,255,.08)",
+        "borderColor": "#8b6cff",
+        "borderWidth": 1,
+        "borderRadius": 22,
+        "color": "#ffffff",
+        "shadow": true
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "section-foundations",
+      "name": "Fundamentos"
+    },
+    {
+      "id": "section-editor",
+      "name": "Editor"
+    },
+    {
+      "id": "section-v8",
+      "name": "Novedades v8"
+    },
+    {
+      "id": "section-v9",
+      "name": "Novedades v9"
+    },
+    {
+      "id": "section-v11",
+      "name": "Novedades v11"
+    }
+  ]
+}

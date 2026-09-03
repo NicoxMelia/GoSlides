@@ -1,0 +1,31 @@
+{
+  "id": "falsos-negativos",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "casos",
+  "transition": "slide",
+  "eyebrow": "09 · CASOS · FALSO NEGATIVO",
+  "title": "Lo que SAST puede no ver.",
+  "blocks": [
+    {
+      "type": "bullets",
+      "fragment": 0,
+      "animation": "fade",
+      "items": [
+        "Vulnerabilidad dependiente de la configuración de producción",
+        "Flujo de datos demasiado complejo para el motor",
+        "Código generado dinámicamente",
+        "Lógica de autorización incorrecta pero sintácticamente válida",
+        "Riesgo que sólo aparece con estados concretos de la base de datos",
+        "Vulnerabilidad en un componente externo no analizado",
+        "Regla inexistente o desactivada"
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "title": "Verde no es sinónimo de seguro",
+      "text": "Horusec Engine no ejecuta el programa; muchas reglas históricas se basan en *pattern matching* — eso explica tanto falsos positivos como falsos negativos."
+    }
+  ]
+}

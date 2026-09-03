@@ -1,0 +1,30 @@
+{
+  "id": "gha-workflow",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "fade",
+  "eyebrow": "12 · WORKFLOW",
+  "title": ".github/workflows/horusec.yml",
+  "subtitle": "Conserva el resultado aunque el análisis falle, para publicarlo antes de bloquear el job.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "yaml",
+      "code": "- id: horusec\n  continue-on-error: true\n  run: horusec start -p . --enable-git-history -e -o sarif -O horusec.sarif\n- if: always()\n  uses: github/codeql-action/upload-sarif@v4\n  with: { sarif_file: horusec.sarif }\n- if: steps.horusec.outcome == 'failure'\n  run: exit 1",
+      "frameStyle": "carbon-glass",
+      "codeTheme": "tokyo-night",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "title": "horusec.yml",
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "No olvidar actions/checkout con fetch-depth: 0",
+      "text": "Si se habilita `--enable-git-history`, el runner necesita el historial completo, no sólo el último commit."
+    }
+  ]
+}

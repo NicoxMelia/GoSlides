@@ -1,0 +1,73 @@
+{
+  "id": "donde-encaja",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "wipe",
+  "eyebrow": "02 · EL FLUJO DEVOPS",
+  "title": "SAST rinde más antes del despliegue.",
+  "subtitle": "Mayor valor durante el desarrollo local y, sobre todo, como control automático en Build/CI: el objetivo es que ningún hallazgo relevante llegue a DEV, QA, UAT o PROD sin ser tratado.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "fragment": 0,
+      "animation": "fade",
+      "nodes": [
+        {
+          "id": "plan",
+          "label": "Plan",
+          "x": 8,
+          "y": 50,
+          "kind": "client"
+        },
+        {
+          "id": "code",
+          "label": "Code",
+          "x": 27,
+          "y": 50,
+          "kind": "client"
+        },
+        {
+          "id": "build",
+          "label": "Build / CI",
+          "caption": "SAST + Quality Gate",
+          "x": 50,
+          "y": 50,
+          "kind": "cloud"
+        },
+        {
+          "id": "test",
+          "label": "Test",
+          "x": 73,
+          "y": 50,
+          "kind": "service"
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "x": 92,
+          "y": 50,
+          "kind": "data"
+        }
+      ],
+      "edges": [
+        {
+          "from": "plan",
+          "to": "code"
+        },
+        {
+          "from": "code",
+          "to": "build"
+        },
+        {
+          "from": "build",
+          "to": "test"
+        },
+        {
+          "from": "test",
+          "to": "release"
+        }
+      ]
+    }
+  ]
+}

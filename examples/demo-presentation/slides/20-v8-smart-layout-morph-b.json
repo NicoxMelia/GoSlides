@@ -1,0 +1,98 @@
+{
+  "id": "v8-smart-layout-b",
+  "layout": "free",
+  "background": "linear-gradient(135deg,#17152f,#0b1020)",
+  "transition": "morph",
+  "canvas": [
+    {
+      "id": "v8-title-b",
+      "type": "text",
+      "layerName": "Título",
+      "morphId": "v8-title",
+      "x": 10,
+      "y": 4,
+      "w": 80,
+      "h": 18,
+      "zIndex": 3,
+      "text": "Los objetos siguen siendo los mismos",
+      "style": {
+        "fontSize": 39,
+        "fontWeight": 800,
+        "color": "#ffffff",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-card-b1",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Smart Layout",
+      "morphId": "v8-card-1",
+      "styleRef": "style-glass",
+      "x": 12,
+      "y": 27,
+      "w": 76,
+      "h": 12,
+      "zIndex": 2,
+      "text": "Smart Layout mantiene tamaños y espaciado consistentes",
+      "style": {
+        "background": "rgba(139,108,255,.18)",
+        "borderColor": "#8b6cff",
+        "borderWidth": 1,
+        "borderRadius": 18,
+        "color": "#ffffff",
+        "fontSize": 24,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-card-b2",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Morph",
+      "morphId": "v8-card-2",
+      "styleRef": "style-glass",
+      "x": 12,
+      "y": 44,
+      "w": 76,
+      "h": 12,
+      "zIndex": 2,
+      "text": "Morph interpola posición y tamaño entre slides",
+      "style": {
+        "background": "rgba(78,205,196,.14)",
+        "borderColor": "#4ecdc4",
+        "borderWidth": 1,
+        "borderRadius": 18,
+        "color": "#ffffff",
+        "fontSize": 24,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v8-card-b3",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Triggers",
+      "morphId": "v8-card-3",
+      "styleRef": "style-glass",
+      "x": 12,
+      "y": 61,
+      "w": 76,
+      "h": 12,
+      "zIndex": 2,
+      "text": "Los triggers permiten revelar elementos haciendo click sobre otros",
+      "style": {
+        "background": "rgba(255,180,84,.13)",
+        "borderColor": "#ffb454",
+        "borderWidth": 1,
+        "borderRadius": 18,
+        "color": "#ffffff",
+        "fontSize": 24,
+        "fontWeight": 700,
+        "textAlign": "center"
+      }
+    }
+  ]
+}

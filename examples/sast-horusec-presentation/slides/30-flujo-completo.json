@@ -1,0 +1,48 @@
+{
+  "id": "flujo-completo",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "cierre",
+  "transition": "zoom",
+  "eyebrow": "16 · DE PUNTA A PUNTA",
+  "title": "El flujo completo, de punta a punta.",
+  "blocks": [
+    {
+      "type": "timeline",
+      "fragment": 0,
+      "animation": "slide-left",
+      "items": [
+        {
+          "title": "Código",
+          "text": "El cambio nace en la rama; todavía es barato de modificar."
+        },
+        {
+          "title": "Scan local",
+          "text": "Feedback rápido antes de abrir el Pull Request."
+        },
+        {
+          "title": "Corregir / justificar",
+          "text": "Vulnerabilidad real, falso positivo o riesgo aceptado."
+        },
+        {
+          "title": "Pull Request",
+          "text": "La misma política versionada corre en un entorno repetible."
+        },
+        {
+          "title": "SAST en CI",
+          "text": "La pipeline conserva SARIF como evidencia trazable."
+        },
+        {
+          "title": "Gate / Merge",
+          "text": "La política de riesgo decide qué severidad bloquea."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "El objetivo no es \"pasar Horusec\"",
+      "text": "Es reducir la probabilidad de que vulnerabilidades conocidas entren al producto sin haber sido vistas, discutidas y tratadas."
+    }
+  ]
+}

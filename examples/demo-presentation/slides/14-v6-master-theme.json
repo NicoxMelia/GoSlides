@@ -1,0 +1,49 @@
+{
+  "id": "v6-master-theme",
+  "layout": "default",
+  "masterId": "master-tech",
+  "transition": "wipe",
+  "eyebrow": "V6 · DISEÑO SISTÉMICO",
+  "title": "Master Slides + temas reutilizables",
+  "subtitle": "Definí una identidad visual una vez y aplicala en todo el deck.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Master Slide",
+          "text": "Promové elementos del canvas a un master reutilizable y mantené encabezados, fondos y pies consistentes."
+        },
+        {
+          "title": "Theme presets",
+          "text": "Midnight, Paper, Ocean, Sunset y Academic; además podés guardar tus propios presets."
+        },
+        {
+          "title": "Compatibilidad",
+          "text": "Los masters son opcionales: los ZIP anteriores siguen abriendo sin migraciones destructivas."
+        }
+      ],
+      "animation": "slide-left",
+      "animationDuration": 0.7,
+      "animationDelay": 0.08,
+      "animationEasing": "ease-out",
+      "fragment": 0
+    },
+    {
+      "type": "callout",
+      "title": "Flujo recomendado",
+      "text": "Diseñá una portada o estructura base → seleccioná sus elementos → Crear Master → aplicalo a las slides que quieras.",
+      "tone": "success",
+      "animation": "bounce",
+      "animationDuration": 0.65,
+      "animationDelay": 0.12,
+      "animationEasing": "spring",
+      "fragment": 1
+    }
+  ],
+  "notes": [
+    "Mostrar el selector de Master Slide en Studio.",
+    "Cambiar entre presets de tema y volver al master sin perder el contenido."
+  ]
+}

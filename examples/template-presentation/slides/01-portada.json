@@ -1,0 +1,8 @@
+{
+  "id": "portada",
+  "layout": "title",
+  "eyebrow": "PRESENTACIÓN",
+  "title": "Título principal",
+  "subtitle": "Una frase que explique qué se va a presentar.",
+  "footer": "GoSlides"
+}

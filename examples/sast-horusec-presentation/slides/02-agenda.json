@@ -1,0 +1,56 @@
+{
+  "id": "agenda",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "fade",
+  "eyebrow": "RECORRIDO",
+  "title": "Seis bloques, de la teoría al deploy.",
+  "subtitle": "El hilo conductor: riesgo de seguridad → regla estática → feedback temprano → decisión humana → Quality Gate → evidencia en CI/CD.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        {
+          "icon": "braces",
+          "badge": "01",
+          "title": "Fundamentos",
+          "text": "Qué es SAST, dónde encaja en DevOps y qué NO garantiza."
+        },
+        {
+          "icon": "gauge",
+          "badge": "02",
+          "title": "Clasificación",
+          "text": "Verdaderos/falsos positivos y negativos: cómo leer un resultado."
+        },
+        {
+          "icon": "shield",
+          "badge": "03",
+          "title": "Horusec",
+          "text": "Qué es, cómo funciona y casos reales de código."
+        },
+        {
+          "icon": "terminal",
+          "badge": "04",
+          "title": "CI/CD",
+          "text": "Instalación, Docker, SARIF y GitHub Actions."
+        },
+        {
+          "icon": "cloud",
+          "badge": "05",
+          "title": "Arquitectura",
+          "text": "De un laptop a AWS: qué mapea y qué no."
+        },
+        {
+          "icon": "check",
+          "badge": "06",
+          "title": "Cierre",
+          "text": "Checklist, errores frecuentes y próximos pasos."
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    }
+  ]
+}

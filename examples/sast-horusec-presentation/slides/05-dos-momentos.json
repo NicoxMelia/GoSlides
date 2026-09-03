@@ -1,0 +1,36 @@
+{
+  "id": "dos-momentos",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "fundamentos",
+  "transition": "wipe",
+  "eyebrow": "02 · SHIFT LEFT",
+  "title": "El mismo control, corrido muchas veces.",
+  "subtitle": "Ejecutar SAST una sola vez por release reduce su valor. Shift Left busca correrlo primero en el puesto del desarrollador y luego en CI, con una configuración versionada compartida.",
+  "blocks": [
+    {
+      "type": "timeline",
+      "fragment": 0,
+      "animation": "slide-left",
+      "animationDuration": 0.65,
+      "items": [
+        {
+          "title": "Local / IDE",
+          "text": "Feedback en segundos, mientras el código todavía es barato de modificar."
+        },
+        {
+          "title": "Pull Request",
+          "text": "Control repetible: la misma política corre en un entorno reproducible."
+        },
+        {
+          "title": "Merge / Build",
+          "text": "Quality Gate: qué severidad bloquea y qué excepciones se admiten."
+        },
+        {
+          "title": "Evidencia",
+          "text": "Salida SARIF o dashboard: trazabilidad de lo que se analizó y se decidió."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "instalacion-local",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "wipe",
+  "eyebrow": "10 · QUICK START",
+  "title": "Instalación local: cinco pasos, un comando de análisis.",
+  "subtitle": "Para una práctica de clase, la instalación local es el camino más simple.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Requisitos: Docker + Git\ndocker --version && git --version\n# Instalar el binario (Linux/macOS)\ncurl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh \\\n  | bash -s latest\nhorusec version\necho \".horusec\" >> .gitignore\n# Primer análisis, sin Gate todavía\nhorusec start -p .",
+      "frameStyle": "terminal",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "title": "terminal · primer análisis",
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Primero observar, después bloquear",
+      "text": "El objetivo inicial es ver qué encuentra y cuánto tarda. `-D true` reduce la dependencia de Docker, pero se pierde capacidad de análisis."
+    }
+  ]
+}

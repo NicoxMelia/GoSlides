@@ -1,0 +1,66 @@
+{
+  "id": "caso-tp-1",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "casos",
+  "transition": "slide",
+  "eyebrow": "06 · CASOS · VERDADERO POSITIVO (I)",
+  "title": "Cuando la alerta sí corresponde a un defecto real.",
+  "subtitle": "Los ejemplos son pedagógicos: representan patrones que una suite SAST/secret scanner como Horusec busca detectar.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1
+      ],
+      "gap": 1.4,
+      "items": [
+        {
+          "title": "Secreto embebido en el repo",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "API_TOKEN = \"ghp_1234567890_example_secret_token\"\n\ndef call_service():\n    headers = {\"Authorization\": f\"Bearer {API_TOKEN}\"}\n    return requests.get(API_URL, headers=headers)",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "secrets.py"
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Por qué es positivo",
+              "text": "Puede terminar en commits, forks o backups del repositorio."
+            }
+          ]
+        },
+        {
+          "title": "Comando con entrada externa",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "import os\n\ndef ping(host):\n    os.system(\"ping -c 1 \" + host)",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "network.py"
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Por qué es positivo",
+              "text": "Si `host` viene de una petición HTTP, un atacante puede agregar metacaracteres del shell."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

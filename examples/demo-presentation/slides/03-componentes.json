@@ -1,0 +1,15 @@
+{
+  "id": "componentes",
+  "eyebrow": "BLOQUES REUTILIZABLES",
+  "title": "Una slide puede ser mucho más que texto + imagen.",
+  "blocks": [
+    { "type": "cards", "columns": 3, "items": [
+      { "icon": "code", "badge": "TECH", "title": "Código y terminal", "text": "Snippets, comandos y outputs con UI consistente." },
+      { "icon": "boxes", "badge": "VISUAL", "title": "Arquitecturas", "text": "Nodos y conexiones clickeables sin exportar una captura." },
+      { "icon": "zap", "badge": "LIVE", "title": "Interacción", "text": "Tabs, pasos y estados que el expositor puede recorrer." },
+      { "icon": "database", "title": "Comparaciones", "text": "Opciones técnicas presentadas con jerarquía visual clara." },
+      { "icon": "layers", "title": "Layouts", "text": "Título, centro, split y componentes combinables." },
+      { "icon": "sparkles", "title": "Themes", "text": "Claro u oscuro sin reescribir el contenido." }
+    ]}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "configuracion-resultados",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "slide",
+  "eyebrow": "11 · CONFIGURACIÓN Y SALIDA",
+  "title": "Config versionada, salida interoperable, misma política.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Configuración versionada junto al repo\nhorusec generate\n\n# Excluir artefactos que no aportan señal\nhorusec start -p . -i \"**/vendor/**,**/dist/**,**/fixtures/vulnerable/**\"\n\n# Excepciones explícitas por hash del hallazgo\nhorusec start -p . -F \"HASH_FALSO_POSITIVO\"\nhorusec start -p . -R \"HASH_RIESGO_ACEPTADO\"\n\n# Evidencia interoperable + gate real\nhorusec start -p . -e -o sarif -O horusec.sarif",
+      "frameStyle": "terminal",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "title": "terminal · política reproducible",
+      "fragment": 0,
+      "animation": "slide-left"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "SARIF desacopla motor de interfaz",
+      "text": "La pipeline produce el archivo y GitHub puede mostrarlo en Code Scanning, siempre que el repo/plan tenga esa capacidad habilitada. El flag `-e` (`--return-error`) es el que convierte el análisis en Gate."
+    }
+  ]
+}

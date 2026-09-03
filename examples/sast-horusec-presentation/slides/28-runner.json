@@ -1,0 +1,36 @@
+{
+  "id": "runner-publico-privado",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "fade",
+  "eyebrow": "14 · RED",
+  "title": "¿Runner público o runner dentro de la VPC?",
+  "blocks": [
+    {
+      "type": "compare",
+      "fragment": 0,
+      "animation": "fade",
+      "left": {
+        "label": "PÚBLICO",
+        "title": "Runner GitHub-hosted",
+        "highlight": false,
+        "items": [
+          "Invoca la API vía HTTPS",
+          "Autenticación + restricciones de red",
+          "Menor esfuerzo de mantenimiento"
+        ]
+      },
+      "right": {
+        "label": "PRIVADO",
+        "title": "Runner dentro de la VPC",
+        "highlight": true,
+        "items": [
+          "La API no queda expuesta a Internet",
+          "Mayor control de red",
+          "Hay que mantener y endurecer el runner"
+        ]
+      }
+    }
+  ]
+}

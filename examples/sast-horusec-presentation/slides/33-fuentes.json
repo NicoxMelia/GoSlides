@@ -1,0 +1,24 @@
+{
+  "id": "fuentes",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "cierre",
+  "transition": "fade",
+  "eyebrow": "19 · REFERENCIAS",
+  "title": "Fuentes técnicas consultadas.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "fragment": 0,
+      "animation": "fade",
+      "appearance": "minimal",
+      "markdown": "- [Horusec CLI y README](https://github.com/ZupIT/horusec)\n- [Flags de `horusec start`](https://github.com/ZupIT/horusec/blob/main/cmd/app/start/start.go)\n- [Horusec Engine](https://github.com/ZupIT/horusec-engine)\n- [Horusec Platform (archivado)](https://github.com/zup-archive/horusec-platform)\n- [GitHub Actions — documentación](https://docs.github.com/en/actions)\n- [Upload SARIF · CodeQL Action](https://github.com/github/codeql-action/tree/main/upload-sarif)"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "Nota de vigencia",
+      "text": "Fecha de revisión del material: septiembre de 2026. Antes de usar Horusec en producción, comprobar nuevamente releases, imágenes Docker, dependencias y estado de mantenimiento."
+    }
+  ]
+}

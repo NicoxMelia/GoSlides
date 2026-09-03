@@ -1,0 +1,19 @@
+{
+  "id": "checklist",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "cierre",
+  "transition": "zoom",
+  "eyebrow": "18 · LISTO PARA OPERAR",
+  "title": "Checklist antes de activar el gate.",
+  "subtitle": "El control técnico sólo funciona si ejecución, evidencia y excepciones tienen un proceso común.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "fragment": 0,
+      "animation": "fade",
+      "appearance": "card",
+      "markdown": "- [x] Docker funciona en el entorno de análisis\n- [x] Horusec CLI está instalado y versionado/documentado\n- [x] `.horusec` está ignorado en Git\n- [x] El repositorio tiene una configuración compartida\n- [x] Se realizó un baseline antes de activar el Gate\n- [x] Falsos positivos y riesgos aceptados tienen justificación\n- [x] GitHub Actions ejecuta el análisis en PR\n- [x] La pipeline conserva SARIF aunque el scanner encuentre problemas\n- [x] El Gate falla después de publicar evidencia\n- [x] Las reglas y excepciones se revisan periódicamente\n- [x] SAST se complementa con testing y otros controles de seguridad"
+    }
+  ]
+}

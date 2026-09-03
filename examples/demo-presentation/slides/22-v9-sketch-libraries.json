@@ -1,0 +1,240 @@
+{
+  "id": "v9-sketch-libraries",
+  "layout": "free",
+  "transition": "fade",
+  "background": "#fffdf7",
+  "canvas": [
+    {
+      "id": "v9-title",
+      "type": "text",
+      "layerName": "Título",
+      "x": 7,
+      "y": 4,
+      "w": 78,
+      "h": 21,
+      "zIndex": 5,
+      "text": "V9 · **Sketch + bibliotecas visuales**",
+      "style": {
+        "color": "#252832",
+        "fontSize": 43,
+        "fontWeight": 700,
+        "fontFamily": "Caveat, cursive",
+        "sketch": true
+      }
+    },
+    {
+      "id": "v9-sub",
+      "type": "text",
+      "layerName": "Subtítulo",
+      "x": 7,
+      "y": 21,
+      "w": 72,
+      "h": 11,
+      "zIndex": 5,
+      "text": "Una presentación completa puede adoptar una estética de whiteboard / Excalidraw.",
+      "style": {
+        "color": "#656875",
+        "fontSize": 22,
+        "fontWeight": 500,
+        "fontFamily": "\"Patrick Hand\", cursive",
+        "sketch": true
+      }
+    },
+    {
+      "id": "v9-box",
+      "type": "shape",
+      "shape": "rounded",
+      "layerName": "Caja sketch",
+      "x": 7,
+      "y": 34,
+      "w": 27,
+      "h": 30,
+      "zIndex": 2,
+      "text": "**Formas**\ncon acabado sketch",
+      "style": {
+        "color": "#252832",
+        "background": "#fff7d6",
+        "borderColor": "#252832",
+        "borderWidth": 2,
+        "borderRadius": 12,
+        "fontSize": 24,
+        "fontWeight": 650,
+        "textAlign": "center",
+        "fontFamily": "\"Patrick Hand\", cursive",
+        "sketch": true
+      }
+    },
+    {
+      "id": "v9-arrow",
+      "type": "arrow",
+      "layerName": "Flecha sketch",
+      "x": 35,
+      "y": 44,
+      "w": 16,
+      "h": 9,
+      "zIndex": 3,
+      "direction": "right",
+      "thickness": 4,
+      "arrowStyle": "sketch",
+      "style": {
+        "color": "#6d5bd0",
+        "sketch": true
+      }
+    },
+    {
+      "id": "v9-hand",
+      "type": "freehand",
+      "layerName": "Trazo libre",
+      "x": 8,
+      "y": 70,
+      "w": 42,
+      "h": 15,
+      "zIndex": 3,
+      "stroke": "#e35d6a",
+      "strokeWidth": 4,
+      "points": [
+        {
+          "x": 0,
+          "y": 62
+        },
+        {
+          "x": 10,
+          "y": 35
+        },
+        {
+          "x": 20,
+          "y": 60
+        },
+        {
+          "x": 32,
+          "y": 28
+        },
+        {
+          "x": 45,
+          "y": 55
+        },
+        {
+          "x": 58,
+          "y": 22
+        },
+        {
+          "x": 72,
+          "y": 52
+        },
+        {
+          "x": 86,
+          "y": 30
+        },
+        {
+          "x": 100,
+          "y": 45
+        }
+      ],
+      "style": {
+        "sketch": true
+      }
+    },
+    {
+      "id": "lib-lucide",
+      "type": "icon",
+      "layerName": "Lucide",
+      "x": 56,
+      "y": 34,
+      "w": 9,
+      "h": 18,
+      "zIndex": 3,
+      "name": "rocket",
+      "library": "lucide",
+      "label": "Lucide",
+      "style": {
+        "color": "#5546c8",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "lib-phosphor",
+      "type": "icon",
+      "layerName": "Phosphor",
+      "x": 66,
+      "y": 34,
+      "w": 9,
+      "h": 18,
+      "zIndex": 3,
+      "name": "rocket",
+      "library": "phosphor",
+      "label": "Phosphor",
+      "style": {
+        "color": "#5546c8",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "lib-tabler",
+      "type": "icon",
+      "layerName": "Tabler",
+      "x": 76,
+      "y": 34,
+      "w": 9,
+      "h": 18,
+      "zIndex": 3,
+      "name": "rocket",
+      "library": "tabler",
+      "label": "Tabler",
+      "style": {
+        "color": "#5546c8",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "lib-hero",
+      "type": "icon",
+      "layerName": "Heroicons",
+      "x": 86,
+      "y": 34,
+      "w": 9,
+      "h": 18,
+      "zIndex": 3,
+      "name": "rocket",
+      "library": "heroicons",
+      "label": "Heroicons",
+      "style": {
+        "color": "#5546c8",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "v9-note",
+      "type": "text",
+      "layerName": "Fuentes",
+      "x": 56,
+      "y": 58,
+      "w": 39,
+      "h": 29,
+      "zIndex": 4,
+      "text": "**Fuentes abiertas**\nCaveat · Patrick Hand · Kalam · Architects Daughter · Poppins · Montserrat · Space Grotesk · Lora · Merriweather · JetBrains Mono…",
+      "style": {
+        "color": "#252832",
+        "fontSize": 21,
+        "fontWeight": 500,
+        "fontFamily": "\"Patrick Hand\", cursive",
+        "background": "#ffffff",
+        "borderColor": "#d9d3c2",
+        "borderWidth": 1,
+        "borderRadius": 14,
+        "sketch": true
+      }
+    }
+  ],
+  "notes": [
+    "V9 agrega modo de dibujo libre, estilo sketch de deck completo, familias visuales y muchas más fuentes gratuitas."
+  ],
+  "sectionId": "section-v9"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "codigo",
+  "eyebrow": "TECHNICAL SLIDES",
+  "title": "Código y terminal sin capturas pegadas.",
+  "blocks": [
+    {
+      "type": "code",
+      "title": "slide.json",
+      "language": "json",
+      "code": "{\n  \"type\": \"cards\",\n  \"columns\": 3,\n  \"items\": [ ... ]\n}",
+      "frameStyle": "carbon",
+      "codeTheme": "dracula",
+      "showLineNumbers": true,
+      "showWindowControls": true
+    },
+    {
+      "type": "terminal",
+      "title": "Publicación",
+      "command": "npm run build",
+      "output": "> goslides-platform@0.1.0 build\n> tsc -b && vite build\n\n✓ built successfully"
+    }
+  ]
+}

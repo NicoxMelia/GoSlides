@@ -1,0 +1,88 @@
+{
+  "id": "caso-tn",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "casos",
+  "transition": "slide",
+  "eyebrow": "07 · CASOS · VERDADERO NEGATIVO",
+  "title": "Cuando el silencio de la herramienta es correcto.",
+  "subtitle": "Un verdadero negativo se confirma con conocimiento del patrón y contexto — la ausencia de alerta no prueba nada por sí sola.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1,
+        1,
+        1
+      ],
+      "gap": 1.1,
+      "items": [
+        {
+          "title": "Secreto fuera del código",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "import os\n\nAPI_TOKEN = os.environ[\"API_TOKEN\"]",
+              "frameStyle": "minimal",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "secrets.py"
+            },
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "Verdadero negativo",
+              "text": "La credencial ya no vive en el código (igual hay que proteger el secret store)."
+            }
+          ]
+        },
+        {
+          "title": "Comando sin shell",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "subprocess.run(\n  [\"ping\", \"-c\", \"1\", host],\n  check=True, shell=False\n)",
+              "frameStyle": "minimal",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "network.py"
+            },
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "Verdadero negativo",
+              "text": "Argumentos separados: no hay cadena de shell que un atacante pueda inyectar."
+            }
+          ]
+        },
+        {
+          "title": "Consulta parametrizada",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "python",
+              "code": "cursor.execute(\n  \"SELECT id FROM users WHERE username=%s\",\n  (username,)\n)",
+              "frameStyle": "minimal",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "db.py"
+            },
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "Verdadero negativo",
+              "text": "El motor de base de datos separa código de datos."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

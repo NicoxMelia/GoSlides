@@ -1,0 +1,44 @@
+{
+  "id": "arquitectura-local",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "arquitectura",
+  "transition": "slide",
+  "eyebrow": "13 · ARQUITECTURA LOCAL",
+  "title": "De un único equipo a una plataforma central.",
+  "subtitle": "Dos arquitecturas válidas, muy distintas en complejidad.",
+  "blocks": [
+    {
+      "type": "compare",
+      "fragment": 0,
+      "animation": "fade",
+      "left": {
+        "label": "OPCIÓN A",
+        "title": "CLI local mínima",
+        "subtitle": "Recomendada para clase.",
+        "highlight": true,
+        "items": [
+          "No requiere servidor",
+          "Costo bajo",
+          "SARIF como archivo local"
+        ]
+      },
+      "right": {
+        "label": "OPCIÓN B",
+        "title": "Horusec Platform self-hosted",
+        "subtitle": "Arquitectura histórica.",
+        "items": [
+          "RabbitMQ + PostgreSQL",
+          "Docker Compose / Helm / Operator",
+          "Dashboard y tokens compartidos"
+        ]
+      }
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "Nota de vigencia",
+      "text": "`zup-archive/horusec-platform` está archivado (solo lectura) y Docker Compose no era recomendado para producción — sirve para laboratorio, no para copiar tal cual."
+    }
+  ]
+}

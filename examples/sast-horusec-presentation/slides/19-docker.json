@@ -1,0 +1,54 @@
+{
+  "id": "docker",
+  "layout": "default",
+  "masterId": "master-security",
+  "sectionId": "operacion",
+  "transition": "fade",
+  "eyebrow": "10 · EJECUCIÓN REPRODUCIBLE",
+  "title": "Docker también expone una superficie de riesgo propia.",
+  "blocks": [
+    {
+      "type": "columns",
+      "fragment": 0,
+      "animation": "fade",
+      "ratio": [
+        1.2,
+        1
+      ],
+      "gap": 1.5,
+      "items": [
+        {
+          "title": "CLI en contenedor",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "code": "docker run --rm \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v \"$(pwd)\":/src \\\n  horuszup/horusec-cli:latest \\\n  horusec start -p /src -P \"$(pwd)\"",
+              "frameStyle": "terminal",
+              "codeTheme": "github-dark",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "title": "terminal · docker run"
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "title": "Riesgo no inocuo",
+              "text": "Montar `/var/run/docker.sock` da al contenedor una capacidad muy alta sobre el daemon del host. En CI y entornos compartidos es una decisión de seguridad, no un detalle de configuración."
+            }
+          ]
+        },
+        {
+          "title": "Comparación de opciones",
+          "blocks": [
+            {
+              "type": "markdown",
+              "appearance": "minimal",
+              "markdown": "| Opción | Ventaja | Costo |\n| --- | --- | --- |\n| Binario local | Simple, menos capas | Depende de Docker para varios motores |\n| Contenedor CLI | Empaqueta de forma reproducible | Necesita montar repo y socket Docker |\n| Sin Docker | Útil en entornos restringidos | Reduce motores disponibles |"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

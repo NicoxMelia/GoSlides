@@ -1,0 +1,15 @@
+{
+  "id": "idea",
+  "eyebrow": "CONCEPTO",
+  "title": "El contenido y el diseño dejan de estar pegados.",
+  "subtitle": "La presentación describe qué mostrar. React decide cómo se ve.",
+  "blocks": [
+    { "type": "timeline", "items": [
+      { "title": "presentation.json", "text": "Metadata, tema y orden de las slides." },
+      { "title": "slides/*.json", "text": "Contenido declarativo, una slide por archivo." },
+      { "title": "assets/", "text": "Imágenes y recursos que viajan dentro del ZIP." },
+      { "title": "Renderer React", "text": "Layouts, animaciones, interacción y navegación." }
+    ]}
+  ],
+  "notes": ["Remarcar que un cambio visual global no obliga a editar cada presentación."]
+}

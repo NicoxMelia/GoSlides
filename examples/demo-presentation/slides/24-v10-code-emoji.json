@@ -1,0 +1,64 @@
+{
+  "id": "v10-code-emoji",
+  "layout": "default",
+  "eyebrow": "V10 · CÓDIGO + EMOJI + TIPOGRAFÍA",
+  "title": "Código que también diseña la slide",
+  "subtitle": "Marcos Carbon-inspired, temas de sintaxis, Gitmoji y Virgil 3 YOFF sin licencias pagas.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "code",
+      "title": "autoscaling.ts",
+      "language": "typescript",
+      "frameStyle": "carbon-glass",
+      "codeTheme": "night-owl",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "code": "const replicas = memory > 80 ? 6 : 3;\nconsole.log(`Pods: ${replicas}`);\n// GoSlides v10"
+    }
+  ],
+  "canvas": [
+    {
+      "id": "emoji-sparkles-v10",
+      "type": "emoji",
+      "layerName": "Emoji feature",
+      "emoji": "✨",
+      "shortcode": ":sparkles:",
+      "description": "Nueva funcionalidad",
+      "x": 86,
+      "y": 10,
+      "w": 8,
+      "h": 13,
+      "zIndex": 6,
+      "animation": "zoom",
+      "style": {
+        "fontSize": 58,
+        "textAlign": "center",
+        "opacity": 1
+      }
+    },
+    {
+      "id": "virgil-note-v10",
+      "type": "text",
+      "layerName": "Virgil note",
+      "text": "**Virgil 3 YOFF**\npara slides sketch ✍️",
+      "x": 70,
+      "y": 69,
+      "w": 24,
+      "h": 22,
+      "zIndex": 5,
+      "rotation": -2,
+      "style": {
+        "color": "#f4d77a",
+        "fontFamily": "\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive",
+        "fontSize": 23,
+        "fontWeight": 400,
+        "textAlign": "center",
+        "sketch": true
+      }
+    }
+  ],
+  "notes": [
+    "V10 agrega estilos de código inspirados en Carbon, selector Gitmoji y Virgil 3 YOFF mediante una referencia web open-source."
+  ]
+}

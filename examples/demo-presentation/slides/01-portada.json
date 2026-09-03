@@ -1,0 +1,31 @@
+{
+  "id": "portada",
+  "layout": "title",
+  "eyebrow": "GOSLIDES · FORMAT V1",
+  "title": "Presentaciones modernas, versionables e interactivas.",
+  "subtitle": "Un renderer web para reemplazar el PPT estático cuando necesitás explicar ideas técnicas con más libertad.",
+  "blocks": [
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "ZIP",
+          "label": "formato portable"
+        },
+        {
+          "value": "100%",
+          "label": "frontend estático"
+        },
+        {
+          "value": "∞",
+          "label": "componentes posibles"
+        }
+      ]
+    }
+  ],
+  "footer": "React + TypeScript + Vite",
+  "notes": [
+    "Presentar GoSlides como una alternativa web a PPT.",
+    "Estas notas sólo deben existir en Studio y se eliminan del build público."
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "id": "v4-editor",
+  "layout": "free",
+  "transition": "slide",
+  "background": "linear-gradient(135deg,#0d1323,#121b31)",
+  "canvas": [
+    {
+      "id": "v4-title",
+      "type": "text",
+      "x": 6,
+      "y": 4,
+      "w": 84,
+      "h": 19,
+      "zIndex": 5,
+      "text": "V4: **editar** se siente mucho más cerca de ==PowerPoint==",
+      "style": {
+        "color": "#f7f8fc",
+        "fontSize": 42,
+        "fontWeight": 800,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "node-a",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 9,
+      "y": 33,
+      "w": 22,
+      "h": 18,
+      "zIndex": 3,
+      "text": "Frontend",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#1b2337",
+        "borderColor": "#8b6cff",
+        "borderWidth": 2,
+        "borderRadius": 18,
+        "fontSize": 23,
+        "fontWeight": 750,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "node-b",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 39,
+      "y": 33,
+      "w": 22,
+      "h": 18,
+      "zIndex": 3,
+      "text": "API",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#1b2337",
+        "borderColor": "#8b6cff",
+        "borderWidth": 2,
+        "borderRadius": 18,
+        "fontSize": 23,
+        "fontWeight": 750,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "node-c",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 69,
+      "y": 33,
+      "w": 22,
+      "h": 18,
+      "zIndex": 3,
+      "text": "Database",
+      "style": {
+        "color": "#f7f8fc",
+        "background": "#1b2337",
+        "borderColor": "#8b6cff",
+        "borderWidth": 2,
+        "borderRadius": 18,
+        "fontSize": 23,
+        "fontWeight": 750,
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "conn-ab",
+      "type": "connector",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 1,
+      "from": "node-a",
+      "to": "node-b",
+      "label": "HTTP",
+      "thickness": 3,
+      "style": {
+        "color": "#8b6cff"
+      }
+    },
+    {
+      "id": "conn-bc",
+      "type": "connector",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 1,
+      "from": "node-b",
+      "to": "node-c",
+      "label": "SQL",
+      "thickness": 3,
+      "style": {
+        "color": "#8b6cff"
+      }
+    },
+    {
+      "id": "cloud-icon",
+      "type": "icon",
+      "name": "cloud",
+      "label": "Icon library",
+      "x": 8,
+      "y": 61,
+      "w": 12,
+      "h": 19,
+      "zIndex": 4,
+      "style": {
+        "color": "#8b6cff"
+      }
+    },
+    {
+      "id": "v4-table",
+      "type": "table",
+      "x": 25,
+      "y": 60,
+      "w": 47,
+      "h": 26,
+      "zIndex": 4,
+      "headerRow": true,
+      "rows": [
+        [
+          "Feature",
+          "V3",
+          "V4"
+        ],
+        [
+          "Multi-select",
+          "—",
+          "✓"
+        ],
+        [
+          "Undo / Redo",
+          "—",
+          "✓"
+        ],
+        [
+          "Smart connectors",
+          "—",
+          "✓"
+        ]
+      ],
+      "style": {
+        "color": "#e9ecf7",
+        "background": "#141a29",
+        "borderColor": "#343c55",
+        "borderWidth": 1,
+        "fontSize": 16,
+        "fontWeight": 500
+      }
+    },
+    {
+      "id": "v4-note",
+      "type": "text",
+      "x": 75,
+      "y": 59,
+      "w": 20,
+      "h": 27,
+      "zIndex": 4,
+      "text": "Shift + click\nCtrl+G\nCtrl+C / V\nCtrl+Z",
+      "style": {
+        "color": "#aeb6cb",
+        "fontSize": 16,
+        "fontWeight": 600,
+        "textAlign": "left"
+      }
+    }
+  ],
+  "notes": [
+    "Mostrar que los conectores siguen a los nodos cuando se mueven.",
+    "En Studio probar multiselección, agrupar, snapping y undo/redo."
+  ]
+}

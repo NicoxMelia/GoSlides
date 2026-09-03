@@ -1,0 +1,134 @@
+{
+  "id": "v6-vector-animation",
+  "layout": "free",
+  "masterId": "master-tech",
+  "transition": "flip",
+  "canvas": [
+    {
+      "id": "v6-title",
+      "layerName": "Título",
+      "type": "text",
+      "x": 7,
+      "y": 5,
+      "w": 79,
+      "h": 18,
+      "zIndex": 5,
+      "text": "V6: {size:125|vectores}, {bg:#382f68|rich text} y ~^animaciones^~",
+      "animation": "fade",
+      "animationDuration": 0.5,
+      "animationEasing": "ease-out",
+      "style": {
+        "color": "#f7f8fc",
+        "fontSize": 38,
+        "fontWeight": 800,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "v6-animation-hint",
+      "layerName": "Ayuda de animación",
+      "type": "text",
+      "x": 7,
+      "y": 22,
+      "w": 76,
+      "h": 7,
+      "zIndex": 4,
+      "text": "Avanzá con → para revelar: rotate · zoom · slide · blur",
+      "style": {
+        "color": "#9fa9bf",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "star",
+      "layerName": "Star",
+      "type": "vector",
+      "shape": "star",
+      "x": 10,
+      "y": 33,
+      "w": 17,
+      "h": 30,
+      "zIndex": 3,
+      "fill": "#8b6cff",
+      "stroke": "#d9d0ff",
+      "strokeWidth": 2,
+      "fragment": 1,
+      "animation": "rotate",
+      "animationDuration": 0.85,
+      "animationDelay": 0.05,
+      "animationEasing": "ease-out",
+      "style": {
+        "opacity": 1
+      }
+    },
+    {
+      "id": "hex",
+      "layerName": "Hexagon",
+      "type": "vector",
+      "shape": "hexagon",
+      "x": 33,
+      "y": 33,
+      "w": 17,
+      "h": 30,
+      "zIndex": 3,
+      "fill": "#1f8f8a",
+      "stroke": "#93f1ea",
+      "strokeWidth": 2,
+      "fragment": 2,
+      "animation": "zoom",
+      "animationDuration": 0.65,
+      "animationEasing": "spring",
+      "style": {
+        "opacity": 1
+      }
+    },
+    {
+      "id": "diamond",
+      "layerName": "Diamond",
+      "type": "vector",
+      "shape": "diamond",
+      "x": 56,
+      "y": 33,
+      "w": 17,
+      "h": 30,
+      "zIndex": 3,
+      "fill": "#d7782c",
+      "stroke": "#ffd0a8",
+      "strokeWidth": 2,
+      "fragment": 3,
+      "animation": "slide-right",
+      "animationDuration": 0.7,
+      "animationEasing": "ease-in-out",
+      "style": {
+        "opacity": 1
+      }
+    },
+    {
+      "id": "copy",
+      "layerName": "Texto ayuda",
+      "type": "text",
+      "x": 10,
+      "y": 70,
+      "w": 76,
+      "h": 19,
+      "zIndex": 4,
+      "text": "**SVG/vectorial editable:** fill · stroke · grosor · rotación · opacidad.  Rich text suma {#78dce8|color}, {bg:#503a21|fondo}, {size:130|tamaño}, ~^super^~ y ~_sub_~.",
+      "fragment": 4,
+      "animation": "blur",
+      "animationDuration": 0.7,
+      "animationEasing": "ease-out",
+      "style": {
+        "color": "#dfe5f3",
+        "fontSize": 20,
+        "fontWeight": 500,
+        "textAlign": "left",
+        "lineHeight": 1.35
+      }
+    }
+  ],
+  "notes": [
+    "La animación de canvas fue corregida en v12. Avanzá con → para mostrar cada fragment."
+  ]
+}

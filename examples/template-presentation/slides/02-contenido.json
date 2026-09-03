@@ -1,0 +1,17 @@
+{
+  "id": "contenido",
+  "eyebrow": "SECCIÓN 01",
+  "title": "Primera idea importante",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        { "icon": "code", "title": "Punto uno", "text": "Descripción breve." },
+        { "icon": "server", "title": "Punto dos", "text": "Descripción breve." },
+        { "icon": "sparkles", "title": "Punto tres", "text": "Descripción breve." }
+      ]
+    }
+  ],
+  "notes": ["Estas notas sólo aparecen cuando abrís el panel de presentador."]
+}
