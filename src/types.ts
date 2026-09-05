@@ -4,7 +4,7 @@ export type AnimationName = 'none' | 'fade' | 'slide-up' | 'slide-left' | 'slide
 export type AnimationEasing = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'spring';
 export type TextAlign = 'left' | 'center' | 'right';
 export type VisualStyle = 'modern' | 'sketch';
-export type IconLibrary = 'lucide' | 'phosphor' | 'tabler' | 'heroicons';
+export type IconLibrary = 'lucide' | 'phosphor' | 'tabler' | 'heroicons' | 'tech';
 export type ArrowStyle = 'classic' | 'modern' | 'rounded' | 'minimal' | 'double' | 'sketch' | 'dotted' | 'wedge' | 'blunt';
 export interface CodeSimulationOptions {
   simulationEnabled?: boolean;
@@ -162,7 +162,7 @@ export type CanvasElement =
   | (CanvasElementBase & { type: 'arrow'; direction?: 'right' | 'left' | 'down' | 'up'; thickness?: number; arrowStyle?: ArrowStyle })
   | (CanvasElementBase & CodeSimulationOptions & { type: 'code'; language?: string; code: string; title?: string; frameStyle?: CodeFrameStyle; codeTheme?: CodeTheme; showLineNumbers?: boolean; showWindowControls?: boolean })
   | (CanvasElementBase & { type: 'emoji'; emoji: string; shortcode?: string; description?: string })
-  | (CanvasElementBase & { type: 'icon'; name: string; label?: string; library?: IconLibrary })
+  | (CanvasElementBase & { type: 'icon'; name: string; label?: string; library?: IconLibrary; brandColors?: boolean })
   | (CanvasElementBase & { type: 'freehand'; points: Array<{ x: number; y: number }>; stroke?: string; strokeWidth?: number })
   | (CanvasElementBase & { type: 'table'; rows: string[][]; headerRow?: boolean; striped?: boolean; compact?: boolean })
   | (CanvasElementBase & { type: 'connector'; from: string; to: string; label?: string; thickness?: number; dashed?: boolean })
