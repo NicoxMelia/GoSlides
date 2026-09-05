@@ -1,6 +1,9 @@
 import JSZip from 'jszip';
 import { createElement } from 'react';
 import { IconGlyph } from '../components/IconLibrary';
+import deviconLicense from '../../licenses/devicon-MIT.txt?raw';
+import horusecLicense from '../../licenses/horusec-Apache-2.0.txt?raw';
+import horusecNotice from '../../licenses/horusec-NOTICE.md?raw';
 import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 import type { PresentationDocument } from '../types';
@@ -42,6 +45,9 @@ function bytesToBase64(bytes: Uint8Array) {
 
 export async function exportOfflineWeb(document: PresentationDocument): Promise<Blob> {
   const zip = new JSZip();
+  zip.file('licenses/devicon-MIT.txt', deviconLicense);
+  zip.file('licenses/horusec-Apache-2.0.txt', horusecLicense);
+  zip.file('licenses/horusec-NOTICE.md', horusecNotice);
   const { renderToStaticMarkup } = await import('react-dom/server');
   const slides = document.slides.map(slide => ({ ...slide, canvas: slide.canvas?.map(element => element.type === 'icon'
     ? { ...element, iconSvg: renderToStaticMarkup(createElement(IconGlyph, {

@@ -6,6 +6,7 @@ import * as Hi from 'react-icons/hi2';
 import { Sparkles } from 'lucide-react';
 import type { IconLibrary } from '../types';
 import { TECH_ICON_BY_ID } from './TechIcons';
+import { ORIGINAL_TECH_ICONS } from './OriginalTechIcons';
 
 export const ICON_NAMES = [
   'activity','boxes','braces','check','cloud','code','cpu','database','gauge','globe','disk','layers','lock','mail','network','rocket','server','shield','sparkles','terminal','users','wifi','zap',
@@ -38,6 +39,10 @@ export function IconGlyph({ name, library='lucide', size=32, strokeWidth=1.8, br
   if (library === 'tech') {
     const entry = TECH_ICON_BY_ID.get(name);
     if (!entry) return <Sparkles size={size} strokeWidth={strokeWidth}/>;
+    const original = brandColors && ORIGINAL_TECH_ICONS.get(name);
+    if (original) return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 128 128" role="img" aria-label={entry.name}>
+      <image href={original} width="128" height="128" preserveAspectRatio="xMidYMid meet"/>
+    </svg>;
     const Icon = entry.icon;
     return <Icon size={size} color={brandColors ? entry.color : 'currentColor'}/>;
   }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ICON_LIBRARIES, ICON_NAMES, IconGlyph } from '../components/IconLibrary';
 import { TECH_ICONS, TECH_ICON_BY_ID, TECH_ICON_CATEGORIES } from '../components/TechIcons';
+import { ORIGINAL_TECH_ICONS } from '../components/OriginalTechIcons';
 import type { CanvasElement, IconLibrary } from '../types';
 
 type IconElement = Extract<CanvasElement, { type: 'icon' }>;
@@ -44,7 +45,8 @@ export function IconPicker({ element, onChange }: { element: IconElement; onChan
     </div>
     {matches.length === 0 && <p className="icon-picker-summary">Sin resultados. Probá otro nombre o seleccioná todos los packs.</p>}
     {tech && <label className="check-label"><input type="checkbox" checked={element.brandColors !== false}
-      onChange={event => onChange({ ...element, brandColors: event.target.checked })}/> Usar color de marca</label>}
+      onChange={event => onChange({ ...element, brandColors: event.target.checked })}/> {ORIGINAL_TECH_ICONS.has(element.name) ? 'Usar colores originales' : 'Usar color de marca'}</label>}
+    {tech && ORIGINAL_TECH_ICONS.has(element.name) && element.brandColors !== false && <small>Logo a todo color · {element.name === 'horusec' ? 'Repositorio oficial de Horusec' : 'Devicon'}</small>}
     <label>Etiqueta<input value={element.label ?? ''} onChange={event => onChange({ ...element, label: event.target.value })}/></label>
     <small>Redimensioná desde la esquina del icono o con W y H en Posición y tamaño. El SVG conserva su proporción.</small>
   </div>;
