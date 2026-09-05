@@ -1,5 +1,8 @@
+import { useState } from 'react';
+import { ArchitectureWorkspace } from '../components/ArchitectureWorkspace';
+import { ProgressiveBody } from '../components/SlideRenderer';
 import { CodeSimulationFields } from './CodeSimulationFields';
-import type { ArchitectureNode, SlideBlock } from '../types';
+import type { SlideBlock } from '../types';
 import { RichTextInput } from './RichTextInput';
 import { MarkdownBlockView } from '../components/MarkdownBlock';
 import { defaultBlock } from './templates';
@@ -30,7 +33,7 @@ const nestedBlockLabels: Record<SlideBlock['type'], string> = { text:'Texto',mar
 const nestedBlockTypes = Object.keys(nestedBlockLabels) as SlideBlock['type'][];
 
 /** Editor recursivo para cualquier bloque dentro de un contenedor. */
-function NestedBlocksEditor({ label, blocks, onChange }: { label: string; blocks: SlideBlock[]; onChange: (blocks: SlideBlock[]) => void }) {
+export function NestedBlocksEditor({ label, blocks, onChange }: { label: string; blocks: SlideBlock[]; onChange: (blocks: SlideBlock[]) => void }) {
   const move = (index: number, offset: number) => {
     const next = [...blocks];
     [next[index], next[index + offset]] = [next[index + offset], next[index]];
@@ -123,41 +126,24 @@ function ChartEditor({block,onChange}:{block:Extract<SlideBlock,{type:'chart'}>;
 }
 
 /** Editor de arquitectura: nodos con posición y tipo, más las conexiones entre ellos. */
+export function ArchitectureEditingDialog({ block, onChange, onClose, assets = {} }: {
+  block: Extract<SlideBlock, { type: 'architecture' }>;
+  onChange: (block: Extract<SlideBlock, { type: 'architecture' }>) => void;
+  onClose: () => void; assets?: Record<string, string>;
+}) {
+  return <ArchitectureWorkspace block={block} onSave={next => { onChange(next); onClose(); }} onClose={onClose}
+    renderNodeEditor={(node, patch) => <NestedBlocksEditor label="Bloques del detalle" blocks={node.blocks ?? []} onChange={blocks => patch({ blocks })}/>}
+    renderNodeContent={node => <ProgressiveBody key={node.id} content={node} assets={assets} step={999}/>}/>;
+}
+
 function ArchitectureEditor({ block, onChange }: { block: Extract<SlideBlock, { type: 'architecture' }>; onChange: (block: SlideBlock) => void }) {
-  const { nodes, edges } = block;
-  const patchNode = (i: number, patch: Partial<ArchitectureNode>) => onChange({ ...block, nodes: nodes.map((n, x) => x === i ? { ...n, ...patch } : n) });
-  const removeNode = (i: number) => { const id = nodes[i].id; onChange({ ...block, nodes: nodes.filter((_, x) => x !== i), edges: edges.filter((e) => e.from !== id && e.to !== id) }); };
-  const addNode = () => { const id = `n${nodes.length + 1}-${Math.random().toString(36).slice(2, 6)}`; onChange({ ...block, nodes: [...nodes, { id, label: `Nodo ${nodes.length + 1}`, x: 50, y: 50, kind: 'service' }] }); };
+  const [open, setOpen] = useState(false);
   return <>
-    <label>Al hacer clic en un nodo<select value={block.detailView ?? 'drawer'} onChange={e => onChange({ ...block, detailView: e.target.value as typeof block.detailView })}>
+    <button type="button" className="primary-button full-width" onClick={() => setOpen(true)}>Editar diagrama a pantalla completa</button>
+    <label>Detalle del nodo en presentación<select value={block.detailView ?? 'drawer'} onChange={event => onChange({ ...block, detailView: event.target.value as typeof block.detailView })}>
       <option value="drawer">Panel lateral</option><option value="modal">Modal centrado</option><option value="inline">Panel debajo del diagrama</option>
     </select></label>
-    <p className="editor-hint">El clic abre el detalle y las conexiones del nodo. Probalo en la vista previa.</p>
-    <strong className="sub-group-title">Nodos</strong>
-    {nodes.map((node, i) => <div className="sub-editor" key={node.id}>
-      <ItemHead title={node.label || `Nodo ${i + 1}`} disabled={nodes.length <= 1} onRemove={() => removeNode(i)} />
-      <label>Etiqueta<input value={node.label} onChange={(e) => patchNode(i, { label: e.target.value })} /></label>
-      <label>Detalle<input value={node.caption ?? ''} onChange={(e) => patchNode(i, { caption: e.target.value })} /></label>
-      <label>Texto cuando no hay bloques<textarea value={node.text ?? ''} placeholder="Explicación, contexto o instrucciones…" onChange={e => patchNode(i, { text: e.target.value })} /></label>
-      {!node.blocks?.length && node.text && <button type="button" className="secondary-button" onClick={() => patchNode(i, { blocks: [{ type: 'text', text: node.text! }] })}>Usar texto como bloque</button>}
-      <NestedBlocksEditor label="Bloques del panel" blocks={node.blocks ?? []} onChange={blocks => patchNode(i, { blocks })} />
-      <p className="editor-hint">Agregá uno o varios bloques: se muestran en orden al abrir este nodo. Si hay bloques, reemplazan el texto simple.</p>
-      <div className="block-meta-row">
-        <label>X %<input type="number" min="0" max="100" value={node.x} onChange={(e) => patchNode(i, { x: Number(e.target.value) })} /></label>
-        <label>Y %<input type="number" min="0" max="100" value={node.y} onChange={(e) => patchNode(i, { y: Number(e.target.value) })} /></label>
-      </div>
-      <label>Tipo<select value={node.kind ?? 'service'} onChange={(e) => patchNode(i, { kind: e.target.value as ArchitectureNode['kind'] })}><option value="client">Cliente</option><option value="service">Servicio</option><option value="data">Datos</option><option value="cloud">Cloud</option></select></label>
-    </div>)}
-    <AddItem label="Nodo" onClick={addNode} />
-    <strong className="sub-group-title">Conexiones</strong>
-    {edges.map((edge, i) => <div className="sub-editor" key={i}>
-      <ItemHead title={`Conexión ${i + 1}`} onRemove={() => onChange({ ...block, edges: edges.filter((_, x) => x !== i) })} />
-      <div className="block-meta-row">
-        <label>Desde<select value={edge.from} onChange={(e) => onChange({ ...block, edges: edges.map((x, n) => n === i ? { ...x, from: e.target.value } : x) })}>{nodes.map((n) => <option key={n.id} value={n.id}>{n.label}</option>)}</select></label>
-        <label>Hasta<select value={edge.to} onChange={(e) => onChange({ ...block, edges: edges.map((x, n) => n === i ? { ...x, to: e.target.value } : x) })}>{nodes.map((n) => <option key={n.id} value={n.id}>{n.label}</option>)}</select></label>
-      </div>
-      <label>Etiqueta<input value={edge.label ?? ''} onChange={(e) => onChange({ ...block, edges: edges.map((x, n) => n === i ? { ...x, label: e.target.value } : x) })} /></label>
-    </div>)}
-    <AddItem label="Conexión" onClick={() => nodes.length >= 2 && onChange({ ...block, edges: [...edges, { from: nodes[0].id, to: nodes[1].id }] })} />
+    <p className="editor-hint">{block.nodes.length} elementos · {block.edges.length} conexiones. Insertá herramientas, asigná iconos y organizá la arquitectura en el editor visual.</p>
+    {open && <ArchitectureEditingDialog block={block} onChange={onChange} onClose={() => setOpen(false)}/>}
   </>;
 }
