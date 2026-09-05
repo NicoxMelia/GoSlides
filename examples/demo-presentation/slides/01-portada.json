@@ -1,9 +1,9 @@
 {
   "id": "portada",
   "layout": "title",
-  "eyebrow": "GOSLIDES · FORMAT V1",
+  "eyebrow": "GOSLIDES · FORMAT V2 · V0.15",
   "title": "Presentaciones modernas, versionables e interactivas.",
-  "subtitle": "Un renderer web para reemplazar el PPT estático cuando necesitás explicar ideas técnicas con más libertad.",
+  "subtitle": "Un formato web para explicar ideas técnicas con profundidad progresiva, interacción y control explícito de la IA.",
   "blocks": [
     {
       "type": "stats",

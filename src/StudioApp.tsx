@@ -169,6 +169,7 @@ export default function StudioApp() {
           <button className="studio-action" onClick={() => setScreen('published')}><div className="action-icon"><Eye /></div><span>VIEWER</span><h2>Ver las existentes</h2><p>Abrí exactamente el reproductor que usarán los estudiantes.</p></button>
           <button className="studio-action" onClick={() => setScreen('drafts')}><div className="action-icon"><BookOpen /></div><span>LOCAL</span><h2>Borradores</h2><p>Continuá presentaciones guardadas automáticamente en este navegador.</p></button>
           <button className="studio-action" onClick={() => fileRef.current?.click()}><div className="action-icon"><Import /></div><span>ZIP</span><h2>Importar presentación</h2><p>Abrí y editá un ZIP GoSlides existente sin escribir JSON.</p></button>
+          <a className="studio-action" href={`${base}capabilities/goslides-ai-capabilities.zip`} download><div className="action-icon"><Sparkles /></div><span>KIT IA</span><h2>Exportar capacidades</h2><p>Descargá temas, fuentes, componentes, esquemas y ejemplos para que una IA elija cómo construir la presentación.</p></a>
         </section>
 
         <section className="viewer-settings-card">

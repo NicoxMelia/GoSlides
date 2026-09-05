@@ -1,0 +1,52 @@
+{
+  "id": "v15-density-depth",
+  "layout": "default",
+  "sectionId": "section-v15",
+  "eyebrow": "V0.15 · DECISIONES DE GENERACIÓN",
+  "title": "Densidad y profundidad son decisiones distintas",
+  "subtitle": "Una presentación puede mostrar poco texto y conservar mucho material, o funcionar como una referencia visible y completa.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "quadrant",
+      "title": "Combinaciones posibles",
+      "rowAxis": "Profundidad conservada",
+      "colAxis": "Densidad visible",
+      "rowLabels": ["Baja", "Alta"],
+      "colLabels": ["Visual", "Documental"],
+      "cells": [
+        { "title": "Resumen ejecutivo", "text": "Pocas ideas visibles y poco material secundario.", "tone": "neutral" },
+        { "title": "Ficha compacta", "text": "Mucho contenido visible con alcance acotado.", "tone": "neutral" },
+        { "title": "Clase exploratoria", "text": "Superficie limpia con ejemplos, código y evidencia bajo demanda.", "tone": "success" },
+        { "title": "Referencia completa", "text": "Detalle visible y capas adicionales para consulta.", "tone": "success" }
+      ]
+    },
+    {
+      "type": "drawer",
+      "buttonLabel": "Ver cómo cambia la IA",
+      "title": "Efecto de cada dimensión",
+      "side": "right",
+      "width": "lg",
+      "blocks": [
+        {
+          "type": "compare",
+          "left": {
+            "label": "DENSIDAD",
+            "title": "Controla la superficie",
+            "items": ["Caracteres visibles", "Cantidad de bloques", "Elementos del canvas"]
+          },
+          "right": {
+            "label": "PROFUNDIDAD",
+            "title": "Controla el alcance",
+            "items": ["Ejemplos y evidencia", "Capas explorables", "Notas y apéndice"],
+            "highlight": true
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Separar densidad de profundidad permite pedir una clase completa sin llenar cada superficie de texto.",
+    "El perfil documentary amplía los umbrales, pero el detector de recortes continúa activo."
+  ]
+}

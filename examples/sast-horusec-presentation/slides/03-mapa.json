@@ -18,7 +18,22 @@
           "label": "Riesgo de seguridad",
           "x": 9,
           "y": 50,
-          "kind": "data"
+          "kind": "data",
+          "text": "Identificá qué podría comprometer la confidencialidad, integridad o disponibilidad del sistema. Ese contexto orienta qué controles aplicar y qué hallazgos priorizar.",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "Identificá qué podría comprometer la confidencialidad, integridad o disponibilidad del sistema. Ese contexto orienta qué controles aplicar y qué hallazgos priorizar."
+            },
+            {
+              "type": "bullets",
+              "items": [
+                "Qué información o servicio queremos proteger.",
+                "Qué impacto tendría una falla.",
+                "Qué parte del código requiere más atención."
+              ]
+            }
+          ]
         },
         {
           "id": "sast",
@@ -26,7 +41,20 @@
           "caption": "regla / análisis estático",
           "x": 28,
           "y": 50,
-          "kind": "service"
+          "kind": "service",
+          "text": "El análisis estático inspecciona el código sin ejecutarlo y señala patrones que coinciden con reglas de seguridad. Cada hallazgo es una señal para revisar, junto con su ubicación y severidad.",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "El análisis estático inspecciona el código sin ejecutarlo y señala patrones que coinciden con reglas de seguridad. Cada hallazgo es una señal para revisar, junto con su ubicación y severidad."
+            },
+            {
+              "type": "code",
+              "title": "Un hallazgo para revisar",
+              "language": "json",
+              "code": "{\n  \"severidad\": \"alta\",\n  \"archivo\": \"src/api/handler.ts\",\n  \"linea\": 42,\n  \"estado\": \"pendiente de revisión\"\n}"
+            }
+          ]
         },
         {
           "id": "triage",
@@ -34,7 +62,31 @@
           "caption": "interpretación + contexto",
           "x": 50,
           "y": 50,
-          "kind": "client"
+          "kind": "client",
+          "text": "Revisá el hallazgo con el contexto del código: ¿es alcanzable?, ¿hay controles que reduzcan el riesgo?, ¿es un falso positivo? Registrá la decisión, su justificación y la acción pendiente.",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "Revisá el hallazgo con el contexto del código: ¿es alcanzable?, ¿hay controles que reduzcan el riesgo?, ¿es un falso positivo? Registrá la decisión, su justificación y la acción pendiente."
+            },
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Revisar",
+                  "text": "Inspeccioná el código señalado y su contexto."
+                },
+                {
+                  "title": "Decidir",
+                  "text": "Confirmá el riesgo o justificá el falso positivo."
+                },
+                {
+                  "title": "Registrar",
+                  "text": "Dejá documentadas la decisión y la acción pendiente."
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "gate",
@@ -42,14 +94,50 @@
           "caption": "bloquea o informa",
           "x": 72,
           "y": 50,
-          "kind": "service"
+          "kind": "service",
+          "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El Quality Gate aplica esos criterios en el pipeline y hace explícitas las excepciones acordadas.",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El Quality Gate aplica esos criterios en el pipeline y hace explícitas las excepciones acordadas."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Criterio del equipo",
+              "text": "Definí el umbral y las excepciones antes de automatizar la decisión."
+            }
+          ]
         },
         {
           "id": "evidencia",
           "label": "Evidencia y métricas",
           "x": 92,
           "y": 50,
-          "kind": "data"
+          "kind": "data",
+          "text": "Conservá el resultado del análisis y las decisiones de revisión junto con la ejecución del pipeline. Usá esa evidencia para seguir hallazgos pendientes, correcciones y cambios en el tiempo.",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "Conservá el resultado del análisis y las decisiones de revisión junto con la ejecución del pipeline. Usá esa evidencia para seguir hallazgos pendientes, correcciones y cambios en el tiempo."
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Resultado",
+                  "text": "Hallazgos y estado del análisis en cada ejecución.",
+                  "icon": "file-text"
+                },
+                {
+                  "title": "Decisiones",
+                  "text": "Revisiones, correcciones y excepciones justificadas.",
+                  "icon": "check"
+                }
+              ]
+            }
+          ]
         }
       ],
       "edges": [
@@ -69,7 +157,8 @@
           "from": "gate",
           "to": "evidencia"
         }
-      ]
+      ],
+      "detailView": "drawer"
     },
     {
       "type": "callout",

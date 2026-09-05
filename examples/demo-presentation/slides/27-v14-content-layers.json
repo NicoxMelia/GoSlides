@@ -1,0 +1,62 @@
+{
+  "id": "v14-content-layers",
+  "layout": "default",
+  "sectionId": "section-v14",
+  "eyebrow": "V0.14 · MODELO DE CONTENIDO",
+  "title": "El modelo de contenido ahora tiene cuatro capas",
+  "subtitle": "La slide mantiene una idea legible y conserva el detalle en espacios que la audiencia abre cuando lo necesita.",
+  "transition": "slide",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1, 1],
+      "gap": 18,
+      "items": [
+        {
+          "title": "Lectura inmediata",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                { "value": "1", "label": "idea principal", "hint": "visible sin interacción" },
+                { "value": "2", "label": "capas en pantalla", "hint": "superficie y progresión" }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "Superficie",
+              "text": "Título, conclusión y evidencia imprescindible permanecen a la vista."
+            }
+          ]
+        },
+        {
+          "title": "Profundidad disponible",
+          "blocks": [
+            {
+              "type": "accordion",
+              "items": [
+                {
+                  "title": "Progresión",
+                  "text": "Fragments y pasos ordenan la explicación durante la exposición."
+                },
+                {
+                  "title": "Exploración",
+                  "text": "Tabs, acordeones, hotspots, modales y drawers guardan evidencia o implementación."
+                },
+                {
+                  "title": "Referencia",
+                  "text": "Notas y apéndices conservan el contexto que no necesita ocupar la superficie."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "v0.14 formalizó cuatro capas de contenido: superficie, progresión, exploración y referencia.",
+    "La primera capa debe comunicar por sí sola porque también representa el estado inicial de las exportaciones estáticas."
+  ]
+}

@@ -1,13 +1,15 @@
-import { Fragment, useId, useMemo, useState } from 'react';
+import { Fragment, useId, useRef, useState } from 'react';
 import {
   AlertTriangle, Check, CheckCircle2, Info, ShieldAlert,
 } from 'lucide-react';
-import type { AnimationMeta, ArchitectureNode, ArrowStyle, CanvasElement, Slide, SlideBlock, SlideMaster } from '../types';
+import type { AnimationMeta, ArrowStyle, CanvasElement, Slide, SlideBlock, SlideMaster } from '../types';
 import { resolveAsset } from '../lib/presentationLoader';
 import { IconGlyph } from './IconLibrary';
 import { RichText } from './RichText';
 import { CodeBlockView } from './CodeBlock';
 import { MarkdownBlockView } from './MarkdownBlock';
+import { ArchitectureBlock } from './ArchitectureBlock';
+import { SlideDialog } from './SlideOverlay';
 
 function easingValue(easing?: AnimationMeta['animationEasing']) {
   if (easing === 'spring') return 'cubic-bezier(.2,1.45,.45,1)';
@@ -43,26 +45,51 @@ export function Block({ block, assets, step = 999 }: { block: SlideBlock; assets
   if (block.type === 'callout') { const tone = block.tone ?? 'info'; const ToneIcon = toneIcons[tone]; return <div className={`callout ${tone}`}><div className="callout-head"><ToneIcon size={15} />{block.title && <strong><RichText text={block.title} /></strong>}</div><p><RichText text={block.text} /></p></div>; }
   if (block.type === 'quadrant') return <QuadrantBlock block={block} />;
   if (block.type === 'columns') return <ColumnsBlock block={block} assets={assets} step={step} />;
-  if (block.type === 'tabs') return <TabsBlock block={block} />;
-  if (block.type === 'steps') return <StepsBlock block={block} />;
-  if (block.type === 'architecture') return <ArchitectureBlock block={block} />;
+  if (block.type === 'tabs') return <TabsBlock block={block} assets={assets} step={step} />;
+  if (block.type === 'steps') return <StepsBlock block={block} assets={assets} step={step} />;
+  if (block.type === 'architecture') return <ArchitectureBlock block={block} renderContent={node => <ProgressiveBody key={node.id} content={node} assets={assets} step={999} className="arch-detail-content" />} />;
   if (block.type === 'tooltip') return <TooltipBlock block={block} />;
-  if (block.type === 'modal') return <ModalBlock block={block} />;
+  if (block.type === 'modal') return <ModalBlock block={block} assets={assets} step={step} />;
+  if (block.type === 'accordion') return <AccordionBlock block={block} assets={assets} step={step} />;
+  if (block.type === 'drawer') return <DrawerBlock block={block} assets={assets} step={step} />;
   if (block.type === 'flipcard') return <FlipCardBlock block={block} />;
   if (block.type === 'beforeAfter') return <BeforeAfterBlock block={block} />;
-  if (block.type === 'hotspots') return <HotspotsBlock block={block} assets={assets} />;
+  if (block.type === 'hotspots') return <HotspotsBlock block={block} assets={assets} step={step} />;
   if (block.type === 'chart') return <ChartBlock block={block} />;
   if (block.type === 'simulation') return <SimulationBlock block={block} />;
   return null;
 }
 
-function TabsBlock({ block }: { block: Extract<SlideBlock, { type: 'tabs' }> }) { const [active, setActive] = useState(0); const tab = block.tabs[active]; return <div className="tabs-block"><div className="tabs-list">{block.tabs.map((item, i) => <button className={active === i ? 'active' : ''} onClick={() => setActive(i)} key={item.label}>{item.label}</button>)}</div><div className="tab-panel">{tab?.title && <h3>{tab.title}</h3>}<p>{tab?.text}</p></div></div>; }
-function StepsBlock({ block }: { block: Extract<SlideBlock, { type: 'steps' }> }) { const [active, setActive] = useState(0); return <div className="steps-block">{block.title && <h3>{block.title}</h3>}<div className="step-chips">{block.items.map((item, i) => <button className={active === i ? 'active' : ''} onClick={() => setActive(i)} key={item.title}><span>{i + 1}</span>{item.title}</button>)}</div><div className="step-detail"><strong>{block.items[active]?.title}</strong><p>{block.items[active]?.text}</p></div></div>; }
+function ProgressiveBody({ content, assets, step, className = '' }: { content?: { text?: string; blocks?: SlideBlock[] }; assets: Record<string, string>; step: number; className?: string }) {
+  if (content?.blocks?.length) return <div className={`progressive-block-stack ${className}`}>{content.blocks.map((inner, i) => <Animated key={i} meta={inner} step={step}><Block block={inner} assets={assets} step={step} /></Animated>)}</div>;
+  return content?.text ? <p className={className}><RichText text={content.text} /></p> : null;
+}
+function TabsBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'tabs' }>; assets: Record<string, string>; step: number }) { const [active, setActive] = useState(0); const tab = block.tabs[active]; return <div className="tabs-block"><div className="tabs-list" role="tablist">{block.tabs.map((item, i) => <button role="tab" aria-selected={active===i} className={active === i ? 'active' : ''} onClick={() => setActive(i)} key={item.label}>{item.label}</button>)}</div><div className="tab-panel" role="tabpanel">{tab?.title && <h3><RichText text={tab.title} /></h3>}<ProgressiveBody content={tab} assets={assets} step={step}/></div></div>; }
+function StepsBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'steps' }>; assets: Record<string, string>; step: number }) { const [active, setActive] = useState(0); const item=block.items[active]; return <div className="steps-block">{block.title && <h3><RichText text={block.title} /></h3>}<div className="step-chips">{block.items.map((entry, i) => <button className={active === i ? 'active' : ''} aria-pressed={active===i} onClick={() => setActive(i)} key={entry.title}><span>{i + 1}</span>{entry.title}</button>)}</div><div className="step-detail">{item&&<strong><RichText text={item.title}/></strong>}<ProgressiveBody content={item} assets={assets} step={step}/></div></div>; }
 function TooltipBlock({ block }: { block: Extract<SlideBlock, { type: 'tooltip' }> }) { return <span className="tooltip-block" tabIndex={0}>{block.label}<span className="tooltip-bubble">{block.text}</span></span>; }
-function ModalBlock({ block }: { block: Extract<SlideBlock, { type: 'modal' }> }) { const [open, setOpen] = useState(false); return <><button className="interactive-button" onClick={() => setOpen(true)}>{block.buttonLabel}</button>{open && <div className="slide-modal-backdrop" onClick={() => setOpen(false)}><div className="slide-modal" onClick={(e) => e.stopPropagation()}><button className="modal-close" onClick={() => setOpen(false)}>×</button><h3>{block.title}</h3><p>{block.text}</p></div></div>}</>; }
+function ModalBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'modal' }>; assets: Record<string, string>; step: number }) {
+  const [open, setOpen] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
+  return <><button ref={trigger} type="button" className="interactive-button" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(true)}>{block.buttonLabel}</button>{open && <SlideDialog anchor={trigger} kind="modal" title={block.title} onClose={() => setOpen(false)}><ProgressiveBody content={block} assets={assets} step={step}/></SlideDialog>}</>;
+}
+function AccordionBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'accordion' }>; assets: Record<string, string>; step: number }) {
+  const [open, setOpen] = useState<Set<number>>(() => new Set(block.items.length ? [0] : []));
+  const toggle = (index: number) => setOpen((current) => {
+    const next = block.allowMultiple ? new Set(current) : new Set<number>();
+    if (!current.has(index)) next.add(index);
+    else if (block.allowMultiple) next.delete(index);
+    return next;
+  });
+  return <div className="accordion-block">{block.title&&<h3><RichText text={block.title}/></h3>}{block.items.map((item,index)=>{const expanded=open.has(index);return <section className={expanded?'open':''} key={`${item.title}-${index}`}><button aria-expanded={expanded} onClick={()=>toggle(index)}><span><RichText text={item.title}/></span><i aria-hidden="true">⌄</i></button>{expanded&&<div className="accordion-panel"><ProgressiveBody content={item} assets={assets} step={step}/></div>}</section>})}</div>;
+}
+function DrawerBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'drawer' }>; assets: Record<string, string>; step: number }) {
+  const [open, setOpen] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
+  return <><button ref={trigger} type="button" className="interactive-button drawer-trigger" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(true)}>{block.buttonLabel}</button>{open && <SlideDialog anchor={trigger} kind="drawer" title={block.title} side={block.side} width={block.width} onClose={() => setOpen(false)}><ProgressiveBody content={block} assets={assets} step={step}/></SlideDialog>}</>;
+}
 function FlipCardBlock({ block }: { block: Extract<SlideBlock, { type: 'flipcard' }> }) { const [flipped, setFlipped] = useState(false); return <button className={`flip-card ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}><span className="flip-inner"><span className="flip-face flip-front"><strong>{block.frontTitle}</strong>{block.frontText && <small>{block.frontText}</small>}</span><span className="flip-face flip-back"><strong>{block.backTitle}</strong><small>{block.backText}</small></span></span></button>; }
 function BeforeAfterBlock({ block }: { block: Extract<SlideBlock, { type: 'beforeAfter' }> }) { const [value, setValue] = useState(50); return <div className="before-after"><div className="before-after-copy"><div><span>{block.beforeLabel ?? 'Antes'}</span><p>{block.beforeText}</p></div><div><span>{block.afterLabel ?? 'Después'}</span><p>{block.afterText}</p></div></div><input aria-label="Comparar antes y después" type="range" min="0" max="100" value={value} onChange={(e) => setValue(Number(e.target.value))} /><div className="before-after-track"><span style={{ width: `${value}%` }} /></div></div>; }
-function HotspotsBlock({ block, assets }: { block: Extract<SlideBlock, { type: 'hotspots' }>; assets: Record<string, string> }) { const [active, setActive] = useState<number | null>(null); return <div className="hotspot-wrap"><img src={resolveAsset(block.src, assets)} alt={block.alt ?? ''} />{block.points.map((point, i) => <Fragment key={i}><button className={`hotspot-dot ${active === i ? 'active' : ''}`} style={{ left: `${point.x}%`, top: `${point.y}%` }} onClick={() => setActive(active === i ? null : i)}>{point.label}</button>{active === i && <div className="hotspot-pop" style={{ left: `${Math.min(point.x + 4, 68)}%`, top: `${Math.min(point.y + 4, 72)}%` }}>{point.text}</div>}</Fragment>)}</div>; }
+function HotspotsBlock({ block, assets, step }: { block: Extract<SlideBlock, { type: 'hotspots' }>; assets: Record<string, string>; step: number }) { const [active, setActive] = useState<number | null>(null); return <div className="hotspot-wrap"><img src={resolveAsset(block.src, assets)} alt={block.alt ?? ''} />{block.points.map((point, i) => <Fragment key={i}><button className={`hotspot-dot ${active === i ? 'active' : ''}`} aria-expanded={active===i} style={{ left: `${point.x}%`, top: `${point.y}%` }} onClick={() => setActive(active === i ? null : i)}>{point.label}</button>{active === i && <div className="hotspot-pop" style={{ left: `${Math.min(point.x + 4, 68)}%`, top: `${Math.min(point.y + 4, 72)}%` }}><ProgressiveBody content={point} assets={assets} step={step}/></div>}</Fragment>)}</div>; }
 
 /** Matriz 2x2 (p.ej. verdadero/falso positivo/negativo): dos ejes con etiqueta y cuatro celdas con tono semántico. */
 function QuadrantBlock({ block }: { block: Extract<SlideBlock, { type: 'quadrant' }> }) {
@@ -111,19 +138,6 @@ function ChartBlock({ block }: { block: Extract<SlideBlock, { type: 'chart' }> }
   </div>;
 }
 function SimulationBlock({ block }: { block: Extract<SlideBlock, { type: 'simulation' }> }) { const min = block.min ?? 0; const max = block.max ?? 100; const [value, setValue] = useState(block.initial ?? Math.round((min + max) / 2)); const percent = ((value - min) / Math.max(1, max - min)) * 100; const pods = Math.max(1, (block.podsBase ?? 1) + Math.floor((value - min) / Math.max(1, block.podsStep ?? 20))); return <div className="simulation-block">{block.title && <h3>{block.title}</h3>}<div className="sim-head"><span>{block.metricLabel ?? 'Carga'}</span><strong>{value}{block.unit ?? '%'}</strong></div><input type="range" min={min} max={max} value={value} onChange={(e) => setValue(Number(e.target.value))} /><div className="meter"><span style={{ width: `${percent}%` }} /></div><div className="pods"><span>Pods</span><div>{Array.from({ length: Math.min(12, pods) }).map((_, i) => <i key={i} />)}</div><strong>{pods}</strong></div></div>; }
-
-function nodeClass(node: ArchitectureNode) { return `arch-node ${node.kind ?? 'service'}`; }
-function architectureEndpoints(a: ArchitectureNode, b: ArchitectureNode) {
-  const dx=b.x-a.x,dy=b.y-a.y;
-  const scale=1/Math.max(Math.abs(dx)/8.3,Math.abs(dy)/7.2,1);
-  return {x1:a.x+dx*scale,y1:a.y+dy*scale,x2:b.x-dx*scale,y2:b.y-dy*scale};
-}
-function ArchitectureBlock({ block }: { block: Extract<SlideBlock, { type: 'architecture' }> }) {
-  const [active, setActive] = useState<string | null>(null);
-  const markerId = `arch-arrow-${useId().replace(/[:]/g,'')}`;
-  const byId = useMemo(() => new Map(block.nodes.map((n) => [n.id, n])), [block.nodes]);
-  return <div className="architecture-canvas"><svg className="arch-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><marker id={markerId} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z"/></marker></defs>{block.edges.map((edge, i) => { const a = byId.get(edge.from); const b = byId.get(edge.to); if (!a || !b) return null; const {x1,y1,x2,y2}=architectureEndpoints(a,b); const mx=(x1+x2)/2,my=(y1+y2)/2; return <g key={i} className={active === edge.from || active === edge.to ? 'active' : ''}><path d={`M ${x1} ${y1} Q ${mx} ${my-1.2} ${x2} ${y2}`} markerEnd={`url(#${markerId})`} />{edge.label && <text className="arch-edge-label" x={mx} y={my-2.8}>{edge.label}</text>}</g>; })}</svg>{block.nodes.map((node) => <button key={node.id} className={`${nodeClass(node)} ${active === node.id ? 'active' : ''}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} onClick={() => setActive(active === node.id ? null : node.id)}><i className="arch-kind" aria-hidden="true"/><strong>{node.label}</strong>{node.caption && <span>{node.caption}</span>}</button>)}</div>;
-}
 
 function canvasWrapperStyle(element: CanvasElement): React.CSSProperties {
   return { position:'absolute',left:`${element.x}%`,top:`${element.y}%`,width:`${element.w}%`,height:`${element.h}%`,zIndex:element.zIndex??1 };

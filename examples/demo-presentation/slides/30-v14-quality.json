@@ -1,0 +1,31 @@
+{
+  "id": "v14-quality",
+  "layout": "default",
+  "sectionId": "section-v14",
+  "eyebrow": "V0.14 · CALIDAD DEL FORMATO",
+  "title": "El auditor recorre cada nivel de contenido",
+  "subtitle": "La validación ya no termina en el bloque exterior. Sigue cada rama y reporta la ubicación exacta del problema.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "architecture",
+      "nodes": [
+        { "id": "slide", "label": "Slide", "caption": "blocks[]", "x": 12, "y": 50, "kind": "client" },
+        { "id": "container", "label": "Componente", "caption": "tabs, steps o drawer", "x": 38, "y": 50, "kind": "service" },
+        { "id": "nested", "label": "Blocks internos", "caption": "contenido recursivo", "x": 66, "y": 50, "kind": "service" },
+        { "id": "rules", "label": "Reglas", "caption": "tipo, fragment y profundidad", "x": 90, "y": 50, "kind": "data" }
+      ],
+      "edges": [
+        { "from": "slide", "to": "container", "label": "contiene" },
+        { "from": "container", "to": "nested", "label": "abre" },
+        { "from": "nested", "to": "rules", "label": "valida" }
+      ]
+    }
+  ],
+  "notes": [
+    "La auditoría usa rutas detalladas, por ejemplo bloque[0].tabs[1][2], para facilitar el diagnóstico.",
+    "La advertencia de profundidad evita estructuras difíciles de editar sin invalidar presentaciones legítimas.",
+    "El auditor acepta accordion y drawer, sigue los grupos internos y valida type, fragment y animation en cada nivel.",
+    "Las regresiones comprueban el renderer y los estilos de ambos componentes."
+  ]
+}

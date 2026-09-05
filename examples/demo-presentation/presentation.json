@@ -3,14 +3,22 @@
   "version": 2,
   "id": "demo-goslides",
   "title": "GoSlides — Demo interactiva",
-  "subtitle": "Editor visual v12 + Viewer estable",
-  "description": "Demo de GoSlides v12: estabilización integral del renderer, animaciones de canvas corregidas, arquitectura y conectores renovados, código Carbon reparado, controles legibles y Markdown/exportación.",
+  "subtitle": "v0.14 profundidad progresiva + v0.15 autoría asistida",
+  "description": "Demo detallada de GoSlides v0.14 y v0.15: contenido anidado, acordeones, drawers, perfil de IA, diagnóstico de densidad, detección de recortes y correcciones reversibles.",
   "author": "GoSlides",
   "tags": [
     "Demo",
     "React",
     "GitHub Pages"
   ],
+  "authoring": {
+    "density": "detailed",
+    "depth": "workshop",
+    "interaction": "frequent",
+    "overflowStrategy": "reveal",
+    "durationMinutes": 35,
+    "preserveSourceMaterial": true
+  },
   "theme": {
     "mode": "dark",
     "accent": "#8b6cff",
@@ -55,7 +63,17 @@
     "slides/22-v9-sketch-libraries.json",
     "slides/23-v9-hybrid-reliability.json",
     "slides/24-v10-code-emoji.json",
-    "slides/25-v11-markdown-export.json"
+    "slides/25-v11-markdown-export.json",
+    "slides/26-v14-progressive-depth.json",
+    "slides/27-v14-content-layers.json",
+    "slides/28-v14-nested-components.json",
+    "slides/29-v14-studio-authoring.json",
+    "slides/30-v14-quality.json",
+    "slides/31-v15-authoring-profile.json",
+    "slides/32-v15-density-depth.json",
+    "slides/33-v15-diagnostics.json",
+    "slides/34-v15-remediation.json",
+    "slides/35-v15-contract.json"
   ],
   "publicId": "jwiL_O4kFLdlBsEXs6yMZQ",
   "masters": [
@@ -63,7 +81,7 @@
       "id": "master-tech",
       "name": "Tech Header",
       "background": "linear-gradient(135deg,#0a1020,#101936 55%,#17152f)",
-      "footer": "GoSlides v12 · Master Slide",
+      "footer": "GoSlides v0.15 · Master Slide",
       "canvas": [
         {
           "id": "master-accent",
@@ -138,6 +156,14 @@
     {
       "id": "section-v11",
       "name": "Novedades v11"
+    },
+    {
+      "id": "section-v14",
+      "name": "Novedades v0.14"
+    },
+    {
+      "id": "section-v15",
+      "name": "Novedades v0.15"
     }
   ]
 }

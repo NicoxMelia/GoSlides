@@ -7,10 +7,15 @@ const root = process.cwd();
 const sourceDir = path.join(root, 'presentations');
 const publicRoot = path.join(root, '.generated-public');
 const outDir = path.join(publicRoot, 'presentations');
+const capabilitiesOutDir = path.join(publicRoot, 'capabilities');
 
 fs.rmSync(publicRoot, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
+fs.mkdirSync(capabilitiesOutDir, { recursive: true });
 fs.writeFileSync(path.join(publicRoot, '.nojekyll'), '');
+
+const capabilityPack = path.join(root, 'templates', 'goslides-ai-capabilities.zip');
+if (fs.existsSync(capabilityPack)) fs.copyFileSync(capabilityPack, path.join(capabilitiesOutDir, 'goslides-ai-capabilities.zip'));
 
 if (!fs.existsSync(sourceDir)) fs.mkdirSync(sourceDir, { recursive: true });
 const zipFiles = fs.readdirSync(sourceDir).filter((name) => name.toLowerCase().endsWith('.zip')).sort();

@@ -1,0 +1,74 @@
+{
+  "id": "v14-nested-components",
+  "layout": "default",
+  "sectionId": "section-v14",
+  "eyebrow": "V0.14 · BLOQUES ANIDADOS",
+  "title": "Seis componentes admiten blocks",
+  "subtitle": "Cada sección puede contener Markdown, código, gráficos o imágenes. text sigue siendo compatible y blocks tiene prioridad.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "label": "Tabs y steps",
+          "title": "Alternativas y procesos con contenido real",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "json",
+              "title": "tab-content.json",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "showLineNumbers": true,
+              "code": "{\n  \"label\": \"Implementación\",\n  \"blocks\": [\n    { \"type\": \"code\", \"code\": \"...\" },\n    { \"type\": \"chart\", \"values\": [42, 71] }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "label": "Accordion",
+          "title": "Varias explicaciones en una superficie",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Apertura independiente",
+              "text": "allowMultiple permite comparar secciones sin cerrar la anterior. La primera queda abierta para que el estado inicial siga siendo útil."
+            }
+          ]
+        },
+        {
+          "label": "Modal y drawer",
+          "title": "Detalle extenso bajo demanda",
+          "blocks": [
+            {
+              "type": "compare",
+              "left": {
+                "label": "MODAL",
+                "title": "Foco central",
+                "subtitle": "Interrumpe la lectura",
+                "items": ["Advertencias", "Definiciones", "Casos puntuales"]
+              },
+              "right": {
+                "label": "DRAWER",
+                "title": "Panel lateral",
+                "subtitle": "Conserva el contexto",
+                "items": ["Metodología", "Código", "Fuentes y tablas"],
+                "highlight": true
+              }
+            }
+          ]
+        },
+        {
+          "label": "Hotspots",
+          "title": "Una imagen puede alojar explicaciones compuestas",
+          "text": "Cada punto acepta blocks, por lo que una zona puede abrir texto, código o una visualización vinculada."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Los componentes ampliados son tabs, steps, accordion, modal, drawer y hotspots.",
+    "El contrato ProgressiveContent conserva text para archivos anteriores y suma blocks para composición enriquecida."
+  ]
+}

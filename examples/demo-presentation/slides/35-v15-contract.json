@@ -1,0 +1,50 @@
+{
+  "id": "v15-contract",
+  "layout": "default",
+  "sectionId": "section-v15",
+  "eyebrow": "V0.15 · CONTRATO PORTABLE",
+  "title": "El contrato viaja dentro del ZIP",
+  "subtitle": "La configuración queda junto al contenido, se valida al auditar y puede alimentar futuros generadores sin depender de una sesión anterior.",
+  "transition": "slide",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1.15, 0.85],
+      "gap": 18,
+      "items": [
+        {
+          "title": "presentation.json",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "json",
+              "title": "authoring",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "showLineNumbers": true,
+              "code": "{\n  \"authoring\": {\n    \"density\": \"detailed\",\n    \"depth\": \"workshop\",\n    \"interaction\": \"frequent\",\n    \"overflowStrategy\": \"reveal\",\n    \"durationMinutes\": 35,\n    \"preserveSourceMaterial\": true\n  }\n}"
+            }
+          ]
+        },
+        {
+          "title": "Ciclo completo",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                { "title": "Configurar", "text": "El autor ajusta el perfil en el panel IA." },
+                { "title": "Generar", "text": "La IA usa el contrato para distribuir el material." },
+                { "title": "Diagnosticar", "text": "Studio mide densidad y recortes por slide." },
+                { "title": "Corregir", "text": "El autor redistribuye contenido y exporta el ZIP actualizado." }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "v0.15 completa el circuito de autoría: intención persistida, generación informada, diagnóstico visible y corrección reversible.",
+    "El auditor rechaza valores desconocidos y exige que durationMinutes sea un entero positivo."
+  ]
+}

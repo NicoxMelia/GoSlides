@@ -1,0 +1,62 @@
+{
+  "id": "v14-progressive-depth",
+  "layout": "default",
+  "sectionId": "section-v14",
+  "eyebrow": "V0.14 · PROFUNDIDAD PROGRESIVA",
+  "title": "Más material, sin saturar la slide",
+  "subtitle": "Abrí las secciones y el panel lateral: cada capa puede contener bloques completos.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "accordion",
+      "title": "Explorá la explicación",
+      "allowMultiple": true,
+      "items": [
+        {
+          "title": "1. La idea principal permanece visible",
+          "text": "La audiencia recibe primero una conclusión clara. El contexto, la evidencia y la implementación siguen disponibles bajo demanda."
+        },
+        {
+          "title": "2. La implementación conserva su riqueza",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "typescript",
+              "title": "progressive-content.ts",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "showLineNumbers": true,
+              "code": "const slide = {\n  surface: 'conclusión',\n  explore: ['evidencia', 'código', 'datos']\n};"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "drawer",
+      "buttonLabel": "Abrir evidencia y métricas",
+      "title": "Material complementario",
+      "side": "right",
+      "width": "lg",
+      "blocks": [
+        {
+          "type": "markdown",
+          "appearance": "minimal",
+          "markdown": "### Una segunda capa real\n\nEl drawer acepta **Markdown**, tablas, código, imágenes y visualizaciones. La IA ya no necesita descartar material útil para mantener limpia la composición."
+        },
+        {
+          "type": "chart",
+          "chart": "bar",
+          "title": "Distribución del contenido",
+          "labels": ["Visible", "Interactivo", "Referencia"],
+          "values": [35, 45, 20],
+          "suffix": "%",
+          "showValues": true
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Esta slide demuestra el contenido progresivo de v0.14. El primer panel queda abierto para que la exportación estática conserve el mensaje principal."
+  ]
+}

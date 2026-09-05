@@ -1,0 +1,47 @@
+{
+  "id": "v14-studio-authoring",
+  "layout": "default",
+  "sectionId": "section-v14",
+  "eyebrow": "V0.14 · STUDIO",
+  "title": "Studio edita la profundidad desde el panel visual",
+  "subtitle": "El autor agrega secciones, elige entre texto o bloques y mantiene la estructura sin editar JSON manualmente.",
+  "transition": "slide",
+  "blocks": [
+    {
+      "type": "steps",
+      "title": "Flujo de edición",
+      "items": [
+        {
+          "title": "Insertar el componente",
+          "text": "Accordion y drawer aparecen en la biblioteca de bloques y también pueden usarse como objetos del canvas."
+        },
+        {
+          "title": "Elegir la profundidad",
+          "text": "Cada sección conserva text para una edición rápida o cambia a blocks para alojar contenido compuesto."
+        },
+        {
+          "title": "Editar los bloques internos",
+          "blocks": [
+            {
+              "type": "cards",
+              "columns": 3,
+              "items": [
+                { "title": "Reordenar", "text": "Cada bloque mantiene su posición dentro de la sección." },
+                { "title": "Cambiar tipo", "text": "Markdown, código y charts usan sus editores habituales." },
+                { "title": "Anidar", "text": "La profundidad máxima recomendada es de ocho niveles." }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Verificar el estado inicial",
+          "text": "La primera sección comunica el resumen que también aparece en PDF y PNG."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "BlockEditor incorpora controles para crear, editar, reordenar y eliminar contenido anidado.",
+    "Los bloques progresivos también funcionan dentro de un CanvasElement de tipo block."
+  ]
+}

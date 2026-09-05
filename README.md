@@ -1,4 +1,4 @@
-# GoSlides v0.13 — Studio visual + Viewer público
+# GoSlides v0.15 — Studio visual + Viewer público
 
 GoSlides está dividido en dos aplicaciones independientes dentro del mismo proyecto:
 
@@ -16,6 +16,22 @@ npm run dev:studio
 
 Studio abre en `http://localhost:5173/studio.html`.
 
+## Paquete de capacidades para IA
+
+Studio ofrece **Exportar capacidades**, un ZIP autocontenido que describe todos los
+componentes, temas, fuentes, layouts, animaciones e interacciones disponibles. El
+paquete incluye JSON Schemas, guía de selección semántica, ejemplos unitarios y la
+demo completa para que una IA pueda decidir qué recursos usar sin conocer el código.
+
+Se regenera desde las definiciones reales de Studio con:
+
+```bash
+npm run pack:capabilities
+```
+
+El resultado estable queda en `templates/goslides-ai-capabilities.zip`; también se
+genera una copia versionada para poder asociar el contrato con una release concreta.
+
 Para probar el Viewer:
 
 ```bash
@@ -27,6 +43,41 @@ La demo incluida usa:
 ```text
 /p/jwiL_O4kFLdlBsEXs6yMZQ
 ```
+
+## Nuevo en v15 — perfil de IA y diagnóstico de contenido
+
+Studio incorpora un contrato persistente para que la generación deje de depender
+de instrucciones implícitas y pueda trabajar con presentaciones visuales,
+detalladas o documentales:
+
+- el panel IA persiste densidad, profundidad, interacción, duración y estrategia de
+  overflow dentro del ZIP;
+- Studio combina estimación semántica y medición del render para detectar densidad,
+  elementos fuera del canvas y contenido realmente recortado;
+- las recomendaciones respetan la estrategia elegida: revelar, dividir, enviar al
+  apéndice o conservar todo;
+- desde el diagnóstico se puede dividir una slide o convertir material secundario
+  en un drawer, con ambas acciones disponibles en el historial;
+- el auditor valida el objeto `authoring` y sus valores.
+
+La demo dedica cinco slides a v0.14 y cinco a v0.15, con ejemplos interactivos del
+modelo de capas, el contrato de generación, el diagnóstico y las correcciones.
+
+## Nuevo en v14 — profundidad progresiva
+
+GoSlides deja de tratar la interactividad como una colección de widgets de texto
+corto y permite componer contenido de profundidad:
+
+- tabs, steps, modales y hotspots pueden contener bloques completos;
+- nuevo bloque accordion para revelar una o varias secciones;
+- nuevo bloque drawer para abrir material complementario en un panel lateral;
+- Studio incluye edición visual de los bloques anidados;
+- el auditor recorre y valida también el contenido anidado;
+- docs/AI_AUTHORING.md define perfiles de densidad, recetas y reglas para que una
+  IA distribuya el material entre superficie, progresión, exploración y referencia.
+
+Los campos text anteriores continúan siendo válidos. Cuando un componente declara
+blocks, el Viewer utiliza el contenido enriquecido.
 
 
 

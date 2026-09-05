@@ -4,11 +4,19 @@
   "id": "mi-presentacion",
   "title": "Mi presentación",
   "subtitle": "Plantilla inicial",
-  "description": "Plantilla inicial compatible con GoSlides Studio v9.",
+  "description": "Plantilla inicial compatible con GoSlides Studio v15.",
   "author": "Tu nombre",
   "tags": [
     "Template"
   ],
+  "authoring": {
+    "density": "balanced",
+    "depth": "class",
+    "interaction": "occasional",
+    "overflowStrategy": "reveal",
+    "durationMinutes": 20,
+    "preserveSourceMaterial": true
+  },
   "theme": {
     "mode": "dark",
     "accent": "#8b6cff",

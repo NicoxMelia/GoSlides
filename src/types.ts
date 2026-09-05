@@ -52,6 +52,21 @@ export interface PresentationSection {
   name: string;
 }
 
+export type ContentDensity = 'visual' | 'balanced' | 'detailed' | 'documentary';
+export type PresentationDepth = 'summary' | 'class' | 'workshop' | 'reference';
+export type InteractionLevel = 'none' | 'occasional' | 'frequent';
+export type OverflowStrategy = 'split' | 'reveal' | 'appendix' | 'preserve';
+
+/** Preferencias persistidas para generadores de IA y diagnósticos de Studio. */
+export interface AuthoringPreferences {
+  density?: ContentDensity;
+  depth?: PresentationDepth;
+  interaction?: InteractionLevel;
+  overflowStrategy?: OverflowStrategy;
+  durationMinutes?: number;
+  preserveSourceMaterial?: boolean;
+}
+
 export interface PresentationManifest {
   format: 'goslides';
   version: 1 | 2;
@@ -66,6 +81,7 @@ export interface PresentationManifest {
   masters?: SlideMaster[];
   componentStyles?: ComponentStylePreset[];
   sections?: PresentationSection[];
+  authoring?: AuthoringPreferences;
   cover?: string;
   slides: string[];
 }
@@ -171,6 +187,17 @@ interface BlockMeta extends AnimationMeta {}
 
 export type ChartKind = 'bar' | 'line' | 'area' | 'donut' | 'pie' | 'radar' | 'progress' | 'gauge' | 'funnel';
 
+/**
+ * Contenido progresivo. "text" conserva compatibilidad con presentaciones v2
+ * existentes y "blocks" permite que la IA componga detalle real (Markdown,
+ * código, charts, imágenes, etc.) dentro de un componente interactivo.
+ * Cuando existen ambos, el renderer prioriza "blocks".
+ */
+export interface ProgressiveContent {
+  text?: string;
+  blocks?: SlideBlock[];
+}
+
 export type SlideBlock =
   | (BlockMeta & { type: 'text'; text: string; lead?: boolean })
   | (BlockMeta & { type: 'markdown'; markdown: string; appearance?: MarkdownAppearance })
@@ -182,18 +209,20 @@ export type SlideBlock =
   | (BlockMeta & { type: 'terminal'; title?: string; command: string; output?: string })
   | (BlockMeta & { type: 'image'; src: string; alt?: string; caption?: string; fit?: 'contain' | 'cover' })
   | (BlockMeta & { type: 'timeline'; items: Array<{ title: string; text?: string }> })
-  | (BlockMeta & { type: 'tabs'; tabs: Array<{ label: string; title?: string; text: string }> })
-  | (BlockMeta & { type: 'steps'; title?: string; items: Array<{ title: string; text: string }> })
-  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[] })
+  | (BlockMeta & { type: 'tabs'; tabs: Array<ProgressiveContent & { label: string; title?: string }> })
+  | (BlockMeta & { type: 'steps'; title?: string; items: Array<ProgressiveContent & { title: string }> })
+  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[]; detailView?: 'drawer' | 'modal' | 'inline' })
   | (BlockMeta & { type: 'quote'; text: string; author?: string })
   | (BlockMeta & { type: 'callout'; title?: string; text: string; tone?: 'info' | 'success' | 'warning' | 'danger' })
   | (BlockMeta & { type: 'quadrant'; title?: string; rowAxis?: string; colAxis?: string; rowLabels: [string, string]; colLabels: [string, string]; cells: [QuadrantCell, QuadrantCell, QuadrantCell, QuadrantCell] })
   | (BlockMeta & { type: 'columns'; ratio?: number[]; gap?: number; items: Array<{ title?: string; blocks: SlideBlock[] }> })
   | (BlockMeta & { type: 'tooltip'; label: string; text: string })
-  | (BlockMeta & { type: 'modal'; buttonLabel: string; title: string; text: string })
+  | (BlockMeta & { type: 'modal'; buttonLabel: string; title: string; text?: string; blocks?: SlideBlock[] })
+  | (BlockMeta & { type: 'accordion'; title?: string; allowMultiple?: boolean; items: Array<ProgressiveContent & { title: string }> })
+  | (BlockMeta & { type: 'drawer'; buttonLabel: string; title: string; text?: string; blocks?: SlideBlock[]; side?: 'left' | 'right'; width?: 'sm' | 'md' | 'lg' })
   | (BlockMeta & { type: 'flipcard'; frontTitle: string; frontText?: string; backTitle: string; backText: string })
   | (BlockMeta & { type: 'beforeAfter'; beforeLabel?: string; afterLabel?: string; beforeText: string; afterText: string })
-  | (BlockMeta & { type: 'hotspots'; src: string; alt?: string; points: Array<{ x: number; y: number; label: string; text: string }> })
+  | (BlockMeta & { type: 'hotspots'; src: string; alt?: string; points: Array<ProgressiveContent & { x: number; y: number; label: string }> })
   | (BlockMeta & { type: 'chart'; chart: ChartKind; title?: string; labels: string[]; values: number[]; suffix?: string; showValues?: boolean; showLegend?: boolean; xLabel?: string; yLabel?: string })
   | (BlockMeta & { type: 'simulation'; title?: string; min?: number; max?: number; initial?: number; unit?: string; metricLabel?: string; podsBase?: number; podsStep?: number });
 
@@ -211,7 +240,7 @@ export interface CompareColumn {
   highlight?: boolean;
 }
 
-export interface ArchitectureNode {
+export interface ArchitectureNode extends ProgressiveContent {
   id: string;
   label: string;
   caption?: string;

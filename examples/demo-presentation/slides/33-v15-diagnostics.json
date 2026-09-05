@@ -1,0 +1,35 @@
+{
+  "id": "v15-diagnostics",
+  "layout": "default",
+  "sectionId": "section-v15",
+  "eyebrow": "V0.15 · DIAGNÓSTICO",
+  "title": "El diagnóstico combina intención y render",
+  "subtitle": "Studio distingue una slide exigente de una slide realmente recortada y explica qué variable provocó el estado.",
+  "transition": "slide",
+  "blocks": [
+    {
+      "type": "architecture",
+      "nodes": [
+        { "id": "profile", "label": "Perfil", "caption": "umbrales por densidad", "x": 10, "y": 26, "kind": "client" },
+        { "id": "content", "label": "Contenido", "caption": "caracteres y bloques", "x": 10, "y": 74, "kind": "client" },
+        { "id": "semantic", "label": "Análisis estático", "caption": "presión estimada", "x": 38, "y": 34, "kind": "service" },
+        { "id": "dom", "label": "Medición DOM", "caption": "scroll contra viewport", "x": 38, "y": 70, "kind": "service" },
+        { "id": "status", "label": "Estado", "caption": "ok, warning u overflow", "x": 68, "y": 50, "kind": "data" },
+        { "id": "panel", "label": "Panel IA", "caption": "causas y recomendaciones", "x": 91, "y": 50, "kind": "cloud" }
+      ],
+      "edges": [
+        { "from": "profile", "to": "semantic", "label": "define" },
+        { "from": "content", "to": "semantic", "label": "cuenta" },
+        { "from": "content", "to": "dom", "label": "renderiza" },
+        { "from": "semantic", "to": "status", "label": "estima" },
+        { "from": "dom", "to": "status", "label": "confirma" },
+        { "from": "status", "to": "panel", "label": "explica" }
+      ]
+    }
+  ],
+  "notes": [
+    "El análisis estático cambia sus umbrales según el perfil visual, balanced, detailed o documentary.",
+    "La medición compara scrollHeight y scrollWidth con el tamaño visible. Un recorte real siempre produce estado overflow.",
+    "El panel resume seis métricas: caracteres visibles, material total, bloques, interacciones, elementos del canvas y regiones recortadas."
+  ]
+}

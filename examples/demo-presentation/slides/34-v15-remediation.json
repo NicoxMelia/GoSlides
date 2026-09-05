@@ -1,0 +1,41 @@
+{
+  "id": "v15-remediation",
+  "layout": "default",
+  "sectionId": "section-v15",
+  "eyebrow": "V0.15 · CORRECCIÓN ASISTIDA",
+  "title": "Dos correcciones redistribuyen el contenido",
+  "subtitle": "Las acciones trabajan sobre slides estructuradas con dos o más bloques y quedan registradas en el historial.",
+  "transition": "fade",
+  "blocks": [
+    {
+      "type": "compare",
+      "left": {
+        "label": "DIVIDIR",
+        "title": "Continuación narrativa",
+        "subtitle": "Una segunda slide conserva la mitad del material",
+        "items": [
+          "Mantiene la primera mitad en la slide original",
+          "Crea una continuación después de la actual",
+          "Mueve los bloques restantes sin duplicarlos",
+          "Conserva el canvas en la primera slide"
+        ]
+      },
+      "right": {
+        "label": "DRAWER",
+        "title": "Segunda capa",
+        "subtitle": "La superficie conserva el contexto principal",
+        "items": [
+          "Mantiene visibles los primeros bloques",
+          "Agrupa la segunda mitad en un panel lateral",
+          "Acepta código, gráficos y Markdown",
+          "Evita descartar material secundario"
+        ],
+        "highlight": true
+      }
+    }
+  ],
+  "notes": [
+    "Las acciones no se habilitan en canvas libre porque dividir objetos posicionados requiere una decisión de diseño más específica.",
+    "La estrategia elegida en el perfil también adapta la recomendación: revelar, dividir, enviar al apéndice o conservar todo."
+  ]
+}

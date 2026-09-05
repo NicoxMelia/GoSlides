@@ -1,6 +1,6 @@
-# GoSlides Format v2 — usado por GoSlides v9
+# GoSlides Format v2 — usado por GoSlides v15
 
-GoSlides v9 conserva `presentation.json.version = 2`. Las funciones nuevas son extensiones opcionales, por lo que las presentaciones creadas con versiones anteriores continúan siendo válidas.
+GoSlides v15 conserva `presentation.json.version = 2`. Las funciones nuevas son extensiones opcionales, por lo que las presentaciones creadas con versiones anteriores continúan siendo válidas.
 
 ```text
 presentacion.zip
@@ -21,6 +21,14 @@ presentacion.zip
   "id": "keda-clase",
   "publicId": "A6PMkEq7rXws9Qn2VtK5Lf",
   "title": "KEDA Autoscaling",
+  "authoring": {
+    "density": "balanced",
+    "depth": "class",
+    "interaction": "occasional",
+    "overflowStrategy": "reveal",
+    "durationMinutes": 20,
+    "preserveSourceMaterial": true
+  },
   "theme": {
     "mode": "dark",
     "accent": "#7c5cff",
@@ -38,6 +46,23 @@ presentacion.zip
 ```
 
 `publicId` es el identificador utilizado en `/p/<publicId>`. No representa autenticación.
+
+### Perfil de autoría para IA
+
+`authoring` es opcional y no cambia el render del Viewer. Studio lo utiliza para
+diagnosticar densidad y la IA puede leerlo como contrato de generación:
+
+- `density`: `visual`, `balanced`, `detailed` o `documentary`;
+- `depth`: `summary`, `class`, `workshop` o `reference`;
+- `interaction`: `none`, `occasional` o `frequent`;
+- `overflowStrategy`: `split`, `reveal`, `appendix` o `preserve`;
+- `durationMinutes`: entero positivo con la duración objetivo;
+- `preserveSourceMaterial`: indica si el contenido secundario debe conservarse en
+  capas progresivas o puede sintetizarse.
+
+Studio persiste el perfil dentro del ZIP. Las presentaciones sin `authoring`
+mantienen los defaults `balanced`, `class`, `occasional`, `reveal`, 20 minutos y
+conservación del material fuente.
 
 ## Theme
 
@@ -127,7 +152,86 @@ Animaciones disponibles:
 
 Easing: `ease`, `ease-in`, `ease-out`, `ease-in-out`, `spring`.
 
-Los bloques incluyen texto, bullets, cards, stats, compare, code, terminal, image, timeline, tabs, steps, architecture, quote, callout, tooltip, modal, flipcard, beforeAfter, hotspots, chart y simulation.
+Los bloques incluyen texto, bullets, cards, stats, compare, code, terminal, image, timeline, tabs, steps, architecture, quote, callout, tooltip, modal, accordion, drawer, flipcard, beforeAfter, hotspots, chart y simulation.
+
+El bloque `architecture` abre el detalle de cada nodo al hacer clic (también con Enter o Espacio). `detailView` permite elegir `drawer` (panel lateral, predeterminado), `modal` (centrado) o `inline` (debajo del diagrama). Cada nodo admite `blocks: SlideBlock[]` con uno o varios bloques de cualquier tipo (texto, Markdown, imágenes, código, gráficos, tabs, columnas, otros diagramas, etc.). Se muestran en orden al abrir el nodo, con desplazamiento si el contenido es largo. `text` con RichText se usa únicamente cuando `blocks` está vacío o ausente. Los bloques del panel se revelan completos al abrirlo; sus componentes interactivos mantienen sus propios controles. El detalle muestra conexiones entrantes y salientes navegables; se cierra con ×, Escape o clic en el fondo para modal/panel lateral. Sin `blocks` ni `text`, se muestran el subtítulo y las conexiones disponibles. En Studio, «Bloques del panel» permite agregar, elegir el tipo, editar, ordenar y eliminar bloques por nodo. Estas opciones y el contenido anidado se conservan en el ZIP.
+
+```json
+{
+  "type": "architecture",
+  "detailView": "drawer",
+  "nodes": [
+    { "id": "analysis", "label": "Análisis", "x": 25, "y": 50, "blocks": [{ "type": "text", "text": "Revisá los hallazgos antes de continuar." }, { "type": "bullets", "items": ["Revisar el contexto", "Registrar la decisión"] }] },
+    { "id": "review", "label": "Revisión", "x": 75, "y": 50, "text": "Documentá la decisión y los próximos pasos." }
+  ],
+  "edges": [{ "from": "analysis", "to": "review", "label": "Hallazgos" }]
+}
+```
+
+## Contenido progresivo y bloques anidados
+
+Tabs, steps, modal, accordion, drawer, cada punto de hotspots y cada nodo de architecture aceptan dos
+representaciones compatibles:
+
+- text para contenido simple y presentaciones existentes;
+- blocks para anidar cualquier lista de SlideBlock.
+
+Si ambos están presentes, el Viewer prioriza blocks. Esto permite reservar la
+superficie de la slide para el mensaje principal y ofrecer código, Markdown,
+gráficos o evidencia al interactuar.
+
+~~~json
+{
+  "type": "tabs",
+  "tabs": [
+    {
+      "label": "Resumen",
+      "text": "Descripción breve."
+    },
+    {
+      "label": "Código",
+      "title": "Implementación",
+      "blocks": [
+        {
+          "type": "code",
+          "language": "typescript",
+          "code": "const ready = true;"
+        }
+      ]
+    }
+  ]
+}
+~~~
+
+Accordion permite abrir una o varias secciones:
+
+~~~json
+{
+  "type": "accordion",
+  "title": "Explorar por tema",
+  "allowMultiple": true,
+  "items": [
+    { "title": "Concepto", "text": "Resumen" },
+    { "title": "Detalle", "blocks": [{ "type": "markdown", "markdown": "## Desarrollo" }] }
+  ]
+}
+~~~
+
+Drawer abre un panel lateral dentro de la slide:
+
+~~~json
+{
+  "type": "drawer",
+  "buttonLabel": "Ver evidencia",
+  "title": "Material complementario",
+  "side": "right",
+  "width": "lg",
+  "blocks": [{ "type": "markdown", "markdown": "Contenido ampliado" }]
+}
+~~~
+
+side admite left o right. width admite sm, md o lg. La profundidad máxima
+recomendada para bloques anidados es ocho.
 
 ## Charts
 

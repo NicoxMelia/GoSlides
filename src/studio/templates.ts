@@ -8,7 +8,7 @@ export function createBlankDocument(): PresentationDocument {
   return {
     manifest: {
       format: 'goslides', version: 2, id, publicId: createPublicId(), title: 'Nueva presentación', subtitle: 'Editá el título y comenzá a crear',
-      description: '', tags: [], theme: { mode: 'dark', accent: '#7c5cff', fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif', headingFontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif', slideBackground:'#111522', surfaceColor:'#1a2030', textColor:'#f7f8fc', mutedColor:'#aeb6cb', radius:18 }, masters: [], slides: ['slides/01.json'],
+      description: '', tags: [], authoring: { density:'balanced', depth:'class', interaction:'occasional', overflowStrategy:'reveal', durationMinutes:20, preserveSourceMaterial:true }, theme: { mode: 'dark', accent: '#7c5cff', fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif', headingFontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif', slideBackground:'#111522', surfaceColor:'#1a2030', textColor:'#f7f8fc', mutedColor:'#aeb6cb', radius:18 }, masters: [], slides: ['slides/01.json'],
     },
     slides: [createSlide('title')], assetFiles: {}, updatedAt: new Date().toISOString(),
   };
@@ -42,7 +42,7 @@ const blockGeometry: Record<SlideBlock['type'], { w: number; h: number }> = {
   stats: { w: 76, h: 22 }, compare: { w: 80, h: 42 }, code: { w: 62, h: 40 }, terminal: { w: 62, h: 30 },
   image: { w: 46, h: 40 }, timeline: { w: 62, h: 34 }, tabs: { w: 64, h: 32 }, steps: { w: 68, h: 34 },
   architecture: { w: 78, h: 46 }, quote: { w: 62, h: 22 }, callout: { w: 58, h: 18 }, tooltip: { w: 26, h: 10 },
-  modal: { w: 26, h: 10 }, flipcard: { w: 30, h: 24 }, beforeAfter: { w: 70, h: 30 }, hotspots: { w: 56, h: 44 },
+  modal: { w: 26, h: 10 }, accordion: { w: 68, h: 38 }, drawer: { w: 30, h: 10 }, flipcard: { w: 30, h: 24 }, beforeAfter: { w: 70, h: 30 }, hotspots: { w: 56, h: 44 },
   chart: { w: 66, h: 40 }, simulation: { w: 60, h: 34 }, quadrant: { w: 66, h: 46 }, columns: { w: 82, h: 44 },
 };
 
@@ -72,7 +72,7 @@ const blockLayerNames: Partial<Record<SlideBlock['type'], string>> = {
   text: 'Texto', markdown: 'Markdown', bullets: 'Bullets', cards: 'Cards', stats: 'KPIs', compare: 'Comparación',
   code: 'Código', terminal: 'Terminal', image: 'Imagen', timeline: 'Timeline', quote: 'Quote', callout: 'Callout',
   tabs: 'Tabs', steps: 'Steps', architecture: 'Arquitectura', tooltip: 'Tooltip', modal: 'Modal',
-  flipcard: 'Flip card', beforeAfter: 'Before / After', hotspots: 'Hotspots', chart: 'Chart', simulation: 'Simulación',
+  accordion: 'Acordeón', drawer: 'Panel de detalle', flipcard: 'Flip card', beforeAfter: 'Before / After', hotspots: 'Hotspots', chart: 'Chart', simulation: 'Simulación',
 };
 
 function freeText(text:string,x:number,y:number,w:number,h:number,size:number,weight=700,color='#f7f8fc'):Extract<CanvasElement,{type:'text'}>{
@@ -103,8 +103,11 @@ export function createSlide(template: SlideTemplate): Slide {
     case 'steps': return { ...base, eyebrow: 'PASO A PASO', title: 'Procedimiento', blocks: [{ type: 'steps', items: [{ title: 'Preparar', text: 'Prepará los elementos necesarios.' }, { title: 'Ejecutar', text: 'Realizá la acción principal.' }, { title: 'Validar', text: 'Comprobá el resultado.' }] }] };
     case 'chart': return { ...base, eyebrow: 'DATOS', title: 'Evolución de la métrica', blocks: [{ type: 'chart', chart: 'bar', title: 'Uso por alternativa', labels: ['A', 'B', 'C', 'D'], values: [42, 68, 53, 84], suffix: '%', showValues:true }] };
     case 'interactive': return { ...base, eyebrow: 'INTERACTIVO', title: 'Explorá la información', blocks: [
-      { type: 'tooltip', label: '¿Qué es esto?', text: 'Un tooltip permite ampliar una idea sin llenar la slide de texto.' },
-      { type: 'flipcard', frontTitle: 'HPA', frontText: 'Tocá para girar', backTitle: 'Horizontal Pod Autoscaler', backText: 'Escala réplicas según métricas configuradas.' },
+      { type: 'accordion', title: 'Capas de profundidad', items: [
+        { title: 'Idea principal', text: 'La slide muestra primero lo imprescindible.' },
+        { title: 'Implementación', blocks: [{ type: 'code', language: 'typescript', title: 'example.ts', code: 'const detail = "Disponible bajo demanda";', frameStyle: 'minimal', codeTheme: 'github-dark' }] },
+      ] },
+      { type: 'drawer', buttonLabel: 'Abrir material complementario', title: 'Detalle', width: 'md', blocks: [{ type: 'markdown', appearance: 'minimal', markdown: '## Profundidad sin saturación\n\nEl panel puede contener **Markdown**, código, gráficos y otros bloques.' }] },
     ] };
     case 'quote': return { ...base, eyebrow: 'IDEA CENTRAL', title: 'Concepto para destacar', blocks: [{ type: 'quote', text: 'Una idea importante merece espacio visual.', author: 'GoSlides' }] };
     case 'dashboard': return { id,layout:'free',transition:'fade',background:'linear-gradient(135deg,#0d1323,#151a2b)',canvas:[
@@ -139,11 +142,13 @@ export function defaultBlock(type: SlideBlock['type']): SlideBlock {
     case 'timeline': return { type: 'timeline', items: [{ title: 'Paso 1', text: 'Descripción' }, { title: 'Paso 2', text: 'Descripción' }] };
     case 'tabs': return { type: 'tabs', tabs: [{ label: 'Tab 1', text: 'Contenido' }, { label: 'Tab 2', text: 'Contenido' }] };
     case 'steps': return { type: 'steps', items: [{ title: 'Paso 1', text: 'Descripción' }, { title: 'Paso 2', text: 'Descripción' }] };
-    case 'architecture': return { type: 'architecture', nodes: [{ id: 'a', label: 'A', x: 30, y: 50 }, { id: 'b', label: 'B', x: 70, y: 50 }], edges: [{ from: 'a', to: 'b' }] };
+    case 'architecture': return { type: 'architecture', detailView: 'drawer', nodes: [{ id: 'a', label: 'A', blocks: [{ type: 'text', text: 'Describí el punto de partida del flujo.' }], x: 30, y: 50 }, { id: 'b', label: 'B', blocks: [{ type: 'text', text: 'Explicá qué recibe este nodo y cuál es su resultado.' }], x: 70, y: 50 }], edges: [{ from: 'a', to: 'b' }] };
     case 'quote': return { type: 'quote', text: 'Texto destacado' };
     case 'callout': return { type: 'callout', title: 'Importante', text: 'Mensaje destacado.', tone: 'info' };
     case 'tooltip': return { type: 'tooltip', label: 'Pasá el mouse', text: 'Información adicional.' };
     case 'modal': return { type: 'modal', buttonLabel: 'Más información', title: 'Detalle', text: 'Contenido ampliado.' };
+    case 'accordion': return { type: 'accordion', title: 'Explorá por tema', items: [{ title: 'Resumen', text: 'La idea principal en pocas líneas.' }, { title: 'Profundizar', blocks: [{ type: 'markdown', appearance: 'minimal', markdown: '### Material ampliado\n\nAgregá contexto, evidencia o ejemplos sin saturar la slide.' }] }] };
+    case 'drawer': return { type: 'drawer', buttonLabel: 'Abrir detalle', title: 'Material complementario', text: 'Este panel mantiene la slide limpia y ofrece una segunda capa de información.', side: 'right', width: 'md' };
     case 'flipcard': return { type: 'flipcard', frontTitle: 'Frente', frontText: 'Tocá para girar', backTitle: 'Dorso', backText: 'Contenido oculto.' };
     case 'beforeAfter': return { type: 'beforeAfter', beforeLabel: 'Antes', afterLabel: 'Después', beforeText: 'Estado inicial', afterText: 'Estado final' };
     case 'hotspots': return { type: 'hotspots', src: 'assets/imagen.png', alt: 'Imagen con hotspots', points: [{ x: 50, y: 50, label: '1', text: 'Punto de interés' }] };

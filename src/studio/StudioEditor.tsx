@@ -3,9 +3,9 @@ import {
   AlignCenter, AlignHorizontalDistributeCenter, AlignLeft, AlignRight, AlignVerticalDistributeCenter,
   ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BringToFront, Code2, Combine, Copy, Download, Eye, EyeOff,
   FilePlus2, Group, History, Image as ImageIcon, Images, FileImage, Printer, Package, Rows3, Columns3, Grid3X3, PanelRight, Layers3, Lock, MessageSquare, MonitorPlay, Network, Plus, Palette, LayoutTemplate, Command, Star, Clock3, WandSparkles, Pencil,
-  Boxes, Eraser, Move, Redo2, Save, SendToBack, Shapes, SmilePlus, Table2, Trash2, Type, Undo2, Ungroup, Unlock, Workflow,
+  AlertTriangle, CircleCheck, Boxes, Eraser, Move, Redo2, Save, SendToBack, Shapes, SmilePlus, Table2, Trash2, Type, Undo2, Ungroup, Unlock, Workflow,
 } from 'lucide-react';
-import type { AssetBytes, CanvasElement, ElementStyle, LoadedPresentation, PresentationDocument, Slide, SlideBlock, ThemeMode, UserSlideTemplate, UserThemePreset, ThemeConfig, SlideMaster, ComponentStylePreset, PresentationManifest } from '../types';
+import type { AssetBytes, AuthoringPreferences, CanvasElement, ElementStyle, LoadedPresentation, PresentationDocument, Slide, SlideBlock, ThemeMode, UserSlideTemplate, UserThemePreset, ThemeConfig, SlideMaster, ComponentStylePreset, PresentationManifest } from '../types';
 import { SlideRenderer } from '../components/SlideRenderer';
 import { ICON_NAMES, ICON_LIBRARIES, IconGlyph } from '../components/IconLibrary';
 import { SlideThumbnail } from '../components/SlideThumbnail';
@@ -18,9 +18,10 @@ import { VisualCanvas } from './VisualCanvas';
 import { RichTextInput } from './RichTextInput';
 import { EmojiPicker } from './EmojiPicker';
 import type { GitmojiItem } from '../lib/gitmoji';
+import { analyzeSlideContent, type RenderedOverflow, type SlideContentAnalysis } from '../lib/contentAnalysis';
 
-const blockTypes: SlideBlock['type'][] = ['text','markdown','bullets','cards','stats','compare','code','terminal','image','timeline','quote','callout','quadrant','columns','tabs','steps','architecture','tooltip','modal','flipcard','beforeAfter','hotspots','chart','simulation'];
-const blockLabels: Partial<Record<SlideBlock['type'], string>> = { text:'Texto', markdown:'Markdown', bullets:'Bullets', cards:'Cards', stats:'KPIs', compare:'Comparación', code:'Código', terminal:'Terminal', image:'Imagen', timeline:'Timeline', quote:'Quote', callout:'Callout', quadrant:'Matriz 2x2', columns:'Columnas', tabs:'Tabs', steps:'Steps', architecture:'Arquitectura', tooltip:'Tooltip', modal:'Modal', flipcard:'Flip card', beforeAfter:'Before / After', hotspots:'Hotspots', chart:'Chart', simulation:'Simulación' };
+const blockTypes: SlideBlock['type'][] = ['text','markdown','bullets','cards','stats','compare','code','terminal','image','timeline','quote','callout','quadrant','columns','tabs','steps','accordion','modal','drawer','architecture','tooltip','flipcard','beforeAfter','hotspots','chart','simulation'];
+const blockLabels: Partial<Record<SlideBlock['type'], string>> = { text:'Texto', markdown:'Markdown', bullets:'Bullets', cards:'Cards', stats:'KPIs', compare:'Comparación', code:'Código', terminal:'Terminal', image:'Imagen', timeline:'Timeline', quote:'Quote', callout:'Callout', quadrant:'Matriz 2x2', columns:'Columnas', tabs:'Tabs', steps:'Steps', accordion:'Acordeón', modal:'Modal', drawer:'Panel de detalle', architecture:'Arquitectura', tooltip:'Tooltip', flipcard:'Flip card', beforeAfter:'Before / After', hotspots:'Hotspots', chart:'Chart', simulation:'Simulación' };
 const slideTemplates: SlideTemplate[] = ['title','section','free','text','twoColumn','bullets','cards','compare','process','dashboard','architecture','photo','code','terminal','tabs','steps','chart','interactive','quote','closing'];
 const fontFamilies = ['\"Virgil 3 YOFF\", \"Virgil\", \"Patrick Hand\", cursive','Inter, ui-sans-serif, system-ui, sans-serif','Manrope, ui-sans-serif, sans-serif','"DM Sans", ui-sans-serif, sans-serif','Poppins, ui-sans-serif, sans-serif','Montserrat, ui-sans-serif, sans-serif','"Space Grotesk", ui-sans-serif, sans-serif','Roboto, Arial, sans-serif','Lora, Georgia, serif','Merriweather, Georgia, serif','"Playfair Display", Georgia, serif','"Roboto Slab", Georgia, serif','"JetBrains Mono", monospace','"Fira Code", monospace','Caveat, cursive','"Patrick Hand", cursive','Kalam, cursive','"Architects Daughter", cursive','Georgia, serif','"Trebuchet MS", sans-serif','"Courier New", monospace'];
 
@@ -134,7 +135,7 @@ function arrangeCanvas(canvas:CanvasElement[], ids:string[], mode:'row'|'column'
   return canvas.map(x=>map.has(x.id)?{...x,...map.get(x.id)!}:x);
 }
 type HistoryEntry={doc:PresentationDocument;label:string;time:string};
-type RightTab='properties'|'layers'|'history'|'timeline'|'slide'|'assets';
+type RightTab='properties'|'layers'|'history'|'timeline'|'slide'|'assets'|'ai';
 
 export function StudioEditor({initial,assets={},suspended=false,onBack,onStudentPreview,onPresenterPreview}:{
   initial:PresentationDocument; assets?:LoadedPresentation['assets']; suspended?:boolean; onBack:()=>void;
@@ -159,6 +160,7 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   const [replaceImageId,setReplaceImageId]=useState<string|null>(null);
   const [bgRemoval,setBgRemoval]=useState<{id:string;percent:number;stage:string}|null>(null);
   const [exporting,setExporting]=useState<'png'|'pdf'|null>(null);
+  const [renderedOverflow,setRenderedOverflow]=useState<RenderedOverflow>({vertical:false,horizontal:false,clippedRegions:0});
   const slide=doc.slides[selected]??doc.slides[0];
   const activeMaster=(doc.manifest.masters??[]).find(m=>m.id===slide.masterId);
   /**
@@ -176,6 +178,7 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   const element=selectedElements.length===1?selectedElements[0]:null;
   const publicId=useMemo(()=>doc.manifest.publicId??'',[doc.manifest.publicId]);
   const slideCount=doc.slides.length;
+  const contentAnalysis=useMemo(()=>analyzeSlideContent(slide,doc.manifest.authoring,renderedOverflow),[slide,doc.manifest.authoring,renderedOverflow]);
 
   const touch=(current:PresentationDocument):PresentationDocument=>({...current,updatedAt:new Date().toISOString()});
   function pushHistory(current:PresentationDocument,label:string){past.current.push({doc:clone(current),label,time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'})});if(past.current.length>100)past.current.shift();future.current=[];setHistoryTick(v=>v+1);}
@@ -187,6 +190,27 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
 
   useEffect(()=>{const timer=window.setTimeout(()=>{saveProject(doc);setSavedAt(new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));},350);return()=>clearTimeout(timer);},[doc]);
   useEffect(()=>setSelectedIds([]),[selected]);
+  useEffect(()=>{
+    if(suspended)return;
+    let active=true;
+    const measure=()=>{
+      const root=canvasShellRef.current;
+      if(!root||!active)return;
+      const regions=Array.from(root.querySelectorAll<HTMLElement>('.slide-content,.vc-content,.vc-block-inner'));
+      let vertical=false,horizontal=false,clippedRegions=0;
+      for(const region of regions){
+        const v=region.scrollHeight>region.clientHeight+2,h=region.scrollWidth>region.clientWidth+2;
+        if(v||h)clippedRegions++;
+        vertical ||= v; horizontal ||= h;
+      }
+      setRenderedOverflow(current=>current.vertical===vertical&&current.horizontal===horizontal&&current.clippedRegions===clippedRegions?current:{vertical,horizontal,clippedRegions});
+    };
+    const frame=window.requestAnimationFrame(measure);
+    const observer=new ResizeObserver(measure);
+    if(canvasShellRef.current)observer.observe(canvasShellRef.current);
+    void document.fonts?.ready.then(measure);
+    return()=>{active=false;window.cancelAnimationFrame(frame);observer.disconnect();};
+  },[doc,selected,suspended]);
 
   function updateSlide(patch:Partial<Slide>,record=true,label='Editar slide'){const updater=(current:PresentationDocument)=>({...current,slides:current.slides.map((item,i)=>i===selected?{...item,...patch}:item)});record?commit(updater,label):setDocState(current=>touch(updater(current)));}
   /**
@@ -305,6 +329,19 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   function saveMasterFromSelection(){const name=window.prompt('Nombre del Master Slide',`Master ${(doc.manifest.masters??[]).length+1}`)?.trim();if(!name)return;const selectedForMaster=selectedElements.filter(x=>x.type!=='connector'||selectedIds.includes(x.from)||selectedIds.includes(x.to));const masterId=`master-${Date.now().toString(36)}`;const idMap=new Map<string,string>();selectedForMaster.filter(x=>x.type!=='connector').forEach(x=>idMap.set(x.id,`m-${masterId}-${x.id}`));const canvas=clone(selectedForMaster).map(x=>{const old=x.id;x.id=idMap.get(old)??`m-${masterId}-${old}`;x.comments=[];x.hidden=false;x.locked=true;if(x.type==='connector'){x.from=idMap.get(x.from)??x.from;x.to=idMap.get(x.to)??x.to;}return x;});const master:SlideMaster={id:masterId,name,background:slide.background,footer:slide.footer,canvas};commit(current=>({...current,manifest:{...current.manifest,masters:[...(current.manifest.masters??[]),master]},slides:current.slides.map((item,i)=>i===selected?{...item,masterId,background:undefined,footer:undefined,canvas:selectedIds.length?(item.canvas??[]).filter(x=>!selectedIds.includes(x.id)&&!(x.type==='connector'&&(selectedIds.includes(x.from)||selectedIds.includes(x.to)))):item.canvas}:item)}),'Crear Master Slide');setSelectedIds([]);}
   function removeMaster(id:string){setSelectedIds([]);commit(current=>({...current,manifest:{...current.manifest,masters:(current.manifest.masters??[]).filter(m=>m.id!==id)},slides:current.slides.map(item=>item.masterId===id?{...item,masterId:undefined}:item)}),'Eliminar Master Slide');}
   function duplicateSlide(){const c=clone(slide);c.id=`${c.id}-copy-${Date.now().toString(36)}`;commit(current=>{const slides=[...current.slides];slides.splice(selected+1,0,c);return {...current,slides};},'Duplicar slide');setSelected(selected+1);}
+  function splitSlideForReadability(){
+    const blocks=slide.blocks??[];if(slide.layout==='free'||blocks.length<2)return;
+    const cut=Math.ceil(blocks.length/2),first=blocks.slice(0,cut),rest=blocks.slice(cut);
+    const continuation:Slide={...clone(slide),id:`${slide.id}-continuation-${Date.now().toString(36)}`,title:`${slide.title??'Detalle'} · continuación`,subtitle:undefined,blocks:rest,canvas:[]};
+    commit(current=>{const slides=[...current.slides];slides[selected]={...slides[selected],blocks:first};slides.splice(selected+1,0,continuation);return {...current,slides};},'Dividir slide por densidad');
+    setSelected(selected+1);setSelectedIds([]);
+  }
+  function convertOverflowToDrawer(){
+    const blocks=slide.blocks??[];if(slide.layout==='free'||blocks.length<2)return;
+    const cut=Math.ceil(blocks.length/2),visible=blocks.slice(0,cut),detail=blocks.slice(cut);
+    const drawer:SlideBlock={type:'drawer',buttonLabel:'Ver material complementario',title:`${slide.title??'Detalle'} · material complementario`,side:'right',width:'lg',blocks:detail};
+    updateSlide({blocks:[...visible,drawer]},true,'Convertir contenido en panel de detalle');setSelectedIds([]);
+  }
   function moveSlide(direction:-1|1){const target=selected+direction;if(target<0||target>=slideCount)return;commit(current=>{const slides=[...current.slides];[slides[selected],slides[target]]=[slides[target],slides[selected]];return {...current,slides};},'Reordenar slides');setSelected(target);}
   function removeSlide(){if(slideCount<=1)return;commit(current=>({...current,slides:current.slides.filter((_,i)=>i!==selected)}),'Eliminar slide');setSelected(Math.max(0,selected-1));}
   function updateBlock(index:number,block:SlideBlock){updateSlide({blocks:(slide.blocks??[]).map((x,i)=>i===index?block:x)},true,`Editar bloque ${block.type}`);}
@@ -396,13 +433,13 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
           <span className="tool-divider"/><button onClick={()=>smartLayout('row')}><Rows3/><span>Smart H</span></button><button onClick={()=>smartLayout('column')}><Columns3/><span>Smart V</span></button><button onClick={()=>smartLayout('grid')}><Grid3X3/><span>Smart Grid</span></button><span className="tool-divider"/><button disabled={!selectedIds.length} onClick={centerSelection}><Network/><span>Centrar</span></button><button disabled={!selectedIds.length} onClick={()=>layer(1)}><BringToFront/><span>Subir</span></button><button disabled={!selectedIds.length} onClick={()=>layer(-1)}><SendToBack/><span>Bajar</span></button><button disabled={!selectedIds.length} onClick={duplicateElements}><Copy/><span>Duplicar</span></button><button disabled={!selectedIds.length} onClick={removeElements}><Trash2/><span>Eliminar</span></button>
         </div>
         <div className="editor-canvas-shell v3-shell" ref={canvasShellRef}>{slide.layout==='free'?<VisualCanvas slide={slide} master={activeMaster} selectedIds={selectedIds} onSelect={(ids)=>{setSelectedIds(ids);if(ids.length)setRightTab('properties');setContextMenu(null);}} onContextMenuElement={(id,x,y)=>{setSelectedIds([id]);setContextMenu({id,x,y});}} onChangeMany={replaceCanvasDirect} onBeginGesture={()=>beginGesture('Mover / redimensionar')} drawMode={drawMode} onAddFreehand={next=>{commit(patchCanvas(canvas=>[...canvas,next]),'Dibujo libre');setSelectedIds([next.id]);}} assets={assetUrls}/>:<div className="hybrid-editor-shell"><div className="hybrid-editor-underlay"><SlideRenderer slide={{...slide,canvas:[]}} master={activeMaster} assets={assetUrls} slideNumber={selected+1} total={slideCount}/></div><VisualCanvas slide={slide} assets={assetUrls} selectedIds={selectedIds} onSelect={(ids)=>{setSelectedIds(ids);if(ids.length)setRightTab('properties');setContextMenu(null);}} onContextMenuElement={(id,x,y)=>{setSelectedIds([id]);setContextMenu({id,x,y});}} onChangeMany={replaceCanvasDirect} onBeginGesture={()=>beginGesture('Mover / redimensionar')} drawMode={drawMode} transparent onAddFreehand={next=>{commit(patchCanvas(canvas=>[...canvas,next]),'Dibujo libre');setSelectedIds([next.id]);}}/></div>}</div>
-        <div className="canvas-caption">{drawMode?'Modo dibujo libre · trazá con mouse o lápiz.':slide.layout==='free'?'V12 · renderer estabilizado · código, animaciones, conectores y controles corregidos.':'Slide híbrida: podés sumar objetos sin perder los bloques existentes.'}</div>
+        <div className="canvas-caption"><span>{drawMode?'Modo dibujo libre · trazá con mouse o lápiz.':slide.layout==='free'?'Canvas libre · el diagnóstico controla límites, densidad y recortes.':'Slide híbrida: podés sumar objetos sin perder los bloques existentes.'}</span><button className={`layout-health status-${contentAnalysis.status}`} onClick={()=>setRightTab('ai')}>{contentAnalysis.status==='ok'?<CircleCheck size={13}/>:<AlertTriangle size={13}/>} {contentAnalysis.status==='ok'?'Layout saludable':contentAnalysis.status==='overflow'?'Contenido recortado':'Revisar densidad'}</button></div>
         <input ref={imageRef} hidden type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" onChange={e=>void uploadImage(e.target.files?.[0])}/>
         <input ref={replaceImageRef} hidden type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" onChange={e=>void uploadImage(e.target.files?.[0],replaceImageId)}/>
       </main>
 
-      <aside className="properties-panel v5-properties"><div className="right-panel-tabs v8-tabs"><button className={rightTab==='properties'?'active':''} onClick={()=>setRightTab('properties')}><Shapes size={14}/> Prop.</button><button className={rightTab==='slide'?'active':''} onClick={()=>setRightTab('slide')}><PanelRight size={14}/> Slide</button><button className={rightTab==='layers'?'active':''} onClick={()=>setRightTab('layers')}><Layers3 size={14}/> Capas</button><button className={rightTab==='assets'?'active':''} onClick={()=>setRightTab('assets')}><Images size={14}/> Assets</button><button className={rightTab==='timeline'?'active':''} onClick={()=>setRightTab('timeline')}><Clock3 size={14}/> Timeline</button><button className={rightTab==='history'?'active':''} onClick={()=>setRightTab('history')}><History size={14}/> Hist.</button></div>
-        {rightTab==='slide'?<SlideInspector manifest={doc.manifest} slide={slide} onSlide={(patch,label)=>updateSlide(patch,true,label)} onManifest={(manifest,label)=>commit(current=>({...current,manifest}),label)}/>:rightTab==='assets'?<AssetPanel assetFiles={doc.assetFiles??{}} assetUrls={assetUrls} onUpload={()=>imageRef.current?.click()} onUse={useAsset}/>:rightTab==='layers'?<LayersPanel elements={activeCanvas} selectedIds={selectedIds} onSelect={setSelectedIds} onPatch={patchElement} onReorder={reorderLayer}/>:rightTab==='timeline'?<TimelinePanel elements={activeCanvas} selectedIds={selectedIds} onSelect={setSelectedIds} onPatch={patchElement} onPreset={animationPreset}/>:rightTab==='history'?<HistoryPanel entries={past.current} tick={historyTick} onRestore={restoreHistory}/>:<>
+      <aside className="properties-panel v5-properties"><div className="right-panel-tabs v8-tabs"><button className={rightTab==='properties'?'active':''} onClick={()=>setRightTab('properties')}><Shapes size={14}/> Prop.</button><button className={rightTab==='slide'?'active':''} onClick={()=>setRightTab('slide')}><PanelRight size={14}/> Slide</button><button className={rightTab==='ai'?'active':''} onClick={()=>setRightTab('ai')}><WandSparkles size={14}/> IA</button><button className={rightTab==='layers'?'active':''} onClick={()=>setRightTab('layers')}><Layers3 size={14}/> Capas</button><button className={rightTab==='assets'?'active':''} onClick={()=>setRightTab('assets')}><Images size={14}/> Assets</button><button className={rightTab==='timeline'?'active':''} onClick={()=>setRightTab('timeline')}><Clock3 size={14}/> Timeline</button><button className={rightTab==='history'?'active':''} onClick={()=>setRightTab('history')}><History size={14}/> Hist.</button></div>
+        {rightTab==='ai'?<AuthoringPanel manifest={doc.manifest} slide={slide} analysis={contentAnalysis} onManifest={(manifest,label)=>commit(current=>({...current,manifest}),label)} onSplit={splitSlideForReadability} onLayer={convertOverflowToDrawer}/>:rightTab==='slide'?<SlideInspector manifest={doc.manifest} slide={slide} onSlide={(patch,label)=>updateSlide(patch,true,label)} onManifest={(manifest,label)=>commit(current=>({...current,manifest}),label)}/>:rightTab==='assets'?<AssetPanel assetFiles={doc.assetFiles??{}} assetUrls={assetUrls} onUpload={()=>imageRef.current?.click()} onUse={useAsset}/>:rightTab==='layers'?<LayersPanel elements={activeCanvas} selectedIds={selectedIds} onSelect={setSelectedIds} onPatch={patchElement} onReorder={reorderLayer}/>:rightTab==='timeline'?<TimelinePanel elements={activeCanvas} selectedIds={selectedIds} onSelect={setSelectedIds} onPatch={patchElement} onPreset={animationPreset}/>:rightTab==='history'?<HistoryPanel entries={past.current} tick={historyTick} onRestore={restoreHistory}/>:<>
           <div className="panel-title"><span>PROPIEDADES</span><strong>{selectedElements.length>1?`${selectedElements.length} elementos`:element?element.layerName??element.type:`Slide ${selected+1}`}</strong></div>
           {selectedElements.length>1?<MultiProperties elements={selectedElements} onAlign={align} onDistribute={distribute} onGroup={group} onUngroup={ungroup}/>:element?<>
             {masterElementIds.has(element.id)&&<p className="editor-hint master-owned-hint"><LayoutTemplate size={13}/> Este elemento es parte del Master <strong>{activeMaster?.name}</strong>: lo que cambies acá se ve en todas las slides que lo usan.</p>}
@@ -427,6 +464,32 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   </div>;
 }
 
+
+function AuthoringPanel({manifest,slide,analysis,onManifest,onSplit,onLayer}:{manifest:PresentationManifest;slide:Slide;analysis:SlideContentAnalysis;onManifest:(manifest:PresentationManifest,label:string)=>void;onSplit:()=>void;onLayer:()=>void}){
+  const [copied,setCopied]=useState(false);
+  const profile:Required<AuthoringPreferences>={density:manifest.authoring?.density??'balanced',depth:manifest.authoring?.depth??'class',interaction:manifest.authoring?.interaction??'occasional',overflowStrategy:manifest.authoring?.overflowStrategy??'reveal',durationMinutes:manifest.authoring?.durationMinutes??20,preserveSourceMaterial:manifest.authoring?.preserveSourceMaterial??true};
+  const patch=(next:Partial<AuthoringPreferences>,label:string)=>onManifest({...manifest,authoring:{...profile,...next}},label);
+  const canTransform=slide.layout!=='free'&&(slide.blocks?.length??0)>=2;
+  async function copyBrief(){
+    const text=`Generá o revisá “${manifest.title}” para una audiencia de ${profile.durationMinutes} minutos. Densidad: ${profile.density}. Profundidad: ${profile.depth}. Interacción: ${profile.interaction}. Ante overflow: ${profile.overflowStrategy}. ${profile.preserveSourceMaterial?'Conservá el material fuente distribuyéndolo en superficie, exploración y referencia.':'Podés sintetizar el material secundario.'} Usá componentes progresivos de GoSlides cuando aporten claridad.`;
+    try{await navigator.clipboard.writeText(text);setCopied(true);window.setTimeout(()=>setCopied(false),1600);}catch{/* Clipboard es una mejora opcional; el perfil ya queda persistido. */}
+  }
+  return <><div className="panel-title"><span>IA + CONTENIDO</span><strong>{analysis.status==='ok'?'SALUDABLE':analysis.status==='overflow'?'OVERFLOW':'REVISAR'}</strong></div>
+    <section className="property-section authoring-profile"><h3><WandSparkles size={15}/> Perfil de generación</h3><p className="editor-hint">Estas preferencias viajan en el ZIP y le indican a la IA cuánto material conservar y cómo distribuirlo.</p>
+      <div className="field-row"><label>Densidad<select value={profile.density} onChange={e=>patch({density:e.target.value as NonNullable<AuthoringPreferences['density']>},'Densidad para IA')}><option value="visual">Visual</option><option value="balanced">Equilibrada</option><option value="detailed">Detallada</option><option value="documentary">Documental</option></select></label><label>Duración<input type="number" min="1" max="480" value={profile.durationMinutes} onChange={e=>patch({durationMinutes:Math.max(1,Number(e.target.value)||1)},'Duración objetivo')}/></label></div>
+      <label>Profundidad<select value={profile.depth} onChange={e=>patch({depth:e.target.value as NonNullable<AuthoringPreferences['depth']>},'Profundidad para IA')}><option value="summary">Resumen</option><option value="class">Clase</option><option value="workshop">Workshop</option><option value="reference">Material de referencia</option></select></label>
+      <label>Interacción<select value={profile.interaction} onChange={e=>patch({interaction:e.target.value as NonNullable<AuthoringPreferences['interaction']>},'Interacción para IA')}><option value="none">Ninguna</option><option value="occasional">Ocasional</option><option value="frequent">Frecuente</option></select></label>
+      <label>Si el contenido no entra<select value={profile.overflowStrategy} onChange={e=>patch({overflowStrategy:e.target.value as NonNullable<AuthoringPreferences['overflowStrategy']>},'Estrategia de overflow')}><option value="reveal">Pasar a interacción</option><option value="split">Dividir en slides</option><option value="appendix">Mover a apéndice</option><option value="preserve">Conservar todo</option></select></label>
+      <label className="check-row"><input type="checkbox" checked={profile.preserveSourceMaterial} onChange={e=>patch({preserveSourceMaterial:e.target.checked},'Conservar material fuente')}/> Conservar el material fuente</label>
+      <button className="secondary-button full-width" onClick={()=>void copyBrief()}><Copy size={14}/> {copied?'Brief copiado':'Copiar brief para IA'}</button>
+    </section>
+    <section className="property-section"><h3>Diagnóstico de la slide</h3><div className={`content-health-card status-${analysis.status}`}><span>{analysis.status==='ok'?<CircleCheck size={18}/>:<AlertTriangle size={18}/>}</span><div><strong>{analysis.status==='ok'?'Dentro del perfil':analysis.status==='overflow'?'Hay contenido recortado':'La densidad supera el perfil'}</strong><small>Presión estimada: {analysis.score}%</small></div></div>
+      <div className="content-metrics"><div><strong>{analysis.metrics.surfaceCharacters}</strong><span>caracteres visibles</span></div><div><strong>{analysis.metrics.totalCharacters}</strong><span>material total</span></div><div><strong>{analysis.metrics.blocks}</strong><span>bloques</span></div><div><strong>{analysis.metrics.interactiveBlocks}</strong><span>interacciones</span></div></div>
+      {analysis.issues.length?<ul className="content-issues">{analysis.issues.map(issue=><li key={issue}>{issue}</li>)}</ul>:null}
+    </section>
+    <section className="property-section"><h3>Recomendaciones</h3><ul className="content-recommendations">{analysis.recommendations.map(item=><li key={item}>{item}</li>)}</ul><div className="authoring-actions"><button disabled={!canTransform} onClick={onLayer}>Convertir mitad en drawer</button><button disabled={!canTransform} onClick={onSplit}>Dividir en dos slides</button></div>{!canTransform&&<p className="editor-hint">Las acciones automáticas requieren una slide estructurada con al menos dos bloques. El diagnóstico también funciona sobre canvas libre.</p>}</section>
+  </>;
+}
 
 function SlideInspector({manifest,slide,onSlide,onManifest}:{manifest:PresentationManifest;slide:Slide;onSlide:(patch:Partial<Slide>,label:string)=>void;onManifest:(manifest:PresentationManifest,label:string)=>void}){
   const sections=manifest.sections??[]; const tokens=manifest.theme?.tokens??{};

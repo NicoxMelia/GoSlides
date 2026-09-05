@@ -1,0 +1,28 @@
+{
+  "id": "v15-authoring-profile",
+  "layout": "default",
+  "sectionId": "section-v15",
+  "eyebrow": "V0.15 · PERFIL DE AUTORÍA",
+  "title": "El perfil de autoría guía a la IA",
+  "subtitle": "La intención deja de vivir solamente en el prompt. Studio la guarda como un contrato estable dentro de presentation.json.",
+  "transition": "slide",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        { "title": "Densidad", "badge": "4 niveles", "text": "Visual, equilibrada, detallada o documental. Define cuánto contenido puede ocupar la superficie." },
+        { "title": "Profundidad", "badge": "4 modos", "text": "Resumen, clase, workshop o referencia. Define cuántas capas y ejemplos debe conservar la IA." },
+        { "title": "Interacción", "badge": "3 frecuencias", "text": "Ninguna, ocasional o frecuente. Orienta el uso de componentes explorables." },
+        { "title": "Duración", "badge": "1 a 480 min", "text": "Ajusta el ritmo esperado y ofrece contexto para decidir la cantidad de slides." },
+        { "title": "Overflow", "badge": "4 estrategias", "text": "Dividir, revelar, mover a un apéndice o conservar todo el material." },
+        { "title": "Material fuente", "badge": "conservar o sintetizar", "text": "Indica si la IA puede resumir contenido secundario o debe redistribuirlo sin pérdidas." }
+      ]
+    }
+  ],
+  "notes": [
+    "El nuevo objeto AuthoringPreferences es opcional y no rompe archivos anteriores.",
+    "El Viewer ignora estas preferencias. Studio y los generadores de IA las usan para tomar decisiones de composición.",
+    "Sin configuración, Studio usa densidad equilibrada, profundidad clase, interacción ocasional, revelado, 20 minutos y conservación del material."
+  ]
+}
