@@ -70,7 +70,7 @@ function snappedPosition(moving: CanvasElement, desiredX: number, desiredY: numb
   return { x: desiredX+(bestXDelta??0), y:desiredY+(bestYDelta??0), guides:[...(bestXGuide===undefined?[]:[{axis:'x' as const,value:bestXGuide}]),...(bestYGuide===undefined?[]:[{axis:'y' as const,value:bestYGuide}])] };
 }
 
-export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onContextMenuElement, onChangeMany, onBeginGesture, drawMode=false, onAddFreehand, transparent=false }: {
+export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onContextMenuElement, onChangeMany, onBeginGesture, drawMode=false, onAddFreehand, transparent=false, onEditArchitecture }: {
   slide: Slide;
   master?: SlideMaster;
   assets: Record<string,string>;
@@ -82,6 +82,7 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
   drawMode?: boolean;
   onAddFreehand?: (element: Extract<CanvasElement,{type:'freehand'}>) => void;
   transparent?: boolean;
+  onEditArchitecture?: (id: string) => void;
 }) {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [guides,setGuides]=useState<Guide[]>([]);
@@ -134,10 +135,13 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
     const activeIds=(selectedIds.includes(element.id)?selectedIds:chosen).filter(id=>{const item=elements.find(x=>x.id===id);return item?.type!=='connector'&&!item?.locked;});
     const box=canvasRef.current?.getBoundingClientRect(); if(!box)return;
     onBeginGesture();
+    let moved = false;
     const startX=event.clientX,startY=event.clientY;
     const originals=new Map(elements.filter(x=>activeIds.includes(x.id)).map(x=>[x.id,{...x}]));
     const target=event.currentTarget as HTMLElement; target.setPointerCapture(event.pointerId);
     const move=(e:PointerEvent)=>{
+      if (!moved && Math.hypot(e.clientX-startX,e.clientY-startY)<4) return;
+      moved = true;
       const dx=((e.clientX-startX)/box.width)*100,dy=((e.clientY-startY)/box.height)*100;
       const anchor=originals.get(element.id)!;
       const others=elements.filter(x=>!activeIds.includes(x.id));
@@ -146,8 +150,8 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
       const appliedDx=snap.x-anchor.x,appliedDy=snap.y-anchor.y;
       onChangeMany(elements.map((item)=>{const original=originals.get(item.id);if(!original)return item;return {...original,x:Math.max(0,Math.min(100-original.w,original.x+appliedDx)),y:Math.max(0,Math.min(100-original.h,original.y+appliedDy))};}));
     };
-    const up=()=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);};
-    target.addEventListener('pointermove',move);target.addEventListener('pointerup',up);
+    const up=(e:PointerEvent)=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);target.removeEventListener('pointercancel',up);if(e.type==='pointerup'&&!moved&&!event.shiftKey&&!event.ctrlKey&&!event.metaKey&&element.type==='block'&&element.block.type==='architecture')onEditArchitecture?.(element.id);};
+    target.addEventListener('pointermove',move);target.addEventListener('pointerup',up);target.addEventListener('pointercancel',up);
   }
 
   function beginResize(event: React.PointerEvent, element: CanvasElement) {

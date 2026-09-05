@@ -60,7 +60,7 @@ export function Block({ block, assets, step = 999 }: { block: SlideBlock; assets
   return null;
 }
 
-function ProgressiveBody({ content, assets, step, className = '' }: { content?: { text?: string; blocks?: SlideBlock[] }; assets: Record<string, string>; step: number; className?: string }) {
+export function ProgressiveBody({ content, assets, step, className = '' }: { content?: { text?: string; blocks?: SlideBlock[] }; assets: Record<string, string>; step: number; className?: string }) {
   if (content?.blocks?.length) return <div className={`progressive-block-stack ${className}`}>{content.blocks.map((inner, i) => <Animated key={i} meta={inner} step={step}><Block block={inner} assets={assets} step={step} /></Animated>)}</div>;
   return content?.text ? <p className={className}><RichText text={content.text} /></p> : null;
 }

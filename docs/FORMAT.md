@@ -154,17 +154,22 @@ Easing: `ease`, `ease-in`, `ease-out`, `ease-in-out`, `spring`.
 
 Los bloques incluyen texto, bullets, cards, stats, compare, code, terminal, image, timeline, tabs, steps, architecture, quote, callout, tooltip, modal, accordion, drawer, flipcard, beforeAfter, hotspots, chart y simulation.
 
-El bloque `architecture` abre el detalle de cada nodo al hacer clic (también con Enter o Espacio). `detailView` permite elegir `drawer` (panel lateral, predeterminado), `modal` (centrado) o `inline` (debajo del diagrama). Cada nodo admite `blocks: SlideBlock[]` con uno o varios bloques de cualquier tipo (texto, Markdown, imágenes, código, gráficos, tabs, columnas, otros diagramas, etc.). Se muestran en orden al abrir el nodo, con desplazamiento si el contenido es largo. `text` con RichText se usa únicamente cuando `blocks` está vacío o ausente. Los bloques del panel se revelan completos al abrirlo; sus componentes interactivos mantienen sus propios controles. El detalle muestra conexiones entrantes y salientes navegables; se cierra con ×, Escape o clic en el fondo para modal/panel lateral. Sin `blocks` ni `text`, se muestran el subtítulo y las conexiones disponibles. En Studio, «Bloques del panel» permite agregar, elegir el tipo, editar, ordenar y eliminar bloques por nodo. Estas opciones y el contenido anidado se conservan en el ZIP.
+En Studio, el bloque `architecture` abre el editor a pantalla completa al hacer clic. El catálogo izquierdo permite insertar o arrastrar clientes, servicios, bases de datos, nubes, colas, seguridad, zonas y notas, además de herramientas y lenguajes del catálogo de iconos. El lienzo central permite mover y redimensionar nodos; el panel derecho edita el elemento o la conexión seleccionados. «Conectar» pide elegir origen y destino. Incluye zoom, cuadrícula, vista previa y deshacer/rehacer; «Guardar diagrama» aplica los cambios y «Cancelar» o Escape los descarta. También se puede abrir desde las propiedades del bloque, incluidos los diagramas anidados.
+
+En la presentación de alumno, hacer clic en un nodo abre su panel de detalle, con los bloques de contenido del elemento. `detailView` permite elegir `drawer` (panel lateral, predeterminado), `modal` o `inline`. El detalle se cierra con × o Escape; los paneles laterales y modales también se cierran al hacer clic en el fondo. Los nodos funcionan con Enter o Espacio. El botón «Explorar diagrama» abre, de forma independiente, la vista completa de exploración sin editar el documento; se cierra con «Cerrar» o Escape.
+
+Cada nodo admite `blocks: SlideBlock[]` con uno o varios bloques de cualquier tipo. Se muestran en orden en el panel de detalle, con desplazamiento si el contenido es largo; sus componentes interactivos mantienen sus controles. `text` con RichText se usa únicamente cuando `blocks` está vacío o ausente. En Studio, «Bloques del detalle» permite agregar, editar, ordenar y eliminar esos bloques.
+
+Los nodos usan `x`/`y` para el centro y `width`/`height` para el tamaño, en porcentajes del lienzo. `kind` admite `client`, `service`, `data`, `cloud`, `queue`, `security`, `group` y `note`; las zonas (`group`) son contenedores visuales de fondo. `color` personaliza el nodo y `icon`, `iconLibrary` y `brandColors` usan el mismo catálogo que los iconos del canvas. Las conexiones admiten `color`, `lineStyle` (`curve`, `straight`, `orthogonal`), `dashed` y `arrow`. Todos estos campos y el contenido anidado se conservan en el ZIP.
 
 ```json
 {
   "type": "architecture",
-  "detailView": "drawer",
   "nodes": [
     { "id": "analysis", "label": "Análisis", "x": 25, "y": 50, "blocks": [{ "type": "text", "text": "Revisá los hallazgos antes de continuar." }, { "type": "bullets", "items": ["Revisar el contexto", "Registrar la decisión"] }] },
     { "id": "review", "label": "Revisión", "x": 75, "y": 50, "text": "Documentá la decisión y los próximos pasos." }
   ],
-  "edges": [{ "from": "analysis", "to": "review", "label": "Hallazgos" }]
+  "edges": [{ "from": "analysis", "to": "review", "label": "Hallazgos", "lineStyle": "orthogonal", "arrow": true }]
 }
 ```
 
