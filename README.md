@@ -63,6 +63,19 @@ detalladas o documentales:
 La demo dedica cinco slides a v0.14 y cinco a v0.15, con ejemplos interactivos del
 modelo de capas, el contrato de generación, el diagnóstico y las correcciones.
 
+## Organización de Studio
+
+El lateral izquierdo reúne la inserción de elementos y bloques, la navegación de
+diapositivas y los archivos para insertar. El catálogo de bloques muestra una
+miniatura de ejemplo y el nombre de cada bloque, con búsqueda y categorías.
+
+El lateral derecho reúne propiedades, diseño, capas, animaciones, historial y las
+opciones de contenido. Al insertar un elemento se selecciona automáticamente y se
+abren sus propiedades. «Organizar selección» contiene alineación, agrupación,
+orden de capas y duplicación; «Diseño» permite personalizar la presentación sin
+perder la selección actual. Las flechas sobre el lienzo permiten cambiar de slide
+mientras el catálogo permanece abierto.
+
 ## Nuevo en v14 — profundidad progresiva
 
 GoSlides deja de tratar la interactividad como una colección de widgets de texto
