@@ -1,4 +1,5 @@
-import type { PresentationDocument, Slide, ThemeConfig } from '../types';
+import type { PresentationDocument, Slide, SlideMaster, ThemeConfig } from '../types';
+import { createFacultyMasters, createFacultySlides, facultyAssets, facultyTheme } from './facultyTemplate';
 import { createInternalId, createPublicId } from '../lib/ids';
 import { createSlide, type SlideTemplate } from './templates';
 
@@ -13,10 +14,14 @@ export interface PresentationTemplateDefinition {
   slideCount: number;
   theme: ThemeConfig;
   previewSlide: Slide;
+  previewMaster?: SlideMaster;
+  /** Assets embebidos como data URLs base64 para la miniatura y el ZIP editable. */
+  assets?: Record<string, string>;
 }
 
-interface InternalTemplate extends Omit<PresentationTemplateDefinition, 'previewSlide'> {
+interface InternalTemplate extends Omit<PresentationTemplateDefinition, 'previewSlide' | 'previewMaster'> {
   createSlides: () => Slide[];
+  createMasters?: () => SlideMaster[];
 }
 
 const make = (template: SlideTemplate, patch: Partial<Slide>): Slide => ({ ...createSlide(template), ...patch });
@@ -28,6 +33,11 @@ const midnight: ThemeConfig = {
 };
 
 const catalog: InternalTemplate[] = [
+  {
+    id: 'facultad-unc-fcefyn', name: 'Facultad · UNC / FCEFyN', category: 'Educación', badge: 'TEMA CLARO', slideCount: 9,
+    description: 'Una base clara para clases y exposiciones universitarias, con logos UNC y FCEFyN, actividades y bibliografía.',
+    theme: facultyTheme, assets: facultyAssets, createSlides: createFacultySlides, createMasters: createFacultyMasters,
+  },
   {
     id: 'clase-moderna', name: 'Clase moderna', category: 'Educación', badge: 'MÁS ELEGIDA', slideCount: 7,
     description: 'Una clase clara y dinámica, lista para explicar conceptos, ejemplos y conclusiones.',
@@ -120,6 +130,8 @@ export const presentationTemplates: PresentationTemplateDefinition[] = catalog.m
   slideCount: template.slideCount,
   theme: template.theme,
   previewSlide: template.createSlides()[0],
+  previewMaster: template.createMasters?.()[0],
+  assets: template.assets,
 }));
 
 export function createPresentationFromTemplate(templateId: string): PresentationDocument {
@@ -132,10 +144,13 @@ export function createPresentationFromTemplate(templateId: string): Presentation
       format: 'goslides', version: 2, id, publicId: createPublicId(), title: template.name,
       subtitle: template.description, description: '', tags: [template.category.toLowerCase(), 'plantilla'],
       theme: { ...template.theme, tokens: template.theme.tokens ? { ...template.theme.tokens } : undefined },
-      masters: [], slides: slides.map((_, index) => `slides/${String(index + 1).padStart(2, '0')}.json`),
+      masters: template.createMasters?.() ?? [], slides: slides.map((_, index) => `slides/${String(index + 1).padStart(2, '0')}.json`),
     },
     slides,
-    assetFiles: {},
+    assetFiles: Object.fromEntries(Object.entries(template.assets ?? {}).map(([path, dataUrl]) => {
+      const bytes = Uint8Array.from(atob(dataUrl.split(',')[1]), character => character.charCodeAt(0));
+      return [path, bytes];
+    })),
     updatedAt: new Date().toISOString(),
   };
 }

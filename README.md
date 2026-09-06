@@ -65,6 +65,13 @@ modelo de capas, el contrato de generación, el diagnóstico y las correcciones.
 
 ## Organización de Studio
 
+En **Nueva presentación → Usar una plantilla → Educación** está disponible
+**Facultad · UNC / FCEFyN**: tema claro y nueve slides editables de portada,
+objetivos, separador de unidad, concepto, comparación, ejemplo técnico,
+actividad, bibliografía y cierre. Los logos originales y el pie se comparten
+mediante un master; al duplicar una slide se mantiene esa identidad. Las imágenes
+se guardan dentro del ZIP y no dependen de archivos externos.
+
 El lateral izquierdo reúne la inserción de elementos y bloques, la navegación de
 diapositivas y los archivos para insertar. El catálogo de bloques muestra una
 miniatura de ejemplo y el nombre de cada bloque, con búsqueda y categorías.
