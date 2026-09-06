@@ -216,7 +216,7 @@ export type SlideBlock =
   | (BlockMeta & { type: 'timeline'; items: Array<{ title: string; text?: string }> })
   | (BlockMeta & { type: 'tabs'; tabs: Array<ProgressiveContent & { label: string; title?: string }> })
   | (BlockMeta & { type: 'steps'; title?: string; items: Array<ProgressiveContent & { title: string }> })
-  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[]; detailView?: 'drawer' | 'modal' | 'inline' })
+  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[]; detailView?: 'drawer' | 'modal' | 'inline'; detailScale?: number })
   | (BlockMeta & { type: 'quote'; text: string; author?: string })
   | (BlockMeta & { type: 'callout'; title?: string; text: string; tone?: 'info' | 'success' | 'warning' | 'danger' })
   | (BlockMeta & { type: 'quadrant'; title?: string; rowAxis?: string; colAxis?: string; rowLabels: [string, string]; colLabels: [string, string]; cells: [QuadrantCell, QuadrantCell, QuadrantCell, QuadrantCell] })

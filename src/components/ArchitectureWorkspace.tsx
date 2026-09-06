@@ -126,6 +126,7 @@ export function ArchitectureWorkspace({ block, onSave, onClose, initialNode, ren
           <button type="button" aria-label="Mostrar cuadrícula" aria-pressed={grid} onClick={() => setGrid(!grid)}><Grid3X3 size={16}/></button>
           <label>Zoom<input type="range" min="50" max="200" step="10" value={zoom} onChange={event => setZoom(Number(event.target.value))}/><span>{zoom}%</span></label>
           <button type="button" title="Ajustar vista" aria-label="Ajustar vista" onClick={() => setZoom(100)}><Maximize2 size={16}/></button>
+          {!inspecting && <label title="Tamaño del texto y el contenido dentro del panel de detalle de cada nodo">Panel de detalle<input type="range" min="70" max="160" step="10" value={draft.detailScale ?? 100} onChange={event => edit({ ...draft, detailScale: Number(event.target.value) }, false)}/><span>{draft.detailScale ?? 100}%</span></label>}
         </div>
         <div className="archw-scroll"><div className="archw-sheet" style={{ width: `${zoom}%` }}>
           <ArchitectureDiagram block={draft} grid={grid} editable={!inspecting && !connecting} selectedNode={selected?.id} selectedEdge={edgeIndex}

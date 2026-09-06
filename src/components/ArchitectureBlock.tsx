@@ -27,6 +27,7 @@ export function ArchitectureBlock({ block, renderContent }: { block: Extract<Sli
 
   const detail = selected && <div ref={panel} id={panelId}
     className={`arch-detail ${view === 'drawer' ? 'slide-drawer side-right width-md' : view === 'modal' ? 'slide-modal' : 'arch-detail-inline'}`}
+    style={{ zoom: (block.detailScale ?? 100) / 100 } as React.CSSProperties}
     role={view === 'inline' ? 'region' : 'dialog'} aria-modal={view === 'inline' ? undefined : true} aria-labelledby={`${panelId}-title`}
     onClick={event => event.stopPropagation()} onKeyDown={event => {
       event.stopPropagation();
