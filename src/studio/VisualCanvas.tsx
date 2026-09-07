@@ -70,7 +70,7 @@ function snappedPosition(moving: CanvasElement, desiredX: number, desiredY: numb
   return { x: desiredX+(bestXDelta??0), y:desiredY+(bestYDelta??0), guides:[...(bestXGuide===undefined?[]:[{axis:'x' as const,value:bestXGuide}]),...(bestYGuide===undefined?[]:[{axis:'y' as const,value:bestYGuide}])] };
 }
 
-export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onContextMenuElement, onChangeMany, onBeginGesture, drawMode=false, onAddFreehand, transparent=false, onEditArchitecture }: {
+export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onContextMenuElement, onChangeMany, onBeginGesture, drawMode=false, onAddFreehand, transparent=false }: {
   slide: Slide;
   master?: SlideMaster;
   assets: Record<string,string>;
@@ -82,7 +82,6 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
   drawMode?: boolean;
   onAddFreehand?: (element: Extract<CanvasElement,{type:'freehand'}>) => void;
   transparent?: boolean;
-  onEditArchitecture?: (id: string) => void;
 }) {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [guides,setGuides]=useState<Guide[]>([]);
@@ -150,7 +149,7 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
       const appliedDx=snap.x-anchor.x,appliedDy=snap.y-anchor.y;
       onChangeMany(elements.map((item)=>{const original=originals.get(item.id);if(!original)return item;return {...original,x:Math.max(0,Math.min(100-original.w,original.x+appliedDx)),y:Math.max(0,Math.min(100-original.h,original.y+appliedDy))};}));
     };
-    const up=(e:PointerEvent)=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);target.removeEventListener('pointercancel',up);if(e.type==='pointerup'&&!moved&&!event.shiftKey&&!event.ctrlKey&&!event.metaKey&&element.type==='block'&&element.block.type==='architecture')onEditArchitecture?.(element.id);};
+    const up=()=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);target.removeEventListener('pointercancel',up);};
     target.addEventListener('pointermove',move);target.addEventListener('pointerup',up);target.addEventListener('pointercancel',up);
   }
 
