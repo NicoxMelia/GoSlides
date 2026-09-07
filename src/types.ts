@@ -216,7 +216,7 @@ export type SlideBlock =
   | (BlockMeta & { type: 'timeline'; items: Array<{ title: string; text?: string }> })
   | (BlockMeta & { type: 'tabs'; tabs: Array<ProgressiveContent & { label: string; title?: string }> })
   | (BlockMeta & { type: 'steps'; title?: string; items: Array<ProgressiveContent & { title: string }> })
-  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[]; detailView?: 'drawer' | 'modal' | 'inline'; detailScale?: number })
+  | (BlockMeta & { type: 'architecture'; nodes: ArchitectureNode[]; edges: ArchitectureEdge[]; detailView?: 'drawer' | 'modal' | 'inline' })
   | (BlockMeta & { type: 'quote'; text: string; author?: string })
   | (BlockMeta & { type: 'callout'; title?: string; text: string; tone?: 'info' | 'success' | 'warning' | 'danger' })
   | (BlockMeta & { type: 'quadrant'; title?: string; rowAxis?: string; colAxis?: string; rowLabels: [string, string]; colLabels: [string, string]; cells: [QuadrantCell, QuadrantCell, QuadrantCell, QuadrantCell] })
@@ -251,24 +251,12 @@ export interface ArchitectureNode extends ProgressiveContent {
   caption?: string;
   x: number;
   y: number;
-  kind?: 'client' | 'service' | 'data' | 'cloud' | 'queue' | 'security' | 'group' | 'note';
-  width?: number;
-  height?: number;
-  color?: string;
-  icon?: string;
-  iconLibrary?: IconLibrary;
-  brandColors?: boolean;
+  kind?: 'client' | 'service' | 'data' | 'cloud';
 }
 
 export interface ArchitectureEdge {
   from: string; to: string; label?: string;
-  color?: string;
-  lineStyle?: 'curve' | 'straight' | 'orthogonal';
-  dashed?: boolean;
-  arrow?: boolean;
 }
-
-export type ArchitectureDiagramBlock = Extract<SlideBlock, { type: 'architecture' }>;
 
 export interface LoadedPresentation {
   manifest: PresentationManifest;
