@@ -251,24 +251,12 @@ export interface ArchitectureNode extends ProgressiveContent {
   caption?: string;
   x: number;
   y: number;
-  kind?: 'client' | 'service' | 'data' | 'cloud' | 'queue' | 'security' | 'group' | 'note';
-  width?: number;
-  height?: number;
-  color?: string;
-  icon?: string;
-  iconLibrary?: IconLibrary;
-  brandColors?: boolean;
+  kind?: 'client' | 'service' | 'data' | 'cloud';
 }
 
 export interface ArchitectureEdge {
   from: string; to: string; label?: string;
-  color?: string;
-  lineStyle?: 'curve' | 'straight' | 'orthogonal';
-  dashed?: boolean;
-  arrow?: boolean;
 }
-
-export type ArchitectureDiagramBlock = Extract<SlideBlock, { type: 'architecture' }>;
 
 export interface LoadedPresentation {
   manifest: PresentationManifest;

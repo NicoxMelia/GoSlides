@@ -73,7 +73,9 @@ export default function StudioApp() {
   }
 
   function openTemplate(templateId: string) {
-    setEditorDoc(createPresentationFromTemplate(templateId)); setEditorAssets({}); setScreen('editor');
+    const doc = createPresentationFromTemplate(templateId);
+    const assetUrls = Object.fromEntries(Object.entries(doc.assetFiles ?? {}).map(([path, bytes]) => [path, URL.createObjectURL(new Blob([bytes]))]));
+    setEditorDoc(doc); setEditorAssets(assetUrls); setScreen('editor');
   }
 
   async function openDraft(doc: PresentationDocument) {
@@ -203,7 +205,7 @@ export default function StudioApp() {
           const selected = selectedTemplate?.id === template.id;
           return <button className={`presentation-template-card ${selected ? 'selected' : ''}`} key={template.id} aria-pressed={selected} onClick={() => setSelectedTemplateId(template.id)}>
             <div className="template-preview" data-theme={template.theme.mode ?? 'dark'} data-visual-style={template.theme.visualStyle ?? 'modern'} style={templateThemeStyle(template)}>
-              <SlideThumbnail slide={template.previewSlide} assets={{}} slideNumber={1} total={template.slideCount}/>
+              <SlideThumbnail slide={template.previewSlide} master={template.previewMaster} assets={template.assets ?? {}} slideNumber={1} total={template.slideCount}/>
               <span className="template-badge">{template.badge}</span>
               {selected && <span className="template-selected-mark"><Check size={15}/></span>}
             </div>
