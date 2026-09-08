@@ -5,7 +5,7 @@
   "sectionId": "arquitectura",
   "transition": "fade",
   "eyebrow": "14 · RED",
-  "title": "¿Runner público o runner dentro de la VPC?",
+  "title": "Ubicación del runner de GitHub Actions",
   "blocks": [
     {
       "type": "compare",
@@ -16,9 +16,9 @@
         "title": "Runner GitHub-hosted",
         "highlight": false,
         "items": [
-          "Invoca la API vía HTTPS",
-          "Autenticación + restricciones de red",
-          "Menor esfuerzo de mantenimiento"
+          "Se comunica con la API mediante HTTPS",
+          "Requiere autenticación y restricciones de red",
+          "Reduce el trabajo de mantenimiento"
         ]
       },
       "right": {
@@ -26,9 +26,9 @@
         "title": "Runner dentro de la VPC",
         "highlight": true,
         "items": [
-          "La API no queda expuesta a Internet",
-          "Mayor control de red",
-          "Hay que mantener y endurecer el runner"
+          "La API puede permanecer fuera de Internet",
+          "Permite un control más estricto de la red",
+          "El equipo debe mantener y proteger el runner"
         ]
       }
     }

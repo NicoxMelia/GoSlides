@@ -5,8 +5,8 @@
   "sectionId": "horusec",
   "transition": "fade",
   "eyebrow": "05 · COBERTURA",
-  "title": "Dieciocho tecnologías documentadas, agrupadas por capa.",
-  "subtitle": "La documentación del repositorio enumera soporte para código de aplicación e infraestructura como código.",
+  "title": "Tecnologías compatibles con Horusec",
+  "subtitle": "La documentación del proyecto enumera dieciocho tecnologías entre lenguajes de aplicación, formatos web e infraestructura como código.",
   "blocks": [
     {
       "type": "cards",
@@ -35,7 +35,7 @@
         {
           "icon": "boxes",
           "badge": "OTROS",
-          "title": "Runtimes adicionales",
+          "title": "Lenguajes adicionales",
           "text": "Dart, Elixir, Shell"
         }
       ]

@@ -5,14 +5,14 @@
   "sectionId": "clasificacion",
   "transition": "zoom",
   "eyebrow": "04 · POSITIVOS Y NEGATIVOS",
-  "title": "Lo que se reporta no siempre es lo que existe.",
-  "subtitle": "El objetivo no es \"cero warnings\" a cualquier costo: es alta señal — hallazgos relevantes y reproducibles en los que el equipo confíe.",
+  "title": "Un hallazgo no siempre representa un problema real",
+  "subtitle": "La meta no es eliminar todas las alertas a cualquier costo. La herramienta debe producir hallazgos relevantes, reproducibles y útiles para el equipo.",
   "blocks": [
     {
       "type": "quadrant",
       "fragment": 0,
       "animation": "zoom",
-      "title": "Herramienta vs. riesgo real",
+      "title": "Resultado de la herramienta y riesgo real",
       "rowAxis": "HERRAMIENTA",
       "colAxis": "RIESGO REAL",
       "colLabels": [
@@ -26,22 +26,22 @@
       "cells": [
         {
           "title": "Verdadero positivo",
-          "text": "Hallazgo real: hay que corregirlo.",
+          "text": "La herramienta detecta un problema que realmente existe y debe corregirse.",
           "tone": "success"
         },
         {
           "title": "Falso positivo",
-          "text": "Alerta sin defecto real: erosiona la confianza en el Gate.",
+          "text": "La herramienta genera una alerta, pero el problema no existe en ese contexto.",
           "tone": "danger"
         },
         {
           "title": "Falso negativo",
-          "text": "El defecto existe, pero no fue visto: falsa sensación de seguridad.",
+          "text": "El problema existe, pero la herramienta no lo detecta. Esto puede generar una falsa sensación de seguridad.",
           "tone": "danger"
         },
         {
           "title": "Verdadero negativo",
-          "text": "No hay riesgo y no se reportó nada.",
+          "text": "El problema no existe y la herramienta no genera ninguna alerta.",
           "tone": "success"
         }
       ]

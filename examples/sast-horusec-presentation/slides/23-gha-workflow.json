@@ -4,9 +4,9 @@
   "masterId": "master-security",
   "sectionId": "operacion",
   "transition": "fade",
-  "eyebrow": "12 · WORKFLOW",
-  "title": ".github/workflows/horusec.yml",
-  "subtitle": "Conserva el resultado aunque el análisis falle, para publicarlo antes de bloquear el job.",
+  "eyebrow": "12 · FLUJO DE GITHUB ACTIONS",
+  "title": "Publicar el resultado antes de bloquear el trabajo",
+  "subtitle": "El flujo conserva el archivo SARIF aunque Horusec encuentre problemas. Después de publicarlo, marca la ejecución como fallida si corresponde.",
   "blocks": [
     {
       "type": "code",
@@ -23,8 +23,8 @@
     {
       "type": "callout",
       "tone": "info",
-      "title": "No olvidar actions/checkout con fetch-depth: 0",
-      "text": "Si se habilita `--enable-git-history`, el runner necesita el historial completo, no sólo el último commit."
+      "title": "El análisis del historial requiere una descarga completa",
+      "text": "Si se habilita `--enable-git-history`, `actions/checkout` debe usar `fetch-depth: 0` para que el runner reciba todo el historial y no solo el último commit."
     }
   ]
 }

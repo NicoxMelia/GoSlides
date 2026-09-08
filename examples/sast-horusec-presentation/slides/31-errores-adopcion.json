@@ -5,7 +5,7 @@
   "sectionId": "cierre",
   "transition": "slide",
   "eyebrow": "17 · ANTIPATRONES",
-  "title": "Cinco errores frecuentes de adopción.",
+  "title": "Errores frecuentes al adoptar SAST",
   "blocks": [
     {
       "type": "columns",
@@ -34,8 +34,8 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Tratar cada finding como confirmado",
-              "text": "Un SAST reporta posibles problemas; siempre necesita triage."
+              "title": "Tratar cada hallazgo como una vulnerabilidad confirmada",
+              "text": "SAST informa posibles problemas y cada resultado requiere una revisión en contexto."
             }
           ]
         },
@@ -45,13 +45,13 @@
               "type": "callout",
               "tone": "danger",
               "title": "Creer que \"verde\" significa seguro",
-              "text": "Sólo significa que los controles configurados no bloquearon ese commit."
+              "text": "Solo significa que los controles configurados no bloquearon ese commit."
             },
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Operar un scanner desactualizado",
-              "text": "El scanner también es software: acumula dependencias vulnerables e imágenes antiguas."
+              "title": "Usar una herramienta desactualizada",
+              "text": "El analizador también es software y puede acumular dependencias vulnerables o imágenes antiguas."
             }
           ]
         }

@@ -5,8 +5,8 @@
   "sectionId": "horusec",
   "transition": "zoom",
   "eyebrow": "05 · LA HERRAMIENTA",
-  "title": "Horusec: un comando, varios motores.",
-  "subtitle": "CLI open source: analiza un proyecto local y, según la configuración, lanza distintos motores, muchos vía Docker.",
+  "title": "Horusec coordina varios motores desde una misma CLI",
+  "subtitle": "La herramienta analiza un proyecto local y, según la configuración, ejecuta distintos motores. Muchos de ellos se inician mediante Docker.",
   "blocks": [
     {
       "type": "architecture",
@@ -23,14 +23,14 @@
         {
           "id": "cli",
           "label": "Horusec CLI",
-          "caption": "orquestador",
+          "caption": "coordina los análisis",
           "x": 29,
           "y": 55,
           "kind": "client"
         },
         {
           "id": "engines",
-          "label": "Motores / herramientas",
+          "label": "Motores de análisis",
           "caption": "ejecución en paralelo",
           "x": 53,
           "y": 55,
@@ -45,7 +45,7 @@
         },
         {
           "id": "platform",
-          "label": "API / Platform",
+          "label": "API / Plataforma",
           "caption": "opcional",
           "x": 80,
           "y": 80,
@@ -74,8 +74,8 @@
     {
       "type": "callout",
       "tone": "info",
-      "title": "La plataforma web no es necesaria",
-      "text": "Modelo mínimo: repositorio + CLI + Docker + salida local."
+      "title": "Uso básico sin plataforma web",
+      "text": "Para un uso básico alcanza con el repositorio, la CLI, Docker y un archivo de resultados local."
     }
   ]
 }

@@ -5,7 +5,7 @@
   "sectionId": "operacion",
   "transition": "fade",
   "eyebrow": "10 · EJECUCIÓN REPRODUCIBLE",
-  "title": "Docker también expone una superficie de riesgo propia.",
+  "title": "El uso de Docker también requiere controles",
   "blocks": [
     {
       "type": "columns",
@@ -33,8 +33,8 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Riesgo no inocuo",
-              "text": "Montar `/var/run/docker.sock` da al contenedor una capacidad muy alta sobre el daemon del host. En CI y entornos compartidos es una decisión de seguridad, no un detalle de configuración."
+              "title": "Acceso al servicio Docker del host",
+              "text": "Montar `/var/run/docker.sock` otorga al contenedor un nivel de acceso muy alto sobre Docker en el equipo anfitrión. En CI y en entornos compartidos, esta configuración requiere una evaluación de seguridad."
             }
           ]
         },
@@ -44,7 +44,7 @@
             {
               "type": "markdown",
               "appearance": "minimal",
-              "markdown": "| Opción | Ventaja | Costo |\n| --- | --- | --- |\n| Binario local | Simple, menos capas | Depende de Docker para varios motores |\n| Contenedor CLI | Empaqueta de forma reproducible | Necesita montar repo y socket Docker |\n| Sin Docker | Útil en entornos restringidos | Reduce motores disponibles |"
+              "markdown": "| Opción | Ventaja | Costo |\n| --- | --- | --- |\n| Binario local | Instalación sencilla y con pocas capas | Varios motores todavía dependen de Docker |\n| CLI en un contenedor | Entorno de ejecución reproducible | Requiere montar el repositorio y el socket de Docker |\n| Ejecución sin Docker | Útil en entornos restringidos | Reduce la cantidad de motores disponibles |"
             }
           ]
         }

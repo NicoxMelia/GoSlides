@@ -5,7 +5,7 @@
   "sectionId": "casos",
   "transition": "slide",
   "eyebrow": "06 · CASOS · VERDADERO POSITIVO (II)",
-  "title": "Ejecución dinámica e infraestructura demasiado permisiva.",
+  "title": "Otros patrones que requieren corrección",
   "blocks": [
     {
       "type": "columns",
@@ -33,8 +33,8 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Por qué es positivo",
-              "text": "SAST puede marcar una API peligrosa aunque no conozca todos los valores que llegarán en runtime — es intencional: busca el patrón para que después se interprete."
+              "title": "Por qué constituye un riesgo",
+              "text": "SAST puede señalar una función peligrosa aunque no conozca todos los valores que recibirá durante la ejecución. El equipo debe revisar el contexto para confirmar el riesgo."
             }
           ]
         },
@@ -54,8 +54,8 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Por qué es positivo",
-              "text": "Expone un puerto administrativo (SSH) a todo Internet — patrón típico que las reglas de IaC advierten."
+              "title": "Por qué constituye un riesgo",
+              "text": "La regla expone el puerto administrativo de SSH a cualquier dirección de Internet, una configuración que los analizadores de infraestructura suelen advertir."
             }
           ]
         }

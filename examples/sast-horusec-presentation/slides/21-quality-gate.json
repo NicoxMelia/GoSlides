@@ -4,9 +4,9 @@
   "masterId": "master-security",
   "sectionId": "operacion",
   "transition": "zoom",
-  "eyebrow": "11 · GOBIERNO DEL GATE",
-  "title": "Un Gate es una decisión de gestión, no de la herramienta.",
-  "subtitle": "Activar -e desde el día uno puede bloquear una base heredada con cientos de hallazgos. La adopción madura suele ser incremental.",
+  "eyebrow": "11 · CRITERIO DE APROBACIÓN",
+  "title": "El equipo define qué hallazgos bloquean el proceso",
+  "subtitle": "Activar `-e` desde el primer día puede bloquear un repositorio heredado con cientos de hallazgos. Conviene incorporar el control de manera gradual.",
   "blocks": [
     {
       "type": "columns",
@@ -25,24 +25,24 @@
               "type": "steps",
               "items": [
                 {
-                  "title": "Baseline",
-                  "text": "Correr sin Gate y clasificar la deuda existente."
+                  "title": "Línea de base",
+                  "text": "Ejecutar el análisis sin bloquear y clasificar la deuda existente."
                 },
                 {
-                  "title": "Triage",
-                  "text": "Confirmar vulnerabilidad, falso positivo o riesgo aceptado."
+                  "title": "Evaluación",
+                  "text": "Determinar si cada hallazgo es una vulnerabilidad, un falso positivo o un riesgo aceptado."
                 },
                 {
                   "title": "Ajustar reglas",
-                  "text": "Excluir rutas y afinar severidades relevantes."
+                  "text": "Excluir las rutas que no corresponden y definir qué severidades importan para el equipo."
                 },
                 {
-                  "title": "Bloquear deuda nueva",
-                  "text": "El Gate exige sólo hallazgos nuevos de alto riesgo."
+                  "title": "Evitar nueva deuda",
+                  "text": "El criterio empieza por bloquear únicamente los hallazgos nuevos de alto riesgo."
                 },
                 {
-                  "title": "Gate más fuerte",
-                  "text": "Ampliar severidades bloqueantes con el equipo ya adaptado."
+                  "title": "Ampliar el control",
+                  "text": "Cuando el proceso ya funciona, el equipo puede incorporar más severidades al bloqueo."
                 }
               ]
             }
@@ -54,11 +54,11 @@
             {
               "type": "bullets",
               "items": [
-                "**HIGH** confirmado: bloquea merge",
-                "**MEDIUM** nuevo: requiere triage o aprobación",
-                "**LOW** — visible, no bloqueante al comienzo",
-                "Falso positivo → excepción versionada y justificada",
-                "Riesgo aceptado → responsable, motivo y fecha de revisión"
+                "Un hallazgo **alto** confirmado bloquea el merge",
+                "Un hallazgo **medio** nuevo requiere revisión o aprobación",
+                "Un hallazgo **bajo** permanece visible, pero no bloquea al comienzo",
+                "Cada falso positivo se registra como una excepción versionada y justificada",
+                "Cada riesgo aceptado incluye responsable, motivo y fecha de revisión"
               ]
             }
           ]

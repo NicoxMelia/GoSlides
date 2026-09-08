@@ -5,7 +5,7 @@
   "sectionId": "arquitectura",
   "transition": "fade",
   "eyebrow": "13 · LABORATORIO CONTROLADO",
-  "title": "Instalación histórica: laboratorio, no receta vigente.",
+  "title": "La plataforma archivada solo sirve como laboratorio controlado",
   "blocks": [
     {
       "type": "code",
@@ -22,8 +22,8 @@
     {
       "type": "callout",
       "tone": "danger",
-      "title": "No usar credenciales de ejemplo",
-      "text": "Una plataforma SAST almacena información sensible sobre vulnerabilidades del software: su autenticación, base de datos, broker y exposición de red deben tratarse como activos críticos."
+      "title": "Las credenciales de ejemplo deben reemplazarse",
+      "text": "Una plataforma SAST almacena información sensible sobre las vulnerabilidades del software. La autenticación, la base de datos, el sistema de mensajería y la exposición de red requieren controles acordes con esa sensibilidad."
     }
   ]
 }
