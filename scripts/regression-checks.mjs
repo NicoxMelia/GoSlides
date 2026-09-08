@@ -21,6 +21,8 @@ check(!/rich-preview-toggle[^>]*onClick=\{[^}]*onChange/.test(rich), 'Preview Ri
 check(renderer.includes('wrapperStyle={canvasWrapperStyle(element)}'), 'Canvas animado necesita wrapper absoluto estable.');
 check(renderer.includes('<CanvasItem element={element} assets={assets} embedded/>'), 'El elemento animado debe ocupar el wrapper y no reposicionarse solo.');
 check(renderer.includes('useId') && !renderer.includes('id="arch-arrow"'), 'Los markers SVG del Viewer deben tener IDs locales por instancia.');
+const architecture = read('src/components/ArchitectureBlock.tsx');
+check(architecture.includes('className="arch-edge-labels"') && !architecture.includes('<text className="arch-edge-label"'), 'Los rótulos de arquitectura deben renderizarse como HTML para no deformarse con el SVG.');
 check(renderer.includes("block.type === 'accordion'") && renderer.includes("block.type === 'drawer'"), 'Viewer debe conservar los componentes de profundidad progresiva.');
 check(renderer.includes('content?.blocks?.length') && renderer.includes('<ProgressiveBody'), 'El contenido interactivo debe priorizar bloques anidados sobre texto simple.');
 check(editorCanvas.includes('useId'), 'Los markers SVG de Studio deben tener IDs locales por instancia.');

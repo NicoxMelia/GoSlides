@@ -79,10 +79,20 @@ export function ArchitectureBlock({ block, renderContent }: { block: Extract<Sli
           const { x1, y1, x2, y2 } = architectureEndpoints(a, b), mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
           return <g key={index} className={active === edge.from || active === edge.to ? 'active' : ''}>
             <path d={`M ${x1} ${y1} Q ${mx} ${my - 1.2} ${x2} ${y2}`} markerEnd={`url(#${markerId})`} />
-            {edge.label && <text className="arch-edge-label" x={mx} y={my - 2.8}>{edge.label}</text>}
           </g>;
         })}
       </svg>
+      <div className="arch-edge-labels" aria-hidden="true">
+        {block.edges.map((edge, index) => {
+          if (!edge.label) return null;
+          const a = byId.get(edge.from), b = byId.get(edge.to);
+          if (!a || !b) return null;
+          const { x1, y1, x2, y2 } = architectureEndpoints(a, b);
+          const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+          const highlighted = active === edge.from || active === edge.to;
+          return <span key={index} className={`arch-edge-label ${highlighted ? 'active' : ''}`} style={{ left: `${mx}%`, top: `${my - 2.6}%` }}>{edge.label}</span>;
+        })}
+      </div>
       {block.nodes.map(node => <button type="button" key={node.id}
         className={`arch-node ${node.kind ?? 'service'} ${active === node.id ? 'active' : ''}`}
         style={{ left: `${node.x}%`, top: `${node.y}%` }} aria-expanded={active === node.id}
