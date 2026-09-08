@@ -1,4 +1,7 @@
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { listPresentationVersions, readPresentationVersion, savePresentationSnapshot } from './vite-presentation-repository.mjs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 const failures = [];
@@ -40,6 +43,26 @@ check(analysis.includes('analyzeSlideContent') && analysis.includes('rendered.cl
 check(studio.includes("rightTab==='ai'") && studio.includes('<AuthoringPanel'), 'Studio debe exponer el panel IA.');
 check(studio.includes('scrollHeight>region.clientHeight+2') && studio.includes('scrollWidth>region.clientWidth+2'), 'Studio debe medir overflow vertical y horizontal real.');
 check(studio.includes('splitSlideForReadability') && studio.includes('convertOverflowToDrawer'), 'El diagnóstico debe ofrecer acciones de redistribución reversibles.');
+check(studio.includes('Guardar en repo') && studio.includes('restoreRepositoryVersion'), 'Studio debe exponer guardado y restauración del historial versionado.');
+
+const repositoryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'goslides-regression-repository-'));
+try {
+  fs.mkdirSync(path.join(repositoryRoot, 'presentations'));
+  const original = fs.readFileSync('presentations/demo-goslides.zip');
+  fs.writeFileSync(path.join(repositoryRoot, 'presentations', 'demo-goslides.zip'), original);
+  const firstSave = await savePresentationSnapshot(repositoryRoot, original);
+  const secondSave = await savePresentationSnapshot(repositoryRoot, original);
+  const versionHistory = listPresentationVersions(repositoryRoot, firstSave.presentationId);
+  const initialVersion = readPresentationVersion(repositoryRoot, firstSave.presentationId, 1);
+  check(firstSave.number === 2, 'El primer guardado de un ZIP publicado debe preservar el original como versión 1.');
+  check(secondSave.number === 3 && versionHistory.totalVersions === 3, 'Cada guardado debe agregar una versión inmutable al historial.');
+  check(initialVersion.bytes.length === original.length, 'Una versión guardada debe poder recuperarse completa.');
+  check(fs.existsSync(path.join(repositoryRoot, firstSave.currentFile)), 'Guardar debe actualizar el ZIP vigente en presentations/.');
+} catch (error) {
+  check(false, `El repositorio versionado debe completar su ciclo de guardado y lectura: ${error instanceof Error ? error.message : String(error)}`);
+} finally {
+  fs.rmSync(repositoryRoot, { recursive: true, force: true });
+}
 
 if (failures.length) {
   console.error(`Regression checks: ${failures.length} fallo(s)`);

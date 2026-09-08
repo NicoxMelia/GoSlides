@@ -437,10 +437,22 @@ El `publicId` difícil de adivinar evita URLs triviales, pero **no es autenticac
 5. Si tenés elementos recurrentes, convertí la selección en un Master Slide.
 6. Usá Capas, Historial y plantillas personales para organizar el trabajo.
 7. Previsualizá como alumno o usá Presenter Mode.
-8. Exportá el ZIP.
-9. Copialo a `presentations/`.
-10. Hacé `git add`, `git commit` y `git push`.
-11. GitHub Actions publica sólo el Viewer y las copias sanitizadas.
+8. Con Studio abierto mediante `npm run dev:studio`, usá **Guardar en repo**.
+9. Hacé `git commit` y `git push`: el ZIP vigente y su historial ya quedan preparados en Git.
+10. GitHub Actions publica sólo el Viewer y las copias sanitizadas.
+
+## Guardado e historial en el repositorio
+
+El autosave del editor sigue siendo un borrador privado del navegador. El botón **Guardar en repo** hace un guardado explícito y versionable:
+
+- actualiza el ZIP publicable en `presentations/`;
+- crea un snapshot inmutable en `presentation-history/<id>/versions/`;
+- actualiza el índice legible `presentation-history/<id>/index.json`;
+- ejecuta `git add` únicamente sobre esos archivos para incluirlos en el próximo commit.
+
+El botón **Versiones** lista todo el historial de esa presentación. Restaurar una versión nunca borra las posteriores: copia el snapshot elegido como una versión nueva y lo convierte en la publicación vigente.
+
+Si la presentación ya tenía un ZIP publicado antes de usar esta función, ese ZIP se importa automáticamente como versión inicial. La escritura en el repositorio está disponible en el Studio local servido por `npm run dev:studio`; un Studio desplegado como archivos estáticos conserva el autosave y la exportación ZIP, pero no puede escribir en el disco del repositorio.
 
 ## Atajos principales
 
@@ -460,6 +472,15 @@ El `publicId` difícil de adivinar evita URLs triviales, pero **no es autenticac
 | `Shift + flecha` | Mover 2% |
 
 ## Publicar
+
+Desde el Studio local, el camino recomendado es **Guardar en repo** y luego:
+
+```bash
+git commit -m "Update presentation"
+git push
+```
+
+La alternativa manual mediante **Exportar ZIP** sigue disponible:
 
 ```bash
 cp ~/Downloads/mi-presentacion.zip presentations/

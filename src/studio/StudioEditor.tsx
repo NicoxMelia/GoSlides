@@ -14,6 +14,8 @@ import { SlideRenderer } from '../components/SlideRenderer';
 import { ICON_LIBRARIES } from '../components/IconLibrary';
 import { SlideThumbnail } from '../components/SlideThumbnail';
 import { exportPresentationZip, exportOfflineWeb, exportElementAsPng, exportSlidesAsPdf, downloadBlob } from '../lib/presentationExport';
+import { loadPresentationFromFile, loadedToDocument } from '../lib/presentationLoader';
+import { loadRepositoryHistory, loadRepositoryVersion, saveToPresentationRepository, type RepositoryHistory, type RepositoryVersion } from '../lib/presentationRepository';
 import { createPublicId } from '../lib/ids';
 import { deleteUserTemplate, loadUserTemplates, saveProject, saveUserTemplate, loadUserThemes, saveUserTheme, deleteUserTheme } from '../lib/studioStorage';
 import { BlockEditor } from './BlockEditor';
@@ -119,6 +121,8 @@ const elementStylePresets:{group:string;items:{name:string;style:ElementStyle}[]
 function slugify(value:string){return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'presentacion';}
 function safeAssetName(name:string){return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9._-]+/g,'-');}
 function clone<T>(value:T):T{return structuredClone(value);}
+function repositoryDate(value:string){return new Date(value).toLocaleString([],{dateStyle:'short',timeStyle:'medium'});}
+function repositorySize(bytes:number){return bytes<1024*1024?`${Math.max(1,Math.round(bytes/1024))} KB`:`${(bytes/1024/1024).toFixed(1)} MB`;}
 /** MIME a partir de la extensión del asset; los bytes que guardamos no lo conservan. */
 function mimeForAsset(path:string){
   const ext=path.toLowerCase().split('.').pop()??'';
@@ -163,6 +167,10 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   const [replaceImageId,setReplaceImageId]=useState<string|null>(null);
   const [bgRemoval,setBgRemoval]=useState<{id:string;percent:number;stage:string}|null>(null);
   const [exporting,setExporting]=useState<'png'|'pdf'|null>(null);
+  const [repositoryOpen,setRepositoryOpen]=useState(false);
+  const [repositoryHistory,setRepositoryHistory]=useState<RepositoryHistory|null>(null);
+  const [repositoryBusy,setRepositoryBusy]=useState<'save'|'history'|number|null>(null);
+  const [repositoryNotice,setRepositoryNotice]=useState<{tone:'success'|'warning'|'error';text:string}|null>(null);
   const [renderedOverflow,setRenderedOverflow]=useState<RenderedOverflow>({vertical:false,horizontal:false,clippedRegions:0});
   const slide=doc.slides[selected]??doc.slides[0];
   const activeMaster=(doc.manifest.masters??[]).find(m=>m.id===slide.masterId);
@@ -302,7 +310,7 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
   async function exportPng(){const targets=exportDeckRef.current?.querySelectorAll<HTMLElement>('.print-slide .slide-stage');const target=targets?.[selected];if(!target)return;setExporting('png');try{await exportElementAsPng(target,`${slugify(doc.manifest.title)}-${String(selected+1).padStart(2,'0')}.png`);}catch(error){window.alert(`No se pudo generar el PNG: ${error instanceof Error?error.message:String(error)}`);}finally{setExporting(null);}}
   async function exportPdf(){const targets=Array.from(exportDeckRef.current?.querySelectorAll<HTMLElement>('.print-slide .slide-stage')??[]);if(!targets.length)return;setExporting('pdf');try{await exportSlidesAsPdf(targets,`${slugify(doc.manifest.title)}.pdf`);}catch(error){window.alert(`No se pudo generar el PDF: ${error instanceof Error?error.message:String(error)}`);}finally{setExporting(null);}}
 
-  async function copySelection(){clipboard.current=clone(selectedElements);try{await navigator.clipboard.writeText(JSON.stringify({goslidesClipboard:1,elements:clipboard.current}));}catch{/* optional */}}
+  async function copySelection(){if(!selectedElements.length)return;clipboard.current=clone(selectedElements);try{await navigator.clipboard.writeText(JSON.stringify({goslidesClipboard:1,elements:clipboard.current}));}catch{/* optional */}}
   async function pasteSelection(){let items=clipboard.current;try{const raw=await navigator.clipboard.readText();const parsed=JSON.parse(raw);if(parsed?.goslidesClipboard===1&&Array.isArray(parsed.elements))items=parsed.elements;}catch{/* internal */}if(!items.length)return;const idMap=new Map<string,string>();items.filter(x=>x.type!=='connector').forEach(x=>idMap.set(x.id,`${x.id}-paste-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,5)}`));const copies=clone(items).map((x,index)=>{x.id=idMap.get(x.id)??`${x.id}-paste-${index}`;x.layerName=`${x.layerName??x.type} copia`;x.x=Math.min(96-x.w,x.x+2);x.y=Math.min(96-x.h,x.y+2);x.groupId=undefined;x.comments=[];if(x.type==='connector'){x.from=idMap.get(x.from)??x.from;x.to=idMap.get(x.to)??x.to;}return x;});commit(patchCanvas(canvas=>[...canvas,...copies]),'Pegar elementos');setSelectedIds(copies.map(x=>x.id));}
 
   function addSlide(template:SlideTemplate){const next=createSlide(template);commit(current=>({...current,slides:[...current.slides,next]}),`Agregar slide ${template}`);setSelected(doc.slides.length);}
@@ -402,6 +410,51 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
 
   async function exportZip(){const ensured=doc.manifest.publicId?doc:{...doc,manifest:{...doc.manifest,publicId:createPublicId(),version:2 as const}};if(!doc.manifest.publicId)setDocState(ensured);const blob=await exportPresentationZip(ensured);downloadBlob(blob,`${slugify(ensured.manifest.title)}.zip`);}
 
+  async function refreshRepositoryHistory(presentationId=doc.manifest.id){
+    const history=await loadRepositoryHistory(presentationId);
+    setRepositoryHistory(history);
+    return history;
+  }
+
+  async function saveRepositoryVersion(){
+    if(repositoryBusy!==null)return;
+    setRepositoryBusy('save');setRepositoryNotice(null);
+    try{
+      const ensured=doc.manifest.publicId?doc:{...doc,manifest:{...doc.manifest,publicId:createPublicId(),version:2 as const}};
+      if(!doc.manifest.publicId)setDocState(ensured);
+      const result=await saveToPresentationRepository(await exportPresentationZip(ensured));
+      await refreshRepositoryHistory(ensured.manifest.id);
+      setRepositoryNotice({tone:result.staged?'success':'warning',text:result.staged?`Versión ${result.number} guardada en ${result.currentFile} y preparada para el próximo commit.`:(result.stageWarning??`Versión ${result.number} guardada, pero no preparada en Git.`)});
+    }catch(error){setRepositoryNotice({tone:'error',text:error instanceof Error?error.message:String(error)});}
+    finally{setRepositoryBusy(null);}
+  }
+
+  async function openRepositoryHistory(){
+    setRepositoryOpen(true);setRepositoryBusy('history');setRepositoryNotice(null);
+    try{await refreshRepositoryHistory();}
+    catch(error){setRepositoryNotice({tone:'error',text:error instanceof Error?error.message:String(error)});}
+    finally{setRepositoryBusy(null);}
+  }
+
+  async function restoreRepositoryVersion(version:RepositoryVersion){
+    if(repositoryBusy!==null||!window.confirm(`¿Restaurar la versión ${version.number}? Se guardará como una versión nueva y no se eliminará ninguna versión existente.`))return;
+    setRepositoryBusy(version.number);setRepositoryNotice(null);
+    try{
+      const snapshot=await loadRepositoryVersion(doc.manifest.id,version.number);
+      const saved=await saveToPresentationRepository(snapshot);
+      const file=new File([snapshot],`version-${version.number}.zip`,{type:'application/zip'});
+      const loaded=await loadPresentationFromFile(file);
+      pushHistory(doc,`Restaurar versión ${version.number}`);
+      Object.values(assetUrls).forEach(url=>{if(url.startsWith('blob:'))URL.revokeObjectURL(url);});
+      setAssetUrls(loaded.assets);
+      setDocState(loadedToDocument(loaded));
+      setSelected(Math.min(selected,loaded.slides.length-1));setSelectedIds([]);
+      await refreshRepositoryHistory(loaded.manifest.id);
+      setRepositoryNotice({tone:saved.staged?'success':'warning',text:saved.staged?`Versión ${version.number} restaurada como versión ${saved.number} y preparada para commit.`:(saved.stageWarning??`Versión ${version.number} restaurada.`)});
+    }catch(error){setRepositoryNotice({tone:'error',text:error instanceof Error?error.message:String(error)});}
+    finally{setRepositoryBusy(null);}
+  }
+
   function patchElement(id:string,patch:Partial<CanvasElement>,label='Editar capa'){const item=activeCanvas.find(x=>x.id===id);if(!item)return;updateCanvasElement({...item,...patch} as CanvasElement,label);}
   function reorderLayer(id:string,delta:number){const item=activeCanvas.find(x=>x.id===id);if(!item)return;patchElement(id,{zIndex:Math.max(0,(item.zIndex??1)+delta)} as Partial<CanvasElement>,delta>0?'Subir capa':'Bajar capa');}
 
@@ -421,10 +474,10 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
     event.preventDefault();void pasteSelection();
   };window.addEventListener('paste',onPaste);return()=>window.removeEventListener('paste',onPaste);});
 
-  useEffect(()=>{if(suspended)return;const handle=(event:KeyboardEvent)=>{const target=event.target as HTMLElement|null;if(target?.matches('input,textarea,select,[contenteditable="true"]'))return;const mod=event.ctrlKey||event.metaKey;if(mod&&event.key.toLowerCase()==='z'){event.preventDefault();event.shiftKey?redo():undo();return;}if(mod&&event.key.toLowerCase()==='y'){event.preventDefault();redo();return;}if(mod&&event.key.toLowerCase()==='k'){event.preventDefault();setCommandOpen(v=>!v);return;}if(mod&&event.key.toLowerCase()==='a'){event.preventDefault();setSelectedIds(activeCanvas.filter(x=>x.type!=='connector'&&!x.hidden).map(x=>x.id));return;}if(mod&&event.key.toLowerCase()==='d'){event.preventDefault();duplicateElements();return;}if(mod&&event.key.toLowerCase()==='c'){event.preventDefault();void copySelection();return;}if(mod&&event.key.toLowerCase()==='v')return;if(mod&&event.key.toLowerCase()==='g'){event.preventDefault();event.shiftKey?ungroup():group();return;}if(event.key==='Escape'&&commandOpen){event.preventDefault();setCommandOpen(false);return;}if(event.key==='Delete'||event.key==='Backspace'){event.preventDefault();removeElements();return;}const step=event.shiftKey?2:0.5;if(event.key==='ArrowLeft'){event.preventDefault();nudge(-step,0);}if(event.key==='ArrowRight'){event.preventDefault();nudge(step,0);}if(event.key==='ArrowUp'){event.preventDefault();nudge(0,-step);}if(event.key==='ArrowDown'){event.preventDefault();nudge(0,step);}};window.addEventListener('keydown',handle);return()=>window.removeEventListener('keydown',handle);},[doc,selected,selectedIds,suspended]);
+  useEffect(()=>{if(suspended)return;const handle=(event:KeyboardEvent)=>{const target=event.target as HTMLElement|null;if(target?.matches('input,textarea,select,[contenteditable="true"]'))return;const mod=event.ctrlKey||event.metaKey;if(mod&&event.key.toLowerCase()==='z'){event.preventDefault();event.shiftKey?redo():undo();return;}if(mod&&event.key.toLowerCase()==='y'){event.preventDefault();redo();return;}if(mod&&event.key.toLowerCase()==='k'){event.preventDefault();setCommandOpen(v=>!v);return;}if(mod&&event.key.toLowerCase()==='a'){event.preventDefault();setSelectedIds(activeCanvas.filter(x=>x.type!=='connector'&&!x.hidden).map(x=>x.id));return;}if(mod&&event.key.toLowerCase()==='d'){event.preventDefault();duplicateElements();return;}if(mod&&event.key.toLowerCase()==='c'){if(!selectedElements.length)return;event.preventDefault();void copySelection();return;}if(mod&&event.key.toLowerCase()==='v')return;if(mod&&event.key.toLowerCase()==='g'){event.preventDefault();event.shiftKey?ungroup():group();return;}if(event.key==='Escape'&&commandOpen){event.preventDefault();setCommandOpen(false);return;}if(event.key==='Delete'||event.key==='Backspace'){event.preventDefault();removeElements();return;}const step=event.shiftKey?2:0.5;if(event.key==='ArrowLeft'){event.preventDefault();nudge(-step,0);}if(event.key==='ArrowRight'){event.preventDefault();nudge(step,0);}if(event.key==='ArrowUp'){event.preventDefault();nudge(0,-step);}if(event.key==='ArrowDown'){event.preventDefault();nudge(0,step);}};window.addEventListener('keydown',handle);return()=>window.removeEventListener('keydown',handle);},[doc,selected,selectedIds,suspended]);
 
   return <div className="studio-editor" data-theme={mode} data-visual-style={doc.manifest.theme?.visualStyle??'modern'} style={{'--accent':accent,'--slide-bg':doc.manifest.theme?.slideBackground,'--text':doc.manifest.theme?.textColor,'--muted':doc.manifest.theme?.mutedColor,'--heading-font':doc.manifest.theme?.headingFontFamily,'--theme-radius':`${doc.manifest.theme?.radius??18}px`,'--gs-space':`${doc.manifest.theme?.tokens?.spacing??16}px`,'--gs-card-radius':`${doc.manifest.theme?.tokens?.cardRadius??18}px`,'--gs-shadow-strength':`${doc.manifest.theme?.tokens?.shadowStrength??28}%`,'--gs-token-border':doc.manifest.theme?.tokens?.borderColor,fontFamily:doc.manifest.theme?.fontFamily,display:suspended?'none':undefined} as React.CSSProperties}>
-    <header className="studio-editor-topbar"><div className="studio-editor-left"><button className="icon-button" onClick={onBack}><ArrowLeft size={18}/></button><div><strong>{doc.manifest.title}</strong><small><Save size={12}/> {savedAt?`Guardado ${savedAt}`:'Autosave activo · v12'}</small></div></div><div className="studio-editor-actions"><button className="secondary-button compact" disabled={!past.current.length} onClick={undo}><Undo2 size={16}/> Undo</button><button className="secondary-button compact" disabled={!future.current.length} onClick={redo}><Redo2 size={16}/> Redo</button><button className="secondary-button compact" onClick={()=>onPresenterPreview(doc,assetUrls)}><MonitorPlay size={16}/> Presentador</button><button className="secondary-button compact" onClick={()=>onStudentPreview(doc,assetUrls)}><Eye size={16}/> Alumno</button><button className="secondary-button compact" disabled={Boolean(exporting)} onClick={()=>void exportPng()}><FileImage size={16}/> {exporting==='png'?'Generando…':'PNG'}</button><button className="secondary-button compact" disabled={Boolean(exporting)} onClick={()=>void exportPdf()}><Printer size={16}/> {exporting==='pdf'?'Generando…':'PDF'}</button><button className="secondary-button compact" onClick={()=>void exportOffline()}><Package size={16}/> Offline</button><button className="primary-button compact" onClick={()=>void exportZip()}><Download size={16}/> Exportar ZIP</button></div></header>
+    <header className="studio-editor-topbar"><div className="studio-editor-left"><button className="icon-button" onClick={onBack}><ArrowLeft size={18}/></button><div><strong>{doc.manifest.title}</strong><small><Save size={12}/> {savedAt?`Borrador local ${savedAt}`:'Autosave local activo · v12'}</small></div></div><div className="studio-editor-actions"><button className="secondary-button compact" disabled={!past.current.length} onClick={undo}><Undo2 size={16}/> Undo</button><button className="secondary-button compact" disabled={!future.current.length} onClick={redo}><Redo2 size={16}/> Redo</button><button className="secondary-button compact" onClick={()=>onPresenterPreview(doc,assetUrls)}><MonitorPlay size={16}/> Presentador</button><button className="secondary-button compact" onClick={()=>onStudentPreview(doc,assetUrls)}><Eye size={16}/> Alumno</button><button className="secondary-button compact" disabled={Boolean(exporting)} onClick={()=>void exportPng()}><FileImage size={16}/> {exporting==='png'?'Generando…':'PNG'}</button><button className="secondary-button compact" disabled={Boolean(exporting)} onClick={()=>void exportPdf()}><Printer size={16}/> {exporting==='pdf'?'Generando…':'PDF'}</button><button className="secondary-button compact" onClick={()=>void exportOffline()}><Package size={16}/> Offline</button><button className="secondary-button compact" onClick={()=>void exportZip()}><Download size={16}/> Exportar ZIP</button><span className="repository-action-group"><button className="primary-button compact repository-save-button" disabled={repositoryBusy!==null} onClick={()=>void saveRepositoryVersion()}><Save size={16}/> {repositoryBusy==='save'?'Guardando…':'Guardar en repo'}</button><button className="secondary-button compact repository-history-button" disabled={repositoryBusy==='save'} onClick={()=>void openRepositoryHistory()} title="Ver todas las versiones guardadas"><History size={16}/><span>Versiones{repositoryHistory?.totalVersions?` · ${repositoryHistory.totalVersions}`:''}</span></button></span></div></header>
     <div className="editor-workspace v3-workspace studio-organized-workspace">
       <aside className="studio-insert-panel" aria-label="Inserción y diapositivas">
         <div className="studio-left-tabs" aria-label="Secciones de inserción">
@@ -476,6 +529,8 @@ export function StudioEditor({initial,assets={},suspended=false,onBack,onStudent
     {contextMenu&&<div className="canvas-context-menu" style={{left:contextMenu.x,top:contextMenu.y}} onMouseLeave={()=>setContextMenu(null)}><button onClick={()=>{duplicateElements();setContextMenu(null)}}><Copy size={14}/> Duplicar</button><button onClick={()=>{toggleLock();setContextMenu(null)}}><Lock size={14}/> Bloquear / desbloquear</button><button onClick={()=>{layer(1);setContextMenu(null)}}><BringToFront size={14}/> Traer adelante</button><button onClick={()=>{layer(-1);setContextMenu(null)}}><SendToBack size={14}/> Enviar atrás</button><button className="danger" onClick={()=>{removeElements();setContextMenu(null)}}><Trash2 size={14}/> Eliminar</button></div>}
     <div className="print-deck" ref={exportDeckRef} aria-hidden="true">{doc.slides.map((item,i)=><div className="print-slide" key={`print-${item.id}`}><SlideRenderer slide={item} master={(doc.manifest.masters??[]).find(m=>m.id===item.masterId)} assets={assetUrls} slideNumber={i+1} total={slideCount} fragmentStep={999}/></div>)}</div>
     {emojiOpen&&<EmojiPicker onSelect={addEmoji} onClose={()=>setEmojiOpen(false)}/>}
+    {repositoryNotice&&<div className={`repository-notice ${repositoryNotice.tone}`} role="status"><span>{repositoryNotice.text}</span><button type="button" aria-label="Cerrar aviso" onClick={()=>setRepositoryNotice(null)}>×</button></div>}
+    {repositoryOpen&&<div className="repository-history-backdrop" onClick={()=>setRepositoryOpen(false)}><section className="repository-history-dialog" role="dialog" aria-modal="true" aria-labelledby="repository-history-title" onClick={event=>event.stopPropagation()}><header><div><span>HISTORIAL DEL REPOSITORIO</span><h2 id="repository-history-title">Versiones de la presentación</h2></div><button type="button" aria-label="Cerrar historial" onClick={()=>setRepositoryOpen(false)}>×</button></header>{repositoryHistory?.currentFile&&<p className="repository-current-file">Publicación actual: <code>{repositoryHistory.currentFile}</code></p>}{repositoryBusy==='history'?<div className="repository-history-empty">Cargando versiones…</div>:repositoryHistory?.versions.length?<div className="repository-version-list">{repositoryHistory.versions.map((version,index)=><article key={`${version.number}-${version.sha256}`} className={index===0?'current':''}><div className="repository-version-number"><History size={17}/><strong>Versión {version.number}</strong>{index===0&&<em>ACTUAL</em>}</div><div className="repository-version-meta"><span>{repositoryDate(version.createdAt)}</span><span>{repositorySize(version.size)}</span><code>{version.sha256.slice(0,10)}</code>{version.reason==='imported-current'&&<span>Versión inicial importada</span>}</div><button type="button" disabled={repositoryBusy!==null} onClick={()=>void restoreRepositoryVersion(version)}>{repositoryBusy===version.number?'Restaurando…':'Restaurar'}</button></article>)}</div>:<div className="repository-history-empty"><History size={28}/><strong>Todavía no hay versiones guardadas</strong><span>Usá “Guardar en repo” para crear la primera.</span></div>}<footer><span>Restaurar crea una versión nueva; nunca elimina el historial.</span><button className="primary-button compact" disabled={repositoryBusy!==null} onClick={()=>void saveRepositoryVersion()}><Save size={15}/> Guardar estado actual</button></footer></section></div>}
     {commandOpen&&<div className="command-palette-backdrop" onClick={()=>setCommandOpen(false)}><div className="command-palette" onClick={e=>e.stopPropagation()}><header><Command size={18}/><div><strong>Command Palette</strong><small>Ctrl/Cmd + K</small></div></header><button onClick={()=>{addSlide('free');setCommandOpen(false)}}><Plus size={16}/> Nueva slide libre <kbd>N</kbd></button><button onClick={()=>{duplicateSlide();setCommandOpen(false)}}><Copy size={16}/> Duplicar slide <kbd>Ctrl+D*</kbd></button><button onClick={()=>{setSelectedIds(activeCanvas.filter(x=>x.type!=='connector'&&!x.hidden).map(x=>x.id));setCommandOpen(false)}}><Layers3 size={16}/> Seleccionar todo <kbd>Ctrl+A</kbd></button><button onClick={()=>{setRightTab('timeline');setCommandOpen(false)}}><Clock3 size={16}/> Abrir timeline de animación</button><button onClick={()=>{onStudentPreview(doc,assetUrls);setCommandOpen(false)}}><Eye size={16}/> Preview alumno</button><button onClick={()=>{void exportPng();setCommandOpen(false)}}><FileImage size={16}/> Exportar slide PNG</button><button onClick={()=>{void exportPdf();setCommandOpen(false)}}><Printer size={16}/> Exportar PDF 16:9</button><button onClick={()=>{void exportOffline();setCommandOpen(false)}}><Package size={16}/> Exportar web offline</button><button onClick={()=>{void exportZip();setCommandOpen(false)}}><Download size={16}/> Exportar ZIP</button><small>* Ctrl+D duplica elementos cuando hay una selección.</small></div></div>}
   </div>;
 }
