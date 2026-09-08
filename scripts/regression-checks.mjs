@@ -23,6 +23,7 @@ check(renderer.includes('<CanvasItem element={element} assets={assets} embedded/
 check(renderer.includes('useId') && !renderer.includes('id="arch-arrow"'), 'Los markers SVG del Viewer deben tener IDs locales por instancia.');
 const architecture = read('src/components/ArchitectureBlock.tsx');
 check(architecture.includes('className="arch-edge-labels"') && !architecture.includes('<text className="arch-edge-label"'), 'Los rótulos de arquitectura deben renderizarse como HTML para no deformarse con el SVG.');
+check(!architecture.includes("'Recibe de'") && !architecture.includes("'Continúa hacia'"), 'El detalle de nodos no debe agregar navegación automática entre conexiones.');
 check(renderer.includes("block.type === 'accordion'") && renderer.includes("block.type === 'drawer'"), 'Viewer debe conservar los componentes de profundidad progresiva.');
 check(renderer.includes('content?.blocks?.length') && renderer.includes('<ProgressiveBody'), 'El contenido interactivo debe priorizar bloques anidados sobre texto simple.');
 check(editorCanvas.includes('useId'), 'Los markers SVG de Studio deben tener IDs locales por instancia.');

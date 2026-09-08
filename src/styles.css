@@ -325,12 +325,7 @@ body > .slide-overlay { position:fixed; }
 .arch-detail-inline { position:relative; margin-top:.8cqw; padding:1.5cqw; border:1px solid var(--line-strong); border-radius:1cqw; background:var(--surface); text-align:left; max-height:20cqw; overflow:auto; }
 .arch-detail-inline h3 { font:800 clamp(12px,1.5cqw,21px) Manrope,sans-serif; }
 .arch-detail-inline p { color:var(--muted); font-size:clamp(13px,1.4cqw,16px); line-height:1.6; }
-.arch-detail-connections { margin-top:1.3cqw; display:grid; gap:.5cqw; }
-.arch-detail-connections h4 { margin:0 0 .2cqw; color:var(--soft); font-size:clamp(8px,.8cqw,11px); font-weight:600; }
-.arch-detail-connections button { display:flex; align-items:center; justify-content:space-between; gap:1cqw; padding:.8cqw 1cqw; border:1px solid var(--line); border-radius:.7cqw; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; font:600 clamp(9px,.95cqw,13px) Manrope,sans-serif; }
-.arch-detail-connections button:hover { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 10%,var(--surface)); }
-.arch-detail-connections button:focus-visible,.arch-detail .modal-close:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-.arch-detail-connections small { display:block; margin-top:.25cqw; color:var(--muted); font-weight:400; }
+.arch-detail .modal-close:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .fit-stretch .architecture-block { display:flex; flex-direction:column; min-height:0; }
 .fit-stretch .architecture-block > .architecture-canvas { flex:1; min-height:0; }
 .fit-stretch .architecture-block > .arch-detail-inline { flex:0 1 52%; min-height:0; }

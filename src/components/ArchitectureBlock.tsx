@@ -45,23 +45,7 @@ export function ArchitectureBlock({ block, renderContent }: { block: Extract<Sli
     <h3 id={`${panelId}-title`}><RichText text={selected.label} /></h3>
     {selected.caption && <p className="arch-detail-caption"><RichText text={selected.caption} /></p>}
     <div className="arch-detail-body">{renderContent(selected)}</div>
-    {(['incoming', 'outgoing'] as const).map(direction => {
-      const links = block.edges.flatMap((edge, index) => {
-        if ((direction === 'incoming' ? edge.to : edge.from) !== active) return [];
-        const node = byId.get(direction === 'incoming' ? edge.from : edge.to);
-        return node ? [{ node, label: edge.label, index }] : [];
-      });
-      return links.length > 0 && <div className="arch-detail-connections" key={direction}>
-        <h4>{direction === 'incoming' ? 'Recibe de' : 'Continúa hacia'}</h4>
-        {links.map(({ node, label, index }) => <button type="button" key={index} onClick={() => {
-          setActive(node.id);
-          panel.current?.querySelector<HTMLButtonElement>('.modal-close')?.focus({ preventScroll: true });
-          panel.current?.scrollTo({ top: 0 });
-        }}><span>{node.label}{label && <small>{label}</small>}</span><span aria-hidden="true">→</span></button>)}
-      </div>;
-    })}
-    {!selected.blocks?.length && !selected.text && !selected.caption && !block.edges.some(edge =>
-      (edge.from === active && byId.has(edge.to)) || (edge.to === active && byId.has(edge.from))) &&
+    {!selected.blocks?.length && !selected.text && !selected.caption &&
       <p>Este nodo no tiene detalles adicionales.</p>}
   </div>;
 
