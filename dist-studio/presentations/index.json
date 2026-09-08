@@ -18,7 +18,7 @@
     "publicId": "sastHorusec2026",
     "title": "SAST y Horusec",
     "subtitle": "Seguridad estática en el flujo DevSecOps",
-    "description": "Fundamentos de SAST, clasificación de resultados, Horusec como caso real, integración con GitHub Actions, opciones de arquitectura y lista de verificación para su adopción.",
+    "description": "Fundamentos de SAST, clasificación de resultados (TP/FP/FN/TN), Horusec como caso real, CI/CD con GitHub Actions, arquitectura local/AWS y checklist de adopción.",
     "tags": [
       "Seguridad",
       "SAST",
@@ -27,7 +27,7 @@
       "Gestión de la Calidad de Software"
     ],
     "zip": "sastHorusec2026.zip",
-    "slideCount": 34
+    "slideCount": 33
   },
   {
     "id": "ssh-red-local",

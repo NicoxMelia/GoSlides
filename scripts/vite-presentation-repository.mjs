@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import JSZip from 'jszip';
+import { buildPublicLibrary } from './build-public-library.mjs';
 
 const API_PREFIX = '/__goslides_repository';
 const MAX_ZIP_BYTES = 150 * 1024 * 1024;
@@ -136,6 +137,10 @@ export async function savePresentationSnapshot(root, inputBytes) {
   index.updatedAt = createdAt;
   index.versions.push(record);
   writeAtomic(indexPath, `${JSON.stringify(index, null, 2)}\n`);
+
+  // Studio's "Publicadas / Viewer" reads this sanitized library. Refresh it as
+  // part of the save so the panel and student preview point at the new ZIP.
+  await buildPublicLibrary(root);
 
   const staged = stageFiles(root, [index.currentFile, `presentation-history/${key}`]);
   return { ...record, presentationId: manifest.id, title: manifest.title, currentFile: index.currentFile, historyDirectory: `presentation-history/${key}`, totalVersions: index.versions.length, ...staged };

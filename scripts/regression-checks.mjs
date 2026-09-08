@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import JSZip from 'jszip';
 import { listPresentationVersions, readPresentationVersion, savePresentationSnapshot } from './vite-presentation-repository.mjs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
@@ -51,13 +52,20 @@ try {
   const original = fs.readFileSync('presentations/demo-goslides.zip');
   fs.writeFileSync(path.join(repositoryRoot, 'presentations', 'demo-goslides.zip'), original);
   const firstSave = await savePresentationSnapshot(repositoryRoot, original);
-  const secondSave = await savePresentationSnapshot(repositoryRoot, original);
+  const editedZip = await JSZip.loadAsync(original);
+  const editedManifest = JSON.parse(await editedZip.file('presentation.json').async('text'));
+  editedManifest.title = 'Demo guardada más reciente';
+  editedZip.file('presentation.json', `${JSON.stringify(editedManifest, null, 2)}\n`);
+  const edited = await editedZip.generateAsync({ type: 'nodebuffer' });
+  const secondSave = await savePresentationSnapshot(repositoryRoot, edited);
   const versionHistory = listPresentationVersions(repositoryRoot, firstSave.presentationId);
   const initialVersion = readPresentationVersion(repositoryRoot, firstSave.presentationId, 1);
+  const publicIndex = JSON.parse(fs.readFileSync(path.join(repositoryRoot, '.generated-public', 'presentations', 'index.json'), 'utf8'));
   check(firstSave.number === 2, 'El primer guardado de un ZIP publicado debe preservar el original como versión 1.');
   check(secondSave.number === 3 && versionHistory.totalVersions === 3, 'Cada guardado debe agregar una versión inmutable al historial.');
   check(initialVersion.bytes.length === original.length, 'Una versión guardada debe poder recuperarse completa.');
   check(fs.existsSync(path.join(repositoryRoot, firstSave.currentFile)), 'Guardar debe actualizar el ZIP vigente en presentations/.');
+  check(publicIndex[0]?.title === editedManifest.title, 'Guardar debe regenerar la biblioteca que consume el panel Publicadas / Viewer.');
 } catch (error) {
   check(false, `El repositorio versionado debe completar su ciclo de guardado y lectura: ${error instanceof Error ? error.message : String(error)}`);
 } finally {

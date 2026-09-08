@@ -59,8 +59,14 @@ export default function StudioApp() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetch(`${base}presentations/index.json`).then((r) => r.ok ? r.json() : []).then((data) => setPublished(Array.isArray(data) ? data : [])).catch(() => setPublished([]));
-  }, []);
+    if (screen !== 'published') return;
+    let active = true;
+    fetch(`${base}presentations/index.json?refresh=${Date.now()}`, { cache: 'no-store' })
+      .then((r) => r.ok ? r.json() : [])
+      .then((data) => { if (active) setPublished(Array.isArray(data) ? data : []); })
+      .catch(() => { if (active) setPublished([]); });
+    return () => { active = false; };
+  }, [screen]);
 
   function refreshDrafts() { setDrafts(loadProjects()); }
 
@@ -100,7 +106,7 @@ export default function StudioApp() {
 
   async function openPublished(entry: LibraryEntry, edit = false) {
     try {
-      const loaded = await loadPresentationFromUrl(`${base}presentations/${entry.zip}`, entry.title);
+      const loaded = await loadPresentationFromUrl(`${base}presentations/${entry.zip}?refresh=${Date.now()}`, entry.title);
       if (edit) {
         const doc = loadedToDocument(loaded);
         if (!doc.manifest.publicId) doc.manifest.publicId = entry.publicId;
