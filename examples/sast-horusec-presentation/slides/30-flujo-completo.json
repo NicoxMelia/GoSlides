@@ -5,7 +5,7 @@
   "sectionId": "cierre",
   "transition": "zoom",
   "eyebrow": "16 · DE PUNTA A PUNTA",
-  "title": "El flujo completo, de punta a punta.",
+  "title": "Flujo completo de análisis y decisión",
   "blocks": [
     {
       "type": "timeline",
@@ -14,27 +14,27 @@
       "items": [
         {
           "title": "Código",
-          "text": "El cambio nace en la rama; todavía es barato de modificar."
+          "text": "El cambio comienza en una rama de trabajo, donde todavía resulta sencillo modificarlo."
         },
         {
-          "title": "Scan local",
-          "text": "Feedback rápido antes de abrir el Pull Request."
+          "title": "Análisis local",
+          "text": "El desarrollador recibe resultados antes de abrir la solicitud de cambio."
         },
         {
-          "title": "Corregir / justificar",
-          "text": "Vulnerabilidad real, falso positivo o riesgo aceptado."
+          "title": "Responder al hallazgo",
+          "text": "El equipo corrige la vulnerabilidad o documenta el falso positivo o el riesgo aceptado."
         },
         {
-          "title": "Pull Request",
-          "text": "La misma política versionada corre en un entorno repetible."
+          "title": "Solicitud de cambio",
+          "text": "La misma política versionada se ejecuta en un entorno reproducible."
         },
         {
           "title": "SAST en CI",
-          "text": "La pipeline conserva SARIF como evidencia trazable."
+          "text": "El pipeline conserva el archivo SARIF como evidencia del análisis."
         },
         {
-          "title": "Gate / Merge",
-          "text": "La política de riesgo decide qué severidad bloquea."
+          "title": "Aprobación y merge",
+          "text": "La política del equipo determina qué hallazgos impiden integrar el cambio."
         }
       ]
     },
@@ -42,7 +42,7 @@
       "type": "callout",
       "tone": "info",
       "title": "El objetivo no es \"pasar Horusec\"",
-      "text": "Es reducir la probabilidad de que vulnerabilidades conocidas entren al producto sin haber sido vistas, discutidas y tratadas."
+      "text": "El objetivo es reducir la probabilidad de que una vulnerabilidad conocida llegue al producto sin que el equipo la revise y la trate."
     }
   ]
 }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="title desc">
+  <title id="title">Verificación de la huella del servidor</title>
+  <desc id="desc">Una lupa compara una huella digital con un servidor y muestra una marca de verificación.</desc>
+  <rect x="28" y="28" width="464" height="464" rx="54" fill="#0C2637" stroke="#21485B" stroke-width="3"/>
+  <g transform="translate(282 92)">
+    <rect width="136" height="210" rx="22" fill="#102A3B" stroke="#FFB86B" stroke-width="4"/>
+    <rect x="18" y="22" width="100" height="48" rx="9" fill="#071827"/>
+    <rect x="18" y="86" width="100" height="48" rx="9" fill="#071827"/>
+    <rect x="18" y="150" width="100" height="38" rx="9" fill="#071827"/>
+    <circle cx="40" cy="46" r="6" fill="#57E3C4"/>
+    <circle cx="40" cy="110" r="6" fill="#57E3C4"/>
+    <circle cx="40" cy="169" r="6" fill="#57E3C4"/>
+    <path d="M57 46h43M57 110h43M57 169h43" stroke="#78A6B8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <circle cx="210" cy="247" r="116" fill="#071827" stroke="#419CFF" stroke-width="12"/>
+  <path d="M291 330l85 84" stroke="#419CFF" stroke-width="24" stroke-linecap="round"/>
+  <g fill="none" stroke="#57E3C4" stroke-width="8" stroke-linecap="round">
+    <path d="M164 285c-29-33-22-98 20-121 42-23 91 10 83 58-5 31-24 48-50 45-29-3-42-41-23-61 18-19 47-3 42 21"/>
+    <path d="M144 243c-4 57 29 91 75 96M181 147c47-17 91 18 98 65" opacity=".75"/>
+  </g>
+  <circle cx="393" cy="368" r="54" fill="#57E3C4" stroke="#DFFFF7" stroke-width="5"/>
+  <path d="M366 369l18 19 36-43" fill="none" stroke="#071827" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="260" y="461" text-anchor="middle" fill="#9FC1CF" font-family="system-ui,sans-serif" font-size="21" font-weight="700">COMPARÁ LA HUELLA</text>
+</svg>

@@ -5,8 +5,8 @@
   "sectionId": "clasificacion",
   "transition": "slide",
   "eyebrow": "04 · POR QUÉ IMPORTAN",
-  "title": "Los dos errores tienen costo, no sólo el ruido.",
-  "subtitle": "Un falso positivo cuesta confianza. Un falso negativo cuesta seguridad real.",
+  "title": "Falsos positivos y falsos negativos tienen costos distintos",
+  "subtitle": "Los falsos positivos desgastan la confianza del equipo. Los falsos negativos dejan riesgos reales sin detectar.",
   "blocks": [
     {
       "type": "compare",
@@ -20,7 +20,7 @@
           "El equipo ignora resultados",
           "Se agregan excepciones indiscriminadas",
           "Se deshabilitan reglas enteras",
-          "Se pierde tiempo en triage de baja señal"
+          "El equipo pierde tiempo revisando alertas poco relevantes"
         ]
       },
       "right": {
@@ -28,10 +28,10 @@
         "title": "Dan una falsa sensación de seguridad",
         "highlight": true,
         "items": [
-          "Un análisis \"verde\" no prueba nada",
+          "Un análisis sin alertas no demuestra que el sistema sea seguro",
           "La cobertura depende de reglas, lenguajes y motores",
           "Hay lógica de negocio que el motor no modela",
-          "Sólo se descubren con otros controles complementarios"
+          "Algunos problemas solo aparecen con controles complementarios"
         ]
       }
     }

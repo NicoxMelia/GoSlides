@@ -4,9 +4,9 @@
   "masterId": "master-security",
   "sectionId": "arquitectura",
   "transition": "slide",
-  "eyebrow": "14 · ¿SE PUEDE DESPLEGAR EN AWS?",
-  "title": "Sí: mapear la arquitectura, no reinventarla.",
-  "subtitle": "Horusec no necesita \"ser un servicio AWS\": es software desplegable, como cualquier otro.",
+  "eyebrow": "14 · DESPLIEGUE EN AWS",
+  "title": "Una posible arquitectura de Horusec en AWS",
+  "subtitle": "Los componentes de la plataforma pueden desplegarse sobre servicios administrados de AWS, siempre que el equipo asuma su mantenimiento y actualización.",
   "blocks": [
     {
       "type": "architecture",
@@ -30,7 +30,7 @@
         {
           "id": "eks",
           "label": "Amazon EKS",
-          "caption": "Horusec services",
+          "caption": "servicios de Horusec",
           "x": 56,
           "y": 50,
           "kind": "cloud"

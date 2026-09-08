@@ -5,8 +5,8 @@
   "sectionId": "fundamentos",
   "transition": "fade",
   "eyebrow": "RECORRIDO",
-  "title": "Seis bloques, de la teoría al deploy.",
-  "subtitle": "El hilo conductor: riesgo de seguridad → regla estática → feedback temprano → decisión humana → Quality Gate → evidencia en CI/CD.",
+  "title": "Recorrido de la presentación",
+  "subtitle": "Partimos del riesgo de seguridad, vemos cómo lo detecta SAST y terminamos con la revisión humana, el criterio de aprobación y la evidencia en CI/CD.",
   "blocks": [
     {
       "type": "cards",
@@ -16,13 +16,13 @@
           "icon": "braces",
           "badge": "01",
           "title": "Fundamentos",
-          "text": "Qué es SAST, dónde encaja en DevOps y qué NO garantiza."
+          "text": "Qué es SAST, dónde encaja en DevOps y cuáles son sus límites."
         },
         {
           "icon": "gauge",
           "badge": "02",
           "title": "Clasificación",
-          "text": "Verdaderos/falsos positivos y negativos: cómo leer un resultado."
+          "text": "Cómo interpretar verdaderos y falsos positivos y negativos."
         },
         {
           "icon": "shield",
@@ -40,13 +40,13 @@
           "icon": "cloud",
           "badge": "05",
           "title": "Arquitectura",
-          "text": "De un laptop a AWS: qué mapea y qué no."
+          "text": "Desde una computadora local hasta AWS y los componentes que requiere cada opción."
         },
         {
           "icon": "check",
           "badge": "06",
           "title": "Cierre",
-          "text": "Checklist, errores frecuentes y próximos pasos."
+          "text": "Lista de verificación, errores frecuentes y próximos pasos."
         }
       ],
       "fragment": 0,

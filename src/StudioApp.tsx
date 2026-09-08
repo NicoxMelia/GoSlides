@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Check, Edit3, Eye, FileText, Import, L
 import type { LibraryEntry, LoadedPresentation, PresentationDocument } from './types';
 import { Brand } from './components/Brand';
 import { PresentationPlayer } from './components/PresentationPlayer';
-import { loadPresentationFromFile, loadPresentationFromUrl, loadedToDocument } from './lib/presentationLoader';
+import { loadPresentationFromFile, loadPresentationFromUrl, loadedToDocument, mimeForAssetPath } from './lib/presentationLoader';
 import { createPublicId } from './lib/ids';
 import { deleteProject, getViewerBaseUrl, loadProjectAssets, loadProjects, setViewerBaseUrl } from './lib/studioStorage';
 import { StudioEditor } from './studio/StudioEditor';
@@ -59,8 +59,14 @@ export default function StudioApp() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetch(`${base}presentations/index.json`).then((r) => r.ok ? r.json() : []).then((data) => setPublished(Array.isArray(data) ? data : [])).catch(() => setPublished([]));
-  }, []);
+    if (screen !== 'published') return;
+    let active = true;
+    fetch(`${base}presentations/index.json?refresh=${Date.now()}`, { cache: 'no-store' })
+      .then((r) => r.ok ? r.json() : [])
+      .then((data) => { if (active) setPublished(Array.isArray(data) ? data : []); })
+      .catch(() => { if (active) setPublished([]); });
+    return () => { active = false; };
+  }, [screen]);
 
   function refreshDrafts() { setDrafts(loadProjects()); }
 
@@ -73,13 +79,15 @@ export default function StudioApp() {
   }
 
   function openTemplate(templateId: string) {
-    setEditorDoc(createPresentationFromTemplate(templateId)); setEditorAssets({}); setScreen('editor');
+    const doc = createPresentationFromTemplate(templateId);
+    const assetUrls = Object.fromEntries(Object.entries(doc.assetFiles ?? {}).map(([path, bytes]) => [path, URL.createObjectURL(new Blob([bytes], { type: mimeForAssetPath(path) }))]));
+    setEditorDoc(doc); setEditorAssets(assetUrls); setScreen('editor');
   }
 
   async function openDraft(doc: PresentationDocument) {
     const assetFiles = await loadProjectAssets(doc.manifest.id);
     const assetUrls: Record<string,string> = {};
-    Object.entries(assetFiles).forEach(([path, bytes]) => { assetUrls[path] = URL.createObjectURL(new Blob([bytes])); });
+    Object.entries(assetFiles).forEach(([path, bytes]) => { assetUrls[path] = URL.createObjectURL(new Blob([bytes], { type: mimeForAssetPath(path) })); });
     setEditorDoc({ ...doc, manifest: { ...doc.manifest, version: 2, publicId: doc.manifest.publicId ?? createPublicId() }, assetFiles });
     setEditorAssets(assetUrls); setScreen('editor');
   }
@@ -98,7 +106,7 @@ export default function StudioApp() {
 
   async function openPublished(entry: LibraryEntry, edit = false) {
     try {
-      const loaded = await loadPresentationFromUrl(`${base}presentations/${entry.zip}`, entry.title);
+      const loaded = await loadPresentationFromUrl(`${base}presentations/${entry.zip}?refresh=${Date.now()}`, entry.title);
       if (edit) {
         const doc = loadedToDocument(loaded);
         if (!doc.manifest.publicId) doc.manifest.publicId = entry.publicId;
@@ -203,7 +211,7 @@ export default function StudioApp() {
           const selected = selectedTemplate?.id === template.id;
           return <button className={`presentation-template-card ${selected ? 'selected' : ''}`} key={template.id} aria-pressed={selected} onClick={() => setSelectedTemplateId(template.id)}>
             <div className="template-preview" data-theme={template.theme.mode ?? 'dark'} data-visual-style={template.theme.visualStyle ?? 'modern'} style={templateThemeStyle(template)}>
-              <SlideThumbnail slide={template.previewSlide} assets={{}} slideNumber={1} total={template.slideCount}/>
+              <SlideThumbnail slide={template.previewSlide} master={template.previewMaster} assets={template.assets ?? {}} slideNumber={1} total={template.slideCount}/>
               <span className="template-badge">{template.badge}</span>
               {selected && <span className="template-selected-mark"><Check size={15}/></span>}
             </div>

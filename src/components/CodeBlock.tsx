@@ -1,6 +1,44 @@
-import { Check, Copy } from 'lucide-react';
-import { useState } from 'react';
-import type { CodeFrameStyle, CodeTheme } from '../types';
+import { Check, Copy, Play, Terminal, X } from 'lucide-react';
+import { useEffect, useId, useRef, useState } from 'react';
+import type { CodeFrameStyle, CodeSimulationOptions, CodeTheme } from '../types';
+
+function SimulationTerminal({ output, id, onClose }: { output: string; id: string; onClose: () => void }) {
+  const [visible, setVisible] = useState(0);
+  const scrollRef = useRef<HTMLPreElement>(null);
+  const characters = Array.from(output);
+  const finished = visible >= characters.length;
+  useEffect(() => {
+    const length = Array.from(output).length;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(length);
+      return;
+    }
+    // Bound playback to five seconds even for long output; never evaluate code.
+    const step = Math.max(1, Math.ceil(length / 125));
+    let count = 0;
+    const timer = window.setInterval(() => {
+      count = Math.min(length, count + step);
+      setVisible(count);
+      if (count >= length) window.clearInterval(timer);
+    }, 40);
+    return () => window.clearInterval(timer);
+  }, [output]);
+  useEffect(() => {
+    const panel = scrollRef.current;
+    if (panel) panel.scrollTop = panel.scrollHeight;
+  }, [visible]);
+
+  return <section id={id} className="code-simulation-terminal" aria-label="Terminal bash — simulación"
+    onPointerDown={event => event.stopPropagation()} onClick={event => event.stopPropagation()}
+    onKeyDown={event => { event.stopPropagation(); if (event.key === 'Escape') onClose(); }}>
+    <div className="code-simulation-header">
+      <span><Terminal size={14} aria-hidden="true"/> bash <small>Simulación</small></span>
+      <button type="button" aria-label="Cerrar terminal" onClick={onClose}><X size={16}/></button>
+    </div>
+    <pre ref={scrollRef} tabIndex={0} aria-label="Salida de la simulación"><code>{characters.slice(0, visible).join('')}</code></pre>
+    <div className="code-simulation-status" role="status">{finished ? 'Simulación finalizada' : 'Simulando…'}</div>
+  </section>;
+}
 
 function escapeHtml(value: string) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -50,8 +88,10 @@ export function CodeBlockView({
   codeTheme='seti',
   showLineNumbers=false,
   showWindowControls=true,
+  simulationEnabled=false,
+  simulationOutput='',
   compact=false,
-}: {
+}: CodeSimulationOptions & {
   code: string;
   language?: string;
   title?: string;
@@ -62,6 +102,11 @@ export function CodeBlockView({
   compact?: boolean;
 }) {
   const [copied,setCopied]=useState(false);
+  const [run, setRun] = useState(0);
+  const terminalId = useId();
+  const runButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => { setRun(0); }, [code, simulationEnabled, simulationOutput]);
+  const closeTerminal = () => { setRun(0); runButton.current?.focus(); };
   const lines=(code || '').replace(/\r\n/g,'\n').split('\n');
   async function copy(){
     try{await navigator.clipboard?.writeText(code);setCopied(true);window.setTimeout(()=>setCopied(false),1200);}catch{/* presentation remains usable */}
@@ -74,9 +119,14 @@ export function CodeBlockView({
           {showWindowControls && <span className="window-dots" aria-hidden="true"><i/><i/><i/></span>}
           <strong>{title}</strong>
         </div>
-        <div className="code-window-actions"><span className="code-language-badge">{language}</span><button type="button" className="code-copy" onClick={copy} title="Copiar código" aria-label="Copiar código">{copied?<Check size={13}/>:<Copy size={13}/>}</button></div>
+        <div className="code-window-actions"><span className="code-language-badge">{language}</span>
+          {simulationEnabled && <button ref={runButton} type="button" className="code-run" aria-expanded={run > 0} aria-controls={run > 0 ? terminalId : undefined}
+            onPointerDown={event => event.stopPropagation()} onKeyDown={event => event.stopPropagation()}
+            onClick={event => { event.stopPropagation(); setRun(value => value + 1); }}><Play size={13} aria-hidden="true"/> Run code</button>}
+          <button type="button" className="code-copy" onClick={copy} title="Copiar código" aria-label="Copiar código">{copied?<Check size={13}/>:<Copy size={13}/>}</button></div>
       </div>
       <pre className="code-lines"><code>{lines.map((line,index)=><span className="code-line" key={index}>{showLineNumbers&&<i className="code-line-number">{index+1}</i>}<span className="code-line-content" dangerouslySetInnerHTML={{__html:highlightCodeLine(line,language)}}/></span>)}</code></pre>
+      {simulationEnabled && run > 0 && <SimulationTerminal key={run} id={terminalId} output={simulationOutput} onClose={closeTerminal}/>}
     </div>
   </div>;
 }

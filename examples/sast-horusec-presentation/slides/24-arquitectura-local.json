@@ -5,8 +5,8 @@
   "sectionId": "arquitectura",
   "transition": "slide",
   "eyebrow": "13 · ARQUITECTURA LOCAL",
-  "title": "De un único equipo a una plataforma central.",
-  "subtitle": "Dos arquitecturas válidas, muy distintas en complejidad.",
+  "title": "Dos formas de usar Horusec en un entorno local",
+  "subtitle": "La CLI alcanza para una práctica o un repositorio individual. La plataforma central agrega servicios, almacenamiento y mantenimiento.",
   "blocks": [
     {
       "type": "compare",
@@ -14,23 +14,23 @@
       "animation": "fade",
       "left": {
         "label": "OPCIÓN A",
-        "title": "CLI local mínima",
+        "title": "CLI local",
         "subtitle": "Recomendada para clase.",
         "highlight": true,
         "items": [
-          "No requiere servidor",
-          "Costo bajo",
-          "SARIF como archivo local"
+          "No requiere un servidor adicional",
+          "Tiene un costo operativo bajo",
+          "Guarda el resultado SARIF como archivo local"
         ]
       },
       "right": {
         "label": "OPCIÓN B",
-        "title": "Horusec Platform self-hosted",
+        "title": "Horusec Platform autohospedada",
         "subtitle": "Arquitectura histórica.",
         "items": [
-          "RabbitMQ + PostgreSQL",
-          "Docker Compose / Helm / Operator",
-          "Dashboard y tokens compartidos"
+          "Requiere RabbitMQ y PostgreSQL",
+          "Puede desplegarse con Docker Compose, Helm u Operator",
+          "Centraliza el panel de resultados y los tokens"
         ]
       }
     },
@@ -38,7 +38,7 @@
       "type": "callout",
       "tone": "warning",
       "title": "Nota de vigencia",
-      "text": "`zup-archive/horusec-platform` está archivado (solo lectura) y Docker Compose no era recomendado para producción — sirve para laboratorio, no para copiar tal cual."
+      "text": "`zup-archive/horusec-platform` está archivado en modo de solo lectura. Su configuración con Docker Compose sirve para un laboratorio, pero el propio proyecto no la recomendaba para producción."
     }
   ]
 }

@@ -4,9 +4,9 @@
   "masterId": "master-security",
   "sectionId": "fundamentos",
   "transition": "wipe",
-  "eyebrow": "02 · SHIFT LEFT",
-  "title": "El mismo control, corrido muchas veces.",
-  "subtitle": "Ejecutar SAST una sola vez por release reduce su valor. Shift Left busca correrlo primero en el puesto del desarrollador y luego en CI, con una configuración versionada compartida.",
+  "eyebrow": "02 · CICLO DE RETROALIMENTACIÓN",
+  "title": "El mejor momento para analizar el código es antes del merge",
+  "subtitle": "SAST funciona mejor como un ciclo breve y repetible. El equipo analiza cada cambio mientras todavía resulta sencillo entenderlo, corregirlo y volver a probarlo.",
   "blocks": [
     {
       "type": "timeline",
@@ -15,20 +15,20 @@
       "animationDuration": 0.65,
       "items": [
         {
-          "title": "Local / IDE",
-          "text": "Feedback en segundos, mientras el código todavía es barato de modificar."
+          "title": "Escribir",
+          "text": "El cambio comienza en la rama de trabajo, donde todavía es fácil modificarlo."
         },
         {
-          "title": "Pull Request",
-          "text": "Control repetible: la misma política corre en un entorno reproducible."
+          "title": "Analizar",
+          "text": "La herramienta revisa los cambios y señala posibles problemas de seguridad."
         },
         {
-          "title": "Merge / Build",
-          "text": "Quality Gate: qué severidad bloquea y qué excepciones se admiten."
+          "title": "Evaluar",
+          "text": "El equipo revisa la severidad, el alcance y el contexto de cada hallazgo."
         },
         {
-          "title": "Evidencia",
-          "text": "Salida SARIF o dashboard: trazabilidad de lo que se analizó y se decidió."
+          "title": "Corregir",
+          "text": "La decisión se convierte en una corrección o en una excepción documentada y justificada."
         }
       ]
     }

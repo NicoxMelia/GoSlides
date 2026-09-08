@@ -5,8 +5,8 @@
   "sectionId": "casos",
   "transition": "wipe",
   "eyebrow": "08 · GOBERNANZA",
-  "title": "Falso positivo no es lo mismo que riesgo aceptado.",
-  "subtitle": "Un repositorio educativo puede incluir fixtures deliberadamente inseguros: analizarlos como código productivo sólo genera ruido — conviene excluir esas rutas.",
+  "title": "Falso positivo y riesgo aceptado son decisiones distintas",
+  "subtitle": "Un repositorio educativo puede incluir archivos de prueba deliberadamente inseguros. Si no forman parte del producto, conviene excluir esas rutas para evitar alertas que no aportan valor.",
   "blocks": [
     {
       "type": "markdown",
@@ -18,8 +18,8 @@
     {
       "type": "callout",
       "tone": "success",
-      "title": "Buena práctica",
-      "text": "Horusec ofrece marcar hashes como `-F` (false positive) o `-R` (risk accepted), además de ignorar rutas y severidades. Una excepción sin explicación se convierte en deuda de gobernanza."
+      "title": "Cómo registra Horusec estas decisiones",
+      "text": "Horusec permite marcar el identificador de un hallazgo con `-F` para un falso positivo o con `-R` para un riesgo aceptado. También permite ignorar rutas y severidades. Toda excepción debe conservar una explicación."
     }
   ]
 }

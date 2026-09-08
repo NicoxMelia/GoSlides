@@ -1,0 +1,53 @@
+{
+  "id": "antes-de-conectar",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "preparacion",
+  "transition": "fade",
+  "eyebrow": "03 · REQUISITOS",
+  "title": "Antes de conectar, comprobá estas cuatro piezas.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 4,
+      "items": [
+        {
+          "icon": "wifi",
+          "badge": "1",
+          "title": "Misma red",
+          "text": "Los dos equipos están conectados al mismo router o segmento LAN."
+        },
+        {
+          "icon": "server",
+          "badge": "2",
+          "title": "Servidor activo",
+          "text": "OpenSSH Server está instalado y el servicio está ejecutándose."
+        },
+        {
+          "icon": "map-pin",
+          "badge": "3",
+          "title": "IP privada",
+          "text": "Conocés la dirección del servidor: `192.168.x.x`, `10.x.x.x` o similar."
+        },
+        {
+          "icon": "user",
+          "badge": "4",
+          "title": "Cuenta válida",
+          "text": "Tenés un usuario del servidor y una forma de autenticarte."
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "No confundas IP local con IP pública",
+      "text": "Para esta práctica usamos la IP privada del servidor. No hace falta abrir puertos en el router ni configurar redirección desde Internet."
+    }
+  ],
+  "notes": [
+    "Pedir al grupo que identifique cuál de las cuatro piezas suele faltar cuando aparece connection refused.",
+    "Aclarar que algunas redes Wi‑Fi de invitados aíslan dispositivos aunque compartan el mismo nombre de red."
+  ]
+}

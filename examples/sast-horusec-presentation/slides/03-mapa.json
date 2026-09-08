@@ -5,8 +5,8 @@
   "sectionId": "fundamentos",
   "transition": "slide",
   "eyebrow": "01 · CALIDAD Y SEGURIDAD",
-  "title": "La seguridad es un atributo de calidad.",
-  "subtitle": "SAST convierte ese control en una verificación repetible y automatizada.",
+  "title": "La seguridad como atributo de calidad",
+  "subtitle": "SAST permite incorporar una verificación repetible y automatizada al proceso de desarrollo.",
   "blocks": [
     {
       "type": "architecture",
@@ -58,8 +58,8 @@
         },
         {
           "id": "triage",
-          "label": "Triage humano",
-          "caption": "interpretación + contexto",
+          "label": "Evaluación humana",
+          "caption": "interpretación y contexto",
           "x": 50,
           "y": 50,
           "kind": "client",
@@ -90,16 +90,16 @@
         },
         {
           "id": "gate",
-          "label": "Quality Gate",
-          "caption": "bloquea o informa",
+          "label": "Criterio de aprobación",
+          "caption": "informa o bloquea el proceso",
           "x": 72,
           "y": 50,
           "kind": "service",
-          "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El Quality Gate aplica esos criterios en el pipeline y hace explícitas las excepciones acordadas.",
+          "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El criterio de aprobación aplica esas reglas en el pipeline y deja explícitas las excepciones acordadas.",
           "blocks": [
             {
               "type": "text",
-              "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El Quality Gate aplica esos criterios en el pipeline y hace explícitas las excepciones acordadas."
+              "text": "El equipo define qué resultados permiten continuar y cuáles requieren una corrección. El criterio de aprobación aplica esas reglas en el pipeline y deja explícitas las excepciones acordadas."
             },
             {
               "type": "callout",
@@ -164,7 +164,7 @@
       "type": "callout",
       "tone": "warning",
       "title": "Nota de vigencia",
-      "text": "**Horusec Platform fue archivada en marzo de 2025** (solo lectura); el CLI sigue público. La usamos como caso pedagógico real de SAST/DevSecOps, no como receta productiva sin revisar."
+      "text": "**Horusec Platform fue archivada en marzo de 2025** y quedó en modo de solo lectura. La CLI sigue disponible públicamente, por eso la usamos como un caso pedagógico de SAST y DevSecOps, no como una receta directa para producción."
     }
   ]
 }

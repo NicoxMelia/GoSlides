@@ -5,7 +5,7 @@
   "sectionId": "cierre",
   "transition": "fade",
   "eyebrow": "19 · REFERENCIAS",
-  "title": "Fuentes técnicas consultadas.",
+  "title": "Fuentes técnicas consultadas",
   "blocks": [
     {
       "type": "markdown",
@@ -18,7 +18,7 @@
       "type": "callout",
       "tone": "warning",
       "title": "Nota de vigencia",
-      "text": "Fecha de revisión del material: septiembre de 2026. Antes de usar Horusec en producción, comprobar nuevamente releases, imágenes Docker, dependencias y estado de mantenimiento."
+      "text": "Este material se revisó en septiembre de 2026. Antes de usar Horusec en producción, es necesario comprobar nuevamente las versiones publicadas, las imágenes de Docker, las dependencias y el estado de mantenimiento."
     }
   ]
 }

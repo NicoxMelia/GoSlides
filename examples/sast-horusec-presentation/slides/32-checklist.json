@@ -5,15 +5,15 @@
   "sectionId": "cierre",
   "transition": "zoom",
   "eyebrow": "18 · LISTO PARA OPERAR",
-  "title": "Checklist antes de activar el gate.",
-  "subtitle": "El control técnico sólo funciona si ejecución, evidencia y excepciones tienen un proceso común.",
+  "title": "Antes de activar el control automático",
+  "subtitle": "El análisis técnico necesita un proceso compartido para ejecutar la herramienta, conservar la evidencia y justificar las excepciones.",
   "blocks": [
     {
       "type": "markdown",
       "fragment": 0,
       "animation": "fade",
       "appearance": "card",
-      "markdown": "- [x] Docker funciona en el entorno de análisis\n- [x] Horusec CLI está instalado y versionado/documentado\n- [x] `.horusec` está ignorado en Git\n- [x] El repositorio tiene una configuración compartida\n- [x] Se realizó un baseline antes de activar el Gate\n- [x] Falsos positivos y riesgos aceptados tienen justificación\n- [x] GitHub Actions ejecuta el análisis en PR\n- [x] La pipeline conserva SARIF aunque el scanner encuentre problemas\n- [x] El Gate falla después de publicar evidencia\n- [x] Las reglas y excepciones se revisan periódicamente\n- [x] SAST se complementa con testing y otros controles de seguridad"
+      "markdown": "- [x] Docker funciona en el entorno de análisis\n- [x] La versión de Horusec CLI está definida y documentada\n- [x] El directorio `.horusec` está excluido de Git\n- [x] El repositorio tiene una configuración compartida\n- [x] El equipo generó una línea de base antes de activar el bloqueo\n- [x] Los falsos positivos y los riesgos aceptados tienen una justificación\n- [x] GitHub Actions ejecuta el análisis en cada solicitud de cambio\n- [x] El pipeline conserva el archivo SARIF aunque Horusec encuentre problemas\n- [x] El proceso publica la evidencia antes de marcar la ejecución como fallida\n- [x] El equipo revisa periódicamente las reglas y las excepciones\n- [x] SAST se complementa con pruebas y otros controles de seguridad"
     }
   ]
 }

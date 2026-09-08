@@ -5,8 +5,8 @@
   "sectionId": "casos",
   "transition": "slide",
   "eyebrow": "08 · CASOS · FALSO POSITIVO",
-  "title": "Cuando el hallazgo no representa un defecto real.",
-  "subtitle": "Los falsos positivos son inevitables en mayor o menor medida: el punto de calidad no es ocultarlos, es gestionarlos con trazabilidad.",
+  "title": "Dos casos que requieren revisión antes de decidir",
+  "subtitle": "Todas las herramientas generan algunos falsos positivos. El objetivo no es ocultarlos, sino revisarlos y registrar por qué una regla no aplica en ese contexto.",
   "blocks": [
     {
       "type": "columns",
@@ -19,7 +19,7 @@
       "gap": 1.4,
       "items": [
         {
-          "title": "Credencial ficticia en un test",
+          "title": "Credencial ficticia en una prueba",
           "blocks": [
             {
               "type": "code",
@@ -34,13 +34,13 @@
             {
               "type": "callout",
               "tone": "warning",
-              "title": "Requiere triage",
+              "title": "Requiere una revisión manual",
               "text": "Un detector de secretos puede marcar una cadena por su forma, aunque no otorgue acceso a ningún sistema real."
             }
           ]
         },
         {
-          "title": "MD5 como checksum, no como cripto",
+          "title": "MD5 como suma de comprobación",
           "blocks": [
             {
               "type": "code",
@@ -55,8 +55,8 @@
             {
               "type": "callout",
               "tone": "warning",
-              "title": "Requiere triage",
-              "text": "Si la regla sólo detecta `md5`, puede reportar \"criptografía débil\" aunque el hash sólo deduplique caché."
+              "title": "Requiere una revisión manual",
+              "text": "Si la regla solo detecta `md5`, puede informar \"criptografía débil\" aunque el hash se utilice únicamente para identificar contenido duplicado en la caché."
             }
           ]
         }

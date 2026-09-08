@@ -63,6 +63,26 @@ detalladas o documentales:
 La demo dedica cinco slides a v0.14 y cinco a v0.15, con ejemplos interactivos del
 modelo de capas, el contrato de generación, el diagnóstico y las correcciones.
 
+## Organización de Studio
+
+En **Nueva presentación → Usar una plantilla → Educación** está disponible
+**Facultad · UNC / FCEFyN**: tema claro y nueve slides editables de portada,
+objetivos, separador de unidad, concepto, comparación, ejemplo técnico,
+actividad, bibliografía y cierre. Los logos originales y el pie se comparten
+mediante un master; al duplicar una slide se mantiene esa identidad. Las imágenes
+se guardan dentro del ZIP y no dependen de archivos externos.
+
+El lateral izquierdo reúne la inserción de elementos y bloques, la navegación de
+diapositivas y los archivos para insertar. El catálogo de bloques muestra una
+miniatura de ejemplo y el nombre de cada bloque, con búsqueda y categorías.
+
+El lateral derecho reúne propiedades, diseño, capas, animaciones, historial y las
+opciones de contenido. Al insertar un elemento se selecciona automáticamente y se
+abren sus propiedades. «Organizar selección» contiene alineación, agrupación,
+orden de capas y duplicación; «Diseño» permite personalizar la presentación sin
+perder la selección actual. Las flechas sobre el lienzo permiten cambiar de slide
+mientras el catálogo permanece abierto.
+
 ## Nuevo en v14 — profundidad progresiva
 
 GoSlides deja de tratar la interactividad como una colección de widgets de texto
@@ -417,10 +437,22 @@ El `publicId` difícil de adivinar evita URLs triviales, pero **no es autenticac
 5. Si tenés elementos recurrentes, convertí la selección en un Master Slide.
 6. Usá Capas, Historial y plantillas personales para organizar el trabajo.
 7. Previsualizá como alumno o usá Presenter Mode.
-8. Exportá el ZIP.
-9. Copialo a `presentations/`.
-10. Hacé `git add`, `git commit` y `git push`.
-11. GitHub Actions publica sólo el Viewer y las copias sanitizadas.
+8. Con Studio abierto mediante `npm run dev:studio`, usá **Guardar en repo**.
+9. Hacé `git commit` y `git push`: el ZIP vigente y su historial ya quedan preparados en Git.
+10. GitHub Actions publica sólo el Viewer y las copias sanitizadas.
+
+## Guardado e historial en el repositorio
+
+El autosave del editor sigue siendo un borrador privado del navegador. El botón **Guardar en repo** hace un guardado explícito y versionable:
+
+- actualiza el ZIP publicable en `presentations/`;
+- crea un snapshot inmutable en `presentation-history/<id>/versions/`;
+- actualiza el índice legible `presentation-history/<id>/index.json`;
+- ejecuta `git add` únicamente sobre esos archivos para incluirlos en el próximo commit.
+
+El botón **Versiones** lista todo el historial de esa presentación. Restaurar una versión nunca borra las posteriores: copia el snapshot elegido como una versión nueva y lo convierte en la publicación vigente.
+
+Si la presentación ya tenía un ZIP publicado antes de usar esta función, ese ZIP se importa automáticamente como versión inicial. La escritura en el repositorio está disponible en el Studio local servido por `npm run dev:studio`; un Studio desplegado como archivos estáticos conserva el autosave y la exportación ZIP, pero no puede escribir en el disco del repositorio.
 
 ## Atajos principales
 
@@ -440,6 +472,15 @@ El `publicId` difícil de adivinar evita URLs triviales, pero **no es autenticac
 | `Shift + flecha` | Mover 2% |
 
 ## Publicar
+
+Desde el Studio local, el camino recomendado es **Guardar en repo** y luego:
+
+```bash
+git commit -m "Update presentation"
+git push
+```
+
+La alternativa manual mediante **Exportar ZIP** sigue disponible:
 
 ```bash
 cp ~/Downloads/mi-presentacion.zip presentations/

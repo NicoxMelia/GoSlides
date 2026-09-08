@@ -4,8 +4,13 @@ export type AnimationName = 'none' | 'fade' | 'slide-up' | 'slide-left' | 'slide
 export type AnimationEasing = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'spring';
 export type TextAlign = 'left' | 'center' | 'right';
 export type VisualStyle = 'modern' | 'sketch';
-export type IconLibrary = 'lucide' | 'phosphor' | 'tabler' | 'heroicons';
+export type IconLibrary = 'lucide' | 'phosphor' | 'tabler' | 'heroicons' | 'tech';
 export type ArrowStyle = 'classic' | 'modern' | 'rounded' | 'minimal' | 'double' | 'sketch' | 'dotted' | 'wedge' | 'blunt';
+export interface CodeSimulationOptions {
+  simulationEnabled?: boolean;
+  simulationOutput?: string;
+}
+
 export type CodeFrameStyle = 'classic' | 'carbon' | 'carbon-glass' | 'carbon-light' | 'minimal' | 'neon' | 'terminal' | 'paper' | 'notebook';
 export type CodeTheme = 'seti' | 'night-owl' | 'dracula' | 'nord' | 'github-dark' | 'monokai' | 'one-dark' | 'tokyo-night' | 'catppuccin' | 'gruvbox' | 'solarized-dark' | 'synthwave' | 'github-light' | 'solarized-light' | 'ayu-light';
 
@@ -155,9 +160,9 @@ export type CanvasElement =
   | (CanvasElementBase & { type: 'vector'; shape: 'star' | 'triangle' | 'hexagon' | 'chevron' | 'diamond' | 'pentagon' | 'octagon' | 'cross' | 'parallelogram' | 'trapezoid'; fill?: string; stroke?: string; strokeWidth?: number; vectorStyle?: 'solid' | 'outline' | 'duotone' | 'sketch' })
   | (CanvasElementBase & { type: 'image'; src: string; alt?: string; fit?: 'contain' | 'cover'; objectPositionX?: number; objectPositionY?: number; cropZoom?: number; mask?: 'none' | 'circle' | 'rounded' | 'star' | 'hexagon'; /** Asset previo al recorte de fondo, para poder restaurarlo. */ originalSrc?: string; grayscale?: number; brightness?: number; contrast?: number; saturate?: number; flipX?: boolean; flipY?: boolean })
   | (CanvasElementBase & { type: 'arrow'; direction?: 'right' | 'left' | 'down' | 'up'; thickness?: number; arrowStyle?: ArrowStyle })
-  | (CanvasElementBase & { type: 'code'; language?: string; code: string; title?: string; frameStyle?: CodeFrameStyle; codeTheme?: CodeTheme; showLineNumbers?: boolean; showWindowControls?: boolean })
+  | (CanvasElementBase & CodeSimulationOptions & { type: 'code'; language?: string; code: string; title?: string; frameStyle?: CodeFrameStyle; codeTheme?: CodeTheme; showLineNumbers?: boolean; showWindowControls?: boolean })
   | (CanvasElementBase & { type: 'emoji'; emoji: string; shortcode?: string; description?: string })
-  | (CanvasElementBase & { type: 'icon'; name: string; label?: string; library?: IconLibrary })
+  | (CanvasElementBase & { type: 'icon'; name: string; label?: string; library?: IconLibrary; brandColors?: boolean })
   | (CanvasElementBase & { type: 'freehand'; points: Array<{ x: number; y: number }>; stroke?: string; strokeWidth?: number })
   | (CanvasElementBase & { type: 'table'; rows: string[][]; headerRow?: boolean; striped?: boolean; compact?: boolean })
   | (CanvasElementBase & { type: 'connector'; from: string; to: string; label?: string; thickness?: number; dashed?: boolean })
@@ -205,7 +210,7 @@ export type SlideBlock =
   | (BlockMeta & { type: 'cards'; columns?: 2 | 3 | 4; items: Array<{ title: string; text: string; icon?: string; badge?: string }> })
   | (BlockMeta & { type: 'stats'; items: Array<{ value: string; label: string; hint?: string }> })
   | (BlockMeta & { type: 'compare'; left: CompareColumn; right: CompareColumn })
-  | (BlockMeta & { type: 'code'; language?: string; title?: string; code: string; frameStyle?: CodeFrameStyle; codeTheme?: CodeTheme; showLineNumbers?: boolean; showWindowControls?: boolean })
+  | (BlockMeta & CodeSimulationOptions & { type: 'code'; language?: string; title?: string; code: string; frameStyle?: CodeFrameStyle; codeTheme?: CodeTheme; showLineNumbers?: boolean; showWindowControls?: boolean })
   | (BlockMeta & { type: 'terminal'; title?: string; command: string; output?: string })
   | (BlockMeta & { type: 'image'; src: string; alt?: string; caption?: string; fit?: 'contain' | 'cover' })
   | (BlockMeta & { type: 'timeline'; items: Array<{ title: string; text?: string }> })
@@ -249,7 +254,9 @@ export interface ArchitectureNode extends ProgressiveContent {
   kind?: 'client' | 'service' | 'data' | 'cloud';
 }
 
-export interface ArchitectureEdge { from: string; to: string; label?: string }
+export interface ArchitectureEdge {
+  from: string; to: string; label?: string;
+}
 
 export interface LoadedPresentation {
   manifest: PresentationManifest;

@@ -1,0 +1,69 @@
+{
+  "id": "encontrar-ip",
+  "layout": "split",
+  "masterId": "master-ssh",
+  "sectionId": "preparacion",
+  "transition": "wipe",
+  "eyebrow": "05 · DIRECCIÓN DEL SERVIDOR",
+  "title": "Encontrá la IP privada correcta.",
+  "subtitle": "Buscá la interfaz conectada a la LAN; ignorá loopback, Docker y adaptadores desconectados.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1, 1],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "image",
+              "src": "assets/find-local-ip.svg",
+              "alt": "Ilustración de un router asignando la dirección privada 192.168.1.42 a un servidor",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "Linux",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "code": "hostname -I\n# o\nip addr"
+            },
+            {
+              "type": "code",
+              "language": "powershell",
+              "title": "Windows",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "code": "ipconfig\n# Buscar: Dirección IPv4"
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "macOS",
+              "frameStyle": "minimal",
+              "codeTheme": "github-dark",
+              "code": "ipconfig getifaddr en0"
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "success",
+      "title": "Ejemplo",
+      "text": "Si el servidor muestra `192.168.1.42/24`, la dirección que usaremos es `192.168.1.42`."
+    }
+  ],
+  "notes": [
+    "Explicar /24 sólo si la audiencia lo necesita: los primeros tres números suelen identificar la red en una LAN doméstica.",
+    "La IP puede cambiar por DHCP; para uso frecuente conviene reservarla en el router o usar un nombre local estable."
+  ]
+}

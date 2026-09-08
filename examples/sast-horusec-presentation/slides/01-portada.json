@@ -6,22 +6,22 @@
   "transition": "fade",
   "eyebrow": "GESTIÓN DE LA CALIDAD DE SOFTWARE · UNC · FCEFyN",
   "title": "SAST y Horusec",
-  "subtitle": "Seguridad estática en el flujo DevSecOps: qué detecta, qué no detecta, y cómo automatizarla antes del despliegue.",
+  "subtitle": "Seguridad estática en el flujo DevSecOps: qué detecta, qué no detecta y cómo incorporarla antes del despliegue.",
   "blocks": [
     {
       "type": "stats",
       "items": [
         {
           "value": "Preventivo",
-          "label": "control de calidad, no auditoría final"
+          "label": "permite corregir durante el desarrollo"
         },
         {
           "value": "Sin ejecutar",
-          "label": "analiza código, no runtime"
+          "label": "analiza el código sin ejecutar la aplicación"
         },
         {
           "value": "CI/CD",
-          "label": "automatizable antes del merge"
+          "label": "se automatiza antes de integrar los cambios"
         }
       ],
       "fragment": 0,
@@ -33,6 +33,6 @@
   "footer": "Gestión de la Calidad de Software · UNC · FCEFyN · 2026",
   "notes": [
     "Abrir con la idea central: la seguridad del código es un atributo de calidad, y SAST es la forma de convertir parte de ese control en algo repetible y automatizado.",
-    "Horusec se usa como caso pedagógico real: aclarar desde el inicio que el repo CLI sigue público pero Horusec Platform está archivada desde marzo 2025."
+    "Horusec se usa como caso pedagógico real. Aclarar desde el inicio que el repositorio de la CLI sigue disponible, pero Horusec Platform está archivada desde marzo de 2025."
   ]
 }

@@ -1,4 +1,8 @@
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import JSZip from 'jszip';
+import { listPresentationVersions, readPresentationVersion, savePresentationSnapshot } from './vite-presentation-repository.mjs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 const failures = [];
@@ -21,6 +25,9 @@ check(!/rich-preview-toggle[^>]*onClick=\{[^}]*onChange/.test(rich), 'Preview Ri
 check(renderer.includes('wrapperStyle={canvasWrapperStyle(element)}'), 'Canvas animado necesita wrapper absoluto estable.');
 check(renderer.includes('<CanvasItem element={element} assets={assets} embedded/>'), 'El elemento animado debe ocupar el wrapper y no reposicionarse solo.');
 check(renderer.includes('useId') && !renderer.includes('id="arch-arrow"'), 'Los markers SVG del Viewer deben tener IDs locales por instancia.');
+const architecture = read('src/components/ArchitectureBlock.tsx');
+check(architecture.includes('className="arch-edge-labels"') && !architecture.includes('<text className="arch-edge-label"'), 'Los rótulos de arquitectura deben renderizarse como HTML para no deformarse con el SVG.');
+check(!architecture.includes("'Recibe de'") && !architecture.includes("'Continúa hacia'"), 'El detalle de nodos no debe agregar navegación automática entre conexiones.');
 check(renderer.includes("block.type === 'accordion'") && renderer.includes("block.type === 'drawer'"), 'Viewer debe conservar los componentes de profundidad progresiva.');
 check(renderer.includes('content?.blocks?.length') && renderer.includes('<ProgressiveBody'), 'El contenido interactivo debe priorizar bloques anidados sobre texto simple.');
 check(editorCanvas.includes('useId'), 'Los markers SVG de Studio deben tener IDs locales por instancia.');
@@ -30,10 +37,40 @@ check(css.includes('.rich-bg { color:inherit; }'), 'Highlight Rich Text debe con
 check(css.includes('.canvas-toolbar button { min-width:54px;'), 'Toolbar debe mantener hit-area legible.');
 check(css.includes('.accordion-block') && css.includes('.slide-drawer'), 'Accordion y drawer necesitan estilos de Viewer.');
 check(types.includes('authoring?: AuthoringPreferences'), 'El manifest debe persistir el perfil de autoría para IA.');
+check(renderer.includes('resolveAsset(block.src, assets)'), 'Los bloques de imagen deben resolver assets empaquetados.');
+const loader = read('src/lib/presentationLoader.ts');
+check(loader.includes("'image/svg+xml'") && loader.includes('mimeForAssetPath(entry.name)'), 'El loader debe asignar MIME a SVG para evitar mostrar el texto alternativo.');
 check(analysis.includes('analyzeSlideContent') && analysis.includes('rendered.clippedRegions'), 'El diagnóstico debe combinar densidad semántica y overflow renderizado.');
 check(studio.includes("rightTab==='ai'") && studio.includes('<AuthoringPanel'), 'Studio debe exponer el panel IA.');
 check(studio.includes('scrollHeight>region.clientHeight+2') && studio.includes('scrollWidth>region.clientWidth+2'), 'Studio debe medir overflow vertical y horizontal real.');
 check(studio.includes('splitSlideForReadability') && studio.includes('convertOverflowToDrawer'), 'El diagnóstico debe ofrecer acciones de redistribución reversibles.');
+check(studio.includes('Guardar en repo') && studio.includes('restoreRepositoryVersion'), 'Studio debe exponer guardado y restauración del historial versionado.');
+
+const repositoryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'goslides-regression-repository-'));
+try {
+  fs.mkdirSync(path.join(repositoryRoot, 'presentations'));
+  const original = fs.readFileSync('presentations/demo-goslides.zip');
+  fs.writeFileSync(path.join(repositoryRoot, 'presentations', 'demo-goslides.zip'), original);
+  const firstSave = await savePresentationSnapshot(repositoryRoot, original);
+  const editedZip = await JSZip.loadAsync(original);
+  const editedManifest = JSON.parse(await editedZip.file('presentation.json').async('text'));
+  editedManifest.title = 'Demo guardada más reciente';
+  editedZip.file('presentation.json', `${JSON.stringify(editedManifest, null, 2)}\n`);
+  const edited = await editedZip.generateAsync({ type: 'nodebuffer' });
+  const secondSave = await savePresentationSnapshot(repositoryRoot, edited);
+  const versionHistory = listPresentationVersions(repositoryRoot, firstSave.presentationId);
+  const initialVersion = readPresentationVersion(repositoryRoot, firstSave.presentationId, 1);
+  const publicIndex = JSON.parse(fs.readFileSync(path.join(repositoryRoot, '.generated-public', 'presentations', 'index.json'), 'utf8'));
+  check(firstSave.number === 2, 'El primer guardado de un ZIP publicado debe preservar el original como versión 1.');
+  check(secondSave.number === 3 && versionHistory.totalVersions === 3, 'Cada guardado debe agregar una versión inmutable al historial.');
+  check(initialVersion.bytes.length === original.length, 'Una versión guardada debe poder recuperarse completa.');
+  check(fs.existsSync(path.join(repositoryRoot, firstSave.currentFile)), 'Guardar debe actualizar el ZIP vigente en presentations/.');
+  check(publicIndex[0]?.title === editedManifest.title, 'Guardar debe regenerar la biblioteca que consume el panel Publicadas / Viewer.');
+} catch (error) {
+  check(false, `El repositorio versionado debe completar su ciclo de guardado y lectura: ${error instanceof Error ? error.message : String(error)}`);
+} finally {
+  fs.rmSync(repositoryRoot, { recursive: true, force: true });
+}
 
 if (failures.length) {
   console.error(`Regression checks: ${failures.length} fallo(s)`);

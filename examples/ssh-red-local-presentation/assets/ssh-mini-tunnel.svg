@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">Túnel SSH</title>
+  <desc id="desc">Dos computadoras pequeñas unidas por un canal cifrado con un candado.</desc>
+  <defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#419CFF"/><stop offset=".5" stop-color="#57E3C4"/><stop offset="1" stop-color="#FFB86B"/></linearGradient></defs>
+  <path d="M112 166h296" stroke="#17394B" stroke-width="58" stroke-linecap="round"/>
+  <path d="M112 166h296" stroke="url(#line)" stroke-width="8" stroke-dasharray="12 10"/>
+  <g transform="translate(26 105)">
+    <rect width="136" height="88" rx="14" fill="#102A3B" stroke="#419CFF" stroke-width="4"/>
+    <rect x="13" y="13" width="110" height="54" rx="6" fill="#071827"/>
+    <path d="M-8 94h152l-18 20H10z" fill="#17394B"/>
+  </g>
+  <g transform="translate(392 80)">
+    <rect width="96" height="150" rx="17" fill="#102A3B" stroke="#FFB86B" stroke-width="4"/>
+    <rect x="14" y="17" width="68" height="43" rx="7" fill="#071827"/>
+    <rect x="14" y="76" width="68" height="43" rx="7" fill="#071827"/>
+    <circle cx="32" cy="39" r="5" fill="#57E3C4"/>
+    <circle cx="32" cy="98" r="5" fill="#57E3C4"/>
+  </g>
+  <circle cx="260" cy="166" r="61" fill="#071827" stroke="#57E3C4" stroke-width="5"/>
+  <rect x="232" y="157" width="56" height="48" rx="10" fill="#57E3C4"/>
+  <path d="M244 157v-15c0-23 32-23 32 0v15" fill="none" stroke="#DFFFF7" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="260" cy="180" r="6" fill="#071827"/>
+</svg>

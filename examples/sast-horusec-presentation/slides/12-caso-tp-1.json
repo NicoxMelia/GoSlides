@@ -5,8 +5,8 @@
   "sectionId": "casos",
   "transition": "slide",
   "eyebrow": "06 · CASOS · VERDADERO POSITIVO (I)",
-  "title": "Cuando la alerta sí corresponde a un defecto real.",
-  "subtitle": "Los ejemplos son pedagógicos: representan patrones que una suite SAST/secret scanner como Horusec busca detectar.",
+  "title": "Dos ejemplos de verdaderos positivos",
+  "subtitle": "Estos casos representan patrones que una herramienta como Horusec puede detectar mediante análisis estático y búsqueda de secretos.",
   "blocks": [
     {
       "type": "columns",
@@ -19,7 +19,7 @@
       "gap": 1.4,
       "items": [
         {
-          "title": "Secreto embebido en el repo",
+          "title": "Secreto incluido en el repositorio",
           "blocks": [
             {
               "type": "code",
@@ -34,8 +34,8 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Por qué es positivo",
-              "text": "Puede terminar en commits, forks o backups del repositorio."
+              "title": "Por qué constituye un riesgo",
+              "text": "La credencial puede permanecer en el historial y propagarse a copias, bifurcaciones o respaldos del repositorio."
             }
           ]
         },
@@ -55,7 +55,7 @@
             {
               "type": "callout",
               "tone": "danger",
-              "title": "Por qué es positivo",
+              "title": "Por qué constituye un riesgo",
               "text": "Si `host` viene de una petición HTTP, un atacante puede agregar metacaracteres del shell."
             }
           ]

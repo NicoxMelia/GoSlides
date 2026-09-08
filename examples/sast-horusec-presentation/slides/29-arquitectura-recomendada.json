@@ -5,14 +5,14 @@
   "sectionId": "arquitectura",
   "transition": "slide",
   "eyebrow": "15 · SÍNTESIS",
-  "title": "No hay una arquitectura única: depende del objetivo.",
+  "title": "Arquitectura recomendada según el objetivo",
   "blocks": [
     {
       "type": "markdown",
       "fragment": 0,
       "animation": "fade",
       "appearance": "modern",
-      "markdown": "| Escenario | Arquitectura | Recomendación |\n| --- | --- | --- |\n| Clase / laboratorio | CLI local + Docker | ✓ preferida |\n| Repositorio individual | GitHub Actions + CLI | ✓ muy buena |\n| Equipo con reporting | CI + SARIF / GitHub | ✓ preferida hoy |\n| Laboratorio de plataforma | Horusec Platform + Compose | útil, con advertencia de archivo |\n| Producción nueva | Plataforma archivada en AWS | ✗ evaluar alternativas mantenidas |"
+      "markdown": "| Escenario | Arquitectura | Recomendación |\n| --- | --- | --- |\n| Clase o laboratorio | CLI local con Docker | Opción preferida |\n| Repositorio individual | GitHub Actions con la CLI | Opción adecuada |\n| Equipo que necesita seguimiento | CI con SARIF y GitHub Code Scanning | Opción preferida actualmente |\n| Laboratorio de plataforma | Horusec Platform con Docker Compose | Útil solo con la advertencia de que el proyecto está archivado |\n| Nueva implementación productiva | Plataforma archivada desplegada en AWS | Conviene evaluar alternativas con mantenimiento activo |"
     }
   ]
 }

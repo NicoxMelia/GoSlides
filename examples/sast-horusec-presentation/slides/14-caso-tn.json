@@ -5,8 +5,8 @@
   "sectionId": "casos",
   "transition": "slide",
   "eyebrow": "07 · CASOS · VERDADERO NEGATIVO",
-  "title": "Cuando el silencio de la herramienta es correcto.",
-  "subtitle": "Un verdadero negativo se confirma con conocimiento del patrón y contexto — la ausencia de alerta no prueba nada por sí sola.",
+  "title": "Tres casos en los que no corresponde una alerta",
+  "subtitle": "Para confirmar un verdadero negativo hay que conocer el patrón y el contexto. La ausencia de alertas, por sí sola, no demuestra que el código sea seguro.",
   "blocks": [
     {
       "type": "columns",
@@ -36,7 +36,7 @@
               "type": "callout",
               "tone": "success",
               "title": "Verdadero negativo",
-              "text": "La credencial ya no vive en el código (igual hay que proteger el secret store)."
+              "text": "La credencial ya no está escrita en el código, aunque el almacén de secretos también debe protegerse."
             }
           ]
         },
@@ -57,7 +57,7 @@
               "type": "callout",
               "tone": "success",
               "title": "Verdadero negativo",
-              "text": "Argumentos separados: no hay cadena de shell que un atacante pueda inyectar."
+              "text": "Los argumentos se pasan por separado y no forman una cadena de comandos que un atacante pueda modificar."
             }
           ]
         },
@@ -78,7 +78,7 @@
               "type": "callout",
               "tone": "success",
               "title": "Verdadero negativo",
-              "text": "El motor de base de datos separa código de datos."
+              "text": "La consulta parametrizada permite que el motor de base de datos separe las instrucciones de los valores recibidos."
             }
           ]
         }

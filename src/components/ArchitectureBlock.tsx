@@ -45,23 +45,7 @@ export function ArchitectureBlock({ block, renderContent }: { block: Extract<Sli
     <h3 id={`${panelId}-title`}><RichText text={selected.label} /></h3>
     {selected.caption && <p className="arch-detail-caption"><RichText text={selected.caption} /></p>}
     <div className="arch-detail-body">{renderContent(selected)}</div>
-    {(['incoming', 'outgoing'] as const).map(direction => {
-      const links = block.edges.flatMap((edge, index) => {
-        if ((direction === 'incoming' ? edge.to : edge.from) !== active) return [];
-        const node = byId.get(direction === 'incoming' ? edge.from : edge.to);
-        return node ? [{ node, label: edge.label, index }] : [];
-      });
-      return links.length > 0 && <div className="arch-detail-connections" key={direction}>
-        <h4>{direction === 'incoming' ? 'Recibe de' : 'Continúa hacia'}</h4>
-        {links.map(({ node, label, index }) => <button type="button" key={index} onClick={() => {
-          setActive(node.id);
-          panel.current?.querySelector<HTMLButtonElement>('.modal-close')?.focus({ preventScroll: true });
-          panel.current?.scrollTo({ top: 0 });
-        }}><span>{node.label}{label && <small>{label}</small>}</span><span aria-hidden="true">→</span></button>)}
-      </div>;
-    })}
-    {!selected.blocks?.length && !selected.text && !selected.caption && !block.edges.some(edge =>
-      (edge.from === active && byId.has(edge.to)) || (edge.to === active && byId.has(edge.from))) &&
+    {!selected.blocks?.length && !selected.text && !selected.caption &&
       <p>Este nodo no tiene detalles adicionales.</p>}
   </div>;
 
@@ -79,10 +63,20 @@ export function ArchitectureBlock({ block, renderContent }: { block: Extract<Sli
           const { x1, y1, x2, y2 } = architectureEndpoints(a, b), mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
           return <g key={index} className={active === edge.from || active === edge.to ? 'active' : ''}>
             <path d={`M ${x1} ${y1} Q ${mx} ${my - 1.2} ${x2} ${y2}`} markerEnd={`url(#${markerId})`} />
-            {edge.label && <text className="arch-edge-label" x={mx} y={my - 2.8}>{edge.label}</text>}
           </g>;
         })}
       </svg>
+      <div className="arch-edge-labels" aria-hidden="true">
+        {block.edges.map((edge, index) => {
+          if (!edge.label) return null;
+          const a = byId.get(edge.from), b = byId.get(edge.to);
+          if (!a || !b) return null;
+          const { x1, y1, x2, y2 } = architectureEndpoints(a, b);
+          const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+          const highlighted = active === edge.from || active === edge.to;
+          return <span key={index} className={`arch-edge-label ${highlighted ? 'active' : ''}`} style={{ left: `${mx}%`, top: `${my - 2.6}%` }}>{edge.label}</span>;
+        })}
+      </div>
       {block.nodes.map(node => <button type="button" key={node.id}
         className={`arch-node ${node.kind ?? 'service'} ${active === node.id ? 'active' : ''}`}
         style={{ left: `${node.x}%`, top: `${node.y}%` }} aria-expanded={active === node.id}

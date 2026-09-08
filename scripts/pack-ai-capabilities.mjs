@@ -7,6 +7,7 @@ import JSZip from 'jszip';
 const root = process.cwd();
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const studioFile = path.join(root, 'src', 'studio', 'StudioEditor.tsx');
+const blockCatalogFile = path.join(root, 'src', 'studio', 'BlockCatalog.tsx');
 
 function extractLiteralConst(file, variableName) {
   const sourceText = fs.readFileSync(file, 'utf8');
@@ -37,8 +38,8 @@ function extractStandaloneFunction(file, functionName) {
   return context.__extracted;
 }
 
-const blockTypes = extractLiteralConst(studioFile, 'blockTypes');
-const blockLabels = extractLiteralConst(studioFile, 'blockLabels');
+const blockTypes = extractLiteralConst(blockCatalogFile, 'blockTypes');
+const blockLabels = extractLiteralConst(blockCatalogFile, 'blockLabels');
 const slideTemplates = extractLiteralConst(studioFile, 'slideTemplates');
 const fontFamilies = extractLiteralConst(studioFile, 'fontFamilies');
 const themes = extractLiteralConst(studioFile, 'builtinThemes');

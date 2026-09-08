@@ -24,9 +24,9 @@ function ElementPreview({ element, assets }: { element: CanvasElement; assets: R
   if (element.type === 'shape') return <div className={`vc-content vc-shape shape-${element.shape}`}><span><RichText text={element.text ?? ''} /></span></div>;
   if (element.type === 'vector') { const points=element.shape==='triangle'?'50,6 94,92 6,92':element.shape==='hexagon'?'25,7 75,7 96,50 75,93 25,93 4,50':element.shape==='chevron'?'8,14 58,14 94,50 58,86 8,86 42,50':element.shape==='diamond'?'50,4 96,50 50,96 4,50':element.shape==='pentagon'?'50,4 96,38 78,94 22,94 4,38':element.shape==='octagon'?'30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30':element.shape==='cross'?'36,4 64,4 64,36 96,36 96,64 64,64 64,96 36,96 36,64 4,64 4,36 36,36':element.shape==='parallelogram'?'22,6 96,6 78,94 4,94':element.shape==='trapezoid'?'24,8 76,8 96,92 4,92':'50,4 61,36 95,36 67,56 78,91 50,70 22,91 33,56 5,36 39,36'; const mode=element.vectorStyle??'solid',fill=mode==='outline'||mode==='sketch'?'none':element.fill??'var(--accent)',stroke=mode==='solid'?(element.stroke??'transparent'):(element.stroke??element.fill??'var(--accent)'); return <div className={`vc-content vc-vector vector-style-${mode} ${(element.style?.sketch||mode==='sketch')?'element-sketch':''}`}><svg viewBox="0 0 100 100" preserveAspectRatio="none">{mode==='duotone'&&<polygon points={points} fill={element.fill??'var(--accent)'} opacity=".22" transform="translate(4 4) scale(.92)"/>}<polygon points={points} fill={fill} stroke={stroke} strokeWidth={mode==='outline'||mode==='sketch'?Math.max(2,element.strokeWidth??2):element.strokeWidth??1}/></svg></div>; }
   if (element.type === 'image') return <div className={`vc-content vc-image mask-${element.mask??'none'}`}>{element.src ? <img src={resolveAsset(element.src, assets)} alt={element.alt ?? ''} style={{ objectFit: element.fit ?? 'cover', objectPosition: `${element.objectPositionX ?? 50}% ${element.objectPositionY ?? 50}%`, filter: `grayscale(${element.grayscale ?? 0}%) brightness(${element.brightness ?? 100}%) contrast(${element.contrast??100}%) saturate(${element.saturate??100}%)`, transform:`scale(${element.flipX?-1:1},${element.flipY?-1:1}) scale(${element.cropZoom??1})` }} /> : <span>Elegí una imagen</span>}</div>;
-  if (element.type === 'code') return <div className="vc-content vc-code"><CodeBlockView code={element.code} language={element.language} title={element.title} frameStyle={element.frameStyle} codeTheme={element.codeTheme} showLineNumbers={element.showLineNumbers} showWindowControls={element.showWindowControls} compact/></div>;
+  if (element.type === 'code') return <div className="vc-content vc-code"><CodeBlockView code={element.code} language={element.language} title={element.title} frameStyle={element.frameStyle} codeTheme={element.codeTheme} showLineNumbers={element.showLineNumbers} showWindowControls={element.showWindowControls} simulationEnabled={element.simulationEnabled} simulationOutput={element.simulationOutput} compact/></div>;
   if (element.type === 'emoji') return <div className="vc-content vc-emoji" title={element.shortcode ? `${element.shortcode} · ${element.description ?? ''}` : element.description}><span>{element.emoji}</span></div>;
-  if (element.type === 'icon') return <div className={`vc-content vc-icon ${element.style?.sketch?'element-sketch':''}`}><IconGlyph name={element.name} library={element.library} size="58%" />{element.label && <small>{element.label}</small>}</div>;
+  if (element.type === 'icon') return <div className={`vc-content vc-icon ${element.style?.sketch?'element-sketch':''}`}><IconGlyph name={element.name} library={element.library} brandColors={element.brandColors} size="58%" />{element.label && <small>{element.label}</small>}</div>;
   if (element.type === 'freehand') return <div className="vc-content vc-freehand element-sketch"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points={element.points.map(p=>`${p.x},${p.y}`).join(' ')} fill="none" stroke={element.stroke??element.style?.color??'currentColor'} strokeWidth={element.strokeWidth??3} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"/></svg></div>;
   if (element.type === 'table') return <div className="vc-content vc-table-wrap"><table className={`vc-table ${element.striped?'striped':''} ${element.compact?'compact':''}`}><tbody>{element.rows.map((row,r)=><tr key={r}>{row.map((cell,c)=>{const Tag=element.headerRow&&r===0?'th':'td';return <Tag key={c}>{cell}</Tag>;})}</tr>)}</tbody></table></div>;
   if (element.type === 'block') return <div className={`vc-content vc-block fit-${element.fit??'stretch'}`}><div className="vc-block-inner"><div className="canvas-block-scale" style={blockZoomStyle(element)}><Block block={element.block} assets={assets} /></div></div></div>;
@@ -134,10 +134,13 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
     const activeIds=(selectedIds.includes(element.id)?selectedIds:chosen).filter(id=>{const item=elements.find(x=>x.id===id);return item?.type!=='connector'&&!item?.locked;});
     const box=canvasRef.current?.getBoundingClientRect(); if(!box)return;
     onBeginGesture();
+    let moved = false;
     const startX=event.clientX,startY=event.clientY;
     const originals=new Map(elements.filter(x=>activeIds.includes(x.id)).map(x=>[x.id,{...x}]));
     const target=event.currentTarget as HTMLElement; target.setPointerCapture(event.pointerId);
     const move=(e:PointerEvent)=>{
+      if (!moved && Math.hypot(e.clientX-startX,e.clientY-startY)<4) return;
+      moved = true;
       const dx=((e.clientX-startX)/box.width)*100,dy=((e.clientY-startY)/box.height)*100;
       const anchor=originals.get(element.id)!;
       const others=elements.filter(x=>!activeIds.includes(x.id));
@@ -146,8 +149,8 @@ export function VisualCanvas({ slide, master, assets, selectedIds, onSelect, onC
       const appliedDx=snap.x-anchor.x,appliedDy=snap.y-anchor.y;
       onChangeMany(elements.map((item)=>{const original=originals.get(item.id);if(!original)return item;return {...original,x:Math.max(0,Math.min(100-original.w,original.x+appliedDx)),y:Math.max(0,Math.min(100-original.h,original.y+appliedDy))};}));
     };
-    const up=()=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);};
-    target.addEventListener('pointermove',move);target.addEventListener('pointerup',up);
+    const up=()=>{setGuides([]);target.removeEventListener('pointermove',move);target.removeEventListener('pointerup',up);target.removeEventListener('pointercancel',up);};
+    target.addEventListener('pointermove',move);target.addEventListener('pointerup',up);target.addEventListener('pointercancel',up);
   }
 
   function beginResize(event: React.PointerEvent, element: CanvasElement) {

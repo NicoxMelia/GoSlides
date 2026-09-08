@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 760" role="img" aria-labelledby="title desc">
+  <title id="title">Dos computadoras conectadas por SSH</title>
+  <desc id="desc">Una laptop cliente y un servidor se comunican dentro de una burbuja de red local mediante un túnel cifrado.</desc>
+  <defs>
+    <linearGradient id="tunnel" x1="0" x2="1">
+      <stop offset="0" stop-color="#419CFF" stop-opacity=".22"/>
+      <stop offset=".5" stop-color="#57E3C4" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FFB86B" stop-opacity=".22"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <circle cx="380" cy="368" r="306" fill="#0C2637" stroke="#1C4A5D" stroke-width="3" stroke-dasharray="9 14"/>
+  <path d="M184 395 C270 266 490 266 576 395" fill="none" stroke="#57E3C4" stroke-width="35" opacity=".13" filter="url(#glow)"/>
+  <path d="M184 395 C270 266 490 266 576 395" fill="none" stroke="url(#tunnel)" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="380" cy="284" r="48" fill="#071827" stroke="#57E3C4" stroke-width="4"/>
+  <rect x="359" y="280" width="42" height="34" rx="9" fill="#57E3C4"/>
+  <path d="M368 281v-10c0-17 24-17 24 0v10" fill="none" stroke="#DFFFF7" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="380" cy="296" r="5" fill="#071827"/>
+  <g transform="translate(78 378)">
+    <rect x="0" y="0" width="218" height="142" rx="18" fill="#102A3B" stroke="#419CFF" stroke-width="4"/>
+    <rect x="18" y="18" width="182" height="100" rx="8" fill="#071827"/>
+    <circle cx="37" cy="36" r="5" fill="#FF6B7A"/>
+    <circle cx="54" cy="36" r="5" fill="#FFD166"/>
+    <circle cx="71" cy="36" r="5" fill="#57E3C4"/>
+    <path d="M38 65l18 14-18 14M69 94h58" fill="none" stroke="#57E3C4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M-20 147h258l-28 34H8z" fill="#17394B" stroke="#419CFF" stroke-width="4" stroke-linejoin="round"/>
+    <text x="109" y="222" text-anchor="middle" fill="#9FC1CF" font-family="system-ui,sans-serif" font-size="23" font-weight="700">CLIENTE</text>
+  </g>
+  <g transform="translate(506 370)">
+    <rect x="0" y="0" width="164" height="230" rx="22" fill="#102A3B" stroke="#FFB86B" stroke-width="4"/>
+    <rect x="20" y="23" width="124" height="48" rx="10" fill="#071827" stroke="#275268"/>
+    <rect x="20" y="89" width="124" height="48" rx="10" fill="#071827" stroke="#275268"/>
+    <rect x="20" y="155" width="124" height="48" rx="10" fill="#071827" stroke="#275268"/>
+    <circle cx="43" cy="47" r="7" fill="#57E3C4"/>
+    <circle cx="43" cy="113" r="7" fill="#57E3C4"/>
+    <circle cx="43" cy="179" r="7" fill="#57E3C4"/>
+    <path d="M63 47h57M63 113h57M63 179h57" stroke="#78A6B8" stroke-width="7" stroke-linecap="round"/>
+    <text x="82" y="272" text-anchor="middle" fill="#9FC1CF" font-family="system-ui,sans-serif" font-size="23" font-weight="700">SERVIDOR</text>
+  </g>
+  <g transform="translate(268 612)">
+    <rect width="224" height="66" rx="33" fill="#071827" stroke="#2A6170" stroke-width="3"/>
+    <circle cx="38" cy="33" r="15" fill="#57E3C4"/>
+    <path d="M31 33l5 6 11-14" fill="none" stroke="#071827" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="128" y="42" text-anchor="middle" fill="#DFFFF7" font-family="ui-monospace,monospace" font-size="22" font-weight="700">LAN · TCP 22</text>
+  </g>
+</svg>

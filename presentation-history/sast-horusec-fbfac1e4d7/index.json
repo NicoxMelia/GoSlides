@@ -1,0 +1,75 @@
+{
+  "format": "goslides-version-history",
+  "version": 1,
+  "presentationId": "sast-horusec",
+  "publicId": "sastHorusec2026",
+  "title": "SAST y Horusec",
+  "currentFile": "presentations/sast-horusec.zip",
+  "versions": [
+    {
+      "number": 1,
+      "createdAt": "2026-09-08T13:23:12.575Z",
+      "file": "versions/000001-20260908T132312Z.zip",
+      "size": 30190,
+      "sha256": "4aafacdf8f2f668a138c087826bafaf0cabf5d5c0a6045fa31060f9e256b1e7e",
+      "reason": "imported-current"
+    },
+    {
+      "number": 2,
+      "createdAt": "2026-09-08T23:01:22.274Z",
+      "file": "versions/000002-20260908T230122Z.zip",
+      "size": 26932,
+      "sha256": "a1069ec614348455a7e652efda06d6c28f8e925d1f41a795d4dead454d2242bd",
+      "reason": "save"
+    },
+    {
+      "number": 3,
+      "createdAt": "2026-09-08T23:02:51.910Z",
+      "file": "versions/000003-20260908T230251Z.zip",
+      "size": 26938,
+      "sha256": "d12dbaa31f74f97ecca9757de2d5ebca76ec572c04bf75d13aa5f0027d130a83",
+      "reason": "save"
+    },
+    {
+      "number": 4,
+      "createdAt": "2026-09-08T23:02:55.693Z",
+      "file": "versions/000004-20260908T230255Z.zip",
+      "size": 26932,
+      "sha256": "c3d1d459ead37172b559656dc250a341734168a87a9c7909c61adecf0c41bc38",
+      "reason": "save"
+    },
+    {
+      "number": 5,
+      "createdAt": "2026-09-08T23:06:01.038Z",
+      "file": "versions/000005-20260908T230601Z.zip",
+      "size": 26938,
+      "sha256": "d12dbaa31f74f97ecca9757de2d5ebca76ec572c04bf75d13aa5f0027d130a83",
+      "reason": "save"
+    },
+    {
+      "number": 6,
+      "createdAt": "2026-09-08T23:06:05.468Z",
+      "file": "versions/000006-20260908T230605Z.zip",
+      "size": 26938,
+      "sha256": "d12dbaa31f74f97ecca9757de2d5ebca76ec572c04bf75d13aa5f0027d130a83",
+      "reason": "save"
+    },
+    {
+      "number": 7,
+      "createdAt": "2026-09-08T23:06:10.845Z",
+      "file": "versions/000007-20260908T230610Z.zip",
+      "size": 26938,
+      "sha256": "d12dbaa31f74f97ecca9757de2d5ebca76ec572c04bf75d13aa5f0027d130a83",
+      "reason": "save"
+    },
+    {
+      "number": 8,
+      "createdAt": "2026-09-08T23:06:14.590Z",
+      "file": "versions/000008-20260908T230614Z.zip",
+      "size": 26932,
+      "sha256": "a1069ec614348455a7e652efda06d6c28f8e925d1f41a795d4dead454d2242bd",
+      "reason": "save"
+    }
+  ],
+  "updatedAt": "2026-09-08T23:06:14.590Z"
+}

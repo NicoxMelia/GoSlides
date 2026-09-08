@@ -5,8 +5,8 @@
   "sectionId": "fundamentos",
   "transition": "fade",
   "eyebrow": "03 · DEFINICIÓN",
-  "title": "SAST = análisis de seguridad sin ejecutar la aplicación.",
-  "subtitle": "Puede trabajar sobre sintaxis, patrones, flujo de datos, AST o modelos semánticos, según la herramienta. El alcance exacto depende de cada motor.",
+  "title": "Qué es el análisis estático de seguridad (SAST)",
+  "subtitle": "SAST examina el código sin ejecutar la aplicación. Según la herramienta, puede analizar sintaxis, patrones, flujo de datos, árboles de sintaxis o modelos semánticos.",
   "blocks": [
     {
       "type": "columns",
@@ -19,24 +19,24 @@
       "gap": 1.6,
       "items": [
         {
-          "title": "Qué intenta encontrar",
+          "title": "Qué puede detectar",
           "blocks": [
             {
               "type": "bullets",
               "items": [
-                "Uso peligroso de APIs",
+                "Uso inseguro de interfaces y funciones",
                 "Inyección de comandos o SQL cuando el patrón se infiere estáticamente",
-                "Secretos embebidos en código o historial Git",
+                "Credenciales incluidas en el código o en el historial de Git",
                 "Criptografía débil",
                 "Configuraciones inseguras en infraestructura como código",
-                "Validaciones insuficientes o CWE conocidas",
+                "Validaciones insuficientes y patrones asociados a vulnerabilidades conocidas",
                 "Dependencias vulnerables, si la suite integra SCA"
               ]
             }
           ]
         },
         {
-          "title": "Qué NO demuestra",
+          "title": "Qué no puede demostrar",
           "blocks": [
             {
               "type": "callout",
@@ -48,7 +48,7 @@
               "type": "callout",
               "tone": "info",
               "title": "Sigue haciendo falta interpretación",
-              "text": "SAST genera evidencia sobre posibles riesgos. La decisión de seguridad sigue requiriendo contexto y otros controles: testing, revisión, SCA, secret scanning, DAST."
+              "text": "SAST aporta evidencia sobre posibles riesgos. La decisión de seguridad todavía requiere contexto, pruebas, revisión de código y controles complementarios como SCA, análisis de secretos y DAST."
             }
           ]
         }

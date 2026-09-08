@@ -1,0 +1,954 @@
+{
+  "python": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/python/python-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/python/python-original.svg",
+    "license": "MIT",
+    "sha256": "71493b4a732f0532b3a03a7a95da3ee11a65766367c8303b901ffbe7bf91a3a2"
+  },
+  "go": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/go/go-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/go/go-original.svg",
+    "license": "MIT",
+    "sha256": "2d4558b96d3ec71d0d922a62668cb2ea5a5d83ed7d4caf6b0479b3266f795a2f"
+  },
+  "java": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/java/java-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/java/java-original.svg",
+    "license": "MIT",
+    "sha256": "7582e518a9c02425f97155e5a3bd39d1a3a7d421b78caf9c8df7443dad3edc5d"
+  },
+  "c": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/c/c-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/c/c-original.svg",
+    "license": "MIT",
+    "sha256": "8cce48da91084256f15653e02bfd7046ccb34489d030cb1aa34dee766daad6b7"
+  },
+  "cplusplus": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/cplusplus/cplusplus-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/cplusplus/cplusplus-original.svg",
+    "license": "MIT",
+    "sha256": "7ff8253551235e3a6b002a7c2bd6e3190d85113a64fcb40f2254473caeb025d4"
+  },
+  "csharp": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/csharp/csharp-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/csharp/csharp-original.svg",
+    "license": "MIT",
+    "sha256": "7093478d0888e22a224b6fa832da6c9ffd14c433de8bd14aab0c1cb50925f3ee"
+  },
+  "javascript": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/javascript/javascript-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/javascript/javascript-original.svg",
+    "license": "MIT",
+    "sha256": "0656ff65fc8eeacda5c78d7f9ffe91ec1eb919db64f56e0b7dcd460af4bbd36c"
+  },
+  "typescript": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/typescript/typescript-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/typescript/typescript-original.svg",
+    "license": "MIT",
+    "sha256": "c9191199f4049920c2fc19035b8a6664f37f4689fcd9e8434e786097e78863f0"
+  },
+  "rust": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/rust/rust-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/rust/rust-original.svg",
+    "license": "MIT",
+    "sha256": "16c6c6a98e990944fc5e1cc64cc8fc7b8be3a662ec4ee7951b7995d2e52f5e12"
+  },
+  "kotlin": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/kotlin/kotlin-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/kotlin/kotlin-original.svg",
+    "license": "MIT",
+    "sha256": "5053c2e1288582d1ac2cfc1e807eabb7f6059b1aa2f7d04e5cf00063682a2cbe"
+  },
+  "swift": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/swift/swift-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/swift/swift-original.svg",
+    "license": "MIT",
+    "sha256": "46b6e4abd3ab12c589b8e276295f9439e2869bc4788d918efbc6e76147e8a06e"
+  },
+  "php": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/php/php-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/php/php-original.svg",
+    "license": "MIT",
+    "sha256": "f22619a19c99a123e4678d71826f65f223721a739631dff46de39827c9ee0633"
+  },
+  "ruby": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/ruby/ruby-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/ruby/ruby-original.svg",
+    "license": "MIT",
+    "sha256": "74ead50b8f0f31e1b34618088bc0b0e16c04f1d4539039ef9358717d8505a63c"
+  },
+  "dart": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/dart/dart-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/dart/dart-original.svg",
+    "license": "MIT",
+    "sha256": "8dec3d6f6d92d5c8db294baf7ea89cbad5c3dd0f7fde5ca972ffc6cebf9b2d40"
+  },
+  "scala": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/scala/scala-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/scala/scala-original.svg",
+    "license": "MIT",
+    "sha256": "2565b6286bf30ab28c7d6a988ab7a76c5ce28182b80634e2a2ae21e29b4ad7b9"
+  },
+  "elixir": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/elixir/elixir-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/elixir/elixir-original.svg",
+    "license": "MIT",
+    "sha256": "17c37b03035f1704f90631d7c945b45621813f395cef4487b7fe40ad5c47be34"
+  },
+  "haskell": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/haskell/haskell-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/haskell/haskell-original.svg",
+    "license": "MIT",
+    "sha256": "70aee9daacf630e53b54c3e3049d636e69c006d6eb5669c535a221d4fc3f9871"
+  },
+  "lua": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/lua/lua-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/lua/lua-original.svg",
+    "license": "MIT",
+    "sha256": "7bd82efe74ca5dc3741b8cdcf6c373c96123c638e79c42d0806b15c47e2fccb8"
+  },
+  "r": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/r/r-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/r/r-original.svg",
+    "license": "MIT",
+    "sha256": "9d135e1a56f58f89203afc9253f1db91901e19522f92dfc10575e3312336e61b"
+  },
+  "bash": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/bash/bash-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/bash/bash-original.svg",
+    "license": "MIT",
+    "sha256": "8e9b1f859331c8d11571e77b1371c5d7ac7e380abfcd2f31160ed81dc37de403"
+  },
+  "html": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/html5/html5-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/html5/html5-original.svg",
+    "license": "MIT",
+    "sha256": "34826e5b3315daadf4fa15f723a3c1d5ba4a89277bfd94e22ac4d7d3d54338c5"
+  },
+  "css": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/css3/css3-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/css3/css3-original.svg",
+    "license": "MIT",
+    "sha256": "36b7d94b657d571d3f94042acbf6a4c86a5301a222f83f4b4583ad2acf6e297d"
+  },
+  "aws": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    "license": "MIT",
+    "sha256": "5b4d8371d79a5c0d3a27ea4e929f772e68d47f7d267496bf9211d5f60fcf8084"
+  },
+  "azure": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/azure/azure-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/azure/azure-original.svg",
+    "license": "MIT",
+    "sha256": "7923db83e3f9755bd412241a683fa996fb7a9d0259b5084de449e6be92f7ca20"
+  },
+  "googlecloud": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/googlecloud/googlecloud-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/googlecloud/googlecloud-original.svg",
+    "license": "MIT",
+    "sha256": "1615b3e53228faa14378f1abb2b78e5f6c3f0ec562bc37db3efde885714e6c2f"
+  },
+  "cloudflare": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/cloudflare/cloudflare-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/cloudflare/cloudflare-original.svg",
+    "license": "MIT",
+    "sha256": "6bb87edf9d3759ab11efb064a4cbe25271d4761539aa4928e68bcaf795839c63"
+  },
+  "digitalocean": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/digitalocean/digitalocean-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/digitalocean/digitalocean-original.svg",
+    "license": "MIT",
+    "sha256": "237e683e4a5f982e299d77ad4afc4f77a6245c3905d5344d5de7cdfaaeef95af"
+  },
+  "firebase": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/firebase/firebase-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/firebase/firebase-original.svg",
+    "license": "MIT",
+    "sha256": "6069e979418301117abe2223b62ffb9cedd8c5118fbd805da77170629eaef49c"
+  },
+  "vercel": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vercel/vercel-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vercel/vercel-original.svg",
+    "license": "MIT",
+    "sha256": "ab2bb3dfbed3aa637dc1847e42d1a576e50b0d7717092d781ab43e91073ace23"
+  },
+  "netlify": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/netlify/netlify-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/netlify/netlify-original.svg",
+    "license": "MIT",
+    "sha256": "728e614f2d3a6587bbdd3f66232ef1a75dbc438d3af12d43ca20dee93bbe7758"
+  },
+  "heroku": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/heroku/heroku-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/heroku/heroku-original.svg",
+    "license": "MIT",
+    "sha256": "3385de8966d218b6a837a6c5f2f07ba52de24a40d1b3b53dc918ede14acb9d13"
+  },
+  "supabase": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/supabase/supabase-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/supabase/supabase-original.svg",
+    "license": "MIT",
+    "sha256": "bb8d502577de5e864437542bc2655b5d4d4782589386fc4583d912f46ac73181"
+  },
+  "kubernetes": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/kubernetes/kubernetes-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/kubernetes/kubernetes-original.svg",
+    "license": "MIT",
+    "sha256": "fb31e4163238978201cfde0601728ee5168b74e476c32c37739bed626fa281ae"
+  },
+  "docker": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/docker/docker-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/docker/docker-original.svg",
+    "license": "MIT",
+    "sha256": "3fd830ea69431ed7a0b8d068cd5b34ad3f00a1a78195d50f13ff56713f2462e1"
+  },
+  "podman": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/podman/podman-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/podman/podman-original.svg",
+    "license": "MIT",
+    "sha256": "d5405e720d60316462b27597ff396bf138286b39cda4fa7095bcc450c96819b7"
+  },
+  "helm": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/helm/helm-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/helm/helm-original.svg",
+    "license": "MIT",
+    "sha256": "83efc74139c06f09c29cab6592fdad80c8ce9e5090fc1da3ba39d40686fb511b"
+  },
+  "argo": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/argocd/argocd-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/argocd/argocd-original.svg",
+    "license": "MIT",
+    "sha256": "946ce9ce2e6a2513846c2ec90095fd1938ee079d8aa0f5ac2039db7cb37532bb"
+  },
+  "terraform": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/terraform/terraform-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/terraform/terraform-original.svg",
+    "license": "MIT",
+    "sha256": "0be6427291ae47f057b75f9010dffd6f58a40f0c83c43606ff68851cef1621dc"
+  },
+  "ansible": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/ansible/ansible-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/ansible/ansible-original.svg",
+    "license": "MIT",
+    "sha256": "6e318caf2d49685f921a72231816106859e0bf93e440a70d0445a3f7f030fc9f"
+  },
+  "pulumi": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/pulumi/pulumi-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/pulumi/pulumi-original.svg",
+    "license": "MIT",
+    "sha256": "19f2e8918f9cec09a4bee042426bf7b9b910d232d7482574a2b6731581fbc507"
+  },
+  "jenkins": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/jenkins/jenkins-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/jenkins/jenkins-original.svg",
+    "license": "MIT",
+    "sha256": "917c7525a9d6c544f4b5d1d4318778e2dee5ef2d47be075ee494613cb10d2a4e"
+  },
+  "githubactions": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/githubactions/githubactions-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/githubactions/githubactions-original.svg",
+    "license": "MIT",
+    "sha256": "3a2524052ccf301d1a239f20cfef98d655e060c51cc29c5e94c867913899a47e"
+  },
+  "gitlab": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/gitlab/gitlab-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/gitlab/gitlab-original.svg",
+    "license": "MIT",
+    "sha256": "d057a46d414f4edcb7edf96976ef7b91c2b347a990e99685e48d38de737967b0"
+  },
+  "azuredevops": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/azuredevops/azuredevops-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/azuredevops/azuredevops-original.svg",
+    "license": "MIT",
+    "sha256": "49122a38457209cda2d22a1e3af1b4ff159b67714d4e7b43899544555ee2823c"
+  },
+  "nginx": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/nginx/nginx-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/nginx/nginx-original.svg",
+    "license": "MIT",
+    "sha256": "a28c7002fda6748bb018fa5f89ba3d38c622db720d65aa88668208a3cc839900"
+  },
+  "apache": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/apache/apache-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/apache/apache-original.svg",
+    "license": "MIT",
+    "sha256": "843d8cb7cf9a54eb70e09669d2fadf0b1b59419f92526e94b4359d9366b40ece"
+  },
+  "traefik": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/traefikproxy/traefikproxy-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/traefikproxy/traefikproxy-original.svg",
+    "license": "MIT",
+    "sha256": "df4f9b8d057483e951ed9b74a7adee176225cb340b73b066091a17e1f1f9b70a"
+  },
+  "envoy": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/envoy/envoy-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/envoy/envoy-original.svg",
+    "license": "MIT",
+    "sha256": "e499e22cdf5040db98e73def727c567745782190c3bf2583e5cd3120382f5d2b"
+  },
+  "linux": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/linux/linux-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/linux/linux-original.svg",
+    "license": "MIT",
+    "sha256": "cf50ae4a263c6142963fad3561f7cb0311d0d41cc6189eadfb34f81a8a36acb0"
+  },
+  "ubuntu": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/ubuntu/ubuntu-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/ubuntu/ubuntu-original.svg",
+    "license": "MIT",
+    "sha256": "af8ddf6c709f61d1b7ac00d5417cf389ad23db2258f0776e0c7854f37105caed"
+  },
+  "debian": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/debian/debian-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/debian/debian-original.svg",
+    "license": "MIT",
+    "sha256": "09b14c9813a322b58b11aa5390fb1a2b4e9bfd02868321482f1a19534a66ec54"
+  },
+  "redhat": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/redhat/redhat-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/redhat/redhat-original.svg",
+    "license": "MIT",
+    "sha256": "c7ec409610e7c222191166a5fe7bd52b57e6d057cb8e51ee44d12a2743401e21"
+  },
+  "grafana": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/grafana/grafana-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/grafana/grafana-original.svg",
+    "license": "MIT",
+    "sha256": "2dec200d4e56521bec8dd463173c623b33b8c97e6159cac9b3ed00b6bff0f6ad"
+  },
+  "prometheus": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/prometheus/prometheus-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/prometheus/prometheus-original.svg",
+    "license": "MIT",
+    "sha256": "cae70cfcf9a8b88de32ab1035819d0c7c9a2b278048112f8c9f99dae42b5b657"
+  },
+  "k6": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/k6/k6-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/k6/k6-original.svg",
+    "license": "MIT",
+    "sha256": "853be75e560db7b0661602a0e6c5c868e1382cfe5a5e8ab108298610dc53d399"
+  },
+  "opentelemetry": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/opentelemetry/opentelemetry-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/opentelemetry/opentelemetry-original.svg",
+    "license": "MIT",
+    "sha256": "4a610f674b648395f6460d3648d995e114cf34ad58004c01b9380c1deb7a19cd"
+  },
+  "jaeger": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/jaegertracing/jaegertracing-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/jaegertracing/jaegertracing-original.svg",
+    "license": "MIT",
+    "sha256": "19b41e63a738e7990cfd369680c504696294b0b775f52751f4f2afe18701a0c2"
+  },
+  "datadog": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/datadog/datadog-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/datadog/datadog-original.svg",
+    "license": "MIT",
+    "sha256": "37536bdc59abe690f2f7b8b7913b9d761dfd70d9b8fda19e3faf0b3924b29496"
+  },
+  "newrelic": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/newrelic/newrelic-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/newrelic/newrelic-original.svg",
+    "license": "MIT",
+    "sha256": "c5aa6bf54be1e98987cde7ca64b96697f4e1c6cb476042e2f4af17a2520b2637"
+  },
+  "sentry": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/sentry/sentry-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/sentry/sentry-original.svg",
+    "license": "MIT",
+    "sha256": "e7cd143bec12baa7cde9e85280326cb6d24f6a4d2eb37d41f35bc3e9fb5f3e1a"
+  },
+  "elastic": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/elasticsearch/elasticsearch-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/elasticsearch/elasticsearch-original.svg",
+    "license": "MIT",
+    "sha256": "7efc44ea67eac2a877248c0502e498bca8f61de490852c1a5c572db0b5d3f84d"
+  },
+  "kibana": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/kibana/kibana-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/kibana/kibana-original.svg",
+    "license": "MIT",
+    "sha256": "836bb17d110cf81c4081f33a666f2cd035908546a4bd4eea7f627b16f2def5f9"
+  },
+  "logstash": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/logstash/logstash-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/logstash/logstash-original.svg",
+    "license": "MIT",
+    "sha256": "01fe7b38a1a5c40c789f6ed15e43049556569be1cc48330d20c11d3d6ff71ae7"
+  },
+  "postgresql": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/postgresql/postgresql-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/postgresql/postgresql-original.svg",
+    "license": "MIT",
+    "sha256": "f220a436258ed014c512ba4f9c0de6b9e5c2c4b55331a0a29f8c7a1a12c36443"
+  },
+  "mysql": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/mysql/mysql-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/mysql/mysql-original.svg",
+    "license": "MIT",
+    "sha256": "f73fa5d6b9da33fbf540ff96f5360c24b6d29d883ecfe6fcaecf89a8d3456067"
+  },
+  "mariadb": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/mariadb/mariadb-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/mariadb/mariadb-original.svg",
+    "license": "MIT",
+    "sha256": "90f14c26b478447171ad800791535f5f5ab0f9abf80387edefb410b6fc85cbdc"
+  },
+  "sqlite": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/sqlite/sqlite-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/sqlite/sqlite-original.svg",
+    "license": "MIT",
+    "sha256": "2b91c30887d3602479ba845cc012ef6ae577fba71eb96705a05b12e35d2c5e7e"
+  },
+  "mongodb": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/mongodb/mongodb-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/mongodb/mongodb-original.svg",
+    "license": "MIT",
+    "sha256": "d9f2bf7041264f4747e9969fb82ede0199c0ac97dfa8632aa0687d702ec05f7b"
+  },
+  "redis": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/redis/redis-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/redis/redis-original.svg",
+    "license": "MIT",
+    "sha256": "4707378b190878f36f7e6e1c01fa3ee7e7884c76101809d191dddd943a2e6bdb"
+  },
+  "elasticsearch": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/elasticsearch/elasticsearch-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/elasticsearch/elasticsearch-original.svg",
+    "license": "MIT",
+    "sha256": "7efc44ea67eac2a877248c0502e498bca8f61de490852c1a5c572db0b5d3f84d"
+  },
+  "kafka": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/apachekafka/apachekafka-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/apachekafka/apachekafka-original.svg",
+    "license": "MIT",
+    "sha256": "2505c5b688c18c8fd5dd8e888561eb7b23a56a75d291ff17e8ee18770193f3e8"
+  },
+  "rabbitmq": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/rabbitmq/rabbitmq-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/rabbitmq/rabbitmq-original.svg",
+    "license": "MIT",
+    "sha256": "3aad30605375d85bd2fc293880be7e1b07def3f7191c8f063feb775cca5b7006"
+  },
+  "cassandra": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/cassandra/cassandra-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/cassandra/cassandra-original.svg",
+    "license": "MIT",
+    "sha256": "9b768d3057b8963787ebddf6ecd83ad876956884c8354455b6ac99343df382ae"
+  },
+  "clickhouse": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/clickhouse/clickhouse-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/clickhouse/clickhouse-original.svg",
+    "license": "MIT",
+    "sha256": "12cde67e9662314d8934293bc609875d111f761cb4ebb71a946f1a46cd66f841"
+  },
+  "influxdb": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/influxdb/influxdb-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/influxdb/influxdb-original.svg",
+    "license": "MIT",
+    "sha256": "e97943f99426368db009ee2e22408870cc6a3903daba9842a2435b9aa83cdd59"
+  },
+  "neo4j": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/neo4j/neo4j-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/neo4j/neo4j-original.svg",
+    "license": "MIT",
+    "sha256": "5048bfdf1ddf41d9f1d9653ed84092972aa569a7ebac4010483f9a2b203caa7e"
+  },
+  "spark": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/apachespark/apachespark-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/apachespark/apachespark-original.svg",
+    "license": "MIT",
+    "sha256": "c9eea5d3f0bc25067fa5d2f8ec6c40226854ae85b7658e3d9cf07a15f702cc9a"
+  },
+  "airflow": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/apacheairflow/apacheairflow-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/apacheairflow/apacheairflow-original.svg",
+    "license": "MIT",
+    "sha256": "0c83b226d54e77eda3336a4a7138a8ba61d82b5a8fee2bc026c135a239ec1814"
+  },
+  "react": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/react/react-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/react/react-original.svg",
+    "license": "MIT",
+    "sha256": "5825b649c8c04dec13ecf01d0182401bd0ec71789d2fa06224866d882cd1515f"
+  },
+  "vue": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vuejs/vuejs-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vuejs/vuejs-original.svg",
+    "license": "MIT",
+    "sha256": "4cc1153600c0845c645ac6c718c11d516d6899079a0dc406e3d62f68b1d02c49"
+  },
+  "angular": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/angular/angular-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/angular/angular-original.svg",
+    "license": "MIT",
+    "sha256": "9666f86466e1175ba5e0c685fb423123e93a544732fd7b241e92a192cbb613ab"
+  },
+  "svelte": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/svelte/svelte-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/svelte/svelte-original.svg",
+    "license": "MIT",
+    "sha256": "1941fe737cb55f6a88bf919d43131d3e346a1d2a0117bcf319f6638cf21f69f8"
+  },
+  "nextjs": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/nextjs/nextjs-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/nextjs/nextjs-original.svg",
+    "license": "MIT",
+    "sha256": "d9435c4ede7133b376c0173a80226bb3856729366707cd96e9a66e39448d0288"
+  },
+  "nuxt": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/nuxt/nuxt-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/nuxt/nuxt-original.svg",
+    "license": "MIT",
+    "sha256": "c32689e693898de8639d44b0ae5bee53c28a37005dd7d65fe2c0bc85b0d0cc04"
+  },
+  "nodejs": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/nodejs/nodejs-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/nodejs/nodejs-original.svg",
+    "license": "MIT",
+    "sha256": "3218687c5ea24a4d4c0a33dc5c287da38c33a72dcfe9382469d7ce4e0bf661fb"
+  },
+  "deno": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/denojs/denojs-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/denojs/denojs-original.svg",
+    "license": "MIT",
+    "sha256": "db3153aac0433501766042d59daeb11560d4e4e93793ac397a9a4dc83b7439cb"
+  },
+  "bun": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/bun/bun-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/bun/bun-original.svg",
+    "license": "MIT",
+    "sha256": "54664655dec93da013d1fe8f8e1bf3311054708a17b445fdde319e0d7011f93c"
+  },
+  "spring": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/spring/spring-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/spring/spring-original.svg",
+    "license": "MIT",
+    "sha256": "4bae92720d27acb7d8cde3bed758a26aed07cd81c353f59ab379b8dd651ff973"
+  },
+  "quarkus": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/quarkus/quarkus-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/quarkus/quarkus-original.svg",
+    "license": "MIT",
+    "sha256": "04743c999c241fc3d4cf71a4025c4d60f5be01c32aec5aa2bdb4ef33c7442791"
+  },
+  "fastapi": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/fastapi/fastapi-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/fastapi/fastapi-original.svg",
+    "license": "MIT",
+    "sha256": "7ef41f6a363b00ff595e6d0b933c025c92cbfae29dc1df24b2f6eb8b476ee486"
+  },
+  "flask": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/flask/flask-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/flask/flask-original.svg",
+    "license": "MIT",
+    "sha256": "7a27bb8cb739a080c285066c16c75828bc2eca4d76fa06eff76d556e0274a9d7"
+  },
+  "laravel": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/laravel/laravel-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/laravel/laravel-original.svg",
+    "license": "MIT",
+    "sha256": "b293960cd642537d2b19a1442168a396f25bdd31eb10f4f92447623cfc5730df"
+  },
+  "dotnet": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/dotnetcore/dotnetcore-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/dotnetcore/dotnetcore-original.svg",
+    "license": "MIT",
+    "sha256": "b1b71d747aaf277a00efeab3f5f5844578fc4a42bb605f60c3b0510256009ca4"
+  },
+  "flutter": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/flutter/flutter-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/flutter/flutter-original.svg",
+    "license": "MIT",
+    "sha256": "c188249043aecad16b31eaa230474643270a8d8200b897af54a97949cb88e4ae"
+  },
+  "tailwind": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/tailwindcss/tailwindcss-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/tailwindcss/tailwindcss-original.svg",
+    "license": "MIT",
+    "sha256": "f8cec54589553807eb603bcaf4e056aa090196211698b056542e3cc62a2f3448"
+  },
+  "vite": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vite/vite-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vite/vite-original.svg",
+    "license": "MIT",
+    "sha256": "4f1efe20dcae967dfe94ee5cab513caf5be12b9b1fe5ac9d0e73e352addcd678"
+  },
+  "sonarqube": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/sonarqube/sonarqube-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/sonarqube/sonarqube-original.svg",
+    "license": "MIT",
+    "sha256": "5e512ec5f637bd15b868247a58838c05cb0b9df361967db09faf8a42a924d1e2"
+  },
+  "vault": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vault/vault-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vault/vault-original.svg",
+    "license": "MIT",
+    "sha256": "7ba6a343ddad8558691960d4649e337ac30e4182adb91702980c4cc06f0c8ef3"
+  },
+  "git": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/git/git-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/git/git-original.svg",
+    "license": "MIT",
+    "sha256": "717a57ea97bf7e86de721dab3e68afac66332a10676d5c9abce4ae6a5a9c9983"
+  },
+  "github": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/github/github-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/github/github-original.svg",
+    "license": "MIT",
+    "sha256": "45262793de6292206a895ed63593cdb1eaed82074173f7f4b5bdb3e427ca805a"
+  },
+  "vscode": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vscode/vscode-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vscode/vscode-original.svg",
+    "license": "MIT",
+    "sha256": "503d580c442a7071aae180d9b4766e312e4600bf0e9d842b30f56d0e614eceb8"
+  },
+  "intellij": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/intellij/intellij-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/intellij/intellij-original.svg",
+    "license": "MIT",
+    "sha256": "7ce573a86bc3e352295b8df8a09e1136700297e0add359f9d4d7e3aec77bc65f"
+  },
+  "neovim": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/neovim/neovim-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/neovim/neovim-original.svg",
+    "license": "MIT",
+    "sha256": "64ce80cdfde0a0e0b65d4ad61655ca106bd00419e45f14f49cf8bfbc4f18fd70"
+  },
+  "postman": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/postman/postman-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/postman/postman-original.svg",
+    "license": "MIT",
+    "sha256": "0b366c7a023328b0d95e8c90d9050519b8c31d206f8b34db17742488f72efccb"
+  },
+  "insomnia": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/insomnia/insomnia-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/insomnia/insomnia-original.svg",
+    "license": "MIT",
+    "sha256": "f72832a242263cd2c5543ab3cd44144069241a62da23fc36b19a1ba6aeda48a1"
+  },
+  "swagger": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/swagger/swagger-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/swagger/swagger-original.svg",
+    "license": "MIT",
+    "sha256": "131cccbc020a496396df7856b7737f09fbe27e970dbd03e90401f4b86e408835"
+  },
+  "npm": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/npm/npm-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/npm/npm-original.svg",
+    "license": "MIT",
+    "sha256": "348709a9c0ed8fc6663413bfb9984360ec12d747183177d1a78eb795f89c5cc3"
+  },
+  "pnpm": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/pnpm/pnpm-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/pnpm/pnpm-original.svg",
+    "license": "MIT",
+    "sha256": "92032f79684805a7ee223dfc833a13e903632c1ca259fe39b6e69e0e4b3c38b4"
+  },
+  "yarn": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/yarn/yarn-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/yarn/yarn-original.svg",
+    "license": "MIT",
+    "sha256": "98f289573da1bdde48ed718babc1fb2ca8bbdeef66b56cd60d64dba72b20d7f6"
+  },
+  "maven": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/maven/maven-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/maven/maven-original.svg",
+    "license": "MIT",
+    "sha256": "eb546e1cfd7c0df769193160d2a03e1ec5243ae68eef48c70934a24ece6bbe31"
+  },
+  "gradle": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/gradle/gradle-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/gradle/gradle-original.svg",
+    "license": "MIT",
+    "sha256": "2caf72625f88b8062f38ee4bed0193f5fe910b6ec73951e239584d55c1bde55a"
+  },
+  "vitest": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/vitest/vitest-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/vitest/vitest-original.svg",
+    "license": "MIT",
+    "sha256": "f8dbcabd9d6be373fcc6afe31632e22c674cb20a93e977c22809030bd58df7fb"
+  },
+  "cypress": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/cypressio/cypressio-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/cypressio/cypressio-original.svg",
+    "license": "MIT",
+    "sha256": "17cfd19e56397859714a8d4ee6e97b9e9afb0bffd9be87a70240d01e47dfda3b"
+  },
+  "selenium": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/selenium/selenium-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/selenium/selenium-original.svg",
+    "license": "MIT",
+    "sha256": "aa2338673c2880af0489b216512dc14a63a2b1dff4f65ebde0f4c3f61beda693"
+  },
+  "figma": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/figma/figma-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/figma/figma-original.svg",
+    "license": "MIT",
+    "sha256": "d37c2bf1a1d4f10aeffb224e44da672cb8b9510f6e5a2e24b61758262995805e"
+  },
+  "jupyter": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/jupyter/jupyter-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/jupyter/jupyter-original.svg",
+    "license": "MIT",
+    "sha256": "9b246fe756a3b600f68a7af1f17702033a1cdb6417da3a9f695337f584b5d545"
+  },
+  "pytorch": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/pytorch/pytorch-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/pytorch/pytorch-original.svg",
+    "license": "MIT",
+    "sha256": "7fb9c244f59aa3261ed17d6166ef50d0f07e6e5bc4e5211ca53b6e4837e09e75"
+  },
+  "tensorflow": {
+    "repository": "devicons/devicon",
+    "revision": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+    "path": "icons/tensorflow/tensorflow-original.svg",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/tensorflow/tensorflow-original.svg",
+    "license": "MIT",
+    "sha256": "44f2bb3db305bc30f50ec0578f7a4a840c82c3544d36e436ab7d8afee3937b71"
+  },
+  "horusec": {
+    "repository": "ZupIT/horusec-platform",
+    "revision": "46e61fc85de39f8cb3354350f4571e5c9c8eff36",
+    "path": "manager/src/assets/logos/horusec_minimized.svg",
+    "url": "https://raw.githubusercontent.com/ZupIT/horusec-platform/46e61fc85de39f8cb3354350f4571e5c9c8eff36/manager/src/assets/logos/horusec_minimized.svg",
+    "license": "Apache-2.0",
+    "sha256": "cd901deca68467e84ab3a5de8324696bfdd3221fa1f6a04419110541b33f8123"
+  }
+}

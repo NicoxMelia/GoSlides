@@ -1,0 +1,55 @@
+{
+  "id": "comando-conexion",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "conexion",
+  "transition": "zoom",
+  "eyebrow": "06 · DESDE EL CLIENTE",
+  "title": "El comando combina usuario e IP del servidor.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "title": "cliente · terminal",
+      "frameStyle": "carbon-glass",
+      "codeTheme": "night-owl",
+      "showLineNumbers": false,
+      "showWindowControls": true,
+      "code": "ssh ana@192.168.1.42",
+      "fragment": 0,
+      "animation": "zoom"
+    },
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "ssh",
+          "label": "programa cliente",
+          "hint": "se ejecuta en tu máquina"
+        },
+        {
+          "value": "ana",
+          "label": "usuario remoto",
+          "hint": "existe en el servidor"
+        },
+        {
+          "value": "192.168.1.42",
+          "label": "IP del servidor",
+          "hint": "dentro de la LAN"
+        }
+      ],
+      "fragment": 1,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Si el puerto no es 22",
+      "text": "Usá `ssh -p 2222 ana@192.168.1.42`. La opción es `-p` minúscula."
+    }
+  ],
+  "notes": [
+    "Construir el comando de izquierda a derecha. Reforzar que ana no es el usuario local salvo coincidencia.",
+    "En Windows moderno, ssh suele estar disponible en PowerShell y Terminal."
+  ]
+}
