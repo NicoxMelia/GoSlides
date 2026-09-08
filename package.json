@@ -15,6 +15,7 @@
     "pack:demo": "node scripts/pack-demo.mjs",
     "pack:capabilities": "node scripts/pack-ai-capabilities.mjs",
     "pack:sast": "node scripts/pack-sast.mjs",
+    "pack:ssh": "node scripts/pack-ssh-local.mjs",
     "audit": "node scripts/audit-presentations.mjs",
     "regression": "node scripts/regression-checks.mjs"
   },

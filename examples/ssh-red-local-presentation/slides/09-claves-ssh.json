@@ -1,0 +1,53 @@
+{
+  "id": "claves-ssh",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "seguridad",
+  "transition": "wipe",
+  "eyebrow": "08 · AUTENTICACIÓN",
+  "title": "Para uso frecuente, pasá de contraseña a claves SSH.",
+  "blocks": [
+    {
+      "type": "compare",
+      "left": {
+        "label": "PARA EMPEZAR",
+        "title": "Contraseña",
+        "subtitle": "Simple para la primera prueba.",
+        "items": [
+          "Se escribe en cada conexión",
+          "Depende de una contraseña robusta",
+          "Útil para validar la configuración inicial"
+        ]
+      },
+      "right": {
+        "label": "RECOMENDADO",
+        "title": "Par de claves",
+        "subtitle": "Mejor experiencia y automatización.",
+        "highlight": true,
+        "items": [
+          "La clave privada nunca sale del cliente",
+          "La pública se copia al servidor",
+          "Puede protegerse con frase de paso"
+        ]
+      },
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "title": "cliente · crear y copiar una clave",
+      "frameStyle": "terminal",
+      "codeTheme": "tokyo-night",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "code": "ssh-keygen -t ed25519 -C \"ana@laptop\"\nssh-copy-id ana@192.168.1.42\nssh ana@192.168.1.42",
+      "fragment": 1,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "ssh-copy-id está disponible habitualmente en Linux/macOS. En Windows puede copiarse el contenido de la clave .pub al archivo authorized_keys del servidor.",
+    "Nunca copiar ni compartir la clave privada."
+  ]
+}

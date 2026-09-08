@@ -1,0 +1,83 @@
+{
+  "id": "cierre",
+  "layout": "free",
+  "masterId": "master-ssh",
+  "sectionId": "diagnostico",
+  "transition": "fade",
+  "background": "radial-gradient(circle at 50% 50%,rgba(87,227,196,.16),transparent 34%),linear-gradient(145deg,#071827,#0A2132)",
+  "canvas": [
+    {
+      "id": "end-kicker",
+      "type": "text",
+      "x": 26,
+      "y": 11,
+      "w": 48,
+      "h": 7,
+      "text": "IDEA PARA LLEVAR",
+      "style": {
+        "color": "#57E3C4",
+        "fontSize": 16,
+        "fontWeight": 800,
+        "textAlign": "center",
+        "letterSpacing": 2
+      }
+    },
+    {
+      "id": "end-title",
+      "type": "text",
+      "x": 17,
+      "y": 23,
+      "w": 66,
+      "h": 16,
+      "text": "SSH convierte la red local\nen una extensión de tu terminal.",
+      "style": {
+        "color": "#F4FBFF",
+        "fontSize": 43,
+        "fontWeight": 820,
+        "textAlign": "center",
+        "lineHeight": 1.08
+      }
+    },
+    {
+      "id": "end-illustration",
+      "type": "image",
+      "x": 38,
+      "y": 43,
+      "w": 24,
+      "h": 23,
+      "src": "assets/ssh-mini-tunnel.svg",
+      "alt": "Ilustración mínima de un túnel SSH protegido entre dos computadoras",
+      "fit": "contain",
+      "fragment": 1,
+      "animation": "zoom"
+    },
+    {
+      "id": "end-formula",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 23,
+      "y": 70,
+      "w": 54,
+      "h": 11,
+      "text": "servidor activo  +  IP local  +  usuario  →  ssh usuario@ip",
+      "style": {
+        "color": "#DFFFF7",
+        "background": "#102A3B",
+        "borderColor": "#2A6170",
+        "borderWidth": 1,
+        "borderRadius": 18,
+        "fontSize": 18,
+        "fontWeight": 700,
+        "textAlign": "center",
+        "shadow": true
+      },
+      "fragment": 2,
+      "animation": "slide-up"
+    }
+  ],
+  "footer": "Conectá · verificá · administrá",
+  "notes": [
+    "Cerrar pidiendo que cada persona explique el comando con sus propias palabras.",
+    "Siguiente paso sugerido: practicar copia de archivos con scp o sftp, siempre dentro del mismo modelo de cliente y servidor."
+  ]
+}

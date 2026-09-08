@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Cliente, canal SSH y servidor</title>
+  <desc id="desc">Tres piezas visuales muestran una terminal cliente, un canal cifrado y un servidor que recibe la conexión.</desc>
+  <defs>
+    <linearGradient id="beam" x1="0" x2="1"><stop stop-color="#419CFF"/><stop offset=".5" stop-color="#57E3C4"/><stop offset="1" stop-color="#FFB86B"/></linearGradient>
+  </defs>
+  <rect x="22" y="38" width="676" height="444" rx="54" fill="#0C2637" stroke="#21485B" stroke-width="3"/>
+  <path d="M184 250h352" stroke="#17394B" stroke-width="68" stroke-linecap="round"/>
+  <path d="M184 250h352" stroke="url(#beam)" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <g transform="translate(70 164)">
+    <rect width="180" height="126" rx="16" fill="#102A3B" stroke="#419CFF" stroke-width="4"/>
+    <rect x="16" y="17" width="148" height="84" rx="7" fill="#071827"/>
+    <path d="M37 48l17 13-17 13M67 78h48" fill="none" stroke="#57E3C4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M-10 132h200l-22 25H12z" fill="#17394B"/>
+  </g>
+  <g transform="translate(293 181)">
+    <circle cx="67" cy="69" r="66" fill="#071827" stroke="#57E3C4" stroke-width="4"/>
+    <rect x="39" y="62" width="56" height="47" rx="10" fill="#57E3C4"/>
+    <path d="M50 62V47c0-24 34-24 34 0v15" fill="none" stroke="#DFFFF7" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="67" cy="83" r="6" fill="#071827"/>
+  </g>
+  <g transform="translate(524 136)">
+    <rect width="126" height="222" rx="20" fill="#102A3B" stroke="#FFB86B" stroke-width="4"/>
+    <rect x="17" y="21" width="92" height="48" rx="9" fill="#071827"/>
+    <rect x="17" y="87" width="92" height="48" rx="9" fill="#071827"/>
+    <rect x="17" y="153" width="92" height="48" rx="9" fill="#071827"/>
+    <circle cx="38" cy="45" r="6" fill="#57E3C4"/>
+    <circle cx="38" cy="111" r="6" fill="#57E3C4"/>
+    <circle cx="38" cy="177" r="6" fill="#57E3C4"/>
+    <path d="M55 45h36M55 111h36M55 177h36" stroke="#78A6B8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="160" y="409" text-anchor="middle" fill="#9FC1CF" font-family="system-ui,sans-serif" font-size="22" font-weight="700">CLIENTE</text>
+  <text x="360" y="409" text-anchor="middle" fill="#57E3C4" font-family="system-ui,sans-serif" font-size="22" font-weight="700">CIFRADO</text>
+  <text x="587" y="409" text-anchor="middle" fill="#9FC1CF" font-family="system-ui,sans-serif" font-size="22" font-weight="700">SERVIDOR</text>
+</svg>

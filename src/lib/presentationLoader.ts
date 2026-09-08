@@ -3,6 +3,15 @@ import type { AssetBytes, LoadedPresentation, PresentationDocument, Presentation
 
 const allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
 
+export function mimeForAssetPath(path: string) {
+  const extension = path.split('.').pop()?.toLowerCase();
+  if (extension === 'svg') return 'image/svg+xml';
+  if (extension === 'jpg' || extension === 'jpeg') return 'image/jpeg';
+  if (extension === 'webp') return 'image/webp';
+  if (extension === 'gif') return 'image/gif';
+  return 'image/png';
+}
+
 function validateManifest(raw: unknown): asserts raw is PresentationManifest {
   if (!raw || typeof raw !== 'object') throw new Error('presentation.json no contiene un objeto válido.');
   const manifest = raw as Partial<PresentationManifest>;
@@ -47,7 +56,7 @@ async function loadZip(bytes: ArrayBuffer, sourceLabel: string): Promise<LoadedP
     const data = await entry.async('uint8array') as AssetBytes;
     assetFiles[entry.name] = data;
     if (!allowedImageExtensions.some((ext) => entry.name.toLowerCase().endsWith(ext))) return;
-    const blob = new Blob([data]);
+    const blob = new Blob([data], { type: mimeForAssetPath(entry.name) });
     assets[entry.name] = URL.createObjectURL(blob);
   }));
 

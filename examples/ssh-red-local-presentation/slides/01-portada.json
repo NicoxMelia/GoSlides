@@ -1,0 +1,106 @@
+{
+  "id": "portada",
+  "layout": "free",
+  "masterId": "master-ssh",
+  "sectionId": "conceptos",
+  "transition": "fade",
+  "background": "radial-gradient(circle at 72% 48%,rgba(87,227,196,.13),transparent 28%),linear-gradient(135deg,#061522,#0A2132 66%,#071827)",
+  "canvas": [
+    {
+      "id": "cover-kicker",
+      "type": "text",
+      "x": 7,
+      "y": 11,
+      "w": 39,
+      "h": 7,
+      "zIndex": 3,
+      "text": "REDES · ACCESO REMOTO · OPENSSH",
+      "style": {
+        "color": "#57E3C4",
+        "fontSize": 15,
+        "fontWeight": 800,
+        "letterSpacing": 1.8
+      }
+    },
+    {
+      "id": "cover-title",
+      "type": "text",
+      "x": 7,
+      "y": 22,
+      "w": 45,
+      "h": 27,
+      "zIndex": 3,
+      "text": "SSH en una\nred local",
+      "style": {
+        "color": "#F4FBFF",
+        "fontSize": 58,
+        "fontWeight": 850,
+        "lineHeight": 0.98
+      }
+    },
+    {
+      "id": "cover-subtitle",
+      "type": "text",
+      "x": 7.3,
+      "y": 54,
+      "w": 42,
+      "h": 13,
+      "zIndex": 3,
+      "fragment": 1,
+      "animation": "slide-up",
+      "text": "Conectarse de una máquina a otra, con comandos que podés probar hoy.",
+      "style": {
+        "color": "#B9D6E1",
+        "fontSize": 24,
+        "fontWeight": 450,
+        "lineHeight": 1.28
+      }
+    },
+    {
+      "id": "cover-command",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 7,
+      "y": 73,
+      "w": 39,
+      "h": 10,
+      "zIndex": 4,
+      "fragment": 2,
+      "animation": "fade",
+      "text": "$  ssh ana@192.168.1.42",
+      "style": {
+        "color": "#DFFFF7",
+        "background": "#0B1A22",
+        "borderColor": "#2A6170",
+        "borderWidth": 1,
+        "borderRadius": 16,
+        "fontFamily": "ui-monospace, SFMono-Regular, Menlo, monospace",
+        "fontSize": 20,
+        "fontWeight": 650,
+        "textAlign": "center",
+        "shadow": true
+      }
+    },
+    {
+      "id": "cover-illustration",
+      "type": "image",
+      "x": 51,
+      "y": 12,
+      "w": 44,
+      "h": 73,
+      "zIndex": 2,
+      "src": "assets/ssh-lan-cover.svg",
+      "alt": "Ilustración de dos computadoras conectadas por un túnel SSH dentro de una red local",
+      "fit": "contain",
+      "fragment": 0,
+      "animation": "zoom",
+      "animationDuration": 0.7,
+      "animationEasing": "ease-out"
+    }
+  ],
+  "footer": "Guía práctica · 18 minutos",
+  "notes": [
+    "Abrir con una pregunta: ¿alguna vez necesitaron administrar una computadora sin levantarse de su silla?",
+    "Aclarar el alcance: conexión entre dispositivos dentro de la misma red local; no se necesita exponer el equipo a Internet."
+  ]
+}

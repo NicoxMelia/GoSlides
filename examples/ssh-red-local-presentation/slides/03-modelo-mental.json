@@ -1,0 +1,86 @@
+{
+  "id": "modelo-mental",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "conceptos",
+  "transition": "wipe",
+  "eyebrow": "02 · MODELO MENTAL",
+  "title": "Dos roles, una dirección y un puerto.",
+  "subtitle": "No importa cuál equipo es “más potente”: importa quién inicia la conexión y quién escucha.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "detailView": "drawer",
+      "nodes": [
+        {
+          "id": "cliente",
+          "label": "Cliente SSH",
+          "caption": "Inicia la conexión",
+          "x": 14,
+          "y": 50,
+          "kind": "client",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Tiene el comando `ssh` instalado",
+                "Conoce el usuario y la IP del servidor",
+                "Puede ser Linux, macOS o Windows"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "red",
+          "label": "Red local",
+          "caption": "Wi‑Fi o Ethernet",
+          "x": 50,
+          "y": 50,
+          "kind": "cloud",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Misma LAN",
+              "text": "Ambos equipos deben poder alcanzarse mediante sus direcciones privadas, por ejemplo `192.168.1.x`."
+            }
+          ]
+        },
+        {
+          "id": "servidor",
+          "label": "Servidor SSH",
+          "caption": "Escucha en TCP 22",
+          "x": 86,
+          "y": 50,
+          "kind": "service",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Ejecuta el servicio OpenSSH Server",
+                "Tiene una cuenta de usuario válida",
+                "Acepta la conexión en el firewall"
+              ]
+            }
+          ]
+        }
+      ],
+      "edges": [
+        { "from": "cliente", "to": "red", "label": "solicitud" },
+        { "from": "red", "to": "servidor", "label": "TCP 22" }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "success",
+      "title": "Regla práctica",
+      "text": "El usuario pertenece al ==servidor== y la IP identifica al ==servidor==. El comando se ejecuta en el cliente."
+    }
+  ],
+  "notes": [
+    "Invitar a abrir cada nodo. La interacción tiene propósito: separar responsabilidades.",
+    "El puerto 22 es el predeterminado; puede cambiarse, en cuyo caso se usa ssh -p PUERTO."
+  ]
+}

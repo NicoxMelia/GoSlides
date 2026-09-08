@@ -1,0 +1,89 @@
+{
+  "id": "preparar-servidor",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "preparacion",
+  "transition": "slide",
+  "eyebrow": "04 · EQUIPO DESTINO",
+  "title": "Prepará la máquina que recibirá la conexión.",
+  "subtitle": "Elegí la pestaña correspondiente al sistema operativo del servidor.",
+  "blocks": [
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "label": "Ubuntu / Debian",
+          "title": "Instalar y activar OpenSSH Server",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "servidor · Linux",
+              "frameStyle": "terminal",
+              "codeTheme": "tokyo-night",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "code": "sudo apt update\nsudo apt install openssh-server\nsudo systemctl enable --now ssh\nsystemctl status ssh --no-pager"
+            }
+          ]
+        },
+        {
+          "label": "Fedora / RHEL",
+          "title": "Instalar y activar sshd",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "servidor · Linux",
+              "frameStyle": "terminal",
+              "codeTheme": "tokyo-night",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "code": "sudo dnf install openssh-server\nsudo systemctl enable --now sshd\nsystemctl status sshd --no-pager"
+            }
+          ]
+        },
+        {
+          "label": "Windows",
+          "title": "Activar OpenSSH Server como característica opcional",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "powershell",
+              "title": "PowerShell como administrador",
+              "frameStyle": "terminal",
+              "codeTheme": "github-dark",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "code": "Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0\nStart-Service sshd\nSet-Service -Name sshd -StartupType Automatic\nGet-Service sshd"
+            }
+          ]
+        },
+        {
+          "label": "macOS",
+          "title": "Habilitar Inicio de sesión remoto",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Ajustes del Sistema",
+              "text": "General → Compartir → activar **Inicio de sesión remoto** y elegir qué usuarios pueden acceder."
+            },
+            {
+              "type": "terminal",
+              "title": "Comprobación",
+              "command": "sudo systemsetup -getremotelogin",
+              "output": "Remote Login: On"
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "Las pestañas representan alternativas reales: sólo se sigue una según el sistema operativo del servidor.",
+    "Si el firewall está activo, permitir el servicio SSH o el puerto TCP configurado."
+  ]
+}

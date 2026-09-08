@@ -1,0 +1,51 @@
+{
+  "id": "primera-conexion",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "conexion",
+  "transition": "slide",
+  "eyebrow": "07 · PRIMER CONTACTO",
+  "title": "La primera vez, verificá la identidad del servidor.",
+  "subtitle": "SSH recuerda la clave pública del equipo para detectar cambios inesperados en conexiones futuras.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1.18, 0.82],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "cliente · primera conexión",
+              "command": "ssh ana@192.168.1.42",
+              "output": "The authenticity of host '192.168.1.42' can't be established.\nED25519 key fingerprint is SHA256:AbCd...\nAre you sure you want to continue connecting (yes/no/[fingerprint])? yes\nana@192.168.1.42's password:"
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "image",
+              "src": "assets/host-key-check.svg",
+              "alt": "Ilustración de una huella digital comparada con la identidad de un servidor",
+              "fit": "contain"
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "No aceptes a ciegas",
+      "text": "En un entorno administrado, compará la huella con la que informa el servidor. Si cambia después, investigá antes de borrar la advertencia."
+    }
+  ],
+  "notes": [
+    "Para una práctica casera se puede verificar la huella directamente en el servidor con ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub.",
+    "Explicar que la contraseña no se muestra mientras se escribe; es comportamiento normal de la terminal."
+  ]
+}

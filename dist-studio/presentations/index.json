@@ -28,5 +28,21 @@
     ],
     "zip": "sastHorusec2026.zip",
     "slideCount": 34
+  },
+  {
+    "id": "ssh-red-local",
+    "publicId": "sshRedLocal2026",
+    "title": "SSH en una red local",
+    "subtitle": "Conectarse de una máquina a otra, paso a paso",
+    "description": "Clase visual y práctica sobre SSH: requisitos, direcciones IP privadas, servidor OpenSSH, primera conexión, autenticación con claves y diagnóstico dentro de una LAN.",
+    "tags": [
+      "SSH",
+      "Redes",
+      "Linux",
+      "OpenSSH",
+      "Administración de sistemas"
+    ],
+    "zip": "sshRedLocal2026.zip",
+    "slideCount": 12
   }
 ]

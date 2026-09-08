@@ -30,6 +30,9 @@ check(css.includes('.rich-bg { color:inherit; }'), 'Highlight Rich Text debe con
 check(css.includes('.canvas-toolbar button { min-width:54px;'), 'Toolbar debe mantener hit-area legible.');
 check(css.includes('.accordion-block') && css.includes('.slide-drawer'), 'Accordion y drawer necesitan estilos de Viewer.');
 check(types.includes('authoring?: AuthoringPreferences'), 'El manifest debe persistir el perfil de autoría para IA.');
+check(renderer.includes('resolveAsset(block.src, assets)'), 'Los bloques de imagen deben resolver assets empaquetados.');
+const loader = read('src/lib/presentationLoader.ts');
+check(loader.includes("'image/svg+xml'") && loader.includes('mimeForAssetPath(entry.name)'), 'El loader debe asignar MIME a SVG para evitar mostrar el texto alternativo.');
 check(analysis.includes('analyzeSlideContent') && analysis.includes('rendered.clippedRegions'), 'El diagnóstico debe combinar densidad semántica y overflow renderizado.');
 check(studio.includes("rightTab==='ai'") && studio.includes('<AuthoringPanel'), 'Studio debe exponer el panel IA.');
 check(studio.includes('scrollHeight>region.clientHeight+2') && studio.includes('scrollWidth>region.clientWidth+2'), 'Studio debe medir overflow vertical y horizontal real.');

@@ -1,0 +1,68 @@
+{
+  "id": "diagnostico",
+  "layout": "split",
+  "masterId": "master-ssh",
+  "sectionId": "diagnostico",
+  "transition": "slide",
+  "eyebrow": "10 · CUANDO NO CONECTA",
+  "title": "El mensaje de error indica dónde mirar.",
+  "subtitle": "Diagnosticá de afuera hacia adentro: red → puerto → servicio → credenciales.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [0.72, 1.28],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "image",
+              "src": "assets/ssh-troubleshoot.svg",
+              "alt": "Ilustración de una lupa revisando el camino entre un cliente y un servidor SSH",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "accordion",
+              "title": "Abrí el error que ves",
+              "allowMultiple": false,
+              "items": [
+                {
+                  "title": "Connection timed out",
+                  "text": "La IP puede ser incorrecta, los equipos no se alcanzan o un firewall descarta el tráfico. Revisá red, Wi‑Fi de invitados y puerto."
+                },
+                {
+                  "title": "Connection refused",
+                  "text": "El equipo respondió, pero no hay un servicio escuchando en ese puerto. Revisá `systemctl status ssh` / `sshd` y el puerto configurado."
+                },
+                {
+                  "title": "Permission denied",
+                  "text": "La red y SSH funcionan; falló la autenticación. Revisá usuario, contraseña, clave pública y permisos de `~/.ssh`."
+                },
+                {
+                  "title": "Host key verification failed",
+                  "text": "La identidad guardada no coincide. Confirmá si el servidor fue reinstalado o cambió de IP antes de actualizar `known_hosts`."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Ver el detalle",
+      "text": "Ejecutá `ssh -v usuario@ip` para observar negociación, claves intentadas y causa del fallo."
+    }
+  ],
+  "notes": [
+    "La progresión de diagnóstico evita cambiar cinco cosas a la vez.",
+    "En Windows cliente, Test-NetConnection 192.168.1.42 -Port 22 comprueba específicamente el puerto."
+  ]
+}

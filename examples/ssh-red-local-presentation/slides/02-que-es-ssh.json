@@ -1,0 +1,61 @@
+{
+  "id": "que-es-ssh",
+  "layout": "split",
+  "masterId": "master-ssh",
+  "sectionId": "conceptos",
+  "transition": "slide",
+  "eyebrow": "01 · LA IDEA",
+  "title": "SSH es una terminal remota dentro de un canal cifrado.",
+  "subtitle": "El cliente pide una sesión; el servidor autentica y entrega una consola.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1.05, 0.95],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "cards",
+              "columns": 1,
+              "items": [
+                {
+                  "icon": "terminal",
+                  "title": "Control remoto",
+                  "text": "Ejecutás comandos en la otra máquina como si estuvieras frente a ella."
+                },
+                {
+                  "icon": "shield-check",
+                  "title": "Canal cifrado",
+                  "text": "Usuario, contraseña, comandos y respuestas viajan protegidos."
+                },
+                {
+                  "icon": "arrow-left-right",
+                  "title": "Más que una consola",
+                  "text": "También permite copiar archivos y crear túneles, aunque hoy nos enfocamos en iniciar sesión."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "image",
+              "src": "assets/ssh-concept.svg",
+              "alt": "Ilustración conceptual de un cliente, un canal SSH cifrado y un servidor",
+              "fit": "contain",
+              "caption": "Cliente → canal SSH → servidor"
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "SSH significa Secure Shell. Evitar definirlo sólo por la sigla: el modelo mental cliente-canal-servidor es más útil.",
+    "Enfatizar que SSH no comparte la pantalla: normalmente entrega una terminal de texto."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "ssh-red-local",
+  "publicId": "sshRedLocal2026",
+  "title": "SSH en una red local",
+  "subtitle": "Conectarse de una máquina a otra, paso a paso",
+  "description": "Clase visual y práctica sobre SSH: requisitos, direcciones IP privadas, servidor OpenSSH, primera conexión, autenticación con claves y diagnóstico dentro de una LAN.",
+  "author": "GoSlides",
+  "tags": [
+    "SSH",
+    "Redes",
+    "Linux",
+    "OpenSSH",
+    "Administración de sistemas"
+  ],
+  "authoring": {
+    "density": "balanced",
+    "depth": "class",
+    "interaction": "occasional",
+    "overflowStrategy": "reveal",
+    "durationMinutes": 18,
+    "preserveSourceMaterial": true
+  },
+  "theme": {
+    "mode": "dark",
+    "accent": "#57E3C4",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "headingFontFamily": "Space Grotesk, Inter, ui-sans-serif, system-ui, sans-serif",
+    "slideBackground": "#071827",
+    "surfaceColor": "#102A3B",
+    "textColor": "#F4FBFF",
+    "mutedColor": "#9FC1CF",
+    "radius": 20,
+    "tokens": {
+      "spacing": 16,
+      "cardRadius": 18,
+      "shadowStrength": 26,
+      "borderColor": "#21485B"
+    },
+    "visualStyle": "modern",
+    "iconLibrary": "lucide"
+  },
+  "masters": [
+    {
+      "id": "master-ssh",
+      "name": "SSH Local",
+      "background": "radial-gradient(circle at 87% 12%,rgba(87,227,196,.12),transparent 25%),radial-gradient(circle at 9% 92%,rgba(65,156,255,.12),transparent 28%),linear-gradient(145deg,#071827,#0A2132 62%,#071827)",
+      "footer": "SSH · RED LOCAL · GUÍA PRÁCTICA",
+      "canvas": [
+        {
+          "id": "master-accent",
+          "layerName": "Acento",
+          "type": "shape",
+          "shape": "rounded",
+          "x": 4.1,
+          "y": 5.2,
+          "w": 0.65,
+          "h": 8.3,
+          "zIndex": 1,
+          "locked": true,
+          "style": {
+            "background": "#57E3C4",
+            "borderRadius": 10,
+            "opacity": 0.95
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    { "id": "conceptos", "name": "Conceptos" },
+    { "id": "preparacion", "name": "Preparación" },
+    { "id": "conexion", "name": "Conexión" },
+    { "id": "seguridad", "name": "Seguridad" },
+    { "id": "diagnostico", "name": "Diagnóstico" }
+  ],
+  "cover": "assets/ssh-lan-cover.svg",
+  "slides": [
+    "slides/01-portada.json",
+    "slides/02-que-es-ssh.json",
+    "slides/03-modelo-mental.json",
+    "slides/04-antes-de-conectar.json",
+    "slides/05-preparar-servidor.json",
+    "slides/06-encontrar-ip.json",
+    "slides/07-comando-conexion.json",
+    "slides/08-primera-conexion.json",
+    "slides/09-claves-ssh.json",
+    "slides/10-flujo-completo.json",
+    "slides/11-diagnostico.json",
+    "slides/12-cierre.json"
+  ]
+}

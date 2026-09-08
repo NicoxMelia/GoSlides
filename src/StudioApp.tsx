@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Check, Edit3, Eye, FileText, Import, L
 import type { LibraryEntry, LoadedPresentation, PresentationDocument } from './types';
 import { Brand } from './components/Brand';
 import { PresentationPlayer } from './components/PresentationPlayer';
-import { loadPresentationFromFile, loadPresentationFromUrl, loadedToDocument } from './lib/presentationLoader';
+import { loadPresentationFromFile, loadPresentationFromUrl, loadedToDocument, mimeForAssetPath } from './lib/presentationLoader';
 import { createPublicId } from './lib/ids';
 import { deleteProject, getViewerBaseUrl, loadProjectAssets, loadProjects, setViewerBaseUrl } from './lib/studioStorage';
 import { StudioEditor } from './studio/StudioEditor';
@@ -74,14 +74,14 @@ export default function StudioApp() {
 
   function openTemplate(templateId: string) {
     const doc = createPresentationFromTemplate(templateId);
-    const assetUrls = Object.fromEntries(Object.entries(doc.assetFiles ?? {}).map(([path, bytes]) => [path, URL.createObjectURL(new Blob([bytes]))]));
+    const assetUrls = Object.fromEntries(Object.entries(doc.assetFiles ?? {}).map(([path, bytes]) => [path, URL.createObjectURL(new Blob([bytes], { type: mimeForAssetPath(path) }))]));
     setEditorDoc(doc); setEditorAssets(assetUrls); setScreen('editor');
   }
 
   async function openDraft(doc: PresentationDocument) {
     const assetFiles = await loadProjectAssets(doc.manifest.id);
     const assetUrls: Record<string,string> = {};
-    Object.entries(assetFiles).forEach(([path, bytes]) => { assetUrls[path] = URL.createObjectURL(new Blob([bytes])); });
+    Object.entries(assetFiles).forEach(([path, bytes]) => { assetUrls[path] = URL.createObjectURL(new Blob([bytes], { type: mimeForAssetPath(path) })); });
     setEditorDoc({ ...doc, manifest: { ...doc.manifest, version: 2, publicId: doc.manifest.publicId ?? createPublicId() }, assetFiles });
     setEditorAssets(assetUrls); setScreen('editor');
   }

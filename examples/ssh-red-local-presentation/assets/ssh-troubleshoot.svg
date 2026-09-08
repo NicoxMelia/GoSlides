@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" role="img" aria-labelledby="title desc">
+  <title id="title">Diagnóstico de una conexión SSH</title>
+  <desc id="desc">Una lupa inspecciona el camino entre una laptop, la red local y un servidor.</desc>
+  <rect x="28" y="28" width="464" height="564" rx="54" fill="#0C2637" stroke="#21485B" stroke-width="3"/>
+  <g transform="translate(67 110)">
+    <rect width="152" height="104" rx="15" fill="#102A3B" stroke="#419CFF" stroke-width="4"/>
+    <rect x="14" y="14" width="124" height="66" rx="7" fill="#071827"/>
+    <path d="M-8 110h168l-20 23H12z" fill="#17394B"/>
+  </g>
+  <g transform="translate(337 88)">
+    <rect width="116" height="162" rx="18" fill="#102A3B" stroke="#FFB86B" stroke-width="4"/>
+    <rect x="15" y="18" width="86" height="45" rx="8" fill="#071827"/>
+    <rect x="15" y="80" width="86" height="45" rx="8" fill="#071827"/>
+    <circle cx="35" cy="41" r="6" fill="#57E3C4"/>
+    <circle cx="35" cy="103" r="6" fill="#FF6B7A"/>
+    <path d="M52 41h32M52 103h32" stroke="#78A6B8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <path d="M218 163h119" stroke="#57E3C4" stroke-width="7" stroke-dasharray="10 9"/>
+  <circle cx="278" cy="163" r="29" fill="#071827" stroke="#57E3C4" stroke-width="4"/>
+  <text x="278" y="171" text-anchor="middle" fill="#57E3C4" font-family="ui-monospace,monospace" font-size="20" font-weight="800">22</text>
+  <g transform="translate(83 257)">
+    <circle cx="143" cy="143" r="127" fill="#071827" stroke="#419CFF" stroke-width="14"/>
+    <path d="M233 235l101 101" stroke="#419CFF" stroke-width="28" stroke-linecap="round"/>
+    <path d="M76 114h130M76 148h94M76 182h116" stroke="#9FC1CF" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="222" cy="114" r="10" fill="#57E3C4"/>
+    <circle cx="186" cy="148" r="10" fill="#FFD166"/>
+    <circle cx="202" cy="182" r="10" fill="#FF6B7A"/>
+  </g>
+  <text x="260" y="555" text-anchor="middle" fill="#DFFFF7" font-family="system-ui,sans-serif" font-size="23" font-weight="800">RED → PUERTO → SERVICIO</text>
+</svg>

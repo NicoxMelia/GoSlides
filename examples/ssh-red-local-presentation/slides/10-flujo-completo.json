@@ -1,0 +1,79 @@
+{
+  "id": "flujo-completo",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "conexion",
+  "transition": "morph",
+  "eyebrow": "09 · PRÁCTICA GUIADA",
+  "title": "De cero a sesión remota en cinco movimientos.",
+  "subtitle": "Avanzá por el flujo y comprobá cada resultado antes de seguir.",
+  "blocks": [
+    {
+      "type": "steps",
+      "title": "Laboratorio: cliente → servidor",
+      "items": [
+        {
+          "title": "1. Activar el servidor",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "servidor",
+              "command": "sudo systemctl enable --now ssh",
+              "output": "Servicio SSH activo"
+            }
+          ]
+        },
+        {
+          "title": "2. Obtener usuario e IP",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "servidor",
+              "command": "whoami && hostname -I",
+              "output": "ana\n192.168.1.42"
+            }
+          ]
+        },
+        {
+          "title": "3. Probar alcance",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "cliente",
+              "command": "ping -c 3 192.168.1.42",
+              "output": "3 packets transmitted, 3 received"
+            }
+          ]
+        },
+        {
+          "title": "4. Conectar",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "cliente",
+              "command": "ssh ana@192.168.1.42",
+              "output": "ana@servidor:~$"
+            }
+          ]
+        },
+        {
+          "title": "5. Verificar y salir",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "sesión remota",
+              "command": "hostname && whoami && exit",
+              "output": "servidor\nana\nConnection closed."
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Usar los pasos como actividad: no avanzar si el resultado esperado no aparece.",
+    "Ping puede estar bloqueado aunque SSH funcione; si falla, probar directamente el puerto con nc o Test-NetConnection."
+  ]
+}
