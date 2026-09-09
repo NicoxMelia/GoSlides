@@ -1,0 +1,62 @@
+{
+  "id": "sincronizar-rsync",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "transferencia",
+  "transition": "wipe",
+  "eyebrow": "12 · COPIAS REPETIDAS",
+  "title": "Con rsync, evitás reenviar lo que no cambió.",
+  "subtitle": "Elegí una dirección; ambos ejemplos se ejecutan desde MI COMPU.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "title": "MI COMPU · elegir uno de los dos comandos",
+      "frameStyle": "carbon-glass",
+      "codeTheme": "night-owl",
+      "showLineNumbers": false,
+      "showWindowControls": true,
+      "code": "# MI COMPU → COMPU REMOTA\nrsync -avh --progress ./proyecto/ ana@192.168.1.42:~/proyecto/\n\n# COMPU REMOTA → MI COMPU\nrsync -avh --progress ana@192.168.1.42:~/proyecto/ ./proyecto/",
+      "fragment": 0,
+      "animation": "zoom"
+    },
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "-a",
+          "label": "modo archivo",
+          "hint": "recursivo y conserva metadatos"
+        },
+        {
+          "value": "-v",
+          "label": "salida detallada",
+          "hint": "muestra lo que transfiere"
+        },
+        {
+          "value": "-h",
+          "label": "tamaños legibles",
+          "hint": "KB, MB y GB"
+        },
+        {
+          "value": "/",
+          "label": "barra final",
+          "hint": "copia el contenido de la carpeta"
+        }
+      ],
+      "fragment": 1,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "También usa SSH",
+      "text": "Pide la misma contraseña o usa la misma clave. Para un puerto distinto: `rsync -avh -e \"ssh -p 2222\" origen/ ana@192.168.1.42:/destino/`. Evitá `--delete` hasta verificar bien origen y destino."
+    }
+  ],
+  "notes": [
+    "El comando correcto es rsync, no rcync. Debe estar instalado en el cliente y normalmente también en el servidor.",
+    "Destacar la semántica de la barra final: proyecto/ copia su contenido; proyecto copia la carpeta como un nivel adicional.",
+    "rsync decide qué reenviar comparando tamaño y fecha; no debe presentarse como una copia bidireccional automática. Cada comando tiene un origen y un destino."
+  ]
+}

@@ -5,13 +5,15 @@
   "publicId": "sshRedLocal2026",
   "title": "SSH en una red local",
   "subtitle": "Conectarse de una máquina a otra, paso a paso",
-  "description": "Clase visual y práctica sobre SSH: requisitos, direcciones IP privadas, servidor OpenSSH, primera conexión, autenticación con claves y diagnóstico dentro de una LAN.",
+  "description": "Clase visual y práctica sobre SSH: requisitos, direcciones IP privadas, servidor OpenSSH, primera conexión, autenticación con claves, transferencia de archivos con scp y rsync, y diagnóstico dentro de una LAN.",
   "author": "GoSlides",
   "tags": [
     "SSH",
     "Redes",
     "Linux",
     "OpenSSH",
+    "scp",
+    "rsync",
     "Administración de sistemas"
   ],
   "authoring": {
@@ -19,7 +21,7 @@
     "depth": "class",
     "interaction": "occasional",
     "overflowStrategy": "reveal",
-    "durationMinutes": 18,
+    "durationMinutes": 26,
     "preserveSourceMaterial": true
   },
   "theme": {
@@ -73,6 +75,7 @@
     { "id": "preparacion", "name": "Preparación" },
     { "id": "conexion", "name": "Conexión" },
     { "id": "seguridad", "name": "Seguridad" },
+    { "id": "transferencia", "name": "Transferencia de archivos" },
     { "id": "diagnostico", "name": "Diagnóstico" }
   ],
   "cover": "assets/ssh-lan-cover.svg",
@@ -87,6 +90,9 @@
     "slides/08-primera-conexion.json",
     "slides/09-claves-ssh.json",
     "slides/10-flujo-completo.json",
+    "slides/11-que-es-scp.json",
+    "slides/11-copiar-scp.json",
+    "slides/12-sincronizar-rsync.json",
     "slides/11-diagnostico.json",
     "slides/12-cierre.json"
   ]

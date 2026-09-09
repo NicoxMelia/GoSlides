@@ -4,7 +4,7 @@
   "masterId": "master-ssh",
   "sectionId": "diagnostico",
   "transition": "slide",
-  "eyebrow": "10 · CUANDO NO CONECTA",
+  "eyebrow": "13 · CUANDO NO CONECTA",
   "title": "El mensaje de error indica dónde mirar.",
   "subtitle": "Diagnosticá de afuera hacia adentro: red → puerto → servicio → credenciales.",
   "blocks": [

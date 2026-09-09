@@ -1,0 +1,64 @@
+{
+  "id": "copiar-scp",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "transferencia",
+  "transition": "slide",
+  "eyebrow": "11 · COPIA PUNTUAL",
+  "title": "Elegí una dirección: subir o descargar.",
+  "subtitle": "Son alternativas. Los dos comandos se ejecutan desde la terminal de MI COMPU.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1, 1],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "MI COMPU → COMPU REMOTA",
+              "frameStyle": "terminal",
+              "codeTheme": "tokyo-night",
+              "showLineNumbers": false,
+              "showWindowControls": true,
+              "code": "# Archivo\nscp ./informe.pdf ana@192.168.1.42:~/\n\n# Carpeta completa\nscp -r ./fotos/ ana@192.168.1.42:~/",
+              "fragment": 0,
+              "animation": "slide-right"
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "COMPU REMOTA → MI COMPU",
+              "frameStyle": "terminal",
+              "codeTheme": "tokyo-night",
+              "showLineNumbers": false,
+              "showWindowControls": true,
+              "code": "# Archivo\nscp ana@192.168.1.42:~/informe.pdf ./\n\n# Carpeta completa\nscp -r ana@192.168.1.42:~/fotos/ ./fotos/",
+              "fragment": 1,
+              "animation": "slide-left"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "La contraseña no forma parte de la dirección",
+      "text": "`ana` es un usuario de la COMPU REMOTA y `192.168.1.42` es su IP. Escribí `ana@192.168.1.42`, no `ana@contraseña`: `scp` pedirá la contraseña o usará una clave SSH. Con otro puerto se usa `-P 2222` (`P` mayúscula).",
+      "fragment": 2,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "./ representa la carpeta actual de MI COMPU, y ~ representa la carpeta personal de Ana en la COMPU REMOTA. Una ruta remota siempre lleva dos puntos después del host.",
+    "La opción -r copia una carpeta completa de manera recursiva. Para copias repetidas o grandes, presentar rsync en la diapositiva siguiente.",
+    "Después de subir informe.pdf, el original sigue en MI COMPU y aparece una copia en /home/ana/informe.pdf de la COMPU REMOTA."
+  ]
+}
