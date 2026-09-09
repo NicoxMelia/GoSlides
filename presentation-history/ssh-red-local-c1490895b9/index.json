@@ -1,0 +1,27 @@
+{
+  "format": "goslides-version-history",
+  "version": 1,
+  "presentationId": "ssh-red-local",
+  "publicId": "sshRedLocal2026",
+  "title": "SSH en una red local",
+  "currentFile": "presentations/ssh-red-local.zip",
+  "versions": [
+    {
+      "number": 1,
+      "createdAt": "2026-09-09T17:22:26.402Z",
+      "file": "versions/000001-20260909T172226Z.zip",
+      "size": 22802,
+      "sha256": "10591f0a68338a4d69acb0b2f0f6ef06b1667fcadb8d1a8b95a653909ed63c49",
+      "reason": "imported-current"
+    },
+    {
+      "number": 2,
+      "createdAt": "2026-09-09T17:28:15.191Z",
+      "file": "versions/000002-20260909T172815Z.zip",
+      "size": 19035,
+      "sha256": "b5d505ca81f33dfeefbd9028964192f27e25b4a0f0395828ea904b9dc35f11e7",
+      "reason": "save"
+    }
+  ],
+  "updatedAt": "2026-09-09T17:28:15.191Z"
+}

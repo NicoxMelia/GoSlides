@@ -27,6 +27,24 @@
       "Gestión de la Calidad de Software"
     ],
     "zip": "sastHorusec2026.zip",
-    "slideCount": 34
+    "slideCount": 33
+  },
+  {
+    "id": "ssh-red-local",
+    "publicId": "sshRedLocal2026",
+    "title": "SSH en una red local",
+    "subtitle": "Conectarse de una máquina a otra, paso a paso",
+    "description": "Clase visual y práctica sobre SSH: requisitos, direcciones IP privadas, servidor OpenSSH, primera conexión, autenticación con claves, transferencia de archivos con scp y rsync, y diagnóstico dentro de una LAN.",
+    "tags": [
+      "SSH",
+      "Redes",
+      "Linux",
+      "OpenSSH",
+      "scp",
+      "rsync",
+      "Administración de sistemas"
+    ],
+    "zip": "sshRedLocal2026.zip",
+    "slideCount": 15
   }
 ]

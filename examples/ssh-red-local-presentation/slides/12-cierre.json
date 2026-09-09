@@ -59,7 +59,7 @@
       "y": 70,
       "w": 54,
       "h": 11,
-      "text": "servidor activo  +  IP local  +  usuario  →  ssh usuario@ip",
+      "text": "ssh → terminal remota  ·  scp → copia puntual  ·  rsync → sincronización",
       "style": {
         "color": "#DFFFF7",
         "background": "#102A3B",
@@ -75,9 +75,9 @@
       "animation": "slide-up"
     }
   ],
-  "footer": "Conectá · verificá · administrá",
+  "footer": "Conectá · copiá · sincronizá",
   "notes": [
     "Cerrar pidiendo que cada persona explique el comando con sus propias palabras.",
-    "Siguiente paso sugerido: practicar copia de archivos con scp o sftp, siempre dentro del mismo modelo de cliente y servidor."
+    "Cerrar comparando las tres herramientas: ssh ejecuta una sesión remota, scp hace copias puntuales y rsync actualiza copias repetidas."
   ]
 }

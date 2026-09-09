@@ -1,0 +1,97 @@
+{
+  "id": "que-es-scp",
+  "layout": "default",
+  "masterId": "master-ssh",
+  "sectionId": "transferencia",
+  "transition": "zoom",
+  "eyebrow": "10 · TRANSFERENCIA DE ARCHIVOS",
+  "title": "SCP significa Secure Copy: copia segura.",
+  "subtitle": "Es el comando de OpenSSH que copia archivos entre equipos mediante una conexión SSH cifrada.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "detailView": "drawer",
+      "nodes": [
+        {
+          "id": "mi-compu",
+          "label": "MI COMPU",
+          "caption": "Ejecuta el comando scp",
+          "x": 18,
+          "y": 50,
+          "kind": "client",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Acá abro la terminal",
+                "Acá está el archivo original",
+                "Puede ser Linux, macOS o Windows"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "compu-remota",
+          "label": "COMPU REMOTA",
+          "caption": "192.168.1.42 · destino final",
+          "x": 82,
+          "y": 50,
+          "kind": "service",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Ejecuta el servidor SSH",
+                "Ana es una cuenta de esta computadora",
+                "Guarda la copia en la ruta indicada"
+              ]
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "from": "mi-compu",
+          "to": "compu-remota",
+          "label": "copia directa y cifrada"
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "columns",
+      "ratio": [1, 1],
+      "gap": 3,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "No son dos pasos obligatorios",
+              "text": "Al subir, `scp` lee el archivo de MI COMPU y lo escribe directamente en la COMPU REMOTA. Descargar es la dirección inversa, no el paso siguiente."
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "¿Dónde queda guardado?",
+              "text": "En el disco de la COMPU REMOTA, exactamente en la ruta indicada. Si esa máquina funciona como intermediaria para una tercera, el archivo queda allí hasta que la otra lo copie, mueva o elimine."
+            }
+          ]
+        }
+      ],
+      "fragment": 1,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "SCP se expande habitualmente como Secure Copy. La página de manual actual lo denomina OpenSSH secure file copy.",
+    "OpenSSH actual usa el protocolo SFTP sobre una conexión SSH para la transferencia; comparte autenticación y seguridad con una sesión SSH.",
+    "Si se usa una tercera computadora como servidor de intercambio, entonces sí hay dos comandos: una persona sube y otra descarga. Entre ambos momentos, el archivo queda almacenado en la ruta elegida de ese servidor."
+  ]
+}
