@@ -1,0 +1,29 @@
+{
+  "id": "codigo-flush",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 04 · BUFFERING",
+  "title": "Control del búfer de stdout",
+  "subtitle": "fflush hace visible cada punto sin esperar el salto de línea ni la finalización del proceso.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "progress.c",
+      "code": "#include <stdio.h>\n#include <unistd.h>\n\nint main(void) {\n    for (int i = 0; i < 3; i++) {\n        printf(\".\");\n        fflush(stdout);\n        sleep(1);\n    }\n    putchar('\\n');\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 progress.c -o progress\n$ ./progress\n.\n..\n...\nSimulación: cada punto aparece con un segundo de diferencia.",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "La terminal simulada expresa el cambio temporal en líneas separadas para hacerlo observable.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

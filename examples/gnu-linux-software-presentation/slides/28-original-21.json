@@ -1,0 +1,24 @@
+{
+  "id": "original-21",
+  "layout": "free",
+  "sectionId": "syscalls",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-21",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-21.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 21: Execution of a system call: wrapper",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 21 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

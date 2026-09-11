@@ -1,0 +1,29 @@
+{
+  "id": "codigo-cleanup",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "defensive",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 11 · RECURSOS",
+  "title": "Un único camino de limpieza",
+  "subtitle": "Cada recurso se libera una sola vez, tanto en el camino normal como después de una falla.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "load_file.c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint load_file(const char *path) {\n    int status = 1;\n    FILE *file = fopen(path, \"r\");\n    char *buffer = NULL;\n\n    if (file == NULL) { perror(\"fopen\"); goto cleanup; }\n    buffer = malloc(4096);\n    if (buffer == NULL) { perror(\"malloc\"); goto cleanup; }\n\n    status = 0;  // procesar file usando buffer\n\ncleanup:\n    free(buffer);\n    if (file != NULL) fclose(file);\n    return status;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 -c load_file.c\nCompilación completada sin advertencias.\nCamino exitoso: free + fclose\nFalla de malloc: fclose\nFalla de fopen: no hay recursos que liberar",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "El patrón goto cleanup reduce duplicación y evita olvidar recursos en una salida temprana.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

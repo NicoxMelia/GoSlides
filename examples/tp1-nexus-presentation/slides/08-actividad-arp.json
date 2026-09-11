@@ -1,0 +1,87 @@
+{
+  "id": "actividad-arp",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "laboratorio",
+  "transition": "morph",
+  "eyebrow": "07 · ACTIVIDAD CONTROLADA DE ARP",
+  "title": "Observar y reconstruir la caché de vecinos.",
+  "subtitle": "El objetivo es explicar el vínculo IP ↔ MAC y reconocer un conflicto simulado, sin entrar en routing.",
+  "blocks": [
+    {
+      "type": "steps",
+      "title": "Secuencia de la actividad",
+      "items": [
+        {
+          "title": "1. Observar",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "cualquiera de las VMs",
+              "command": "ip neigh",
+              "output": "Revisar IP, MAC, interfaz y estado de cada vecino"
+            }
+          ]
+        },
+        {
+          "title": "2. Vaciar en un entorno controlado",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "warning",
+              "title": "Acción deliberada",
+              "text": "Eliminar las entradas de caché sólo dentro del laboratorio y registrar el estado antes/después."
+            }
+          ]
+        },
+        {
+          "title": "3. Reconstruir",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "generar tráfico y volver a mirar",
+              "command": "ping -c 1 <IP-DEL-OTRO-EQUIPO>\nip neigh",
+              "output": "La relación IP ↔ MAC vuelve a aparecer"
+            }
+          ]
+        },
+        {
+          "title": "4. Verificar con arping",
+          "blocks": [
+            {
+              "type": "terminal",
+              "title": "laboratorio",
+              "command": "arping <IP-DEL-OTRO-EQUIPO>",
+              "output": "Observar qué dirección MAC responde"
+            }
+          ]
+        },
+        {
+          "title": "5. Simular una IP duplicada",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Provocar el conflicto sólo con recursos aislados del laboratorio",
+                "Detectar respuestas incompatibles o cambios de MAC",
+                "Explicar el diagnóstico y restaurar el estado correcto"
+              ]
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "title": "Alcance explícito",
+      "text": "La consigna no pide profundizar en routing ni en diseño de subredes. La simulación debe hacerse sin afectar una red ajena o compartida."
+    }
+  ],
+  "notes": [
+    "Explicar que `ip neigh` es el requisito observable; el comando concreto para vaciar puede variar y requiere privilegios.",
+    "No asignar una IP duplicada en una red institucional real. Usar una red virtual aislada o el procedimiento indicado por la cátedra."
+  ]
+}

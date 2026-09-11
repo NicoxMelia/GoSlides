@@ -1,0 +1,29 @@
+{
+  "id": "codigo-exit-status",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 05 · SHELL",
+  "title": "Redirección y código de salida",
+  "subtitle": "El script conserva el estado del programa después de guardar cada stream en un archivo distinto.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "bash",
+      "title": "ejecutar.sh",
+      "code": "#!/usr/bin/env bash\n\n./procesar datos.csv >resultado.txt 2>errores.txt\nstatus=$?\n\nif (( status != 0 )); then\n  printf 'procesar falló con código %d\\n' \"$status\" >&2\nfi\n\nexit \"$status\"",
+      "frameStyle": "terminal",
+      "codeTheme": "tokyo-night",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ chmod +x ejecutar.sh\n$ ./ejecutar.sh\nprocesar falló con código 2\n$ echo $?\n2\n$ cat errores.txt\ndatos.csv: formato inválido en la línea 7",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Guardar $? inmediatamente evita que otro comando sobrescriba el código que queremos propagar.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

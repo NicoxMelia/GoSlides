@@ -1,0 +1,100 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "tp1-nexus-activacion",
+  "publicId": "tp1NexusActivacion2026",
+  "title": "TP1 · Activación del Sector NEXUS",
+  "subtitle": "Qué hay que construir, cómo encararlo y cuándo está terminado",
+  "description": "Presentación docente basada en la consigna de TP1 de NEXUS-9: dos máquinas virtuales, acceso seguro, práctica de ARP, inventario Bash, proyecto C17 con CMake y CMocka, e integración continua.",
+  "author": "GoSlides",
+  "tags": [
+    "TP1",
+    "Linux",
+    "Virtualización",
+    "SSH",
+    "ARP",
+    "Bash",
+    "C17",
+    "CMake",
+    "CMocka",
+    "CI"
+  ],
+  "authoring": {
+    "density": "balanced",
+    "depth": "class",
+    "interaction": "occasional",
+    "overflowStrategy": "reveal",
+    "durationMinutes": 28,
+    "preserveSourceMaterial": true
+  },
+  "theme": {
+    "mode": "dark",
+    "accent": "#65E6D4",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "headingFontFamily": "Space Grotesk, Inter, ui-sans-serif, system-ui, sans-serif",
+    "slideBackground": "#071321",
+    "surfaceColor": "#102338",
+    "textColor": "#F3F8FF",
+    "mutedColor": "#A9BDD0",
+    "radius": 20,
+    "tokens": {
+      "spacing": 16,
+      "cardRadius": 18,
+      "shadowStrength": 28,
+      "borderColor": "#22445A"
+    },
+    "visualStyle": "modern",
+    "iconLibrary": "lucide"
+  },
+  "masters": [
+    {
+      "id": "master-nexus",
+      "name": "NEXUS-9",
+      "background": "radial-gradient(circle at 88% 12%,rgba(120,89,255,.15),transparent 28%),radial-gradient(circle at 8% 90%,rgba(101,230,212,.10),transparent 26%),linear-gradient(145deg,#071321,#0B1D30 62%,#081522)",
+      "footer": "NEXUS-9 · TP1 · ACTIVACIÓN DEL SECTOR",
+      "canvas": [
+        {
+          "id": "master-accent",
+          "layerName": "Acento lateral",
+          "type": "shape",
+          "shape": "rounded",
+          "x": 4.1,
+          "y": 5.2,
+          "w": 0.65,
+          "h": 8.3,
+          "zIndex": 1,
+          "locked": true,
+          "style": {
+            "background": "#65E6D4",
+            "borderRadius": 10,
+            "opacity": 0.95
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    { "id": "mision", "name": "Misión y alcance" },
+    { "id": "laboratorio", "name": "Laboratorio Linux" },
+    { "id": "automatizacion", "name": "Scripts y proyecto C" },
+    { "id": "validacion", "name": "Validación y cierre" }
+  ],
+  "cover": "assets/nexus-cover.png",
+  "slides": [
+    "slides/01-portada.json",
+    "slides/02-mision.json",
+    "slides/03-alcance-proyecto.json",
+    "slides/04-mapa-entrega.json",
+    "slides/05-dos-vm.json",
+    "slides/06-infra-acceso.json",
+    "slides/07-diferencias-admin.json",
+    "slides/08-actividad-arp.json",
+    "slides/09-inventario-bash.json",
+    "slides/10-proyecto-c17.json",
+    "slides/11-integracion-continua.json",
+    "slides/12-plan-trabajo.json",
+    "slides/13-criterios-aceptacion.json",
+    "slides/14-no-definido.json",
+    "slides/15-cierre.json"
+  ]
+}

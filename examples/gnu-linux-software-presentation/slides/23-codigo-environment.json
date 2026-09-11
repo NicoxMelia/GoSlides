@@ -1,0 +1,29 @@
+{
+  "id": "codigo-environment",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 06 · ENTORNO",
+  "title": "Configuración con variables de entorno",
+  "subtitle": "getenv permite usar una configuración externa y mantener un valor predeterminado.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "client.c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    const char *server = getenv(\"SERVER_NAME\");\n\n    if (server == NULL || server[0] == '\\0') {\n        server = \"localhost\";\n    }\n\n    printf(\"conectando a %s\\n\", server);\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 client.c -o client\n$ ./client\nconectando a localhost\n$ SERVER_NAME=api.lab.local ./client\nconectando a api.lab.local",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "La asignación escrita antes del comando modifica el entorno solamente para esa ejecución.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

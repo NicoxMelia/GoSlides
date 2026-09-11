@@ -1,0 +1,29 @@
+{
+  "id": "codigo-streams",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 03 · E/S ESTÁNDAR",
+  "title": "Separación de stdout y stderr",
+  "subtitle": "Los datos útiles y los diagnósticos pueden redirigirse por separado.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "streams.c",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    puts(\"resultado: 42\");\n    fprintf(stderr, \"diagnostico: entrada incompleta\\n\");\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 streams.c -o streams\n$ ./streams >salida.txt 2>errores.txt\n$ cat salida.txt\nresultado: 42\n$ cat errores.txt\ndiagnostico: entrada incompleta",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Comparar los descriptores 1 y 2 con las redirecciones del shell.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "codigo-write-syscall",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "syscalls",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 07 · SYSTEM CALL",
+  "title": "Una llamada al sistema con write",
+  "subtitle": "La función write devuelve la cantidad transferida o -1 cuando la operación falla.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "write_demo.c",
+      "code": "#include <errno.h>\n#include <stdio.h>\n#include <string.h>\n#include <unistd.h>\n\nint main(void) {\n    const char message[] = \"hola desde write\\n\";\n    ssize_t written = write(STDOUT_FILENO, message, sizeof message - 1);\n\n    if (written == -1) {\n        fprintf(stderr, \"write: %s\\n\", strerror(errno));\n        return 1;\n    }\n\n    printf(\"bytes escritos: %zd\\n\", written);\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 write_demo.c -o write_demo\n$ ./write_demo\nhola desde write\nbytes escritos: 17",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "write trabaja con el descriptor 1. printf usa el stream stdout de la biblioteca C.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

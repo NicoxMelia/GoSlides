@@ -1,0 +1,24 @@
+{
+  "id": "original-16",
+  "layout": "free",
+  "sectionId": "glibc",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-16",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-16.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 16: The environment: export and libc",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 16 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

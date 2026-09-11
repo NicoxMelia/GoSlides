@@ -1,0 +1,24 @@
+{
+  "id": "original-34",
+  "layout": "free",
+  "sectionId": "defensive",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-34",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-34.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 34: Errors and Resource Allocation",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 34 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

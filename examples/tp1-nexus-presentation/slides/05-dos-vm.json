@@ -1,0 +1,95 @@
+{
+  "id": "dos-vm",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "laboratorio",
+  "transition": "morph",
+  "eyebrow": "04 · ENTORNO DE TRABAJO",
+  "title": "Dos máquinas, dos roles, una red local.",
+  "subtitle": "No son intercambiables: cada distribución y cada rol deben quedar identificados.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "detailView": "drawer",
+      "nodes": [
+        {
+          "id": "core",
+          "label": "sector-core",
+          "caption": "Ubuntu Server",
+          "x": 17,
+          "y": 50,
+          "width": 23,
+          "height": 30,
+          "kind": "service",
+          "color": "#FF7E73",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Servidor principal",
+                "Alojará aplicación, base de datos y servicios en etapas siguientes",
+                "Debe poder administrarse por SSH"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lan",
+          "label": "Red local",
+          "caption": "Conectividad IP",
+          "x": 50,
+          "y": 50,
+          "width": 18,
+          "height": 22,
+          "kind": "cloud",
+          "color": "#8A70FF",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Comprobación esencial",
+              "text": "Cada VM debe alcanzar a la otra y resolver los nombres definidos para el laboratorio."
+            }
+          ]
+        },
+        {
+          "id": "terminal",
+          "label": "field-terminal",
+          "caption": "Rocky Linux",
+          "x": 83,
+          "y": 50,
+          "width": 23,
+          "height": 30,
+          "kind": "client",
+          "color": "#65E6D4",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Terminal remota",
+                "Cliente, diagnóstico y administración",
+                "Permite contrastar herramientas con Ubuntu"
+              ]
+            }
+          ]
+        }
+      ],
+      "edges": [
+        { "from": "core", "to": "lan", "label": "IP", "lineStyle": "straight", "arrow": true },
+        { "from": "terminal", "to": "lan", "label": "IP / SSH", "lineStyle": "straight", "arrow": true }
+      ],
+      "fragment": 0,
+      "animation": "zoom"
+    },
+    {
+      "type": "callout",
+      "tone": "success",
+      "title": "Resultado visible",
+      "text": "Desde cada VM se puede identificar al otro equipo por IP y por nombre, y `field-terminal` puede acceder por SSH a `sector-core` con una clave pública."
+    }
+  ],
+  "notes": [
+    "Abrir los nodos para repasar responsabilidades. La interacción existe para separar roles, no para ocultar requisitos.",
+    "El PDF no fija direcciones IP concretas ni el tipo de red del hipervisor; eso debe acordarse antes de comenzar."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "plan-trabajo",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "validacion",
+  "transition": "wipe",
+  "eyebrow": "11 · ORDEN DE TRABAJO RECOMENDADO",
+  "title": "Construyan por capas y validen cada paso.",
+  "subtitle": "Este orden es una propuesta de ejecución; los requisitos siguen siendo los definidos por la consigna.",
+  "blocks": [
+    {
+      "type": "timeline",
+      "items": [
+        { "title": "1 · Crear", "text": "Instalar las dos VMs con sus sistemas y nombres correctos." },
+        { "title": "2 · Conectar", "text": "Configurar IP y `/etc/hosts`; comprobar alcance en ambos sentidos." },
+        { "title": "3 · Asegurar", "text": "Crear usuarios separados, configurar sudo y SSH con claves, bloquear root remoto." },
+        { "title": "4 · Diagnosticar", "text": "Ejecutar la práctica de `ip neigh`, reconstrucción, `arping` e IP duplicada." },
+        { "title": "5 · Automatizar", "text": "Crear y validar el inventario Bash en Ubuntu y Rocky." },
+        { "title": "6 · Integrar", "text": "Preparar C17 + CMake + CMocka y conectar build, tests y análisis estático a CI." }
+      ],
+      "fragment": 0,
+      "animation": "slide-left"
+    },
+    {
+      "type": "callout",
+      "tone": "success",
+      "title": "Regla de avance",
+      "text": "No sigan si la evidencia del paso actual no es reproducible. Cada capa depende de la anterior."
+    }
+  ],
+  "notes": [
+    "El orden de esta slide no aparece como secuencia obligatoria en el PDF; está diseñado para reducir retrabajo.",
+    "La práctica de ARP conviene hacerla cuando la red ya funciona y antes de automatizar el inventario."
+  ]
+}

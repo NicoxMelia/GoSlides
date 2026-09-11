@@ -1,0 +1,48 @@
+{
+  "id": "criterios-aceptacion",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "validacion",
+  "transition": "fade",
+  "eyebrow": "12 · DEFINICIÓN DE TERMINADO",
+  "title": "Siete evidencias convierten el trabajo en aceptable.",
+  "subtitle": "Cada criterio debe poder demostrarse, no sólo declararse.",
+  "blocks": [
+    {
+      "type": "markdown",
+      "appearance": "minimal",
+      "markdown": "| # | Criterio de aceptación | Evidencia clara |\n|---:|---|---|\n| 1 | Ambas VMs funcionan y se comunican | Nombres, IPs y prueba de alcance en ambos sentidos |\n| 2 | SSH utiliza claves | Login remoto sin contraseña de cuenta y clave pública instalada |\n| 3 | Usuarios y permisos documentados | Tabla de usuarios, grupos, roles y privilegios |\n| 4 | El script funciona en Ubuntu y Rocky | Ejecución exitosa y salida de inventario en ambas VMs |\n| 5 | El proyecto compila con un único comando | Build limpio y reproducible |\n| 6 | CMocka se ejecuta correctamente | Resultado de al menos una prueba |\n| 7 | CI valida cada push y pull request | Ejecuciones visibles de build, tests y análisis estático |",
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "drawer",
+      "buttonLabel": "Ver trazabilidad requisito → criterio",
+      "title": "Cómo se conectan los requisitos",
+      "side": "right",
+      "width": "lg",
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            "VMs + IP + hostname + `/etc/hosts` → comunicación demostrable",
+            "Usuarios separados + claves + root remoto deshabilitado → acceso administrable",
+            "Bash robusto + shellcheck → inventario portable",
+            "C17 + CMake + CMocka → build y prueba reproducibles",
+            "Workflow en eventos de repositorio → validación continua"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "ARP también es obligatorio",
+          "text": "Aunque no tenga una línea separada en los criterios finales, aparece entre los requisitos funcionales y debe realizarse y documentarse."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Recorrer la tabla como checklist final. La tercera columna propone evidencia práctica; el texto literal del criterio está en la segunda.",
+    "Abrir el drawer sólo si hace falta explicar trazabilidad o recordar que ARP sigue siendo requisito."
+  ]
+}

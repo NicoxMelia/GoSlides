@@ -1,0 +1,87 @@
+{
+  "id": "proyecto-c17",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "automatizacion",
+  "transition": "morph",
+  "eyebrow": "09 · REPOSITORIO INICIAL",
+  "title": "El proyecto mínimo tiene que compilar y probarse.",
+  "subtitle": "C17 define el lenguaje; CMake arma el build; CMocka demuestra que existe una prueba ejecutable.",
+  "blocks": [
+    {
+      "type": "architecture",
+      "detailView": "drawer",
+      "nodes": [
+        {
+          "id": "source",
+          "label": "Código C17",
+          "caption": "aplicación mínima",
+          "x": 13,
+          "y": 50,
+          "kind": "client",
+          "color": "#65E6D4",
+          "blocks": [
+            { "type": "text", "text": "Crear el repositorio y fijar el estándar C17 en la configuración de compilación." }
+          ]
+        },
+        {
+          "id": "cmake",
+          "label": "CMake",
+          "caption": "configura + compila",
+          "x": 38,
+          "y": 50,
+          "kind": "service",
+          "color": "#8A70FF",
+          "blocks": [
+            { "type": "text", "text": "Debe existir una forma reproducible de configurar y construir el proyecto." }
+          ]
+        },
+        {
+          "id": "cmocka",
+          "label": "CMocka",
+          "caption": "al menos 1 prueba",
+          "x": 63,
+          "y": 50,
+          "kind": "security",
+          "color": "#FFB45C",
+          "blocks": [
+            { "type": "text", "text": "La prueba debe ejecutarse correctamente, no sólo estar escrita en el repositorio." }
+          ]
+        },
+        {
+          "id": "result",
+          "label": "Resultado",
+          "caption": "build + tests OK",
+          "x": 88,
+          "y": 50,
+          "kind": "data",
+          "color": "#65E6D4",
+          "blocks": [
+            { "type": "callout", "tone": "success", "title": "Aceptación", "text": "El proyecto compila con un único comando y CMocka termina correctamente." }
+          ]
+        }
+      ],
+      "edges": [
+        { "from": "source", "to": "cmake", "label": "configurar", "arrow": true },
+        { "from": "cmake", "to": "cmocka", "label": "probar", "arrow": true },
+        { "from": "cmocka", "to": "result", "label": "validar", "arrow": true }
+      ],
+      "fragment": 0,
+      "animation": "slide-left"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "title": "ejemplo de verificación reproducible",
+      "frameStyle": "minimal",
+      "codeTheme": "github-dark",
+      "code": "cmake -S . -B build\ncmake --build build\nctest --test-dir build --output-on-failure",
+      "fragment": 1,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "El bloque de comandos es un ejemplo portable de tres pasos; si la cátedra exige literalmente un único comando, puede encapsularse en un script o target documentado.",
+    "No inventar funcionalidades de negocio para la aplicación mínima: el PDF sólo exige que compile."
+  ]
+}

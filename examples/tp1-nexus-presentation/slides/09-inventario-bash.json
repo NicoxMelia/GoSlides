@@ -1,0 +1,63 @@
+{
+  "id": "inventario-bash",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "automatizacion",
+  "transition": "wipe",
+  "eyebrow": "08 · SCRIPT DE INVENTARIO",
+  "title": "Un mismo script debe describir las dos VMs.",
+  "subtitle": "La salida concreta puede diseñarse; la robustez del script sí está especificada.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1.05, 0.95],
+      "gap": 2.5,
+      "items": [
+        {
+          "title": "Contrato obligatorio",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Usar Bash explícitamente",
+                "Validar argumentos y devolver códigos de salida significativos",
+                "Registrar errores comprensibles",
+                "Citar variables y limpiar temporales",
+                "Evitar repetir acciones destructivas",
+                "Ser idempotente cuando corresponda",
+                "Superar `shellcheck` sin errores críticos"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Base recomendada cuando aplica",
+          "blocks": [
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "inventory.sh",
+              "frameStyle": "carbon-glass",
+              "codeTheme": "night-owl",
+              "showLineNumbers": true,
+              "showWindowControls": true,
+              "code": "#!/usr/bin/env bash\nset -euo pipefail\n\nusage() {\n  printf 'Uso: %s <salida>\\n' \"$0\" >&2\n}\n\n[[ $# -eq 1 ]] || { usage; exit 64; }\nout=$1\n# Recolectar y escribir el inventario"
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Qué significa idempotente",
+              "text": "Ejecutarlo de nuevo no debe acumular daño ni duplicar cambios innecesarios. No significa que toda salida tenga que ser idéntica si el sistema cambió."
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "El PDF pide generar un inventario de cada VM, pero no enumera campos obligatorios. No presentar una lista inventada como requisito.",
+    "Sugerir como contenido razonable: hostname, distribución, kernel, CPU, memoria, discos, interfaces y usuarios; aclarar que es una propuesta."
+  ]
+}

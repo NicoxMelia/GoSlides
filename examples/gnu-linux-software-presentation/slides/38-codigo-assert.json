@@ -1,0 +1,29 @@
+{
+  "id": "codigo-assert",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "defensive",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 09 · ASSERT",
+  "title": "Assert para invariantes internas",
+  "subtitle": "La precondición documenta un error de programación. La entrada del usuario requiere otra validación.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "average.c",
+      "code": "#include <assert.h>\n#include <stdio.h>\n\ndouble average(const int *values, size_t count) {\n    assert(values != NULL);\n    assert(count > 0);\n\n    long sum = 0;\n    for (size_t i = 0; i < count; i++) sum += values[i];\n    return (double) sum / count;\n}\n\nint main(void) {\n    int values[] = {4, 6, 8};\n    printf(\"promedio: %.2f\\n\", average(values, 3));\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 average.c -o average\n$ ./average\npromedio: 6.00\n$ gcc -DNDEBUG -std=c17 average.c -o average-release\nCompilación release: las expresiones de assert quedan desactivadas.",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "No pasar datos inválidos sólo para provocar un crash durante la demostración. Explicar la diferencia con validación de entrada.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

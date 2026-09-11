@@ -1,0 +1,24 @@
+{
+  "id": "original-11",
+  "layout": "free",
+  "sectionId": "glibc",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-11",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-11.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 11: Standard I/O with a pipe",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 11 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

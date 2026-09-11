@@ -1,0 +1,29 @@
+{
+  "id": "codigo-getopt-long",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 02 · OPCIONES",
+  "title": "Opciones con getopt_long",
+  "subtitle": "La misma rama del switch atiende la forma corta y la forma larga.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "options.c",
+      "code": "#include <getopt.h>\n#include <stdio.h>\n\nint main(int argc, char **argv) {\n    static const struct option options[] = {\n        {\"help\",    no_argument,       NULL, 'h'},\n        {\"output\",  required_argument, NULL, 'o'},\n        {\"verbose\", no_argument,       NULL, 'v'},\n        {NULL, 0, NULL, 0}\n    };\n    const char *output = \"stdout\";\n    int verbose = 0, opt;\n\n    while ((opt = getopt_long(argc, argv, \"ho:v\", options, NULL)) != -1) {\n        switch (opt) {\n            case 'h': puts(\"uso: options [-v] [-o archivo]\"); return 0;\n            case 'o': output = optarg; break;\n            case 'v': verbose = 1; break;\n            default: return 2;\n        }\n    }\n    printf(\"output=%s verbose=%d restante=%d\\n\",\n           output, verbose, argc - optind);\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 options.c -o options\n$ ./options --verbose -o resultado.txt entrada.dat\noutput=resultado.txt verbose=1 restante=1",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Mostrar que optarg contiene resultado.txt y que optind señala entrada.dat.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

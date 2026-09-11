@@ -1,0 +1,56 @@
+{
+  "id": "cierre",
+  "layout": "split",
+  "masterId": "master-nexus",
+  "sectionId": "validacion",
+  "transition": "zoom",
+  "eyebrow": "14 · RESULTADO FINAL",
+  "title": "TP1 deja una base operativa y verificable.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [0.92, 1.08],
+      "gap": 2.5,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "image",
+              "src": "assets/nexus-foundations.png",
+              "alt": "Ilustración isométrica de dos máquinas conectadas, una clave, un script, bloques de código, pruebas y un pipeline",
+              "fit": "contain",
+              "caption": "La base que reutilizarán TP2, TP3 y TP4"
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "`sector-core` y `field-terminal` operativas y comunicadas",
+                "Acceso SSH por claves, sin login remoto directo de root",
+                "Usuarios, permisos y diferencias entre distribuciones documentados",
+                "Actividad de ARP realizada y explicada",
+                "Inventario Bash portable y validado con shellcheck",
+                "Repositorio C17 compilable, probado con CMocka y validado por CI"
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "La pregunta final",
+              "text": "¿Otra persona puede reproducir, verificar y continuar el trabajo sin depender de configuraciones ocultas?"
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "Cerrar conectando la pregunta final con la motivación del proyecto: comprender y auditar cada pieza.",
+    "Recordar que las dos VMs y el repositorio no se descartan; se reutilizan en los siguientes trabajos."
+  ]
+}
