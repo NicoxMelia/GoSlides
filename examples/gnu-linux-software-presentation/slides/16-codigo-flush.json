@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 progress.c -o progress\n$ ./progress\n.\n..\n...\nSimulación: cada punto aparece con un segundo de diferencia.",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 progress.c -o progress\nuser@soi> ./progress\n.\n..\n...\nSimulación: cada punto aparece con un segundo de diferencia.",
       "animation": "slide-up"
     }
   ],

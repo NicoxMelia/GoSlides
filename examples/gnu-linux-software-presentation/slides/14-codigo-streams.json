@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 streams.c -o streams\n$ ./streams >salida.txt 2>errores.txt\n$ cat salida.txt\nresultado: 42\n$ cat errores.txt\ndiagnostico: entrada incompleta",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 streams.c -o streams\nuser@soi> ./streams >salida.txt 2>errores.txt\nuser@soi> cat salida.txt\nresultado: 42\nuser@soi> cat errores.txt\ndiagnostico: entrada incompleta",
       "animation": "slide-up"
     }
   ],

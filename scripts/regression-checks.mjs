@@ -50,6 +50,16 @@ check(studio.includes('scrollHeight>region.clientHeight+2') && studio.includes('
 check(studio.includes('splitSlideForReadability') && studio.includes('convertOverflowToDrawer'), 'El diagnóstico debe ofrecer acciones de redistribución reversibles.');
 check(studio.includes('Guardar en repo') && studio.includes('restoreRepositoryVersion'), 'Studio debe exponer guardado y restauración del historial versionado.');
 
+const gnuCodeSlides = fs.readdirSync('examples/gnu-linux-software-presentation/slides')
+  .filter((name) => name.includes('codigo') && name.endsWith('.json'))
+  .map((name) => JSON.parse(read(path.join('examples/gnu-linux-software-presentation/slides', name))));
+const gnuSimulationLines = gnuCodeSlides.flatMap((slide) => [
+  ...(slide.blocks ?? []),
+  ...(slide.canvas ?? []).filter((item) => item.type === 'block').map((item) => item.block),
+]).flatMap((block) => String(block.simulationOutput ?? '').split('\n'));
+check(gnuSimulationLines.some((line) => line.startsWith('user@soi> ')), 'Los ejemplos GNU/Linux deben mostrar el prompt user@soi>.');
+check(!gnuSimulationLines.some((line) => line.startsWith('$ ')), 'Los comandos de usuario GNU/Linux no deben conservar el prompt genérico $.');
+
 const repositoryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'goslides-regression-repository-'));
 try {
   fs.mkdirSync(path.join(repositoryRoot, 'presentations'));

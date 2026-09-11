@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 write_demo.c -o write_demo\n$ ./write_demo\nhola desde write\nbytes escritos: 17",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 write_demo.c -o write_demo\nuser@soi> ./write_demo\nhola desde write\nbytes escritos: 17",
       "animation": "slide-up"
     }
   ],

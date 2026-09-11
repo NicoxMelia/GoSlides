@@ -111,7 +111,7 @@ function codeSlide({ id, sectionId, eyebrow, title, subtitle, language = 'c', fi
         showLineNumbers: true,
         showWindowControls: true,
         simulationEnabled: true,
-        simulationOutput: output,
+        simulationOutput: output.replace(/^\$ /gm, 'user@soi> '),
         animation: 'slide-up',
       },
     ],

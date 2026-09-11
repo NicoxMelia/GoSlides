@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 argv.c -o argv\n$ ./argv --verbose archivo.txt\nargc = 3\nargv[0] = \"./argv\"\nargv[1] = \"--verbose\"\nargv[2] = \"archivo.txt\"",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 argv.c -o argv\nuser@soi> ./argv --verbose archivo.txt\nargc = 3\nargv[0] = \"./argv\"\nargv[1] = \"--verbose\"\nargv[2] = \"archivo.txt\"",
       "animation": "slide-up"
     }
   ],

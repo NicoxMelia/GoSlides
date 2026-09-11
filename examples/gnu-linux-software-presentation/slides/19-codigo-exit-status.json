@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ chmod +x ejecutar.sh\n$ ./ejecutar.sh\nprocesar falló con código 2\n$ echo $?\n2\n$ cat errores.txt\ndatos.csv: formato inválido en la línea 7",
+      "simulationOutput": "user@soi> chmod +x ejecutar.sh\nuser@soi> ./ejecutar.sh\nprocesar falló con código 2\nuser@soi> echo $?\n2\nuser@soi> cat errores.txt\ndatos.csv: formato inválido en la línea 7",
       "animation": "slide-up"
     }
   ],

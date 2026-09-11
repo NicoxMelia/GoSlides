@@ -81,7 +81,7 @@
         "showLineNumbers": true,
         "showWindowControls": true,
         "simulationEnabled": true,
-        "simulationOutput": "$ gcc -Wall -Wextra -std=c17 options.c -o options\n$ ./options --verbose -o resultado.txt entrada.dat\noutput=resultado.txt verbose=1 restante=1"
+        "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 options.c -o options\nuser@soi> ./options --verbose -o resultado.txt entrada.dat\noutput=resultado.txt verbose=1 restante=1"
       }
     }
   ],

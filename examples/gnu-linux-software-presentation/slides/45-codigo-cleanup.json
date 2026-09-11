@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 -c load_file.c\nCompilación completada sin advertencias.\nCamino exitoso: free + fclose\nFalla de malloc: fclose\nFalla de fopen: no hay recursos que liberar",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 -c load_file.c\nCompilación completada sin advertencias.\nCamino exitoso: free + fclose\nFalla de malloc: fclose\nFalla de fopen: no hay recursos que liberar",
       "animation": "slide-up"
     }
   ],

@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 exec_demo.c -o exec_demo\n$ ./exec_demo\nproceso reemplazado\n$ echo $?\n0",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 exec_demo.c -o exec_demo\nuser@soi> ./exec_demo\nproceso reemplazado\nuser@soi> echo $?\n0",
       "animation": "slide-up"
     }
   ],

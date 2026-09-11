@@ -18,7 +18,7 @@
       "showLineNumbers": true,
       "showWindowControls": true,
       "simulationEnabled": true,
-      "simulationOutput": "$ gcc -Wall -Wextra -std=c17 client.c -o client\n$ ./client\nconectando a localhost\n$ SERVER_NAME=api.lab.local ./client\nconectando a api.lab.local",
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 client.c -o client\nuser@soi> ./client\nconectando a localhost\nuser@soi> SERVER_NAME=api.lab.local ./client\nconectando a api.lab.local",
       "animation": "slide-up"
     }
   ],
