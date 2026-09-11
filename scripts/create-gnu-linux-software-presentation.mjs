@@ -119,6 +119,75 @@ function codeSlide({ id, sectionId, eyebrow, title, subtitle, language = 'c', fi
   };
 }
 
+// Los ejemplos largos necesitan una región de altura explícita: así el código
+// conserva su escala, entra completo y la terminal simulada abre dentro del marco
+// en vez de empujar el contenido por debajo del lienzo 16:9.
+function fittedCodeSlide(options) {
+  const slide = codeSlide(options);
+  const [codeBlock] = slide.blocks;
+  const { animation, ...block } = codeBlock;
+  return {
+    id: slide.id,
+    layout: 'free',
+    masterId: slide.masterId,
+    sectionId: slide.sectionId,
+    transition: slide.transition,
+    canvas: [
+      {
+        id: `${slide.id}-eyebrow`,
+        type: 'text',
+        x: 7.2,
+        y: 6.2,
+        w: 75,
+        h: 3,
+        zIndex: 2,
+        layerName: 'Eyebrow',
+        text: slide.eyebrow,
+        style: { color: '#0099B0', fontSize: 7, fontWeight: 700, letterSpacing: 1.2 },
+      },
+      {
+        id: `${slide.id}-title`,
+        type: 'text',
+        x: 7.2,
+        y: 10.2,
+        w: 80,
+        h: 8,
+        zIndex: 2,
+        layerName: 'Título',
+        text: slide.title,
+        style: { color: '#111111', fontSize: 38, fontWeight: 800, lineHeight: 1.04, letterSpacing: -1.2 },
+      },
+      {
+        id: `${slide.id}-subtitle`,
+        type: 'text',
+        x: 7.2,
+        y: 19.2,
+        w: 82,
+        h: 4.2,
+        zIndex: 2,
+        layerName: 'Subtítulo',
+        text: slide.subtitle,
+        style: { color: '#5F6368', fontSize: 13, fontWeight: 400, lineHeight: 1.4 },
+      },
+      {
+        id: `${slide.id}-code`,
+        type: 'block',
+        x: 7.2,
+        y: 25.5,
+        w: 85.6,
+        h: 67.5,
+        zIndex: 2,
+        layerName: 'Código ejecutable',
+        fit: 'stretch',
+        style: { fontSize: 25 },
+        animation,
+        block,
+      },
+    ],
+    notes: slide.notes,
+  };
+}
+
 const additions = new Map([
   [5, codeSlide({
     id: 'codigo-argc-argv',
@@ -146,7 +215,7 @@ argv[1] = "--verbose"
 argv[2] = "archivo.txt"`,
     note: 'Remarcar que argc siempre incluye argv[0] cuando el programa se invoca normalmente.',
   })],
-  [8, codeSlide({
+  [8, fittedCodeSlide({
     id: 'codigo-getopt-long',
     sectionId: 'glibc',
     eyebrow: 'EJEMPLO 02 · OPCIONES',
