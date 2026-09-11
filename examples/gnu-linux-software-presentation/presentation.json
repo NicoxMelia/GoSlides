@@ -1,0 +1,138 @@
+{
+  "format": "goslides",
+  "version": 2,
+  "id": "gnu-linux-software-2026",
+  "publicId": "gnuLinuxSoftware2026",
+  "title": "Intro to GNU-Linux Software",
+  "subtitle": "Sistemas Operativos I · teoría original y ejemplos ejecutables",
+  "description": "Las 36 diapositivas de la clase original, conservadas visualmente, más 11 ejemplos de C y Bash con simulación de ejecución dentro de GoSlides.",
+  "author": "Ingeniería en Computación · FCEFyN · UNC",
+  "tags": [
+    "GNU/Linux",
+    "glibc",
+    "C",
+    "system calls",
+    "programación defensiva",
+    "Sistemas Operativos I"
+  ],
+  "authoring": {
+    "density": "detailed",
+    "depth": "class",
+    "interaction": "frequent",
+    "overflowStrategy": "preserve",
+    "durationMinutes": 75,
+    "preserveSourceMaterial": true
+  },
+  "theme": {
+    "mode": "light",
+    "accent": "#0099B0",
+    "fontFamily": "Arial, Liberation Sans, ui-sans-serif, sans-serif",
+    "headingFontFamily": "Arial, Liberation Sans, ui-sans-serif, sans-serif",
+    "slideBackground": "#FFFFFF",
+    "surfaceColor": "#F3F5F6",
+    "textColor": "#111111",
+    "mutedColor": "#5F6368",
+    "radius": 0,
+    "tokens": {
+      "spacing": 16,
+      "cardRadius": 10,
+      "shadowStrength": 12,
+      "borderColor": "#D6DADD"
+    },
+    "visualStyle": "modern",
+    "iconLibrary": "lucide"
+  },
+  "masters": [
+    {
+      "id": "master-code",
+      "name": "Ejemplo ejecutable",
+      "background": "linear-gradient(180deg,#ffffff,#f7fafb)",
+      "footer": "SISTEMAS OPERATIVOS I · GNU/LINUX · EJEMPLO EJECUTABLE",
+      "canvas": [
+        {
+          "id": "code-accent",
+          "type": "shape",
+          "shape": "rounded",
+          "x": 4.2,
+          "y": 5.2,
+          "w": 0.55,
+          "h": 8.2,
+          "locked": true,
+          "layerName": "Acento",
+          "style": {
+            "background": "#0099B0",
+            "borderRadius": 4
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "introduccion",
+      "name": "Introducción"
+    },
+    {
+      "id": "glibc",
+      "name": "The GNU C Library"
+    },
+    {
+      "id": "syscalls",
+      "name": "Linux System Calls"
+    },
+    {
+      "id": "defensive",
+      "name": "Coding Defensively"
+    }
+  ],
+  "cover": "assets/source-slide-01.png",
+  "slides": [
+    "slides/01-original-01.json",
+    "slides/02-original-02.json",
+    "slides/03-original-03.json",
+    "slides/04-original-04.json",
+    "slides/05-original-05.json",
+    "slides/06-codigo-argc-argv.json",
+    "slides/07-original-06.json",
+    "slides/08-original-07.json",
+    "slides/09-original-08.json",
+    "slides/10-codigo-getopt-long.json",
+    "slides/11-original-09.json",
+    "slides/12-original-10.json",
+    "slides/13-original-11.json",
+    "slides/14-codigo-streams.json",
+    "slides/15-original-12.json",
+    "slides/16-codigo-flush.json",
+    "slides/17-original-13.json",
+    "slides/18-original-14.json",
+    "slides/19-codigo-exit-status.json",
+    "slides/20-original-15.json",
+    "slides/21-original-16.json",
+    "slides/22-original-17.json",
+    "slides/23-codigo-environment.json",
+    "slides/24-original-18.json",
+    "slides/25-original-19.json",
+    "slides/26-original-20.json",
+    "slides/27-codigo-write-syscall.json",
+    "slides/28-original-21.json",
+    "slides/29-original-22.json",
+    "slides/30-original-23.json",
+    "slides/31-original-24.json",
+    "slides/32-original-25.json",
+    "slides/33-original-26.json",
+    "slides/34-codigo-execve.json",
+    "slides/35-original-27.json",
+    "slides/36-original-28.json",
+    "slides/37-original-29.json",
+    "slides/38-codigo-assert.json",
+    "slides/39-original-30.json",
+    "slides/40-original-31.json",
+    "slides/41-original-32.json",
+    "slides/42-original-33.json",
+    "slides/43-codigo-eintr.json",
+    "slides/44-original-34.json",
+    "slides/45-codigo-cleanup.json",
+    "slides/46-original-35.json",
+    "slides/47-original-36.json"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "infra-acceso",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "laboratorio",
+  "transition": "wipe",
+  "eyebrow": "05 · INFRAESTRUCTURA Y ACCESO",
+  "title": "La red también debe quedar administrable.",
+  "blocks": [
+    {
+      "type": "columns",
+      "ratio": [1, 1],
+      "gap": 2.5,
+      "items": [
+        {
+          "title": "Identidad y red",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Asignar los nombres exactos `sector-core` y `field-terminal`",
+                "Configurar conectividad IP entre ambas VMs",
+                "Registrar los nombres en `hostname` y `/etc/hosts`",
+                "Comprobar el alcance desde ambos lados"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "title": "comprobaciones",
+              "frameStyle": "minimal",
+              "codeTheme": "tokyo-night",
+              "code": "hostnamectl\ngetent hosts sector-core\nping -c 3 field-terminal"
+            }
+          ]
+        },
+        {
+          "title": "Usuarios y SSH",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Separar usuarios administrativos de usuarios de servicio",
+                "Configurar autenticación SSH mediante claves públicas",
+                "Deshabilitar el acceso remoto directo de `root`",
+                "Documentar usuarios, grupos y permisos"
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warning",
+              "title": "No es lo mismo",
+              "text": "Bloquear el login remoto de `root` no significa eliminar `sudo`: la administración debe seguir siendo posible mediante un usuario autorizado."
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Los comandos son ejemplos de verificación, no una secuencia obligatoria impuesta por el PDF.",
+    "Pedir que documenten qué usuario administra y qué usuario queda reservado para ejecutar servicios."
+  ]
+}

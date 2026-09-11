@@ -16,6 +16,8 @@
     "pack:capabilities": "node scripts/pack-ai-capabilities.mjs",
     "pack:sast": "node scripts/pack-sast.mjs",
     "pack:ssh": "node scripts/pack-ssh-local.mjs",
+    "pack:gnu-linux": "node scripts/pack-gnu-linux-software.mjs",
+    "pack:tp1-nexus": "node scripts/pack-tp1-nexus.mjs",
     "audit": "node scripts/audit-presentations.mjs",
     "regression": "node scripts/regression-checks.mjs"
   },

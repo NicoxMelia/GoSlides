@@ -182,9 +182,10 @@ a { color: inherit; text-decoration: none; }
 .deck-title small { color: var(--soft); font-size: 9px; }
 .player-main { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(0,1fr); transition: .2s; }
 .player-main.with-notes { grid-template-columns: minmax(0,1fr) 310px; }
-.stage-frame { min-width: 0; min-height: 0; position: relative; display: grid; place-items: center; padding: 24px 68px; background-image: radial-gradient(circle at 50% 30%, color-mix(in srgb,var(--accent) 8%,transparent), transparent 36rem); }
+.stage-frame { min-width: 0; min-height: 0; position: relative; overflow: hidden; background-image: radial-gradient(circle at 50% 30%, color-mix(in srgb,var(--accent) 8%,transparent), transparent 36rem); }
+.slide-scroll-area { width:100%; height:100%; min-width:0; min-height:0; display:grid; place-items:start center; align-content:start; padding:24px 68px; overflow:auto; overscroll-behavior:contain; scrollbar-gutter:stable; container-type:inline-size; }
 .slide-stage { aspect-ratio: 16 / 9; width: min(100%, calc((100vh - 150px) * 16 / 9)); max-height: calc(100vh - 150px); background: var(--slide-bg); color: var(--text); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); position: relative; overflow: hidden; display: flex; flex-direction: column; container-type: inline-size; isolation: isolate; }
-.slide-stage::before { content: ''; position: absolute; z-index: -1; width: 43%; aspect-ratio: 1; border-radius: 50%; top: -25%; right: -10%; background: radial-gradient(circle, color-mix(in srgb,var(--accent) 18%,transparent), transparent 67%); }
+.slide-stage::before { content:''; position:absolute; z-index:-1; inset:0; border-radius:inherit; background:radial-gradient(circle 22cqw at 90% 0%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 67%); pointer-events:none; }
 .slide-content { width: 100%; height: 100%; padding: 6.2% 7.2%; display: flex; flex-direction: column; justify-content: center; }
 .layout-title .slide-content,
 .layout-center .slide-content { align-items: center; text-align: center; padding-left: 11%; padding-right: 11%; }
@@ -453,7 +454,7 @@ body > .slide-overlay { position:fixed; }
   .feature-strip > div:nth-child(2) { border-right: 0; }
   .player-main.with-notes { grid-template-columns: 1fr; }
   .speaker-notes { display: none; }
-  .stage-frame { padding-left: 56px; padding-right: 56px; }
+  .slide-scroll-area { padding-left: 56px; padding-right: 56px; }
   .overview-grid { grid-template-columns: repeat(2,1fr); }
 }
 
@@ -475,7 +476,7 @@ body > .slide-overlay { position:fixed; }
   .toolbar-divider,
   .deck-title small { display: none; }
   .deck-title { max-width: 160px; }
-  .stage-frame { padding: 14px 38px; }
+  .slide-scroll-area { padding: 14px 38px; }
   .nav-arrow { width: 30px; height: 46px; border-radius: 9px; }
   .nav-arrow.prev { left: 4px; }
   .nav-arrow.next { right: 4px; }
@@ -1703,3 +1704,23 @@ body > .slide-overlay { position:fixed; }
 .studio-editor[data-theme='light'] :is(.studio-insert-panel,.properties-panel,.studio-editor-topbar,.studio-slide-navigation,.canvas-caption) { --text:#172033; --muted:#667085; --soft:#667085; }
 .studio-editor { --studio-deck-text:var(--text); --studio-deck-muted:var(--muted); --studio-deck-soft:var(--soft); }
 .studio-left-content .thumb-render-fixed { --text:var(--studio-deck-text); --muted:var(--studio-deck-muted); --soft:var(--studio-deck-soft); color:var(--text); }
+
+/* Viewer adaptativo: 16:9 es el mínimo, no una máscara. Las slides de flujo
+   crecen con su contenido y el visor desplaza esa hoja; los canvases libres
+   conservan sus coordenadas 16:9, pero sus objetos y animaciones pueden cruzar
+   el borde y siguen siendo alcanzables mediante el scroll del visor. */
+.slide-scroll-area > .slide-stage {
+  flex:0 0 auto;
+  aspect-ratio:auto;
+  max-height:none;
+  min-height:min(56.25cqw,calc(100vh - 150px));
+  overflow:visible;
+}
+.slide-scroll-area > .slide-stage > .slide-content {
+  height:auto;
+  min-height:0;
+  flex:1 0 auto;
+}
+.slide-scroll-area > .slide-stage > .free-canvas {
+  overflow:visible;
+}

@@ -106,7 +106,7 @@ export function PresentationPlayer({ presentation, onClose, showPresenterTools =
     </div></header>
 
     <main className={`player-main ${showPresenterTools && notesOpen ? 'with-notes' : ''}`}><div className="stage-frame">
-      <SlideRenderer key={slide.id} slide={slide} master={(presentation.manifest.masters??[]).find(m=>m.id===slide.masterId)} assets={presentation.assets} slideNumber={index + 1} total={presentation.slides.length} fragmentStep={fragmentStep} />
+      <div key={slide.id} className="slide-scroll-area"><SlideRenderer slide={slide} master={(presentation.manifest.masters??[]).find(m=>m.id===slide.masterId)} assets={presentation.assets} slideNumber={index + 1} total={presentation.slides.length} fragmentStep={fragmentStep} /></div>
       <button className="nav-arrow prev" onClick={previous} disabled={index === 0 && fragmentStep === 0} aria-label="Anterior"><ChevronLeft /></button>
       <button className="nav-arrow next" onClick={next} disabled={index === presentation.slides.length - 1 && fragmentStep >= maxFragment} aria-label="Siguiente"><ChevronRight /></button>
     </div>{showPresenterTools && notesOpen && <aside className="speaker-notes"><span>Notas del presentador</span><h3>{slide.title ?? `Slide ${index + 1}`}</h3>{slide.notes?.length ? <ul>{slide.notes.map((note, i) => <li key={i}>{note}</li>)}</ul> : <p>Esta slide no tiene notas.</p>}<div className="shortcuts"><strong>Atajos</strong><p>← → navegar/fragments · O overview · N notas · P presentador · Home/End</p></div></aside>}</main>

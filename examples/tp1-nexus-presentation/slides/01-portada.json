@@ -1,0 +1,117 @@
+{
+  "id": "portada",
+  "layout": "free",
+  "masterId": "master-nexus",
+  "sectionId": "mision",
+  "transition": "fade",
+  "background": "linear-gradient(90deg,#071321 0%,#071321 38%,rgba(7,19,33,.78) 53%,rgba(7,19,33,.10) 100%)",
+  "canvas": [
+    {
+      "id": "cover-image",
+      "type": "image",
+      "x": 38,
+      "y": 0,
+      "w": 62,
+      "h": 100,
+      "zIndex": 1,
+      "src": "assets/nexus-cover.png",
+      "alt": "Centro de control futurista con un servidor y una terminal conectados localmente mientras otros sectores de la ciudad están fuera de línea",
+      "fit": "cover",
+      "objectPositionX": 76,
+      "objectPositionY": 50
+    },
+    {
+      "id": "cover-overlay",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 34,
+      "y": 0,
+      "w": 32,
+      "h": 100,
+      "zIndex": 2,
+      "style": {
+        "background": "linear-gradient(90deg,#071321,rgba(7,19,33,.83),rgba(7,19,33,0))",
+        "borderRadius": 0
+      }
+    },
+    {
+      "id": "cover-kicker",
+      "type": "text",
+      "x": 7,
+      "y": 11,
+      "w": 37,
+      "h": 7,
+      "zIndex": 4,
+      "text": "PROYECTO INTEGRADOR · SEMANAS 1 A 3",
+      "style": {
+        "color": "#65E6D4",
+        "fontSize": 15,
+        "fontWeight": 800,
+        "letterSpacing": 1.7
+      }
+    },
+    {
+      "id": "cover-title",
+      "type": "text",
+      "x": 7,
+      "y": 23,
+      "w": 45,
+      "h": 27,
+      "zIndex": 4,
+      "text": "TP1 · Activación\ndel Sector NEXUS",
+      "style": {
+        "color": "#F3F8FF",
+        "fontSize": 52,
+        "fontWeight": 850,
+        "lineHeight": 1.02
+      }
+    },
+    {
+      "id": "cover-subtitle",
+      "type": "text",
+      "x": 7.2,
+      "y": 55,
+      "w": 38,
+      "h": 14,
+      "zIndex": 4,
+      "fragment": 1,
+      "animation": "slide-up",
+      "text": "Qué hay que construir, cómo encararlo y cuándo está terminado.",
+      "style": {
+        "color": "#C3D3E1",
+        "fontSize": 24,
+        "fontWeight": 470,
+        "lineHeight": 1.28
+      }
+    },
+    {
+      "id": "cover-mission",
+      "type": "shape",
+      "shape": "rounded",
+      "x": 7,
+      "y": 74,
+      "w": 36,
+      "h": 10,
+      "zIndex": 4,
+      "fragment": 2,
+      "animation": "fade",
+      "text": "2 VMs  ·  SSH  ·  ARP  ·  Bash  ·  C17  ·  CI",
+      "style": {
+        "color": "#E8FFFB",
+        "background": "rgba(16,35,56,.92)",
+        "borderColor": "#2B5B6A",
+        "borderWidth": 1,
+        "borderRadius": 16,
+        "fontSize": 17,
+        "fontWeight": 720,
+        "textAlign": "center",
+        "shadow": true
+      }
+    }
+  ],
+  "footer": "Guía de la consigna · 28 minutos",
+  "notes": [
+    "Abrir con el problema del relato: durante seis horas la red central cayó y el distrito no pudo operar.",
+    "Aclarar que esta presentación explica sólo TP1. La aplicación NEXUS completa se construirá en etapas posteriores."
+  ]
+}

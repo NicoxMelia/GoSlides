@@ -1,0 +1,24 @@
+{
+  "id": "original-30",
+  "layout": "free",
+  "sectionId": "defensive",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-30",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-30.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 30: System Call Failures",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 30 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

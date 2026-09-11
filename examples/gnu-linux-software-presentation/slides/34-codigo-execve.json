@@ -1,0 +1,29 @@
+{
+  "id": "codigo-execve",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "syscalls",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 08 · EXECVE",
+  "title": "Reemplazo del proceso con execve",
+  "subtitle": "Si execve tiene éxito, el código ubicado después de la llamada no vuelve a ejecutarse.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "exec_demo.c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <unistd.h>\n\nextern char **environ;\n\nint main(void) {\n    char *const args[] = {\n        \"printf\", \"proceso reemplazado\\n\", NULL\n    };\n\n    execve(\"/usr/bin/printf\", args, environ);\n    perror(\"execve\");\n    return EXIT_FAILURE;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 exec_demo.c -o exec_demo\nuser@soi> ./exec_demo\nproceso reemplazado\nuser@soi> echo $?\n0",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "perror solamente se ejecuta si execve devuelve -1.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

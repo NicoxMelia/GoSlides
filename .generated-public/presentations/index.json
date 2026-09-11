@@ -14,6 +14,23 @@
     "slideCount": 35
   },
   {
+    "id": "gnu-linux-software-2026",
+    "publicId": "gnuLinuxSoftware2026",
+    "title": "Intro to GNU-Linux Software",
+    "subtitle": "Sistemas Operativos I · teoría original y ejemplos ejecutables",
+    "description": "Las 36 diapositivas de la clase original, conservadas visualmente, más 11 ejemplos de C y Bash con simulación de ejecución dentro de GoSlides.",
+    "tags": [
+      "GNU/Linux",
+      "glibc",
+      "C",
+      "system calls",
+      "programación defensiva",
+      "Sistemas Operativos I"
+    ],
+    "zip": "gnuLinuxSoftware2026.zip",
+    "slideCount": 47
+  },
+  {
     "id": "sast-horusec",
     "publicId": "sastHorusec2026",
     "title": "SAST y Horusec",
@@ -46,5 +63,26 @@
     ],
     "zip": "sshRedLocal2026.zip",
     "slideCount": 14
+  },
+  {
+    "id": "tp1-nexus-activacion",
+    "publicId": "tp1NexusActivacion2026",
+    "title": "TP1 · Activación del Sector NEXUS",
+    "subtitle": "Qué hay que construir, cómo encararlo y cuándo está terminado",
+    "description": "Presentación docente basada en la consigna de TP1 de NEXUS-9: dos máquinas virtuales, acceso seguro, práctica de ARP, inventario Bash, proyecto C17 con CMake y CMocka, e integración continua.",
+    "tags": [
+      "TP1",
+      "Linux",
+      "Virtualización",
+      "SSH",
+      "ARP",
+      "Bash",
+      "C17",
+      "CMake",
+      "CMocka",
+      "CI"
+    ],
+    "zip": "tp1NexusActivacion2026.zip",
+    "slideCount": 15
   }
 ]

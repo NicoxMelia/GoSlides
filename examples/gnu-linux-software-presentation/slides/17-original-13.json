@@ -1,0 +1,24 @@
+{
+  "id": "original-13",
+  "layout": "free",
+  "sectionId": "glibc",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-13",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-13.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 13: Redirect stdout and stderr",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 13 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

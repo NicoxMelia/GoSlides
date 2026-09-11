@@ -1,0 +1,24 @@
+{
+  "id": "original-19",
+  "layout": "free",
+  "sectionId": "syscalls",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-19",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-19.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 19: System calls",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 19 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

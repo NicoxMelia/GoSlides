@@ -1,0 +1,58 @@
+{
+  "id": "mapa-entrega",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "mision",
+  "transition": "fade",
+  "eyebrow": "03 · LA CONSIGNA EN CUATRO FRENTES",
+  "title": "Para aprobar, integren infraestructura y código.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 4,
+      "items": [
+        {
+          "icon": "boxes",
+          "badge": "A",
+          "title": "Laboratorio",
+          "text": "Crear `sector-core` y `field-terminal`; configurar IP, hostname y `/etc/hosts`."
+        },
+        {
+          "icon": "lock",
+          "badge": "B",
+          "title": "Acceso",
+          "text": "Separar usuarios administrativos/de servicio, usar claves SSH y bloquear root remoto."
+        },
+        {
+          "icon": "network",
+          "badge": "C",
+          "title": "Diagnóstico",
+          "text": "Inspeccionar vecinos y realizar la actividad controlada de ARP."
+        },
+        {
+          "icon": "code",
+          "badge": "D",
+          "title": "Ingeniería",
+          "text": "Inventario Bash, proyecto C17, CMake, CMocka y CI con análisis estático."
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "stats",
+      "items": [
+        { "value": "2", "label": "máquinas virtuales", "hint": "ambas se conservan" },
+        { "value": "14", "label": "requisitos funcionales", "hint": "todos verificables" },
+        { "value": "7", "label": "criterios de aceptación", "hint": "definen el final" },
+        { "value": "3", "label": "semanas", "hint": "duración indicada" }
+      ],
+      "fragment": 1,
+      "animation": "fade"
+    }
+  ],
+  "notes": [
+    "Usar esta slide como mapa de navegación. Las siguientes desarrollan cada frente.",
+    "Los números provienen de la consigna: dos VMs, catorce requisitos, siete criterios y semanas 1 a 3."
+  ]
+}

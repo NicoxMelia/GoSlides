@@ -1,0 +1,24 @@
+{
+  "id": "original-01",
+  "layout": "free",
+  "sectionId": "introduccion",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-01",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-01.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 1: Sistemas Operativos I: Intro to GNU-Linux Software",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 1 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

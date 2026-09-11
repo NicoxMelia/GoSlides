@@ -9,6 +9,7 @@ const failures = [];
 const check = (ok, message) => { if (!ok) failures.push(message); };
 
 const renderer = read('src/components/SlideRenderer.tsx');
+const player = read('src/components/PresentationPlayer.tsx');
 const editorCanvas = read('src/studio/VisualCanvas.tsx');
 const code = read('src/components/CodeBlock.tsx');
 const rich = read('src/studio/RichTextInput.tsx');
@@ -33,6 +34,9 @@ check(renderer.includes('content?.blocks?.length') && renderer.includes('<Progre
 check(editorCanvas.includes('useId'), 'Los markers SVG de Studio deben tener IDs locales por instancia.');
 check(css.includes("[data-theme='dark'] { color-scheme: dark; }"), 'Dark mode debe declarar color-scheme para selects nativos.');
 check(css.includes('.canvas-text,.vc-text { line-height:1.08; overflow:visible; }'), 'Text boxes no deben recortarse silenciosamente.');
+check(player.includes('className="slide-scroll-area"'), 'El Viewer debe separar el scroll de la navegación fija.');
+check(player.includes('key={slide.id} className="slide-scroll-area"'), 'El scroll adaptativo debe volver al inicio al cambiar de slide.');
+check(css.includes('.slide-scroll-area > .slide-stage') && css.includes('min-height:min(56.25cqw') && css.includes('flex:1 0 auto') && css.includes('overflow:visible'), 'La hoja del Viewer debe usar 16:9 como mínimo, crecer con el contenido y no recortarlo.');
 check(css.includes('.rich-bg { color:inherit; }'), 'Highlight Rich Text debe conservar el color de texto del contexto.');
 check(css.includes('.canvas-toolbar button { min-width:54px;'), 'Toolbar debe mantener hit-area legible.');
 check(css.includes('.accordion-block') && css.includes('.slide-drawer'), 'Accordion y drawer necesitan estilos de Viewer.');
@@ -45,6 +49,16 @@ check(studio.includes("rightTab==='ai'") && studio.includes('<AuthoringPanel'), 
 check(studio.includes('scrollHeight>region.clientHeight+2') && studio.includes('scrollWidth>region.clientWidth+2'), 'Studio debe medir overflow vertical y horizontal real.');
 check(studio.includes('splitSlideForReadability') && studio.includes('convertOverflowToDrawer'), 'El diagnóstico debe ofrecer acciones de redistribución reversibles.');
 check(studio.includes('Guardar en repo') && studio.includes('restoreRepositoryVersion'), 'Studio debe exponer guardado y restauración del historial versionado.');
+
+const gnuCodeSlides = fs.readdirSync('examples/gnu-linux-software-presentation/slides')
+  .filter((name) => name.includes('codigo') && name.endsWith('.json'))
+  .map((name) => JSON.parse(read(path.join('examples/gnu-linux-software-presentation/slides', name))));
+const gnuSimulationLines = gnuCodeSlides.flatMap((slide) => [
+  ...(slide.blocks ?? []),
+  ...(slide.canvas ?? []).filter((item) => item.type === 'block').map((item) => item.block),
+]).flatMap((block) => String(block.simulationOutput ?? '').split('\n'));
+check(gnuSimulationLines.some((line) => line.startsWith('user@soi> ')), 'Los ejemplos GNU/Linux deben mostrar el prompt user@soi>.');
+check(!gnuSimulationLines.some((line) => line.startsWith('$ ')), 'Los comandos de usuario GNU/Linux no deben conservar el prompt genérico $.');
 
 const repositoryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'goslides-regression-repository-'));
 try {

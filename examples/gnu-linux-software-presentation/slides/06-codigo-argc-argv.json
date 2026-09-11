@@ -1,0 +1,29 @@
+{
+  "id": "codigo-argc-argv",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "glibc",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 01 · ARGUMENTOS",
+  "title": "Argumentos disponibles en argc y argv",
+  "subtitle": "El primer elemento identifica el programa. Los siguientes conservan el orden escrito en la terminal.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "argv.c",
+      "code": "#include <stdio.h>\n\nint main(int argc, char *argv[]) {\n    printf(\"argc = %d\\n\", argc);\n\n    for (int i = 0; i < argc; i++) {\n        printf(\"argv[%d] = \\\"%s\\\"\\n\", i, argv[i]);\n    }\n\n    return 0;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 argv.c -o argv\nuser@soi> ./argv --verbose archivo.txt\nargc = 3\nargv[0] = \"./argv\"\nargv[1] = \"--verbose\"\nargv[2] = \"archivo.txt\"",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Remarcar que argc siempre incluye argv[0] cuando el programa se invoca normalmente.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

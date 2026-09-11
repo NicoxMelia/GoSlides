@@ -1,0 +1,24 @@
+{
+  "id": "original-14",
+  "layout": "free",
+  "sectionId": "glibc",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-14",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-14.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 14: Program exit codes",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 14 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

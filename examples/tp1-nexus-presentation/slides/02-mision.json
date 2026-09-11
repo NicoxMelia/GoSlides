@@ -1,0 +1,51 @@
+{
+  "id": "mision",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "mision",
+  "transition": "slide",
+  "eyebrow": "01 · POR QUÉ EXISTE ESTE TP",
+  "title": "La misión es construir una base local y controlable.",
+  "subtitle": "El problema no es sólo programar: es poder operar aun cuando los servicios externos fallen.",
+  "blocks": [
+    {
+      "type": "quote",
+      "text": "El Distrito 9 necesita un sistema propio, capaz de funcionar localmente aun cuando el resto de la ciudad esté desconectado.",
+      "author": "Consigna NEXUS-9",
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "cards",
+      "columns": 4,
+      "items": [
+        {
+          "icon": "server",
+          "title": "Local",
+          "text": "Las piezas esenciales deben quedar bajo administración del distrito."
+        },
+        {
+          "icon": "activity",
+          "title": "Verificable",
+          "text": "Cada proceso, permiso, archivo y servicio debe poder inspeccionarse."
+        },
+        {
+          "icon": "shield",
+          "title": "Protegido",
+          "text": "Usuarios, claves y permisos separan responsabilidades."
+        },
+        {
+          "icon": "layers",
+          "title": "Reutilizable",
+          "text": "Nada de TP1 se descarta: será la base de los siguientes trabajos."
+        }
+      ],
+      "fragment": 1,
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "La narrativa de 2099 da contexto, pero los requisitos son tecnologías reales de administración Linux.",
+    "Reforzar que TP1 construye el laboratorio y la base del proyecto, no el sistema completo."
+  ]
+}

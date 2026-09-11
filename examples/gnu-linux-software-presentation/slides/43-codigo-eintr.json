@@ -1,0 +1,29 @@
+{
+  "id": "codigo-eintr",
+  "layout": "default",
+  "masterId": "master-code",
+  "sectionId": "defensive",
+  "transition": "wipe",
+  "eyebrow": "EJEMPLO 10 · ERRNO",
+  "title": "Reintentos ante EINTR",
+  "subtitle": "El bucle repite read sólo cuando una señal interrumpió la operación.",
+  "blocks": [
+    {
+      "type": "code",
+      "language": "c",
+      "title": "read_retry.c",
+      "code": "#include <errno.h>\n#include <unistd.h>\n\nssize_t read_retry(int fd, void *buffer, size_t size) {\n    ssize_t result;\n\n    do {\n        result = read(fd, buffer, size);\n    } while (result == -1 && errno == EINTR);\n\n    return result;\n}",
+      "frameStyle": "carbon-light",
+      "codeTheme": "github-dark",
+      "showLineNumbers": true,
+      "showWindowControls": true,
+      "simulationEnabled": true,
+      "simulationOutput": "user@soi> gcc -Wall -Wextra -std=c17 -c read_retry.c\nSimulación de la secuencia:\nread(...) = -1, errno = EINTR\nread(...) = 5\nresultado final = 5 bytes",
+      "animation": "slide-up"
+    }
+  ],
+  "notes": [
+    "Otros valores de errno salen del bucle y deben tratarse como fallas reales.",
+    "Usar Run code para reproducir la salida simulada dentro de la diapositiva."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "alcance-proyecto",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "mision",
+  "transition": "wipe",
+  "eyebrow": "02 · MAPA DEL PROYECTO",
+  "title": "TP1 prepara el terreno; los servicios llegan después.",
+  "subtitle": "Los cuatro trabajos forman una única evolución. En esta etapa sólo se exige la activación del sector.",
+  "blocks": [
+    {
+      "type": "timeline",
+      "items": [
+        {
+          "title": "TP1 · Activación",
+          "text": "Dos VMs, red, usuarios, SSH, Bash, repositorio C17, CMake, CMocka y CI. ==AHORA=="
+        },
+        {
+          "title": "TP2 · Registro central",
+          "text": "`nexusd`, SQLite, API, cliente Bash, pruebas y ejecución con systemd."
+        },
+        {
+          "title": "TP3 · Red segura",
+          "text": "Nginx/TLS, firewalls, SELinux, SFTP, evidencias y notificaciones."
+        },
+        {
+          "title": "TP4 · Continuidad",
+          "text": "Backups, restauración, health checks, recuperación, límites, cliente C y despliegue."
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-left"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "title": "Límite de alcance",
+      "text": "En TP1 no hace falta implementar la API, la base de datos, Nginx, TLS, backups ni el servicio systemd. Sí hay que dejar una base que permita incorporarlos después."
+    }
+  ],
+  "notes": [
+    "Esta separación evita que el grupo intente resolver prematuramente requisitos de TP2, TP3 o TP4.",
+    "La aplicación mínima de TP1 sólo debe compilar; el daemon real aparece en TP2."
+  ]
+}

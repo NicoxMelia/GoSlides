@@ -1,0 +1,24 @@
+{
+  "id": "original-28",
+  "layout": "free",
+  "sectionId": "defensive",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-28",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-28.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 28: Using assert",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 28 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

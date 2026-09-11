@@ -1,0 +1,76 @@
+{
+  "id": "integracion-continua",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "automatizacion",
+  "transition": "slide",
+  "eyebrow": "10 · INTEGRACIÓN CONTINUA",
+  "title": "Cada push y pull request debe pasar tres controles.",
+  "subtitle": "La plataforma de CI no está fijada; el comportamiento esperado sí.",
+  "blocks": [
+    {
+      "type": "steps",
+      "title": "Pipeline mínimo",
+      "items": [
+        {
+          "title": "1. Build",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "info",
+              "title": "Compilar desde cero",
+              "text": "Configurar CMake y construir el proyecto en un entorno limpio."
+            }
+          ]
+        },
+        {
+          "title": "2. Tests",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "success",
+              "title": "Ejecutar CMocka",
+              "text": "La prueba debe correr dentro del pipeline y hacer fallar el job si falla."
+            }
+          ]
+        },
+        {
+          "title": "3. Análisis estático",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "warning",
+              "title": "Revisar sin ejecutar",
+              "text": "Incorporar una herramienta de análisis estático apropiada para el código C."
+            }
+          ]
+        },
+        {
+          "title": "4. Estado visible",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Se dispara en cada `push`",
+                "Se dispara en cada `pull request`",
+                "El resultado permite saber qué control falló"
+              ]
+            }
+          ]
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "title": "No alcanza con definir el workflow",
+      "text": "La aceptación dice que CI ==valida== cada push y pull request: hay que mostrar al menos una ejecución real del pipeline."
+    }
+  ],
+  "notes": [
+    "El PDF no nombra GitHub Actions, GitLab CI ni otra plataforma; cualquiera debe presentarse como decisión del curso o del equipo.",
+    "Tampoco especifica la herramienta de análisis estático para C; pedir que documenten la elegida y su configuración."
+  ]
+}

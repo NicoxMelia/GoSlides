@@ -1,0 +1,24 @@
+{
+  "id": "original-25",
+  "layout": "free",
+  "sectionId": "syscalls",
+  "transition": "none",
+  "canvas": [
+    {
+      "id": "original-image-25",
+      "type": "image",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "src": "assets/source-slide-25.png",
+      "fit": "cover",
+      "alt": "Diapositiva original 25: Example of execve(): user mode",
+      "locked": true,
+      "layerName": "Diapositiva original"
+    }
+  ],
+  "notes": [
+    "Copia visual de la diapositiva 25 del archivo l3_gnu_linux_software_2026.pptx."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "no-definido",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "validacion",
+  "transition": "wipe",
+  "eyebrow": "13 · EVITAR SUPOSICIONES",
+  "title": "Hay decisiones que el PDF no fija.",
+  "subtitle": "Deben acordarse con la cátedra o documentarse como decisión del equipo; no convertirlas en requisitos inventados.",
+  "blocks": [
+    {
+      "type": "cards",
+      "columns": 3,
+      "items": [
+        {
+          "icon": "cpu",
+          "title": "Virtualización y red",
+          "text": "No indica hipervisor, recursos de hardware, modo NAT/bridge/host-only ni rango IP."
+        },
+        {
+          "icon": "users",
+          "title": "Cuentas concretas",
+          "text": "No define nombres exactos para administradores o usuarios de servicio."
+        },
+        {
+          "icon": "braces",
+          "title": "Inventario",
+          "text": "Pide inventariar cada VM, pero no enumera campos ni formato de salida."
+        },
+        {
+          "icon": "layers",
+          "title": "Repositorio",
+          "text": "No fija estructura de carpetas ni funcionalidad exacta de la aplicación mínima."
+        },
+        {
+          "icon": "network",
+          "title": "Herramientas de CI",
+          "text": "No nombra plataforma ni analizador estático; sí exige build, tests y análisis."
+        },
+        {
+          "icon": "check",
+          "title": "Entrega formal",
+          "text": "No especifica formato, canal, fecha exacta ni convención para las evidencias."
+        }
+      ],
+      "fragment": 0,
+      "animation": "slide-up"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Antes de empezar",
+      "text": "Definan estas variables en una hoja de decisiones. Si la cátedra da una pauta adicional, esa pauta completa la consigna; no la reemplaza."
+    }
+  ],
+  "notes": [
+    "Esta slide distingue requisitos textuales de recomendaciones y evita ambigüedades al explicar.",
+    "Si ya existen reglas de entrega fuera del PDF, actualizar esta slide antes de exponer."
+  ]
+}

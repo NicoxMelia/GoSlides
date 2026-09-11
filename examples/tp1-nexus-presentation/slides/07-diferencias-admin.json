@@ -1,0 +1,50 @@
+{
+  "id": "diferencias-admin",
+  "layout": "default",
+  "masterId": "master-nexus",
+  "sectionId": "laboratorio",
+  "transition": "fade",
+  "eyebrow": "06 · DOS DISTRIBUCIONES",
+  "title": "Comparar Ubuntu y Rocky también es parte de la entrega.",
+  "subtitle": "No basta con hacer que funcionen: hay que documentar las diferencias de administración encontradas.",
+  "blocks": [
+    {
+      "type": "compare",
+      "left": {
+        "label": "SECTOR-CORE",
+        "title": "Ubuntu Server",
+        "subtitle": "Familia Debian",
+        "items": [
+          "Paquetes: `apt` / `dpkg`",
+          "Servicio SSH habitual: `ssh`",
+          "Registrar ubicaciones y defaults realmente observados",
+          "Anotar los comandos usados"
+        ]
+      },
+      "right": {
+        "label": "FIELD-TERMINAL",
+        "title": "Rocky Linux",
+        "subtitle": "Familia RHEL",
+        "highlight": true,
+        "items": [
+          "Paquetes: `dnf` / `rpm`",
+          "Servicio SSH habitual: `sshd`",
+          "Registrar ubicaciones y defaults realmente observados",
+          "Anotar los comandos equivalentes"
+        ]
+      },
+      "fragment": 0,
+      "animation": "fade"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "Qué conviene comparar",
+      "text": "Gestor de paquetes, nombre de servicios, archivos de configuración, creación de usuarios/grupos y cualquier diferencia de permisos o seguridad que aparezca durante la práctica."
+    }
+  ],
+  "notes": [
+    "apt/dnf y ssh/sshd son ejemplos útiles, pero la evidencia principal debe surgir de lo que el equipo realmente encuentre.",
+    "No adelantar la configuración detallada de SELinux: el PDF la ubica explícitamente en TP3."
+  ]
+}
